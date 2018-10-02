@@ -14,6 +14,7 @@ const unitSchema = new Schema({
   att: { type: Number },
   ld: { type: Number },
   sv: { type: Number },
+  pts: { type: Number },
   date: { type: Date, default: Date.now }
 });
 

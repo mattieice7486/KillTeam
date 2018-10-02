@@ -39,35 +39,48 @@ class Detail extends Component {
               <table>
                   <thead>
                     <tr>
-                    <th>
-                      {this.state.unit.move}
-                    </th>
-                    <th>
-                      {this.state.unit.ws}
-                    </th>
-                    <th>
-                      {this.state.unit.bs}
-                    </th>
-                    <th>
-                      {this.state.unit.str}
-                    </th>
-                    <th>
-                      {this.state.unit.tough}
-                    </th>
-                    <th>
-                      {this.state.unit.wounds}
-                    </th>
-                    <th>
-                      {this.state.unit.att}
-                    </th>
-                    <th>
-                      {this.state.unit.ld}
-                    </th>
-                    <th>
-                      {this.state.unit.sv}
-                    </th>
+                      <th>M</th>
+                      <th>WS</th>
+                      <th>BS</th>
+                      <th>S</th>
+                      <th>T</th>
+                      <th>W</th>
+                      <th>A</th>
+                      <th>LD</th>
+                      <th>SV</th>
                     </tr>
                   </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        {this.state.unit.move}
+                      </td>
+                      <td>
+                        {this.state.unit.ws}
+                      </td>
+                      <td>
+                        {this.state.unit.bs}
+                      </td>
+                      <td>
+                        {this.state.unit.str}
+                      </td>
+                      <td>
+                        {this.state.unit.tough}
+                      </td>
+                      <td>
+                        {this.state.unit.wounds}
+                      </td>
+                      <td>
+                        {this.state.unit.att}
+                      </td>
+                      <td>
+                        {this.state.unit.ld}
+                      </td>
+                      <td>
+                        {this.state.unit.sv}
+                      </td>
+                    </tr>
+                  </tbody>
               </table>
             </article>
           </Col>
