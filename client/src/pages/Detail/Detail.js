@@ -23,20 +23,19 @@ class Detail extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>
-              &quot;{this.state.unit.name}&quot; {this.state.unit.modelType}
-              </h1>
+              <h1>&quot;{this.state.unit.name}&quot;</h1>
+              <h2>{this.state.unit.modelType}</h2>
             </Jumbotron>
           </Col>
         </Row>
         <Row>
-          <Col size="md-10 md-offset-1">
+          <Col size="md-6 md-offset-1">
             <article>
               <h1>Equipment</h1>
               <p>
                 {this.state.unit.equipment}
               </p>
-              <table>
+              <table className="table table-bordered table-dark">
                   <thead>
                     <tr>
                       <th>M</th>

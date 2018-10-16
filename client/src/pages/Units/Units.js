@@ -13,6 +13,7 @@ import { TableRow } from "../../components/Table";
 class Units extends Component {
   state = {
     units: [],
+    race: "",
     name: "",
     modelType: "",
     newRecruit: "",
@@ -38,6 +39,7 @@ class Units extends Component {
       .then(res =>
         this.setState({
         units: res.data,
+        race: "",
         name: "",
         modelType: "",
         newRecruit: false,
@@ -75,6 +77,7 @@ class Units extends Component {
     console.log(this)
     if (this.state.name && this.state.modelType) {
       API.saveUnit({
+        race: this.state.race,
         name: this.state.name,
         modelType: this.state.modelType,
         newRecruit: this.state.newRecruit,
@@ -106,86 +109,86 @@ class Units extends Component {
               <h1>Add a Squad Member</h1>
             </Jumbotron>
             <form>
-              <select>
+              <select className="custom-select form-group" id="inputGroupSelect01">
                 <Option
-                  value=""
+                  value={this.state.race}
                 >
-                Adeptus Astartes
+                  Adeptus Astartes
                 </Option>
                 <Option
-                  value=""
-                >
-                Deathwatch
+                  value={this.state.race}
+                  >
+                  Deathwatch
                 </Option>
                 <Option
-                  value=""
-                >
-                Grey Knights
+                  value={this.state.race}
+                  >
+                  Grey Knights
                 </Option>
                 <Option
-                  value=""
-                >
-                Astra Militarum
+                  value={this.state.race}
+                  >
+                  Astra Militarum
                 </Option>
                 <Option
-                  value=""
-                >
-                Adeptus Mechanicus
+                  value={this.state.race}
+                  >
+                  Adeptus Mechanicus
                 </Option>
                 <Option
-                  value=""
-                >
-                Heretic Astartes
+                  value={this.state.race}
+                  >
+                  Heretic Astartes
                 </Option>
                 <Option
-                  value=""
-                >
-                Death Guard
+                  value={this.state.race}
+                  >
+                  Death Guard
                 </Option>
                 <Option
-                  value=""
-                >
-                Thousand Sons
+                  value={this.state.race}
+                  >
+                  Thousand Sons
                 </Option>
                 <Option
-                  value=""
-                >
-                Asuryani
+                  value={this.state.race}
+                  >
+                  Asuryani
                 </Option>
                 <Option
-                  value=""
-                >
-                Drukhari
+                  value={this.state.race}
+                  >
+                  Drukhari
                 </Option>
                 <Option
-                  value=""
-                >
-                Harlequins
+                  value={this.state.race}
+                  >
+                  Harlequins
                 </Option>
                 <Option
-                  value=""
-                >
-                Necrons
+                  value={this.state.race}
+                  >
+                  Necrons
                 </Option>
                 <Option
-                  value=""
-                >
-                Orks
+                  value={this.state.race}
+                  >
+                  Orks
                 </Option>
                 <Option
-                  value=""
-                >
-                T'au Empire
+                  value={this.state.race}
+                  >
+                  T'au Empire
                 </Option>
                 <Option
-                  value=""
-                >
-                Tyranids
+                  value={this.state.race}
+                  >
+                  Tyranids
                 </Option>
                 <Option
-                  value=""
-                >
-                Genestealer Cults
+                  value={this.state.race}
+                  >
+                  Genestealer Cults
                 </Option>
               </select>
               <Input
