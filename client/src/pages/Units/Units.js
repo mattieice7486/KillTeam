@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, InputNumber, TextArea, FormBtn, Checkbox } from "../../components/Form";
+import { Option } from "../../components/Select";
 import { TableRow } from "../../components/Table";
 
 class Units extends Component {
@@ -105,6 +106,88 @@ class Units extends Component {
               <h1>Add a Squad Member</h1>
             </Jumbotron>
             <form>
+              <select>
+                <Option
+                  value=""
+                >
+                Adeptus Astartes
+                </Option>
+                <Option
+                  value=""
+                >
+                Deathwatch
+                </Option>
+                <Option
+                  value=""
+                >
+                Grey Knights
+                </Option>
+                <Option
+                  value=""
+                >
+                Astra Militarum
+                </Option>
+                <Option
+                  value=""
+                >
+                Adeptus Mechanicus
+                </Option>
+                <Option
+                  value=""
+                >
+                Heretic Astartes
+                </Option>
+                <Option
+                  value=""
+                >
+                Death Guard
+                </Option>
+                <Option
+                  value=""
+                >
+                Thousand Sons
+                </Option>
+                <Option
+                  value=""
+                >
+                Asuryani
+                </Option>
+                <Option
+                  value=""
+                >
+                Drukhari
+                </Option>
+                <Option
+                  value=""
+                >
+                Harlequins
+                </Option>
+                <Option
+                  value=""
+                >
+                Necrons
+                </Option>
+                <Option
+                  value=""
+                >
+                Orks
+                </Option>
+                <Option
+                  value=""
+                >
+                T'au Empire
+                </Option>
+                <Option
+                  value=""
+                >
+                Tyranids
+                </Option>
+                <Option
+                  value=""
+                >
+                Genestealer Cults
+                </Option>
+              </select>
               <Input
                 value={this.state.name}
                 onChange={this.handleInputChange}
