@@ -8,6 +8,8 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, InputNumber, TextArea, FormBtn, Checkbox } from "../../components/Form";
 import { Option } from "../../components/Select";
+import Bolter from "../../components/Guns/Bolter"
+import PlasmaGun from "../../components/Guns/PlasmaGun"
 import { TableRow } from "../../components/Table";
 
 class Units extends Component {
@@ -16,7 +18,6 @@ class Units extends Component {
     race: "",
     name: "",
     modelType: "",
-    newRecruit: "",
     equipment: "",
     move: "",
     ws: "",
@@ -42,7 +43,6 @@ class Units extends Component {
         race: "",
         name: "",
         modelType: "",
-        newRecruit: false,
         equipment: "",
         move: "",
         ws: "",
@@ -80,7 +80,6 @@ class Units extends Component {
         race: this.state.race,
         name: this.state.name,
         modelType: this.state.modelType,
-        newRecruit: this.state.newRecruit,
         equipment: this.state.equipment,
         move: this.state.move,
         ws: this.state.ws,
@@ -203,11 +202,6 @@ class Units extends Component {
                 name="modelType"
                 placeholder="Model Type (required)"
               />
-              <Checkbox
-                value={this.state.newRecruit}
-                onChange={this.handleInputChange}
-                name="newRecruit"
-              />
               <table>
                 <tbody>
                   <tr>
@@ -298,6 +292,14 @@ class Units extends Component {
                 name="equipment"
                 placeholder="Equipment (Optional)"
               />
+            <select className="custom-select form-group" id="inputGroupSelect01">
+              <Option>
+                <PlasmaGun />
+              </Option>
+              <Option>
+                <Bolter />
+              </Option>
+            </select>
               <FormBtn
                 disabled={!(this.state.modelType && this.state.name)}
                 onClick={this.handleFormSubmit}
@@ -316,10 +318,14 @@ class Units extends Component {
                   <ListItem key={unit._id}>
                     <Link to={"/units/" + unit._id}>
                       <strong>
-                      &quot;{unit.name}&quot; {unit.modelType}
+                        &quot;{unit.name}&quot; {unit.modelType}
                       </strong>
-                      &nbsp;
+                        &nbsp;
+                      <span className="list-points">
+                        {unit.pts} points
+                      </span>
                     </Link>
+                      {/* how do i do a confirm() for delete? */}
                     <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
                   </ListItem>
                 ))}
@@ -327,6 +333,11 @@ class Units extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <FormBtn
+              // write a function to add points and total them
+            >
+            Total
+            </FormBtn>
           </Col>
         </Row>
       </Container>

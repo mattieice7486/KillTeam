@@ -1,3 +1,7 @@
 body {
     background-color: #464646
 }
+
+.list-points {
+    float: right;
+}
