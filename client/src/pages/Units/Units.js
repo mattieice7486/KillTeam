@@ -28,11 +28,13 @@ class Units extends Component {
     att: "",
     ld: "",
     sv: "",
-    pts: ""
+    pts: "",
+    total: 0
   };
 
   componentDidMount() {
     this.loadUnits();
+    this.squadTotal();
   }
 
   loadUnits = () => {
@@ -53,25 +55,27 @@ class Units extends Component {
         att: "",
         ld: "",
         sv: "",
-        pts: ""
+        pts: "",
       })
       )
       .catch(err => console.log(err));
   };
 
   deleteUnit = id => {
+    // how do you change this to "confirm" not "alert"?
+    alert("are you sure?");
     API.deleteUnit(id)
-      .then(res => this.loadUnits())
-      .catch(err => console.log(err));
+    .then(res => this.loadUnits())
+    .catch(err => console.log(err));
   };
-
+  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
       [name]: value
     });
   };
-
+  
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this)
@@ -91,14 +95,29 @@ class Units extends Component {
         ld: this.state.ld,
         sv: this.state.sv,
         pts: this.state.pts
-
       })
-        .then(res => this.loadUnits())
-        .catch(err => console.log(err));
+      .then(res => this.loadUnits())
+      .catch(err => console.log(err));
     }
     console.log(this)
   };
-
+  
+  squadTotal = () => {
+    var i;
+    var sum = 0;
+    for (i = 0; i < this.state.units.length; i++) {
+      sum += this.state.units[i].pts;
+      this.setState({
+        total: sum
+      })
+    }
+    // only works on second click
+    if (this.state.total > 100) {
+      alert("squad is over 100 points!")
+    }
+    console.log(this.state.total);
+  }
+  
   render() {
     return (
       <Container fluid>
@@ -311,6 +330,7 @@ class Units extends Component {
           <Col size="md-6 sm-12">
             <Jumbotron>
               <h1>Units On My List</h1>
+              <h2>Squad Cost: {this.state.total}</h2>
             </Jumbotron>
             {this.state.units.length ? (
               <List>
@@ -325,7 +345,6 @@ class Units extends Component {
                         {unit.pts} points
                       </span>
                     </Link>
-                      {/* how do i do a confirm() for delete? */}
                     <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
                   </ListItem>
                 ))}
@@ -334,7 +353,7 @@ class Units extends Component {
               <h3>No Results to Display</h3>
             )}
             <FormBtn
-              // write a function to add points and total them
+              onClick={this.squadTotal}
             >
             Total
             </FormBtn>
