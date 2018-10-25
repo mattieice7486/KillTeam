@@ -1,7 +1,7 @@
 # KillTeam
-Squad building app for the tabletop game Kill Team
+Squad building app for the tabletop game Kill Team. React based app using Node and an mLab Mongo database to store entries. 
 
-Deployed at http://http://kill-team.herokuapp.com
+Deployed at http://kill-team.herokuapp.com
 
 ![Main Screen](./client/public/killteam1.png)
 ![Detail View](./client/public/killteam2.png)
