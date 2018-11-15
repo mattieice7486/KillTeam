@@ -6,7 +6,7 @@ import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { Input, InputNumber, TextArea, FormBtn, Checkbox } from "../../components/Form";
+import { Input, InputNumber, TextArea, FormBtn, Select, Checkbox } from "../../components/Form";
 import { Option } from "../../components/Select";
 import Bolter from "../../components/Guns/Bolter"
 import PlasmaGun from "../../components/Guns/PlasmaGun"
@@ -75,7 +75,7 @@ class Units extends Component {
       [name]: value
     });
   };
-  
+
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this)
@@ -127,88 +127,61 @@ class Units extends Component {
               <h1>Add a Squad Member</h1>
             </Jumbotron>
             <form>
-              <select className="custom-select form-group" id="inputGroupSelect01">
-                <Option
-                  value={this.state.race}
-                >
+              <Select
+                  onClick={console.log(this.state.race)}
+                  name="race"            
+                  value={this.state.race}                
+                  onChange={this.handleInputChange}
+                  >
+                <option value="Adeptus Astartes">
                   Adeptus Astartes
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Deathwatch">
                   Deathwatch
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Grey Knights">
                   Grey Knights
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Astra Militarum">
                   Astra Militarum
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Adeptus Mechanicus">
                   Adeptus Mechanicus
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Heretic Astartes">
                   Heretic Astartes
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Death Guard">
                   Death Guard
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Thousand Sons">
                   Thousand Sons
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Asuryani">
                   Asuryani
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Drukhari">
                   Drukhari
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Harlequins">
                   Harlequins
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Necrons">
                   Necrons
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Orks">
                   Orks
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="T'au Empire">
                   T'au Empire
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Tyranids">
                   Tyranids
-                </Option>
-                <Option
-                  value={this.state.race}
-                  >
+                </option>
+                <option value="Genestealer Cults">
                   Genestealer Cults
-                </Option>
-              </select>
+                </option>
+              </Select>
               <Input
                 value={this.state.name}
                 onChange={this.handleInputChange}
@@ -313,9 +286,11 @@ class Units extends Component {
               />
             <select className="custom-select form-group" id="inputGroupSelect01">
               <Option>
+                Plasma Gun
                 <PlasmaGun />
               </Option>
               <Option>
+                Bolter
                 <Bolter />
               </Option>
             </select>
@@ -338,7 +313,7 @@ class Units extends Component {
                   <ListItem key={unit._id}>
                     <Link to={"/units/" + unit._id}>
                       <strong>
-                        &quot;{unit.name}&quot; {unit.modelType}
+                        &quot;{unit.name}&quot; {unit.modelType} {unit.race}
                       </strong>
                         &nbsp;
                       <span className="list-points">

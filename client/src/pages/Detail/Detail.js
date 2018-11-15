@@ -23,7 +23,7 @@ class Detail extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>&quot;{this.state.unit.name}&quot;</h1>
+              <h1>&ldquo;{this.state.unit.name}&rdquo;</h1>
               <h2>{this.state.unit.modelType}</h2>
             </Jumbotron>
           </Col>
@@ -31,9 +31,13 @@ class Detail extends Component {
         <Row>
           <Col size="md-6 md-offset-1">
             <article>
-              <h1>Equipment</h1>
-              <p>
+              <h1 className="text-light">Equipment</h1>
+              <p className="text-light">
                 {this.state.unit.equipment}
+              </p>
+              <h2 className="text-light">Race</h2>
+              <p className="text-light">
+                {this.state.unit.race}
               </p>
               <table className="table table-bordered table-dark">
                   <thead>
@@ -55,10 +59,10 @@ class Detail extends Component {
                         {this.state.unit.move}
                       </td>
                       <td>
-                        {this.state.unit.ws}
+                        {this.state.unit.ws}+
                       </td>
                       <td>
-                        {this.state.unit.bs}
+                        {this.state.unit.bs}+
                       </td>
                       <td>
                         {this.state.unit.str}
@@ -76,7 +80,7 @@ class Detail extends Component {
                         {this.state.unit.ld}
                       </td>
                       <td>
-                        {this.state.unit.sv}
+                        {this.state.unit.sv}+
                       </td>
                     </tr>
                   </tbody>
