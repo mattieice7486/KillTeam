@@ -42,13 +42,13 @@ class Detail extends Component {
               <table className="table table-bordered table-dark">
                   <thead>
                     <tr>
-                      <th>M</th>
+                      <th>M&nbsp;</th>
                       <th>WS</th>
                       <th>BS</th>
-                      <th>S</th>
-                      <th>T</th>
-                      <th>W</th>
-                      <th>A</th>
+                      <th>S&nbsp;</th>
+                      <th>T&nbsp;</th>
+                      <th>W&nbsp;</th>
+                      <th>A&nbsp;</th>
                       <th>LD</th>
                       <th>SV</th>
                     </tr>
@@ -56,7 +56,7 @@ class Detail extends Component {
                   <tbody>
                     <tr>
                       <td>
-                        {this.state.unit.move}
+                        {this.state.unit.move}"
                       </td>
                       <td>
                         {this.state.unit.ws}+

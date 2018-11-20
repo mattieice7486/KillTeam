@@ -18,6 +18,7 @@ class Units extends Component {
     race: "",
     name: "",
     modelType: "",
+    unitType: "",
     equipment: "",
     move: "",
     ws: "",
@@ -35,6 +36,8 @@ class Units extends Component {
   componentDidMount() {
     this.loadUnits();
     this.squadTotal();
+    this.switcher();
+    this.setState({race: "Adeptus Astartes"})
   }
 
   loadUnits = () => {
@@ -45,6 +48,7 @@ class Units extends Component {
         race: "",
         name: "",
         modelType: "",
+        unitType: "",
         equipment: "",
         move: "",
         ws: "",
@@ -84,6 +88,7 @@ class Units extends Component {
         race: this.state.race,
         name: this.state.name,
         modelType: this.state.modelType,
+        unitType: this.state.unitType,
         equipment: this.state.equipment,
         move: this.state.move,
         ws: this.state.ws,
@@ -115,7 +120,13 @@ class Units extends Component {
     if (this.state.total > 100) {
       alert("squad is over 100 points!")
     }
-    console.log(this.state.total);
+    console.log("squad total: " + this.state.total);
+  }
+
+  switcher = () => {
+    if (this.state.race == "Deathwatch") {
+      alert("deathwatch")
+    }
   }
   
   render() {
@@ -128,11 +139,14 @@ class Units extends Component {
             </Jumbotron>
             <form>
               <Select
-                  onClick={console.log(this.state.race)}
+                  onClick={console.log("race: " + this.state.race)}
                   name="race"            
                   value={this.state.race}                
                   onChange={this.handleInputChange}
                   >
+                <option disabled>
+                  -- Choose army --
+                </option>
                 <option value="Adeptus Astartes">
                   Adeptus Astartes
                 </option>
@@ -194,6 +208,24 @@ class Units extends Component {
                 name="modelType"
                 placeholder="Model Type (required)"
               />
+              <Select
+                name="unitType"            
+                value={this.state.unitType}                
+                onChange={this.handleInputChange}
+              >
+                <Option value="Tactical Marine">
+                  Tactical Marine
+                </Option>
+                <Option value="Scout">
+                  Scout
+                </Option>
+                <Option value="Intercessor">
+                  Intercessor
+                </Option>
+                <Option value="Reiver">
+                  Reiver
+                </Option>
+              </Select>
               <table>
                 <tbody>
                   <tr>
