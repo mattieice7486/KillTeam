@@ -17,7 +17,7 @@ class Units extends Component {
     units: [],
     race: "",
     name: "",
-    modelType: "",
+    // modelType: "",
     unitType: "",
     equipment: "",
     move: "",
@@ -47,7 +47,7 @@ class Units extends Component {
         units: res.data,
         race: "",
         name: "",
-        modelType: "",
+        // modelType: "",
         unitType: "",
         equipment: "",
         move: "",
@@ -83,11 +83,11 @@ class Units extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this)
-    if (this.state.name && this.state.modelType) {
+    if (this.state.name && this.state.unitType) {
       API.saveUnit({
         race: this.state.race,
         name: this.state.name,
-        modelType: this.state.modelType,
+        // modelType: this.state.modelType,
         unitType: this.state.unitType,
         equipment: this.state.equipment,
         move: this.state.move,
@@ -124,7 +124,7 @@ class Units extends Component {
   }
 
   switcher = () => {
-    if (this.state.race == "Deathwatch") {
+    if (this.state.race === "Deathwatch") {
       alert("deathwatch")
     }
   }
@@ -139,7 +139,6 @@ class Units extends Component {
             </Jumbotron>
             <form>
               <Select
-                  onClick={console.log("race: " + this.state.race)}
                   name="race"            
                   value={this.state.race}                
                   onChange={this.handleInputChange}
@@ -202,29 +201,53 @@ class Units extends Component {
                 name="name"
                 placeholder="Name (required)"
               />
-              <Input
+              {/* <Input
                 value={this.state.modelType}
                 onChange={this.handleInputChange}
                 name="modelType"
                 placeholder="Model Type (required)"
-              />
+              /> */}
               <Select
                 name="unitType"            
                 value={this.state.unitType}                
                 onChange={this.handleInputChange}
               >
-                <Option value="Tactical Marine">
+                <option disabled>
+                  -- Choose Unit --
+                </option>
+                <option value="Tactical Marine">
                   Tactical Marine
-                </Option>
-                <Option value="Scout">
+                </option>
+                <option value="Tactical Marine Gunner">
+                  Tactical Marine Gunner
+                </option>
+                <option value="Tactical Marine Sergeant">
+                  Tactical Marine Sergeant
+                </option>
+                <option value="Scout">
                   Scout
-                </Option>
-                <Option value="Intercessor">
+                </option>
+                <option value="Scout Gunner">
+                  Scout Gunner
+                </option>
+                <option value="Scout Sergeant">
+                  Scout Sergeant
+                </option>
+                <option value="Intercessor">
                   Intercessor
-                </Option>
-                <Option value="Reiver">
+                </option>
+                <option value="Intercessor Gunner">
+                  Intercessor Gunner
+                </option>
+                <option value="Intercessor Sergeant">
+                  Intercessor Sergeant
+                </option>
+                <option value="Reiver">
                   Reiver
-                </Option>
+                </option>
+                <option value="Reiver Sergeant">
+                  Reiver Sergeant
+                </option>
               </Select>
               <table>
                 <tbody>
@@ -327,7 +350,7 @@ class Units extends Component {
               </Option>
             </select>
               <FormBtn
-                disabled={!(this.state.modelType && this.state.name)}
+                disabled={!(this.state.unitType && this.state.name)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Unit
@@ -345,7 +368,7 @@ class Units extends Component {
                   <ListItem key={unit._id}>
                     <Link to={"/units/" + unit._id}>
                       <strong>
-                        &quot;{unit.name}&quot; {unit.modelType} {unit.race}
+                        &quot;{unit.name}&quot; {unit.unitType}
                       </strong>
                         &nbsp;
                       <span className="list-points">

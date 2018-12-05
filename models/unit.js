@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const unitSchema = new Schema({
   name: { type: String, required: true },
-  modelType: { type: String, required: true },
+  // modelType: { type: String, required: true },
+  unitType: { type: String },
+  race: { type: String },
   equipment: String,
   move: { type: Number },
   ws: { type: Number },

@@ -24,7 +24,8 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>&ldquo;{this.state.unit.name}&rdquo;</h1>
-              <h2>{this.state.unit.modelType}</h2>
+              {/* <h2>{this.state.unit.modelType}</h2> */}
+              <h2>{this.state.unit.unitType}</h2>
             </Jumbotron>
           </Col>
         </Row>
