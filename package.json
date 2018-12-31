@@ -19,9 +19,9 @@
     "concurrently": "^3.5.0",
     "nodemon": "^1.11.0"
   },
-  "engines" : {
-    "node" : "^8.0.0",
-    "npm" : "^6.0.0"
+  "engines": {
+    "node": "^8.0.0",
+    "npm": "^6.0.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
