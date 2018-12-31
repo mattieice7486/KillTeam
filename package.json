@@ -1,6 +1,6 @@
 {
   "name": "killteam",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Squad Builder for Kill Team",
   "main": "server.js",
   "scripts": {
@@ -20,7 +20,7 @@
     "nodemon": "^1.11.0"
   },
   "engines" : {
-    "node" : ">=0.12"
+    "node" : "^=4.0.0"
   },
   "dependencies": {
     "axios": "^0.16.2",
