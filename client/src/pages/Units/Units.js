@@ -470,12 +470,12 @@ class Units extends Component {
               >
                 Submit Unit
               </FormBtn>
-              <FormBtn
-                onClick={this.switcher}
-              >
-              Autofill
-              </FormBtn>
             </form>
+            <FormBtn
+              onClick={this.switcher}
+            >
+            Autofill
+            </FormBtn>
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
