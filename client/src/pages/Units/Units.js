@@ -37,7 +37,6 @@ class Units extends Component {
     this.loadUnits();
     this.squadTotal();
     this.switcher();
-    this.setState({race: "Adeptus Astartes"})
   }
 
   loadUnits = () => {
@@ -124,8 +123,124 @@ class Units extends Component {
   }
 
   switcher = () => {
-    if (this.state.race === "Deathwatch") {
-      alert("deathwatch")
+    if (this.state.race === "Adeptus Astartes") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4
+      })
+    }
+    if (this.state.unitType === "Scout") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 4,
+        pts: 10,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Scout Gunner") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 4,
+        pts: 11,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Scout Sergeant") {
+      this.setState({
+        wounds: 1,
+        att: 2,
+        ld: 8,
+        sv: 4,
+        pts: 11,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Tactical Marine") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 12,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Tactical Marine Gunner") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Tactical Marine Sergeant") {
+      this.setState({
+        wounds: 1,
+        att: 2,
+        ld: 8,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Reiver") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, and shock grenades"
+      });
+    }
+    if (this.state.unitType === "Reiver Sergeant") {
+      this.setState({
+        wounds: 2,
+        att: 3,
+        ld: 8,
+        sv: 3,
+        pts: 17,
+        equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, and shock grenades"
+      });
+    }
+    if (this.state.unitType === "Intercessor") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 15,
+        equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Intercessor Gunner") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    if (this.state.unitType === "Intercessor Sergeant") {
+      this.setState({
+        wounds: 2,
+        att: 3,
+        ld: 8,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
+      });
     }
   }
   
@@ -354,6 +469,11 @@ class Units extends Component {
                 onClick={this.handleFormSubmit}
               >
                 Submit Unit
+              </FormBtn>
+              <FormBtn
+                onClick={this.switcher}
+              >
+              Autofill
               </FormBtn>
             </form>
           </Col>
