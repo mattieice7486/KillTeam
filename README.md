@@ -36,7 +36,7 @@ Release 0.1.0 is here!
 * Automatic squad totalling (no button).
 * UI graphics.
 * Model Type selector based on army choice.
-* <s>Autofill stats based on Model Type selected.<s> ✔️
+* <s>Autofill stats based on Model Type selected.</s> ✔️
 * Equipment selector.
 * User login to save individual squads.
 * Squad Name.
