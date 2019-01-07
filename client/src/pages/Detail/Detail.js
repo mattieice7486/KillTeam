@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { TableRow } from "../../components/Table";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 
@@ -24,21 +23,20 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>&ldquo;{this.state.unit.name}&rdquo;</h1>
-              {/* <h2>{this.state.unit.modelType}</h2> */}
-              <h2>{this.state.unit.unitType}</h2>
+              <h2>{this.state.unit.selectedOption2}</h2>
             </Jumbotron>
           </Col>
         </Row>
         <Row>
           <Col size="md-6 md-offset-1">
             <article>
+              <h1 className="text-light">Race</h1>
+              <p className="text-light">
+                {this.state.unit.selectedOption}
+              </p>
               <h1 className="text-light">Equipment</h1>
               <p className="text-light">
                 {this.state.unit.equipment}
-              </p>
-              <h2 className="text-light">Race</h2>
-              <p className="text-light">
-                {this.state.unit.race}
               </p>
               <table className="table table-bordered table-dark">
                   <thead>
