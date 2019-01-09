@@ -8,14 +8,16 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, InputNumber, TextArea, FormBtn } from "../../components/Form";
 import { Option } from "../../components/Select";
-import Bolter from "../../components/Guns/Bolter"
-import PlasmaGun from "../../components/Guns/PlasmaGun"
-import Select from 'react-select'
+import firebase from "firebase";
+import { auth, provider } from '../../utils/Firebase';
+import Bolter from "../../components/Guns/Bolter";
+import PlasmaGun from "../../components/Guns/PlasmaGun";
+import Select from 'react-select';
 
 
 class Units extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       units: [],
       // race: "",
@@ -34,7 +36,9 @@ class Units extends Component {
       pts: "",
       total: 0,
       selectedOption: {},
-      selectedOption2: {}
+      selectedOption2: {},
+      items: [],
+      user: null
     };
   }
 
@@ -49,10 +53,65 @@ class Units extends Component {
   }
 
   componentDidMount() {
+    
     this.loadUnits();
     this.squadTotal();
     this.switcher();
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        this.setState({ user });
+      } 
+    });
+    const itemsRef = firebase.database().ref('Users');
+
+    itemsRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          user: items[item].user,
+          units: items[item].units,
+          avatar: items[item].avatar,
+        });
+      }
+      this.setState({
+        items: newState
+      });
+    });
   }
+
+  logout() {
+    auth.signOut()
+    .then(() => {
+      this.setState({
+        user: null
+      });
+    });
+  };
+
+  login() {
+    auth.signInWithPopup(provider) 
+      .then((result) => {
+        const user = result.user;
+        this.setState({
+          user
+        });
+      });
+  };
+
+  handleSubmit(e) {
+    const itemsRef = firebase.database().ref('Users');
+    if (this.state.user !== null) {
+      const item = {
+          user: this.state.user.displayName,
+          units: this.state.units,
+          avatar: this.state.user.photoURL
+      }
+      itemsRef.push(item);
+    };
+  };
 
   loadUnits = () => {
     API.getUnits()
@@ -405,6 +464,20 @@ class Units extends Component {
               <h1>Add a Squad Member</h1>
               <h2>{this.state.selectedOption.label}</h2>
             </Jumbotron>
+            <div>
+                    {this.state.user ?
+                        <button className="logout" onClick={this.logout}>Logout</button>                
+                        :
+                        <button className="login" onClick={this.login}>Log In</button>              
+                    }
+                    {this.state.user ?
+                        <div className="profilePic">
+                            <img className="us" src={this.state.user.photoURL} style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
+                        </div>
+                        :
+                        <p id="loginStatement">You must be logged in to save your squad.</p>
+                    }
+                </div>
             <form>
               <div>
                 <Select

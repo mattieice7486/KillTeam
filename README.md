@@ -7,6 +7,18 @@ Deployed at http://kill-team.herokuapp.com
 ![Detail View](./client/public/killteam2.png)
 
 ## Change Log:
+1/9/19
+Release 0.1.4
+* Added Firebase authorization: currently bugged.
+* Added custom favicon.
+
+1/7/19
+Release 0.1.3
+* Race selection displays in jumbotron.
+* Model Types are now dependant on Race selection.
+* Added all model types for each Race.
+* Fixed npm package vulnerabilities.
+
 12/31/2018
 Release 0.1.2
 * Army selector updated, now correctly saves to state.
@@ -30,6 +42,7 @@ Release 0.1.0 is here!
 * <s>Army selector does nothing currently.</s> ✔️
 * Selectors don't register default state; you must select a new option then select the default for it to register.
 * Have to click autofill button to autofill stats.
+* Login currently bugged.
 
 ## Updates Planned:
 
