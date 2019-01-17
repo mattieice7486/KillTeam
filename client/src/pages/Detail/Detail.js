@@ -23,7 +23,7 @@ class Detail extends Component {
           <Col size="md-12">
             <Jumbotron>
               <h1>&ldquo;{this.state.unit.name}&rdquo;</h1>
-              <h2>{this.state.unit.selectedOption2}</h2>
+              <h2>{this.state.unit.unitType}</h2>
             </Jumbotron>
           </Col>
         </Row>
@@ -32,11 +32,14 @@ class Detail extends Component {
             <article>
               <h1 className="text-light">Race</h1>
               <p className="text-light">
-                {this.state.unit.selectedOption}
+                {this.state.unit.race}
               </p>
               <h1 className="text-light">Equipment</h1>
               <p className="text-light">
                 {this.state.unit.equipment}
+              </p>
+              <p className="text-light">
+                {this.state.unit.wargearOptions}
               </p>
               <table className="table table-bordered table-dark">
                   <thead>

@@ -7,6 +7,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Detail View](./client/public/killteam2.png)
 
 ## Change Log:
+1/17/19
+Release 0.2.1
+* Added Squad page to display the entire squad in detail view. Added a navbar button to access it.
+* Added a usable Wargear Options selector which is dependant on unit type.
+* Added Autofill stats for 4 more races.
+
 1/9/19
 Release 0.1.4
 * Added Firebase authorization: currently bugged.
@@ -50,6 +56,6 @@ Release 0.1.0 is here!
 * UI graphics.
 * <s>Model Type selector based on army choice.</s> ✔️
 * <s>Autofill stats based on Model Type selected.</s> ✔️
-* Equipment selector.
+* <s>Equipment selector.</s> ✔️
 * User login to save individual squads.
 * Squad Name.

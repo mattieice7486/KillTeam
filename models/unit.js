@@ -3,8 +3,6 @@ const Schema = mongoose.Schema;
 
 const unitSchema = new Schema({
   name: { type: String, required: true },
-  unitType: { type: String },
-  race: { type: String },
   equipment: String,
   move: { type: Number },
   ws: { type: Number },
@@ -16,8 +14,9 @@ const unitSchema = new Schema({
   ld: { type: Number },
   sv: { type: Number },
   pts: { type: Number },
-  selectedOption: { type: String },
-  selectedOption2: { type: String },
+  race: { type: String },
+  unitType: { type: String },
+  wargearOptions: { type: String },
   date: { type: Date, default: Date.now }
 });
 

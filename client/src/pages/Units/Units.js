@@ -20,9 +20,7 @@ class Units extends Component {
     super(props);
     this.state = {
       units: [],
-      // race: "",
       name: "",
-      // unitType: "",
       equipment: "",
       move: "",
       ws: "",
@@ -35,21 +33,27 @@ class Units extends Component {
       sv: "",
       pts: "",
       total: 0,
-      selectedOption: {},
-      selectedOption2: {},
+      race: {},
+      unitType: {},
+      wargearOptions: {},
       items: [],
       user: null
     };
   }
 
-  handleChange1 = (selectedOption) => {
-    this.setState({selectedOption});
-    console.log(this.state.selectedOption)
+  handleChange1 = (race) => {
+    this.setState({race});
+    console.log(this.state.race)
   };
 
-  handleChange2 = (selectedOption) => {
-    this.setState({selectedOption2: selectedOption})
-    console.log(this.state.selectedOption2)
+  handleChange2 = (race) => {
+    this.setState({unitType: race})
+    console.log(this.state.unitType)
+  }
+
+  handleChange3 = (unitType) => {
+    this.setState({wargearOptions: unitType})
+    console.log(this.state.wargearOptions)
   }
 
   componentDidMount() {
@@ -118,9 +122,7 @@ class Units extends Component {
       .then(res =>
         this.setState({
         units: res.data,
-        // race: "",
         name: "",
-        // unitType: "",
         equipment: "",
         move: "",
         ws: "",
@@ -132,8 +134,9 @@ class Units extends Component {
         ld: "",
         sv: "",
         pts: "",
-        selectedOption: {},
-        selectedOption2: {}
+        race: {},
+        unitType: {},
+        wargearOptions: {}
       })
       )
       .catch(err => console.log(err));
@@ -157,11 +160,9 @@ class Units extends Component {
   handleFormSubmit = event => {
     event.preventDefault();
     console.log(this)
-    if (this.state.name && this.state.selectedOption2) {
+    if (this.state.name && this.state.unitType) {
       API.saveUnit({
-        // race: this.state.race,
         name: this.state.name,
-        // unitType: this.state.unitType,
         equipment: this.state.equipment,
         move: this.state.move,
         ws: this.state.ws,
@@ -173,8 +174,9 @@ class Units extends Component {
         ld: this.state.ld,
         sv: this.state.sv,
         pts: this.state.pts,
-        selectedOption: this.state.selectedOption.label,
-        selectedOption2: this.state.selectedOption2.label
+        race: this.state.race.label,
+        unitType: this.state.unitType.label,
+        wargearOptions: this.state.wargearOptions.label
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
@@ -199,7 +201,10 @@ class Units extends Component {
   }
 
   switcher = () => {
-    if (this.state.selectedOption.value === "Adeptus Astartes") {
+    ///////////////////////////////////
+    //Adeptus Astartes
+    ///////////////////////////////////
+    if (this.state.race.value === "Adeptus Astartes") {
       this.setState({
         move: 6,
         ws: 3,
@@ -208,7 +213,7 @@ class Units extends Component {
         tough: 4
       })
     }
-    if (this.state.selectedOption2.value === "Scout") {
+    if (this.state.unitType.value === "Scout") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -218,7 +223,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Scout Gunner") {
+    if (this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -228,7 +233,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Scout Sergeant") {
+    if (this.state.unitType.value === "Scout Sergeant") {
       this.setState({
         wounds: 1,
         att: 2,
@@ -238,7 +243,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Tactical Marine") {
+    if (this.state.unitType.value === "Tactical Marine") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -248,7 +253,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Tactical Marine Gunner") {
+    if (this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -258,7 +263,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Tactical Marine Sergeant") {
+    if (this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wounds: 1,
         att: 2,
@@ -268,7 +273,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Reiver") {
+    if (this.state.unitType.value === "Reiver") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -278,7 +283,7 @@ class Units extends Component {
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, and shock grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Reiver Sergeant") {
+    if (this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wounds: 2,
         att: 3,
@@ -288,7 +293,7 @@ class Units extends Component {
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, and shock grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Intercessor") {
+    if (this.state.unitType.value === "Intercessor") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -298,7 +303,7 @@ class Units extends Component {
         equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Intercessor Gunner") {
+    if (this.state.unitType.value === "Intercessor Gunner") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -308,7 +313,7 @@ class Units extends Component {
         equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
       });
     }
-    if (this.state.selectedOption2.value === "Intercessor Sergeant") {
+    if (this.state.unitType.value === "Intercessor Sergeant") {
       this.setState({
         wounds: 2,
         att: 3,
@@ -316,6 +321,230 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "bolt rifle, bolt pistol, frag grenades, and krak grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Deathwatch
+    ///////////////////////////////////
+    if (this.state.race.value === "Deathwatch") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        sv: 3,
+        equipment: "boltgun, frag grenades, and krak grenades"
+      })
+    }
+    if (this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 14
+      });
+    }
+    if (this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 16
+      });
+    }
+    if (this.state.unitType.value === "Black Shield") {
+      this.setState({
+        att: 3,
+        ld: 8,
+        pts: 16
+      });
+    }
+    if (this.state.unitType.value === "Watch Sergeant") {
+      this.setState({
+        att: 3,
+        ld: 9,
+        pts: 16
+      });
+    }
+    ///////////////////////////////////
+    //Grey Knights
+    ///////////////////////////////////
+    if (this.state.race.value === "Grey Knights") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        sv: 3,
+        equipment: "Nemesis force sword, storm bolter, frag grenades, krak grenades, and psyk-out grenades"
+      })
+    }
+    if (this.state.unitType.value === "Grey Knight") {
+      this.setState({
+        att: 1,
+        ld: 7,
+        pts: 18
+      });
+    }
+    if (this.state.unitType.value === "Grey Knight Gunner") {
+      this.setState({
+        att: 1,
+        ld: 7,
+        pts: 18
+      });
+    }
+    if (this.state.unitType.value === "Justicar") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 19
+      });
+    }
+    ///////////////////////////////////
+    //Astra Militarum
+    ///////////////////////////////////
+    if (this.state.race.value === "Astra Militarum") {
+      this.setState({
+        move: 6,
+        str: 3,
+        tough: 3,
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Guardsman") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun and frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun and frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Sergeant") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 2,
+        ld: 7,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun and frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Special Weapons Guardsman") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun and frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun and frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scion") {
+      this.setState({
+        ws: 4,
+        bs: 3,
+        att: 1,
+        ld: 6,
+        pts: 9,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag and krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scion Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 3,
+        att: 1,
+        ld: 6,
+        pts: 10,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag and krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Tempestor") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        att: 2,
+        ld: 7,
+        pts: 10,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag and krak grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Adeptus Mechanicus
+    ///////////////////////////////////
+    if (this.state.race.value === "Adeptus Mechanicus") {
+      this.setState({
+        bs: 3,
+        tough: 3,
+        sv: 4
+      })
+    }
+    if (this.state.unitType.value === "Skitarii Ranger") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 9,
+        equipment: "galvanic rifle"
+      });
+    }
+    if (this.state.unitType.value === "Ranger Gunner") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 10,
+        equipment: "galvanic rifle"
+      });
+    }
+    if (this.state.unitType.value === "Ranger Alpha") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        pts: 10,
+        equipment: "galvanic rifle"
       });
     }
   }
@@ -363,12 +592,12 @@ class Units extends Component {
       {value: 'Guardsman Gunner', label: 'Guardsman Gunner', link: 'Astra Militarum'},
       {value: 'Sergeant', label: 'Sergeant', link: 'Astra Militarum'},
       {value: 'Special Weapons Guardsman', label: 'Special Weapons Guardsman', link: 'Astra Militarum'},
-      {value: 'Special Weapons Guardsman Gunner', label: 'Special Weapons Guardsman Gunner', link: 'Astra Militarum'},
+      {value: 'Special Weapons Gunner', label: 'Special Weapons Gunner', link: 'Astra Militarum'},
       {value: 'Scion', label: 'Scion', link: 'Astra Militarum'},
       {value: 'Scion Gunner', label: 'Scion Gunner', link: 'Astra Militarum'},
       {value: 'Tempestor', label: 'Tempestor', link: 'Astra Militarum'},
       {value: 'Skitarii Ranger', label: 'Skitarii Ranger', link: 'Adeptus Mechanicus'},
-      {value: 'Skitarii Gunner', label: 'Skitarii Gunner', link: 'Adeptus Mechanicus'},
+      {value: 'Ranger Gunner', label: 'Ranger Gunner', link: 'Adeptus Mechanicus'},
       {value: 'Ranger Alpha', label: 'Ranger Alpha', link: 'Adeptus Mechanicus'},
       {value: 'Skitarii Vanguard', label: 'Skitarii Vanguard', link: 'Adeptus Mechanicus'},
       {value: 'Vanguard Gunner', label: 'Vanguard Gunner', link: 'Adeptus Mechanicus'},
@@ -455,14 +684,37 @@ class Units extends Component {
       {value: 'Metamorph Leader', label: 'Metamorph Leader', link: 'Genestealer Cults'}
     ];
 
-    const filteredOptions = options2.filter((o) => o.link === this.state.selectedOption.value)
+    const options3 = [
+      {value: 'flamer', label: 'flamer', link: 'Tactical Marine Gunner'},
+      {value: 'meltagun', label: 'meltagun', link: 'Tactical Marine Gunner'},
+      {value: <PlasmaGun />, label: 'plasma gun', link: 'Tactical Marine Gunner'},
+      {value: 'grav-gun', label: 'grav-gun', link: 'Tactical Marine Gunner'},
+      {value: 'missile launcher', label: 'missile launcher', link: 'Tactical Marine Gunner'},
+      {value: 'heavy bolter', label: 'heavy bolter', link: 'Tactical Marine Gunner'},
+      {value: 'combi-flamer', label: 'combi-flamer', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-grav', label: 'combi-grav', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-melta', label: 'combi-melta', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-plasma', label: 'combi-plasma', link: 'Tactical Marine Sergeant'},
+      {value: 'Option1', label: 'Option1', link: 'Scout'},
+      {value: 'Option1', label: 'Option1', link: 'Scout Gunner'},
+      {value: 'Option1', label: 'Option1', link: 'Scout Sergeant'},
+      {value: 'Option1', label: 'Option1', link: 'Intercessor'},
+      {value: 'Auxiliary Grenade Launcher', label: 'Auxiliary Grenade Launcher', link: 'Intercessor Gunner'},
+      {value: 'Option1', label: 'Option1', link: 'Intercessor Sergeant'},
+      {value: 'Option1', label: 'Option1', link: 'Reiver'},
+      {value: 'Option1', label: 'Option1', link: 'Reiver Sergeant'},
+    ];
+
+    const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
+    const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
+
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron>
               <h1>Add a Squad Member</h1>
-              <h2>{this.state.selectedOption.label}</h2>
+              <h2>{this.state.race.label}</h2>
             </Jumbotron>
             <div>
                     {this.state.user ?
@@ -472,132 +724,37 @@ class Units extends Component {
                     }
                     {this.state.user ?
                         <div className="profilePic">
-                            <img className="us" src={this.state.user.photoURL} style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
+                            <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
                         </div>
                         :
-                        <p id="loginStatement">You must be logged in to save your squad.</p>
+                        <p className="text-light" id="loginStatement">You must be logged in to save your squad.</p>
                     }
                 </div>
             <form>
               <div>
+              <h6 className="text-light">Race</h6>
                 <Select
                   name="form-field-name"
-                  value={this.state.selectedOption.value}
+                  value={this.state.race.value}
                   onChange={this.handleChange1}
                   options={options1}
                 />
+                <br />
+                <h6 className="text-light">Unit Type</h6>
                 <Select
                   name="form-field-name"
-                  value={this.state.selectedOption2.value}
+                  value={this.state.unitType.value}
                   onChange={this.handleChange2}
                   options={filteredOptions}
                 />
+                <br />
               </div>
-              {/* <select
-                  name="race"            
-                  value={this.state.race}                
-                  onChange={this.handleInputChange}
-                  >
-                <option disabled>
-                  -- Choose army --
-                </option>
-                <option value="Adeptus Astartes">
-                  Adeptus Astartes
-                </option>
-                <option value="Deathwatch">
-                  Deathwatch
-                </option>
-                <option value="Grey Knights">
-                  Grey Knights
-                </option>
-                <option value="Astra Militarum">
-                  Astra Militarum
-                </option>
-                <option value="Adeptus Mechanicus">
-                  Adeptus Mechanicus
-                </option>
-                <option value="Heretic Astartes">
-                  Heretic Astartes
-                </option>
-                <option value="Death Guard">
-                  Death Guard
-                </option>
-                <option value="Thousand Sons">
-                  Thousand Sons
-                </option>
-                <option value="Asuryani">
-                  Asuryani
-                </option>
-                <option value="Drukhari">
-                  Drukhari
-                </option>
-                <option value="Harlequins">
-                  Harlequins
-                </option>
-                <option value="Necrons">
-                  Necrons
-                </option>
-                <option value="Orks">
-                  Orks
-                </option>
-                <option value="T'au Empire">
-                  T'au Empire
-                </option>
-                <option value="Tyranids">
-                  Tyranids
-                </option>
-                <option value="Genestealer Cults">
-                  Genestealer Cults
-                </option>
-              </select> */}
               <Input
                 value={this.state.name}
                 onChange={this.handleInputChange}
                 name="name"
                 placeholder="Name (required)"
               />
-              {/* <select
-                name="unitType"            
-                value={this.state.unitType}                
-                onChange={this.handleInputChange}
-              >
-                <option disabled>
-                  -- Choose Unit --
-                </option>
-                <option value="Tactical Marine">
-                  Tactical Marine
-                </option>
-                <option value="Tactical Marine Gunner">
-                  Tactical Marine Gunner
-                </option>
-                <option value="Tactical Marine Sergeant">
-                  Tactical Marine Sergeant
-                </option>
-                <option value="Scout">
-                  Scout
-                </option>
-                <option value="Scout Gunner">
-                  Scout Gunner
-                </option>
-                <option value="Scout Sergeant">
-                  Scout Sergeant
-                </option>
-                <option value="Intercessor">
-                  Intercessor
-                </option>
-                <option value="Intercessor Gunner">
-                  Intercessor Gunner
-                </option>
-                <option value="Intercessor Sergeant">
-                  Intercessor Sergeant
-                </option>
-                <option value="Reiver">
-                  Reiver
-                </option>
-                <option value="Reiver Sergeant">
-                  Reiver Sergeant
-                </option>
-              </select> */}
               <table>
                 <tbody>
                   <tr>
@@ -688,18 +845,16 @@ class Units extends Component {
                 name="equipment"
                 placeholder="Equipment (Optional)"
               />
-            <select className="custom-select form-group" id="inputGroupSelect01">
-              <Option>
-                Plasma Gun
-                <PlasmaGun />
-              </Option>
-              <Option>
-                Bolter
-                <Bolter />
-              </Option>
-            </select>
+              <h6 className="text-light">Wargear Options</h6>
+              <Select
+                name="form-field-name"
+                value={this.state.wargearOptions.value}
+                onChange={this.handleChange3}
+                options={filteredOptions2}
+              />
+              <br />
               <FormBtn
-                disabled={!(this.state.selectedOption2 && this.state.name)}
+                disabled={!(this.state.unitType && this.state.name)}
                 onClick={this.handleFormSubmit}
               >
                 Submit Unit
@@ -722,7 +877,7 @@ class Units extends Component {
                   <ListItem key={unit._id}>
                     <Link to={"/units/" + unit._id}>
                       <strong>
-                        &quot;{unit.name}&quot; {unit.selectedOption2}
+                        &quot;{unit.name}&quot; {unit.unitType}
                       </strong>
                         &nbsp;
                       <span className="list-points">
@@ -736,6 +891,7 @@ class Units extends Component {
             ) : (
               <h3>No Results to Display</h3>
             )}
+            <br />
             <FormBtn
               onClick={this.squadTotal}
             >
