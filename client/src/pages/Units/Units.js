@@ -20,6 +20,7 @@ class Units extends Component {
     super(props);
     this.state = {
       units: [],
+      squadName: "",
       name: "",
       equipment: "",
       move: "",
@@ -39,6 +40,9 @@ class Units extends Component {
       items: [],
       user: null
     };
+    this.login = this.login.bind(this);
+    this.logout = this.logout.bind(this);
+    this.handleDatabaseSubmit = this.handleDatabaseSubmit.bind(this);
   }
 
   handleChange1 = (race) => {
@@ -105,13 +109,15 @@ class Units extends Component {
       });
   };
 
-  handleSubmit(e) {
+  handleDatabaseSubmit(e) {
     const itemsRef = firebase.database().ref('Users');
     if (this.state.user !== null) {
       const item = {
           user: this.state.user.displayName,
+          avatar: this.state.user.photoURL,
           units: this.state.units,
-          avatar: this.state.user.photoURL
+          squadName: this.state.squadName,
+          total: this.state.total
       }
       itemsRef.push(item);
     };
@@ -122,6 +128,7 @@ class Units extends Component {
       .then(res =>
         this.setState({
         units: res.data,
+        squadName: "",
         name: "",
         equipment: "",
         move: "",
@@ -717,19 +724,19 @@ class Units extends Component {
               <h2>{this.state.race.label}</h2>
             </Jumbotron>
             <div>
-                    {this.state.user ?
-                        <button className="logout" onClick={this.logout}>Logout</button>                
-                        :
-                        <button className="login" onClick={this.login}>Log In</button>              
-                    }
-                    {this.state.user ?
-                        <div className="profilePic">
-                            <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
-                        </div>
-                        :
-                        <p className="text-light" id="loginStatement">You must be logged in to save your squad.</p>
-                    }
-                </div>
+              {this.state.user ?
+                  <button className="logout" onClick={this.logout}>Logout</button>                
+                  :
+                  <button className="login" onClick={this.login}>Log In</button>              
+              }
+              {this.state.user ?
+                  <div className="profilePic">
+                      <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
+                  </div>
+                  :
+                  <p className="text-light" id="loginStatement">You must be logged in to save your squad.</p>
+              }
+            </div>
             <form>
               <div>
               <h6 className="text-light">Race</h6>
@@ -872,26 +879,40 @@ class Units extends Component {
               <h2>Squad Cost: {this.state.total}</h2>
             </Jumbotron>
             {this.state.units.length ? (
-              <List>
-                {this.state.units.map(unit => (
-                  <ListItem key={unit._id}>
-                    <Link to={"/units/" + unit._id}>
-                      <strong>
-                        &quot;{unit.name}&quot; {unit.unitType}
-                      </strong>
-                        &nbsp;
-                      <span className="list-points">
-                        {unit.pts} points
-                      </span>
-                    </Link>
-                    <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
-                  </ListItem>
-                ))}
-              </List>
+              <div>
+                <Input
+                  value={this.state.squadName}
+                  onChange={this.handleInputChange}
+                  name="squadName"
+                  placeholder="Squad Name"
+                />
+                <List>
+                  {this.state.units.map(unit => (
+                    <ListItem key={unit._id}>
+                      <Link to={"/units/" + unit._id}>
+                        <strong>
+                          &quot;{unit.name}&quot; {unit.unitType}
+                        </strong>
+                          &nbsp;
+                        <span className="list-points">
+                          {unit.pts} points
+                        </span>
+                      </Link>
+                      <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                    </ListItem>
+                  ))}
+                </List>
+              </div>
             ) : (
               <h3>No Results to Display</h3>
             )}
             <br />
+            <FormBtn
+              disabled={(this.state.units.length === 0) || (this.state.user == null)}
+              onClick={this.handleDatabaseSubmit}
+            >
+              Submit Squad
+            </FormBtn>
             <FormBtn
               onClick={this.squadTotal}
             >
