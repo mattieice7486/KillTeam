@@ -694,7 +694,7 @@ class Units extends Component {
     const options3 = [
       {value: 'flamer', label: 'flamer', link: 'Tactical Marine Gunner'},
       {value: 'meltagun', label: 'meltagun', link: 'Tactical Marine Gunner'},
-      {value: <PlasmaGun />, label: 'plasma gun', link: 'Tactical Marine Gunner'},
+      {value: 'plasma gun', label: 'plasma gun', link: 'Tactical Marine Gunner'},
       {value: 'grav-gun', label: 'grav-gun', link: 'Tactical Marine Gunner'},
       {value: 'missile launcher', label: 'missile launcher', link: 'Tactical Marine Gunner'},
       {value: 'heavy bolter', label: 'heavy bolter', link: 'Tactical Marine Gunner'},
@@ -742,7 +742,7 @@ class Units extends Component {
               <h6 className="text-light">Race</h6>
                 <Select
                   name="form-field-name"
-                  value={this.state.race.value}
+                  value={{label : this.state.race.value}}
                   onChange={this.handleChange1}
                   options={options1}
                 />
@@ -750,7 +750,7 @@ class Units extends Component {
                 <h6 className="text-light">Unit Type</h6>
                 <Select
                   name="form-field-name"
-                  value={this.state.unitType.value}
+                  value={{label : this.state.unitType.value}}
                   onChange={this.handleChange2}
                   options={filteredOptions}
                 />
@@ -855,7 +855,7 @@ class Units extends Component {
               <h6 className="text-light">Wargear Options</h6>
               <Select
                 name="form-field-name"
-                value={this.state.wargearOptions.value}
+                value={{label : this.state.wargearOptions.value}}
                 onChange={this.handleChange3}
                 options={filteredOptions2}
               />

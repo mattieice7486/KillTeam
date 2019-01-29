@@ -6,7 +6,12 @@ router.route("/")
   .get(unitsController.findAll)
   .post(unitsController.create);
 
-  // Matches with "/api/list"
+  // Matches with "/api/current"
+router.route("/current")
+  .get(unitsController.findAll)
+  .post(unitsController.create);
+
+  // Matches with "/api/squad"
 router.route("/squad")
   .get(unitsController.findAll)
   .post(unitsController.create);

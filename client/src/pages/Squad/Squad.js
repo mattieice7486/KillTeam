@@ -3,10 +3,8 @@ import firebase from 'firebase';
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import DeleteBtn from "../../components/DeleteBtn";
 import { FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
 
 class Squad extends Component {
   state = {
@@ -22,24 +20,27 @@ class Squad extends Component {
       let newState = [];
       let counter = 0;
       for (let item in items) {
-        if (counter > 3) break;
+        if (counter > 5) break;
         newState.push({
           id: item,
           user: items[item].user,
           squadName: items[item].squadName,
           total: items[item].total,
-          name: items[item].units[0].name,
-          unitType: items[item].units[0].unitType,
-          move: items[item].units[0].move,
-          ws: items[item].units[0].ws,
-          bs: items[item].units[0].bs,
-          str: items[item].units[0].str,
-          tough: items[item].units[0].tough,
-          wounds: items[item].units[0].wounds,
-          att: items[item].units[0].att,
-          ld: items[item].units[0].ld,
-          sv: items[item].units[0].sv,
-          avatar: items[item].avatar
+          // name: items[item].units[0].name,
+          // unitType: items[item].units[0].unitType,
+          // move: items[item].units[0].move,
+          // ws: items[item].units[0].ws,
+          // bs: items[item].units[0].bs,
+          // str: items[item].units[0].str,
+          // tough: items[item].units[0].tough,
+          // wounds: items[item].units[0].wounds,
+          // att: items[item].units[0].att,
+          // ld: items[item].units[0].ld,
+          // sv: items[item].units[0].sv,
+          // equipment: items[item].units[0].equipment,
+          // wargearOptions: items[item].units[0].wargearOptions,
+          avatar: items[item].avatar,
+          squadMembers: items[item].units
         });
         counter += 1;
       }
@@ -47,36 +48,37 @@ class Squad extends Component {
         items: newState
       });
     });
-    API.getUnit(this.props.match.params.id)
-      .then(res => this.setState({ unit: res.data }))
-      .catch(err => console.log(err));
-    API.getUnits()
-      .then(res =>
-        this.setState({
-          units: res.data,
-          name: "",
-          equipment: "",
-          move: "",
-          ws: "",
-          bs: "",
-          str: "",
-          tough: "",
-          wounds: "",
-          att: "",
-          ld: "",
-          sv: "",
-          pts: "",
-          race: {},
-          unitType: {},
-          wargearOptions: {}
-        })
-      )
-      .catch(err => console.log(err));
-      console.log(this.state.items)
+  //   API.getUnit(this.props.match.params.id)
+  //     .then(res => this.setState({ unit: res.data }))
+  //     .catch(err => console.log(err));
+  //   API.getUnits()
+  //     .then(res =>
+  //       this.setState({
+  //         units: res.data,
+  //         name: "",
+  //         equipment: "",
+  //         move: "",
+  //         ws: "",
+  //         bs: "",
+  //         str: "",
+  //         tough: "",
+  //         wounds: "",
+  //         att: "",
+  //         ld: "",
+  //         sv: "",
+  //         pts: "",
+  //         race: {},
+  //         unitType: {},
+  //         wargearOptions: {}
+  //       })
+  //     )
+  //     .catch(err => console.log(err));
+  //     console.log(this.state.items)
   }
 
   console = () => {
-    console.log(this.state.items)
+    console.log(this.state.items);
+    console.log(this.state.items[0].squadMembers);
   }
 
   render() {
@@ -85,7 +87,7 @@ class Squad extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>&ldquo;Squad Name&rdquo;</h1>
+              <h1>Your Squads</h1>
             </Jumbotron>
             <FormBtn
               onClick={this.console}
@@ -96,119 +98,74 @@ class Squad extends Component {
         </Row>
         <Row>
           <Col size="sm-12">
-            {this.state.items.map((item, index) => {
-                return (
-                  <div>
-                    <table className="table table-bordered table-dark">
-                      <thead>
-                        <tr>
-                          <th scope="col">#</th>
-                          <th></th>
-                          <th scope="col">Username</th>
-                          <th scope="col">
-                            <span>Squad Name&nbsp;
-                            </span>
-                          </th>
-                          <th scope="col">
-                            <span>Squad Total&nbsp;
-                            </span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr key={item.id}>
-                          <td>{index + 1}</td>
-                          <td><img src={item.avatar} style={{borderRadius : "50%", height : "50px", width : "auto"}}></img></td>
-                          <td>{item.user}</td>
-                          <td>{item.squadName}</td>
-                          <td>{item.total}</td>
-                        </tr>
-                      </tbody>
-                    </table>
-                    <Col size="sm-8">
-                      <h2 className="text-light">&ldquo;{item.name}&rdquo;</h2>
-                      <h3 className="text-light">{item.unitType}</h3>
-                      <table className="table table-bordered table-dark">
-                        <thead>
-                          <tr>
-                            <th>M&nbsp;</th>
-                            <th>WS</th>
-                            <th>BS</th>
-                            <th>S&nbsp;</th>
-                            <th>T&nbsp;</th>
-                            <th>W&nbsp;</th>
-                            <th>A&nbsp;</th>
-                            <th>LD</th>
-                            <th>SV</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <td>{item.move}"</td>
-                            <td>{item.ws}+</td>
-                            <td>{item.bs}+</td>
-                            <td>{item.str}</td>
-                            <td>{item.tough}</td>
-                            <td>{item.wounds}</td>
-                            <td>{item.att}</td>
-                            <td>{item.ld}</td>
-                            <td>{item.sv}+</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </Col>
-                  </div>
-                )                
-            })}
-          </Col>
-        </Row>
-        <Col size="sm-12">
-            {this.state.units.length ? (
-              <List>
-                {this.state.units.map(unit => (
-                  <ListItem key={unit._id}>
-                    <Link to={"/units/" + unit._id}>
-                    <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
-                    <h2>
-                      &ldquo;{unit.name}&rdquo;
-                    </h2>
-                    </Link>
-                    <h2>
-                    {unit.unitType}
-                    </h2>
-                        &nbsp;
-                      <h4 className="list-points">
-                        {unit.pts} points
-                      </h4>
-                      <table className="table table-bordered table-dark">
+            {this.state.items.length ? (
+              <div>
+                {this.state.items.map((item, index) => {
+                    return (
+                      <div>
+                        <table className="table table-dark">
                           <thead>
                             <tr>
-                              <th>M&nbsp;</th>
-                              <th>WS</th>
-                              <th>BS</th>
-                              <th>S&nbsp;</th>
-                              <th>T&nbsp;</th>
-                              <th>W&nbsp;</th>
-                              <th>A&nbsp;</th>
-                              <th>LD</th>
-                              <th>SV</th>
+                              <th scope="col">#</th>
+                              <th></th>
+                              <th scope="col">Username</th>
+                              <th scope="col">
+                                <span>Squad Name&nbsp;
+                                </span>
+                              </th>
+                              <th scope="col">
+                                <span>Squad Total&nbsp;
+                                </span>
+                              </th>
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>{unit.move}"</td>
-                              <td>{unit.ws}+</td>
-                              <td>{unit.bs}+</td>
-                              <td>{unit.str}</td>
-                              <td>{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.att}</td>
-                              <td>{unit.ld}</td>
-                              <td>{unit.sv}+</td>
+                            <tr key={item.id}>
+                              <td>{index + 1}</td>
+                              <td><img src={item.avatar} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}></img></td>
+                              <td>{item.user}</td>
+                              <td>{item.squadName}</td>
+                              <td>{item.total}</td>
                             </tr>
                           </tbody>
-                      </table>
-                      <h2>Equipment</h2>
+                        </table>
+                        <Col size="sm-10">
+                        <List>
+                          <h2 className="text-light">&ldquo;{item.squadMembers[0].name}&rdquo;</h2>
+                          <h3 className="text-light">{item.squadMembers[0].unitType}</h3>
+                          &nbsp;
+                          <h4 className="text-light" style={{textAlign : "right"}}>
+                            {item.squadMembers[0].pts} points
+                          </h4>
+                          <table className="table table-bordered table-dark">
+                            <thead>
+                              <tr>
+                                <th>M&nbsp;</th>
+                                <th>WS</th>
+                                <th>BS</th>
+                                <th>S&nbsp;</th>
+                                <th>T&nbsp;</th>
+                                <th>W&nbsp;</th>
+                                <th>A&nbsp;</th>
+                                <th>LD</th>
+                                <th>SV</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr key={item.squadMembers._id}>
+                                <td>{item.squadMembers[0].move}"</td>
+                                <td>{item.squadMembers[0].ws}+</td>
+                                <td>{item.squadMembers[0].bs}+</td>
+                                <td>{item.squadMembers[0].str}</td>
+                                <td>{item.squadMembers[0].tough}</td>
+                                <td>{item.squadMembers[0].wounds}</td>
+                                <td>{item.squadMembers[0].att}</td>
+                                <td>{item.squadMembers[0].ld}</td>
+                                <td>{item.squadMembers[0].sv}+</td>
+                              </tr>
+                            </tbody>
+                          </table>
+                          <h2 className="text-light">Equipment</h2>
                       <table className="table table-bordered table-dark">
                           <thead>
                             <tr>
@@ -222,33 +179,37 @@ class Squad extends Component {
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <td>{unit.equipment}</td>
-                              <td>{unit.ws}"</td>
-                              <td>{unit.equipment}</td>
-                              <td>{unit.str}</td>
-                              <td>-{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.equipment}</td>
+                            <tr key={item.squadMembers._id}>
+                              <td>{item.squadMembers[0].equipment}</td>
+                              <td>{item.squadMembers[0].ws}"</td>
+                              <td>{item.squadMembers[0].equipment}</td>
+                              <td>{item.squadMembers[0].str}</td>
+                              <td>-{item.squadMembers[0].tough}</td>
+                              <td>{item.squadMembers[0].wounds}</td>
+                              <td>{item.squadMembers[0].equipment}</td>
                             </tr>
                             <tr>
-                              <td>{unit.wargearOptions}</td>
-                              <td>{unit.ws}"</td>
-                              <td>{unit.wargearOptions}</td>
-                              <td>{unit.str}</td>
-                              <td>-{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.wargearOptions}</td>
+                              <td>{item.squadMembers[0].wargearOptions}</td>
+                              <td>{item.squadMembers[0].ws}"</td>
+                              <td>{item.squadMembers[0].wargearOptions}</td>
+                              <td>{item.squadMembers[0].str}</td>
+                              <td>-{item.squadMembers[0].tough}</td>
+                              <td>{item.squadMembers[0].wounds}</td>
+                              <td>{item.squadMembers[0].wargearOptions}</td>
                             </tr>
                           </tbody>
                       </table>
-                  </ListItem>
-                ))}
-              </List>
+                      </List>
+                        </Col>
+                      </div>
+                    )                
+                })}
+              </div>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className="text-light">You must log in to see your squads</h3>
             )}
           </Col>
+        </Row>
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Units</Link>
