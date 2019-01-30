@@ -7,6 +7,10 @@ Deployed at http://kill-team.herokuapp.com
 ![Detail View](./client/public/killteam2.png)
 
 ## Change Log:
+1/30/2019
+Release 0.2.4
+* Finished Autofill stats for all races.
+
 1/29/2019
 Release 0.2.3
 * Added a Current page to show a detail summary of the current squad.
