@@ -2,83 +2,101 @@ import React, { Component } from "react";
 import firebase from 'firebase';
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List, ListItem } from "../../components/List";
+import { List } from "../../components/List";
 import { FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
+import Confirm from "../../components/Confirm";
 
 class Squad extends Component {
-  state = {
-    units: [],
-    items: []
-  };
-  // When this component mounts, grab the unit with the _id of this.props.match.params.id
-  // e.g. localhost:3000/units/599dcb67f0f16317844583fc
-  componentDidMount() {
-    const itemsRef = firebase.database().ref('Users');
-    itemsRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      let counter = 0;
-      for (let item in items) {
-        if (counter > 5) break;
-        newState.push({
-          id: item,
-          user: items[item].user,
-          squadName: items[item].squadName,
-          total: items[item].total,
-          // name: items[item].units[0].name,
-          // unitType: items[item].units[0].unitType,
-          // move: items[item].units[0].move,
-          // ws: items[item].units[0].ws,
-          // bs: items[item].units[0].bs,
-          // str: items[item].units[0].str,
-          // tough: items[item].units[0].tough,
-          // wounds: items[item].units[0].wounds,
-          // att: items[item].units[0].att,
-          // ld: items[item].units[0].ld,
-          // sv: items[item].units[0].sv,
-          // equipment: items[item].units[0].equipment,
-          // wargearOptions: items[item].units[0].wargearOptions,
-          avatar: items[item].avatar,
-          squadMembers: items[item].units
-        });
-        counter += 1;
-      }
-      this.setState({
-        items: newState
-      });
-    });
-  //   API.getUnit(this.props.match.params.id)
-  //     .then(res => this.setState({ unit: res.data }))
-  //     .catch(err => console.log(err));
-  //   API.getUnits()
-  //     .then(res =>
-  //       this.setState({
-  //         units: res.data,
-  //         name: "",
-  //         equipment: "",
-  //         move: "",
-  //         ws: "",
-  //         bs: "",
-  //         str: "",
-  //         tough: "",
-  //         wounds: "",
-  //         att: "",
-  //         ld: "",
-  //         sv: "",
-  //         pts: "",
-  //         race: {},
-  //         unitType: {},
-  //         wargearOptions: {}
-  //       })
-  //     )
-  //     .catch(err => console.log(err));
-  //     console.log(this.state.items)
+  constructor() {
+    super();
+    this.state = {
+      units: [],
+      items: []
+    };
   }
+    // When this component mounts, grab the unit with the _id of this.props.match.params.id
+    // e.g. localhost:3000/units/599dcb67f0f16317844583fc
+    componentDidMount() {
+      const itemsRef = firebase.database().ref('Users');
+      itemsRef.on('value', (snapshot) => {
+        let items = snapshot.val();
+        let newState = [];
+        let counter = 0;
+        for (let item in items) {
+          if (counter > 5) break;
+          newState.push({
+            id: item,
+            user: items[item].user,
+            squadName: items[item].squadName,
+            total: items[item].total,
+            // name: items[item].units[0].name,
+            // unitType: items[item].units[0].unitType,
+            // move: items[item].units[0].move,
+            // ws: items[item].units[0].ws,
+            // bs: items[item].units[0].bs,
+            // str: items[item].units[0].str,
+            // tough: items[item].units[0].tough,
+            // wounds: items[item].units[0].wounds,
+            // att: items[item].units[0].att,
+            // ld: items[item].units[0].ld,
+            // sv: items[item].units[0].sv,
+            // equipment: items[item].units[0].equipment,
+            // wargearOptions: items[item].units[0].wargearOptions,
+            avatar: items[item].avatar,
+            squadMembers: items[item].units
+          });
+          counter += 1;
+        }
+        this.setState({
+          items: newState
+        });
+      });
+    //   API.getUnit(this.props.match.params.id)
+    //     .then(res => this.setState({ unit: res.data }))
+    //     .catch(err => console.log(err));
+    //   API.getUnits()
+    //     .then(res =>
+    //       this.setState({
+    //         units: res.data,
+    //         name: "",
+    //         equipment: "",
+    //         move: "",
+    //         ws: "",
+    //         bs: "",
+    //         str: "",
+    //         tough: "",
+    //         wounds: "",
+    //         att: "",
+    //         ld: "",
+    //         sv: "",
+    //         pts: "",
+    //         race: {},
+    //         unitType: {},
+    //         wargearOptions: {}
+    //       })
+    //     )
+    //     .catch(err => console.log(err));
+    //     console.log(this.state.items)
+    }
 
   console = () => {
     console.log(this.state.items);
     console.log(this.state.items[0].squadMembers);
+  }
+  
+  handleInputChange = event => {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+  }
+
+  removeItem(itemId) {
+    this.confirm1.open('Are you sure?', () => {
+      const itemRef = firebase.database().ref(`/Users/${itemId}`);
+      itemRef.remove();
+    })
   }
 
   render() {
@@ -103,6 +121,8 @@ class Squad extends Component {
                 {this.state.items.map((item, index) => {
                     return (
                       <div>
+                        <button className="btn btn-danger" onClick={() => this.removeItem(item.id)}>Remove Squad</button>
+                        <Confirm ref={el => this.confirm1 = el} /> 
                         <table className="table table-dark">
                           <thead>
                             <tr>

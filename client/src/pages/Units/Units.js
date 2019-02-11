@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { render } from 'react-dom';
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
@@ -7,12 +6,10 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, InputNumber, TextArea, FormBtn } from "../../components/Form";
-import { Option } from "../../components/Select";
 import firebase from "firebase";
-import { auth, provider } from '../../utils/Firebase';
-import Bolter from "../../components/Guns/Bolter";
-import PlasmaGun from "../../components/Guns/PlasmaGun";
+import { auth } from '../../utils/Firebase';
 import Select from 'react-select';
+import Confirm from "../../components/Confirm";
 
 
 class Units extends Component {
@@ -40,9 +37,9 @@ class Units extends Component {
       items: [],
       user: null
     };
-    this.login = this.login.bind(this);
-    this.logout = this.logout.bind(this);
     this.handleDatabaseSubmit = this.handleDatabaseSubmit.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   handleChange1 = (race) => {
@@ -90,25 +87,6 @@ class Units extends Component {
     });
   }
 
-  logout() {
-    auth.signOut()
-    .then(() => {
-      this.setState({
-        user: null
-      });
-    });
-  };
-
-  login() {
-    auth.signInWithPopup(provider) 
-      .then((result) => {
-        const user = result.user;
-        this.setState({
-          user
-        });
-      });
-  };
-
   handleDatabaseSubmit(e) {
     const itemsRef = firebase.database().ref('Users');
     if (this.state.user !== null) {
@@ -150,11 +128,12 @@ class Units extends Component {
   };
 
   deleteUnit = id => {
+    this.confirm1.open('Are you sure?', () => {
     // how do you change this to "confirm" not "alert"?
-    alert("are you sure?");
     API.deleteUnit(id)
     .then(res => this.loadUnits())
     .catch(err => console.log(err));
+    })
   };
   
   handleInputChange = event => {
@@ -1911,20 +1890,6 @@ class Units extends Component {
               <h1>Add a Squad Member</h1>
               <h2>{this.state.race.label}</h2>
             </Jumbotron>
-            <div>
-              {this.state.user ?
-                  <button className="logout" onClick={this.logout}>Logout</button>                
-                  :
-                  <button className="login" onClick={this.login}>Log In</button>              
-              }
-              {this.state.user ?
-                  <div className="profilePic">
-                      <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
-                  </div>
-                  :
-                  <p className="text-light" id="loginStatement">You must be logged in to save your squad.</p>
-              }
-            </div>
             <form>
               <div>
               <h6 className="text-light">Race</h6>
@@ -2087,6 +2052,7 @@ class Units extends Component {
                         </span>
                       </Link>
                       <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                      <Confirm ref={el => this.confirm1 = el} /> 
                     </ListItem>
                   ))}
                 </List>

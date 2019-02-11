@@ -5,6 +5,8 @@ import { List, ListItem } from "../../components/List";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import Confirm from "../../components/Confirm";
+
 
 class Squad extends Component {
   state = {
@@ -42,6 +44,15 @@ class Squad extends Component {
       console.log(this.state.items)
   }
 
+  deleteUnit = id => {
+    this.confirm1.open('Are you sure?', () => {
+    // how do you change this to "confirm" not "alert"?
+    API.deleteUnit(id)
+    .then(res => this.loadUnits())
+    .catch(err => console.log(err));
+    })
+  };
+
   render() {
     return (
       <Container fluid>
@@ -54,8 +65,9 @@ class Squad extends Component {
               <List>
                 {this.state.units.map(unit => (
                   <ListItem key={unit._id}>
-                    <Link to={"/units/" + unit._id}>
                     <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                    <Confirm ref={el => this.confirm1 = el} /> 
+                    <Link to={"/units/" + unit._id}>
                     <h2>
                       &ldquo;{unit.name}&rdquo;
                     </h2>
