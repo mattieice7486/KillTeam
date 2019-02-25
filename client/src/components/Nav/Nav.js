@@ -45,12 +45,12 @@ class Nav extends React.Component {
         <a className="navbar-brand" href="/">
           Killteam
         </a>
-        <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav">
-            <li className="nav-item active">
+            <li className="nav-item">
               <a className="nav-link" href="/">Home <span className="sr-only">(current)</span></a>
             </li>
             <li className="nav-item">
@@ -60,18 +60,18 @@ class Nav extends React.Component {
               <a className="nav-link" href="/current">Current</a>
             </li>
           </ul>
-            {this.state.user ?
-              <div className="profilePic">
-                  <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
-              </div>
-              :
-              <p className="text-light" id="loginStatement">You must be logged in to save your squad.</p>
-            }
-            {this.state.user ?
-              <button className="btn logout" onClick={this.logout}>Logout</button>                
-              :
-              <button className="btn login" onClick={this.login}>Log In</button>              
-            }
+          {this.state.user ?
+            <div className="profilePic ml-auto">
+                <img className="us" src={this.state.user.photoURL} alt="avatar" style={{borderRadius : "50%", height : "50px", width : "auto"}}/>
+            </div>
+            :
+            <p className="text-light ml-auto" id="loginStatement">Log in to save your squad.</p>
+          }
+          {this.state.user ?
+            <button className="btn logout" onClick={this.logout}>Logout</button>                
+            :
+            <button className="btn login" onClick={this.login}>Log In</button>              
+          }
         </div>
       </nav>
     )

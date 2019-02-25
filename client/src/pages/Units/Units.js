@@ -39,7 +39,9 @@ class Units extends Component {
     };
     this.handleDatabaseSubmit = this.handleDatabaseSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleChange1 = this.handleChange1.bind(this);
+    this.handleChange2 = this.handleChange2.bind(this);
+    this.handleChange3 = this.handleChange3.bind(this);
   }
 
   handleChange1 = (race) => {
@@ -50,6 +52,1536 @@ class Units extends Component {
   handleChange2 = (race) => {
     this.setState({unitType: race})
     console.log(this.state.unitType)
+    if (this.state.race.value === "Adeptus Astartes") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4
+      })
+    }
+    if (this.state.unitType.value === "Scout") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 4,
+        pts: 10,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scout Gunner") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 4,
+        pts: 11,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        wounds: 1,
+        att: 2,
+        ld: 8,
+        sv: 4,
+        pts: 11,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Tactical Marine") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 12,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wounds: 1,
+        att: 2,
+        ld: 8,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Reiver") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wounds: 2,
+        att: 3,
+        ld: 8,
+        sv: 3,
+        pts: 17,
+        equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.unitType.value === "Intercessor") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 15,
+        equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Intercessor Gunner") {
+      this.setState({
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Intercessor Sergeant") {
+      this.setState({
+        wounds: 2,
+        att: 3,
+        ld: 8,
+        sv: 3,
+        pts: 16,
+        equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Deathwatch
+    ///////////////////////////////////
+    if (this.state.race.value === "Deathwatch") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        sv: 3,
+        equipment: "boltgun, frag grenades, krak grenades"
+      })
+    }
+    if (this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 14
+      });
+    }
+    if (this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 16
+      });
+    }
+    if (this.state.unitType.value === "Black Shield") {
+      this.setState({
+        att: 3,
+        ld: 8,
+        pts: 16
+      });
+    }
+    if (this.state.unitType.value === "Watch Sergeant") {
+      this.setState({
+        att: 3,
+        ld: 9,
+        pts: 16
+      });
+    }
+    ///////////////////////////////////
+    //Grey Knights
+    ///////////////////////////////////
+    if (this.state.race.value === "Grey Knights") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        sv: 3,
+        equipment: "Nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+      })
+    }
+    if (this.state.unitType.value === "Grey Knight") {
+      this.setState({
+        att: 1,
+        ld: 7,
+        pts: 18
+      });
+    }
+    if (this.state.unitType.value === "Grey Knight Gunner") {
+      this.setState({
+        att: 1,
+        ld: 7,
+        pts: 18
+      });
+    }
+    if (this.state.unitType.value === "Justicar") {
+      this.setState({
+        att: 2,
+        ld: 8,
+        pts: 19
+      });
+    }
+    ///////////////////////////////////
+    //Astra Militarum
+    ///////////////////////////////////
+    if (this.state.race.value === "Astra Militarum") {
+      this.setState({
+        move: 6,
+        str: 3,
+        tough: 3,
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Guardsman") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Sergeant") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 2,
+        ld: 7,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Special Weapons Guardsman") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        pts: 5,
+        sv: 5,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scion") {
+      this.setState({
+        ws: 4,
+        bs: 3,
+        att: 1,
+        ld: 6,
+        pts: 9,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Scion Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 3,
+        att: 1,
+        ld: 6,
+        pts: 10,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Tempestor") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        att: 2,
+        ld: 7,
+        pts: 10,
+        sv: 4,
+        equipment: "hot-shot lasgun, frag grenades, krak grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Adeptus Mechanicus
+    ///////////////////////////////////
+    if (this.state.race.value === "Adeptus Mechanicus") {
+      this.setState({
+        bs: 3,
+        tough: 3,
+        sv: 4
+      })
+    }
+    if (this.state.unitType.value === "Skitarii Ranger") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 9,
+        equipment: "galvanic rifle"
+      });
+    }
+    if (this.state.unitType.value === "Ranger Gunner") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 10,
+        equipment: "galvanic rifle"
+      });
+    }
+    if (this.state.unitType.value === "Ranger Alpha") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        pts: 10,
+        equipment: "galvanic rifle"
+      });
+    }
+    if (this.state.unitType.value === "Skitarii Vanguard") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 9,
+        equipment: "radium carbine"
+      });
+    }
+    if (this.state.unitType.value === "Vanguard Gunner") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        pts: 10,
+        equipment: "radium carbine"
+      });
+    }
+    if (this.state.unitType.value === "Vanguard Alpha") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        str: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        pts: 10,
+        equipment: "radium carbine"
+      });
+    }
+    if (this.state.unitType.value === "Sicarian Ruststalker") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        str: 4,
+        wounds: 2,
+        att: 3,
+        ld: 6,
+        pts: 14,
+        equipment: "transonic razor, chordclaw"
+      });
+    }
+    if (this.state.unitType.value === "Ruststalker Princeps") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        str: 4,
+        wounds: 2,
+        att: 4,
+        ld: 7,
+        pts: 15,
+        equipment: "transonic razor, chordclaw"
+      });
+    }
+    if (this.state.unitType.value === "Sicarian Infiltrator") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        str: 4,
+        wounds: 2,
+        att: 2,
+        ld: 6,
+        pts: 14,
+        equipment: "stub carbine, powersword"
+      });
+    }
+    if (this.state.unitType.value === "Infiltrator Princeps") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        str: 4,
+        wounds: 2,
+        att: 3,
+        ld: 7,
+        pts: 15,
+        equipment: "stub carbine, powersword"
+      });
+    }
+    ///////////////////////////////////
+    //Heretic Astartes
+    ///////////////////////////////////
+    if (this.state.race.value === "Heretic Astartes") {
+      this.setState({
+        move: 6,
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Chaos Cultist") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 5,
+        sv: 6,
+        pts: 4,
+        equipment: "autogun"
+      });
+    }
+    if (this.state.unitType.value === "Chaos Cultist Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 5,
+        sv: 6,
+        pts: 5,
+        equipment: "autogun"
+      });
+    }
+    if (this.state.unitType.value === "Cultist Champion") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 6,
+        sv: 6,
+        pts: 5,
+        equipment: "autogun"
+      });
+    }
+    if (this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 4,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 12,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Chaos Space Marine Gunner") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Aspiring Champion") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 8,
+        sv: 3,
+        pts: 13,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Death Guard
+    ///////////////////////////////////
+    if (this.state.race.value === "Death Guard") {
+      this.setState({
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Plague Marine") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 5,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 14,
+        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Plague Marine Gunner") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 5,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 15,
+        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Plague Marine Fighter") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 5,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 15,
+        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Plague Champion") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 3,
+        str: 4,
+        tough: 5,
+        att: 2,
+        ld: 8,
+        sv: 3,
+        pts: 15,
+        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+      });
+    }
+    if (this.state.unitType.value === "Pox Walker") {
+      this.setState({
+        move: 4,
+        ws: 5,
+        bs: 6,
+        str: 3,
+        tough: 3,
+        att: 1,
+        ld: 4,
+        sv: 7,
+        pts: 3,
+        equipment: "improvised weapon"
+      });
+    }
+    ///////////////////////////////////
+    //Thousand Sons
+    ///////////////////////////////////
+    if (this.state.race.value === "Thousand Sons") {
+      this.setState({
+        ws: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Rubric Marine") {
+      this.setState({
+        move: 5,
+        bs: 3,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "inferno boltgun"
+      });
+    }
+    if (this.state.unitType.value === "Rubric Marine Gunner") {
+      this.setState({
+        move: 5,
+        bs: 3,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 16,
+        equipment: "inferno boltgun"
+      });
+    }
+    if (this.state.unitType.value === "Aspiring Sorcerer") {
+      this.setState({
+        move: 6,
+        bs: 3,
+        att: 2,
+        ld: 8,
+        sv: 3,
+        pts: 17,
+        equipment: "force stave, inferno bolt pistol"
+      });
+    }
+    if (this.state.unitType.value === "Tzaangor") {
+      this.setState({
+        move: 6,
+        bs: 4,
+        att: 1,
+        ld: 6,
+        sv: 6,
+        pts: 7,
+        equipment: "Tzaangor blades"
+      });
+    }
+    if (this.state.unitType.value === "Twistbray") {
+      this.setState({
+        move: 6,
+        bs: 4,
+        att: 2,
+        ld: 7,
+        sv: 6,
+        pts: 8,
+        equipment: "Tzaangor blades"
+      });
+    }
+    ///////////////////////////////////
+    //Asuryani
+    ///////////////////////////////////
+    if (this.state.race.value === "Asuryani") {
+      this.setState({
+        move: 7,
+        bs: 3,
+        str: 3,
+        tough: 3,
+      })
+    }
+    if (this.state.unitType.value === "Guardian Defender") {
+      this.setState({
+        ws: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 7,
+        equipment: "shuriken catapult, plasma grenades"
+      });
+    }
+    if (this.state.unitType.value === "Heavy Weapon Platform") {
+      this.setState({
+        ws: 6,
+        wounds: 2,
+        att: 1,
+        ld: 7,
+        sv: 3,
+        pts: 8,
+        equipment: "shuriken cannon"
+      });
+    }
+    if (this.state.unitType.value === "Storm Guardian") {
+      this.setState({
+        ws: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 6,
+        equipment: "shuriken pistol, Aeldari blade, plasma grenades"
+      });
+    }
+    if (this.state.unitType.value === "Storm Guardian Gunner") {
+      this.setState({
+        ws: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 7,
+        equipment: "shuriken pistol, Aeldari blade, plasma grenades"
+      });
+    }
+    if (this.state.unitType.value === "Ranger") {
+      this.setState({
+        ws: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 11,
+        equipment: "shuriken pistol, ranger long rifle"
+      });
+    }
+    if (this.state.unitType.value === "Dire Avenger") {
+      this.setState({
+        ws: 3,
+        wounds: 1,
+        att: 1,
+        ld: 8,
+        sv: 4,
+        pts: 10,
+        equipment: "shuriken pistol, ranger long rifle"
+      });
+    }
+    if (this.state.unitType.value === "Dire Avenger Exarch") {
+      this.setState({
+        ws: 3,
+        wounds: 2,
+        att: 2,
+        ld: 8,
+        sv: 4,
+        pts: 11,
+        equipment: "shuriken pistol, ranger long rifle"
+      });
+    }
+    ///////////////////////////////////
+    //Drukhari
+    ///////////////////////////////////
+    if (this.state.race.value === "Drukhari") {
+      this.setState({
+        ws: 3,
+        bs: 3,
+        str: 3,
+        tough: 3,
+        wounds: 1
+      })
+    }
+    if (this.state.unitType.value === "Kabalite Warrior") {
+      this.setState({
+        move: 7,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 7,
+        equipment: "splinter rifle"
+      });
+    }
+    if (this.state.unitType.value === "Kabalite Gunner") {
+      this.setState({
+        move: 7,
+        att: 1,
+        ld: 7,
+        sv: 5,
+        pts: 8,
+        equipment: "splinter rifle"
+      });
+    }
+    if (this.state.unitType.value === "Sybarite") {
+      this.setState({
+        move: 7,
+        att: 2,
+        ld: 8,
+        sv: 5,
+        pts: 8,
+        equipment: "splinter rifle"
+      });
+    }
+    if (this.state.unitType.value === "Wych") {
+      this.setState({
+        move: 8,
+        att: 2,
+        ld: 7,
+        sv: 6,
+        pts: 8,
+        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+      });
+    }
+    if (this.state.unitType.value === "Wych Fighter") {
+      this.setState({
+        move: 8,
+        att: 2,
+        ld: 7,
+        sv: 6,
+        pts: 9,
+        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+      });
+    }
+    if (this.state.unitType.value === "Hekatrix") {
+      this.setState({
+        move: 8,
+        att: 3,
+        ld: 8,
+        sv: 6,
+        pts: 9,
+        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+      });
+    }
+    ///////////////////////////////////
+    //Harlequins
+    ///////////////////////////////////
+    if (this.state.race.value === "Harlequins") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        bs: 3,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 4,
+        ld: 8,
+        sv: 6,
+        pts: 12,
+        equipment: "splinter pistol, Harlequin's blade, plasma grenades"
+      })
+    }
+    ///////////////////////////////////
+    //Necrons
+    ///////////////////////////////////
+    if (this.state.race.value === "Necrons") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        ld: 7
+      })
+    }
+    if (this.state.unitType.value === "Necron Warrior") {
+      this.setState({
+        bs: 3,
+        att: 1,
+        sv: 4,
+        pts: 12,
+        equipment: "gauss flayer"
+      });
+    }
+    if (this.state.unitType.value === "Immortal") {
+      this.setState({
+        bs: 3,
+        att: 1,
+        sv: 3,
+        pts: 16,
+        equipment: "gauss blaster"
+      });
+    }
+    if (this.state.unitType.value === "Flayed One") {
+      this.setState({
+        bs: 6,
+        att: 3,
+        sv: 4,
+        pts: 10,
+        equipment: "flayer claws"
+      });
+    }
+    if (this.state.unitType.value === "Deathmark") {
+      this.setState({
+        bs: 3,
+        att: 1,
+        sv: 3,
+        pts: 15,
+        equipment: "synaptic disintegrator"
+      });
+    }
+    ///////////////////////////////////
+    //Orks
+    ///////////////////////////////////
+    if (this.state.unitType.value === "Ork Boy") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 6,
+        equipment: "slugga, choppa, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Ork Boy Gunner") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 7,
+        equipment: "slugga, choppa, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Boss Nob") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 5,
+        tough: 4,
+        wounds: 2,
+        att: 3,
+        ld: 7,
+        sv: 6,
+        pts: 10,
+        equipment: "slugga, choppa, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Gretchin") {
+      this.setState({
+        move: 5,
+        ws: 5,
+        bs: 4,
+        str: 2,
+        tough: 2,
+        wounds: 1,
+        att: 1,
+        ld: 4,
+        sv: 6,
+        pts: 3,
+        equipment: "grot blasta"
+      })
+    }
+    if (this.state.unitType.value === "Kommando") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 8,
+        equipment: "slugga, choppa, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Kommando Boss Nob") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 5,
+        str: 5,
+        tough: 4,
+        wounds: 2,
+        att: 3,
+        ld: 7,
+        sv: 6,
+        pts: 12,
+        equipment: "slugga, choppa, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Burna Boy") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 12,
+        equipment: "burna, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Burna Spanner") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 10,
+        equipment: "burna, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Loota") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 12,
+        equipment: "deffgun, stikkbombs"
+      })
+    }
+    if (this.state.unitType.value === "Loota Spanner") {
+      this.setState({
+        move: 5,
+        ws: 3,
+        bs: 5,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 2,
+        ld: 6,
+        sv: 6,
+        pts: 10,
+        equipment: "deffgun, stikkbombs"
+      })
+    }
+    ///////////////////////////////////
+    //Tau Empire
+    ///////////////////////////////////
+    if (this.state.unitType.value === "Shasla") {
+      this.setState({
+        move: 6,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 4,
+        pts: 8,
+        equipment: "pulse rifle, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "Shasui") {
+      this.setState({
+        move: 6,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        sv: 4,
+        pts: 8,
+        equipment: "pulse rifle, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "DS8 Tactical Support Turret") {
+      this.setState({
+        move: 0,
+        ws: 0,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 0,
+        ld: 4,
+        sv: 4,
+        pts: 0,
+        equipment: "missile pod"
+      })
+    }
+    if (this.state.unitType.value === "Pathfinder") {
+      this.setState({
+        move: 7,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 6,
+        equipment: "pulse carbine, markerlight, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "Pathfinder Gunner") {
+      this.setState({
+        move: 7,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "pulse carbine, markerlight, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "Pathfinder Shasui") {
+      this.setState({
+        move: 7,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        sv: 5,
+        pts: 7,
+        equipment: "pulse carbine, markerlight, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "Breacher Shasla") {
+      this.setState({
+        move: 6,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 4,
+        pts: 8,
+        equipment: "pulse blaster, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "Breacher Shasui") {
+      this.setState({
+        move: 6,
+        ws: 5,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        sv: 4,
+        pts: 8,
+        equipment: "pulse blaster, photon grenades"
+      })
+    }
+    if (this.state.unitType.value === "DS8 Tactical Support Turret") {
+      this.setState({
+        move: 0,
+        ws: 0,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 0,
+        ld: 4,
+        sv: 4,
+        pts: 0,
+        equipment: "missile pod"
+      })
+    }
+    if (this.state.unitType.value === "Stealth Shasui") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 4,
+        str: 4,
+        tough: 4,
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        sv: 3,
+        pts: 20,
+        equipment: "burst cannon"
+      })
+    }
+    if (this.state.unitType.value === "Stealth Shasvre") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 4,
+        str: 4,
+        tough: 4,
+        wounds: 2,
+        att: 3,
+        ld: 8,
+        sv: 3,
+        pts: 20,
+        equipment: "burst cannon"
+      })
+    }
+    if (this.state.unitType.value === "MV1 Gun Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "two pulse carbines"
+      })
+    }
+    if (this.state.unitType.value === "MV4 Shield Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "shield generator"
+      })
+    }
+    if (this.state.unitType.value === "MV7 Marker Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "markerlight"
+      })
+    }
+    if (this.state.unitType.value === "MV36 Guardian Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "none"
+      })
+    }
+    if (this.state.unitType.value === "MV33 Grav-Inhibitor Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "none"
+      })
+    }
+    if (this.state.unitType.value ==="MV31 Pulse Accelerator Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 1,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "none"
+      })
+    }
+    if (this.state.unitType.value === "MB3 Recon Drone") {
+      this.setState({
+        move: 8,
+        ws: 5,
+        bs: 5,
+        str: 3,
+        tough: 4,
+        wounds: 2,
+        att: 1,
+        ld: 6,
+        sv: 5,
+        pts: 7,
+        equipment: "burst cannon"
+      })
+    }
+    ///////////////////////////////////
+    //Tyranids
+    ///////////////////////////////////
+    if (this.state.unitType.value === "Termagant") {
+      this.setState({
+        move: 6,
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 5,
+        sv: 6,
+        pts: 4,
+        equipment: "fleshborer"
+      })
+    }
+    if (this.state.unitType.value === "Hormagaunt") {
+      this.setState({
+        move: 8,
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 5,
+        sv: 6,
+        pts: 4,
+        equipment: "scything talons"
+      })
+    }
+    if (this.state.unitType.value === "Lictor") {
+      this.setState({
+        move: 9,
+        ws: 2,
+        bs: 4,
+        str: 6,
+        tough: 4,
+        wounds: 4,
+        att: 3,
+        ld: 9,
+        sv: 5,
+        pts: 25,
+        equipment: "flesh hooks, grasping talons, rending claws"
+      })
+    }
+    if (this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 4,
+        wounds: 3,
+        att: 3,
+        ld: 9,
+        sv: 4,
+        pts: 20,
+        equipment: "scything talons, devourer"
+      })
+    }
+    if (this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        move: 6,
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 4,
+        wounds: 3,
+        att: 3,
+        ld: 9,
+        sv: 4,
+        pts: 20,
+        equipment: "scything talons, devourer"
+      })
+    }
+    if (this.state.unitType.value === "Genestealer") {
+      this.setState({
+        move: 8,
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 4,
+        wounds: 1,
+        att: 3,
+        ld: 9,
+        sv: 5,
+        pts: 11,
+        equipment: "rending claws"
+      })
+    }
+    ///////////////////////////////////
+    //Genestealer Cults
+    ///////////////////////////////////
+    if (this.state.race.value === "Genestealer Cults") {
+      this.setState({
+        move: 6,
+        sv: 5
+      })
+    }
+    if (this.state.unitType.value === "Acolyte Hybrid") {
+      this.setState({
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        pts: 7,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Acolyte Fighter") {
+      this.setState({
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 7,
+        pts: 8,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Acolyte Leader") {
+      this.setState({
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 3,
+        wounds: 1,
+        att: 3,
+        ld: 8,
+        pts: 8,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Aberrant") {
+      this.setState({
+        ws: 3,
+        bs: 6,
+        str: 5,
+        tough: 4,
+        wounds: 2,
+        att: 2,
+        ld: 7,
+        pts: 15,
+        equipment: "power pick, rending claw"
+      });
+    }
+    if (this.state.unitType.value === "Neophyte Hybrid") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        pts: 5,
+        equipment: "autogun, autopistol, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Neophyte Gunner") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 1,
+        ld: 7,
+        pts: 6,
+        equipment: "autogun, autopistol, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Neophyte Leader") {
+      this.setState({
+        ws: 4,
+        bs: 4,
+        str: 3,
+        tough: 3,
+        wounds: 1,
+        att: 2,
+        ld: 8,
+        pts: 6,
+        equipment: "autogun, autopistol, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Hybrid Metamorph") {
+      this.setState({
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 3,
+        wounds: 1,
+        att: 3,
+        ld: 7,
+        pts: 8,
+        equipment: "autopistol, rending claw, Metamorph talon, blasting charges"
+      });
+    }
+    if (this.state.unitType.value === "Hybrid Leader") {
+      this.setState({
+        ws: 3,
+        bs: 4,
+        str: 4,
+        tough: 3,
+        wounds: 1,
+        att: 4,
+        ld: 8,
+        pts: 9,
+        equipment: "autopistol, rending claw, Metamorph talon, blasting charges"
+      });
+    }
   }
 
   handleChange3 = (unitType) => {
@@ -60,16 +1592,13 @@ class Units extends Component {
   componentDidMount() {
     
     this.loadUnits();
-    this.squadTotal();
-    this.switcher();
-
     auth.onAuthStateChanged((user) => {
       if (user) {
         this.setState({ user });
       } 
     });
+    
     const itemsRef = firebase.database().ref('Users');
-
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();
       let newState = [];
@@ -85,6 +1614,23 @@ class Units extends Component {
         items: newState
       });
     });
+  }
+
+  componentDidUpdate() {
+    var i;
+    var sum = 0;
+    for (i = 0; i < this.state.units.length; i++) {
+      sum += this.state.units[i].pts;
+      if (this.state.total === 0) {
+      this.setState({
+        total: sum
+      })
+      }
+    }
+    // only works on second click
+    if (this.state.total > 100) {
+      alert("squad is over 100 points!")
+    }
   }
 
   handleDatabaseSubmit(e) {
@@ -129,7 +1675,6 @@ class Units extends Component {
 
   deleteUnit = id => {
     this.confirm1.open('Are you sure?', () => {
-    // how do you change this to "confirm" not "alert"?
     API.deleteUnit(id)
     .then(res => this.loadUnits())
     .catch(err => console.log(err));
@@ -183,7 +1728,6 @@ class Units extends Component {
     if (this.state.total > 100) {
       alert("squad is over 100 points!")
     }
-    console.log("squad total: " + this.state.total);
   }
 
   switcher = () => {
@@ -1881,7 +3425,7 @@ class Units extends Component {
 
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
-
+    
     return (
       <Container fluid>
         <Row>
@@ -1918,12 +3462,41 @@ class Units extends Component {
               <table>
                 <tbody>
                   <tr>
+                    <td className="text-light">
+                      M
+                    </td>
+                    <td className="text-light">
+                      WS
+                    </td>
+                    <td className="text-light">
+                      BS
+                    </td>
+                    <td className="text-light">
+                      S
+                    </td>
+                    <td className="text-light">
+                      T
+                    </td>
+                    <td className="text-light">
+                      W
+                    </td>
+                    <td className="text-light">
+                      A
+                    </td>
+                    <td className="text-light">
+                      LD
+                    </td>
+                    <td className="text-light">
+                      SV
+                    </td>
+                  </tr>
+                  <tr>
                     <td>
                       <InputNumber 
                         value={this.state.move}
                         onChange={this.handleInputChange}
                         name="move"
-                        placeholder="M"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1931,7 +3504,7 @@ class Units extends Component {
                         value={this.state.ws}
                         onChange={this.handleInputChange}
                         name="ws"
-                        placeholder="WS"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1939,7 +3512,7 @@ class Units extends Component {
                         value={this.state.bs}
                         onChange={this.handleInputChange}
                         name="bs"
-                        placeholder="BS"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1947,7 +3520,7 @@ class Units extends Component {
                         value={this.state.str}
                         onChange={this.handleInputChange}
                         name="str"
-                        placeholder="S"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1955,7 +3528,7 @@ class Units extends Component {
                         value={this.state.tough}
                         onChange={this.handleInputChange}
                         name="tough"
-                        placeholder="T"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1963,7 +3536,7 @@ class Units extends Component {
                         value={this.state.wounds}
                         onChange={this.handleInputChange}
                         name="wounds"
-                        placeholder="W"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1971,7 +3544,7 @@ class Units extends Component {
                         value={this.state.att}
                         onChange={this.handleInputChange}
                         name="att"
-                        placeholder="A"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1979,7 +3552,7 @@ class Units extends Component {
                         value={this.state.ld}
                         onChange={this.handleInputChange}
                         name="ld"
-                        placeholder="Ld"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
                     </td>
                     <td>
@@ -1987,23 +3560,32 @@ class Units extends Component {
                         value={this.state.sv}
                         onChange={this.handleInputChange}
                         name="sv"
-                        placeholder="Sv"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                       />
+                    </td>
+                  </tr>
+                    <tr className="text-light">
+                      <td>
+                        PTS
+                      </td>
+                    </tr>
+                  <tr>
+                    <td>
+                    <InputNumber
+                      value={this.state.pts}
+                      onChange={this.handleInputChange}
+                      name="pts"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
+                    />
                     </td>
                   </tr>
                 </tbody>
               </table>
-              <InputNumber
-                value={this.state.pts}
-                onChange={this.handleInputChange}
-                name="pts"
-                placeholder="Points"
-              />
               <TextArea
                 value={this.state.equipment}
                 onChange={this.handleInputChange}
                 name="equipment"
-                placeholder="Equipment (Optional)"
+                placeholder="Equipment"
               />
               <h6 className="text-light">Wargear Options</h6>
               <Select

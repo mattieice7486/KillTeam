@@ -5,8 +5,15 @@ Deployed at http://kill-team.herokuapp.com
 
 ![Main Screen](./client/public/killteam1.png)
 ![Detail View](./client/public/killteam2.png)
+![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+2/25/2019
+Release 0.2.6
+* Fixed navbar collapse button for small screens.
+* Unit attribute numbers are read only inputs now.
+* Autofill works on selection of unit type (bugged: must click twice to take effect).
+
 2/11/2019
 Release 0.2.5
 * Login button moved to navbar.
@@ -67,7 +74,7 @@ Release 0.1.0 is here!
 * Squad page only displays first squad member for each squad.
 * Squad counter does not alert > 100 pts unless you hit the "total" button twice.
 * Selectors don't register default state; you must select a new option then select the default for it to register.
-* Navbar collapse bugged for small screens.
+* <s>Navbar collapse bugged for small screens.</s> ✔️
 * <s>Delete button alert does not have a cancel option.</s> ✔️
 * <s>Poor text contrast on the detail screen.</s> ✔️
 * <s>Equipment selector does not display correctly.</s> ✔️
