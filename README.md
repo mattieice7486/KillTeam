@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+2/28/2019
+Release 0.2.7
+* Squad page now correctly shows all squad members in a saved squad.
+* Squad page now only shows squads based on user who is logged in.
+* Equipment list now populates correctly in the table.
+
 2/25/2019
 Release 0.2.6
 * Fixed navbar collapse button for small screens.

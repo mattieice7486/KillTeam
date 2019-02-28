@@ -1,6 +1,6 @@
 {
   "name": "killteam",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "description": "Squad Builder for Kill Team",
   "main": "server.js",
   "scripts": {
@@ -13,7 +13,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build"
   },
-  "author": "",
+  "author": "Matthew Eisenstadter",
   "license": "ISC",
   "devDependencies": {
     "concurrently": "^3.5.0",

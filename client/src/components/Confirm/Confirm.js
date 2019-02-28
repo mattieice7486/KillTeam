@@ -27,7 +27,7 @@ class Confirm extends React.Component {
     if (!this.state.isOpen) return null;
     return (
       <div>
-        <h3>{this.state.title}</h3>
+        <h3 className="text-light">{this.state.title}</h3>
         <button className="btn" onClick={this.handleYes}>Yes</button>
         <button className="btn" onClick={this.handleNo}>No</button>
       </div>
