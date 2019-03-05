@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+3/5/2019
+Release 0.2.8
+* Squad page now shows equipment stats (bugged: only displays first item of equipment).
+* Added equipment list JSON (only Astartes equipment so far).
+
 2/28/2019
 Release 0.2.7
 * Squad page now correctly shows all squad members in a saved squad.
@@ -77,9 +82,10 @@ Release 0.1.0 is here!
 
 ## Known Issues:
 
-* Squad page only displays first squad member for each squad.
+* Confirm prompt does not render in the correct location.
 * Squad counter does not alert > 100 pts unless you hit the "total" button twice.
 * Selectors don't register default state; you must select a new option then select the default for it to register.
+* <s>Squad page only displays first squad member for each squad.</s> ✔️
 * <s>Navbar collapse bugged for small screens.</s> ✔️
 * <s>Delete button alert does not have a cancel option.</s> ✔️
 * <s>Poor text contrast on the detail screen.</s> ✔️
@@ -89,10 +95,11 @@ Release 0.1.0 is here!
 
 ## Updates Planned:
 
-* Automatic squad totalling/Autofill stats (no button).
+* Delete the current squad when the submit squad button is clicked.
+* Automatic squad totalling/Autofill stats (currently bugged).
 * UI graphics.
 * Correct Equipment Stats.
-* Squad page only displays current user's squads.
+* <s>Squad page only displays current user's squads.</s> ✔️
 * <s>Login Button in the Navbar.</s> ✔️
 * <s>Fix Squad page format.</s> ✔️
 * <s>Model Type selector based on army choice.</s> ✔️

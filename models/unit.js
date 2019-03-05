@@ -14,6 +14,7 @@ const unitSchema = new Schema({
   ld: { type: Number },
   sv: { type: Number },
   pts: { type: Number },
+  wargearPts: { type: Number },
   race: { type: String },
   unitType: { type: String },
   wargearOptions: { type: String },

@@ -30,6 +30,7 @@ class Units extends Component {
       ld: "",
       sv: "",
       pts: "",
+      wargearPts: "",
       total: 0,
       race: {},
       unitType: {},
@@ -83,9 +84,9 @@ class Units extends Component {
       }
     }
     // only works on second click
-    if (this.state.total > 100) {
-      alert("squad is over 100 points!")
-    }
+    // if (this.state.total > 100) {
+    //   alert("squad is over 100 points!")
+    // }
   }
 
   handleDatabaseSubmit(e) {
@@ -120,6 +121,7 @@ class Units extends Component {
         ld: "",
         sv: "",
         pts: "",
+        wargearPts: "",
         race: {},
         unitType: {},
         wargearOptions: {}
@@ -159,7 +161,7 @@ class Units extends Component {
         att: this.state.att,
         ld: this.state.ld,
         sv: this.state.sv,
-        pts: this.state.pts,
+        pts: this.state.pts + this.state.wargearPts,
         race: this.state.race.label,
         unitType: this.state.unitType.label,
         wargearOptions: this.state.wargearOptions.label
@@ -1726,6 +1728,264 @@ class Units extends Component {
 
   handleChange3 = (unitType) => {
     this.setState({wargearOptions: unitType})
+    if (this.state.wargearOptions.value === "flamer" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "flamer, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "meltagun" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "meltagun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "plasma gun" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "plasma gun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-gun" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "grav-gun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "missile launcher" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 5,
+        equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combi-flamer" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-flamer, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combi-grav" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "combi-grav, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combi-melta" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "bolt pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "auspex, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "bolt pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "bolt pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "power fist, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "power sword, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "plasma pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "auspex, plasma pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "plasma pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "chainsword, plasma pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "plasma pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 5,
+        equipment: "power fist, plasma pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "power sword, plasma pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "auspex, grav-pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "chainsword, grav-pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 5,
+        equipment: "power fist, grav-pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "power sword, grav-pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Scout") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "combat knife, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Scout Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "missile launcher" && this.state.unitType.value === "Scout Gunner") {
+      this.setState({
+        wargearPts: 5,
+        equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "missile launcher camo cloak" && this.state.unitType.value === "Scout Gunner") {
+      this.setState({
+        wargearPts: 6,
+        equipment: "missile launcher, camo cloak, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Gunner") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
+      });
+	}
+    if (this.state.wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "chainsword" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "auto bolt rifle" && this.state.unitType.value === "Intercessor") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "auto bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "stalker bolt rifle" && this.state.unitType.value === "Intercessor") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "stalker bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "auxiliary grenade launcher" && this.state.unitType.value === "Intercessor Gunner") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "auxiliary grenade launcher, bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "chainsword" && this.state.unitType.value === "Intercessor Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "chainsword, bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "power sword" && this.state.unitType.value === "Intercessor Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "power sword, bolt rifle, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-chute" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "grav-chute, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grapnel launcher" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "grapnel launcher, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grav-chute" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "grav-chute, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "grapnel launcher" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "grapnel launcher, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
+      });
+    }
     console.log(this.state.wargearOptions)
   }
 
@@ -1866,24 +2126,79 @@ class Units extends Component {
     ];
 
     const options3 = [
-      {value: 'flamer', label: 'flamer', link: 'Tactical Marine Gunner'},
-      {value: 'meltagun', label: 'meltagun', link: 'Tactical Marine Gunner'},
-      {value: 'plasma gun', label: 'plasma gun', link: 'Tactical Marine Gunner'},
-      {value: 'grav-gun', label: 'grav-gun', link: 'Tactical Marine Gunner'},
-      {value: 'missile launcher', label: 'missile launcher', link: 'Tactical Marine Gunner'},
-      {value: 'heavy bolter', label: 'heavy bolter', link: 'Tactical Marine Gunner'},
-      {value: 'combi-flamer', label: 'combi-flamer', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-grav', label: 'combi-grav', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-melta', label: 'combi-melta', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-plasma', label: 'combi-plasma', link: 'Tactical Marine Sergeant'},
-      {value: 'Option1', label: 'Option1', link: 'Scout'},
-      {value: 'Option1', label: 'Option1', link: 'Scout Gunner'},
-      {value: 'Option1', label: 'Option1', link: 'Scout Sergeant'},
-      {value: 'Option1', label: 'Option1', link: 'Intercessor'},
-      {value: 'Auxiliary Grenade Launcher', label: 'Auxiliary Grenade Launcher', link: 'Intercessor Gunner'},
-      {value: 'Option1', label: 'Option1', link: 'Intercessor Sergeant'},
-      {value: 'Option1', label: 'Option1', link: 'Reiver'},
-      {value: 'Option1', label: 'Option1', link: 'Reiver Sergeant'},
+      {value: 'none', label: 'none', link: 'Tactical Marine'},
+      {value: 'flamer', label: 'flamer +3pts', link: 'Tactical Marine Gunner'},
+      {value: 'meltagun', label: 'meltagun +3pts', link: 'Tactical Marine Gunner'},
+      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Tactical Marine Gunner'},
+      {value: 'grav-gun', label: 'grav-gun +2pts', link: 'Tactical Marine Gunner'},
+      {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Tactical Marine Gunner'},
+      {value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Tactical Marine Gunner'},
+      {value: 'combi-flamer', label: 'combi-flamer +3pts', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-grav', label: 'combi-grav +2pts', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-melta', label: 'combi-melta +3pts', link: 'Tactical Marine Sergeant'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Tactical Marine Sergeant'},
+      {value: 'bolt pistol auspex', label: 'bolt pistol and auspex +1pts', link: 'Tactical Marine Sergeant'},
+      {value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Tactical Marine Sergeant'},
+      {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +4pts', link: 'Tactical Marine Sergeant'},
+      {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +2pts', link: 'Tactical Marine Sergeant'},
+      {value: 'plasma pistol auspex', label: 'plasma pistol and auspex +2pts', link: 'Tactical Marine Sergeant'},
+      {value: 'plasma pistol chainsword', label: 'plasma pistol and chainsword +1pts', link: 'Tactical Marine Sergeant'},
+      {value: 'plasma pistol power fist', label: 'plasma pistol and power fist +5pts', link: 'Tactical Marine Sergeant'},
+      {value: 'plasma pistol power sword', label: 'plasma pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
+      {value: 'grav-pistol auspex', label: 'grav-pistol and auspex +2pts', link: 'Tactical Marine Sergeant'},
+      {value: 'grav-pistol chainsword', label: 'grav-pistol and chainsword +1pts', link: 'Tactical Marine Sergeant'},
+      {value: 'grav-pistol power fist', label: 'grav-pistol and power fist +5pts', link: 'Tactical Marine Sergeant'},
+      {value: 'grav-pistol power sword', label: 'grav-pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
+      {value: 'combat knife', label: 'combat knife +0pts', link: 'Scout'},
+      {value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout'},
+      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout'},
+      {value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Scout Gunner'},
+      {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Scout Gunner'},
+      {value: 'missile launcher camo cloak', label: 'missile launcher and camo cloak +6pts', link: 'Scout Gunner'},
+      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Gunner'},
+      {value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout Sergeant'},
+      {value: 'chainsword', label: 'chainsword +0pts', link: 'Scout Sergeant'},
+      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Sergeant'},
+      {value: 'auto bolt rifle', label: 'auto bolt rifle +0pts', link: 'Intercessor'},
+      {value: 'stalker bolt rifle', label: 'stalker bolt rifle +0pts', link: 'Intercessor'},
+      {value: 'auxiliary grenade launcher', label: 'auxiliary grenade launcher +0pts', link: 'Intercessor Gunner'},
+      {value: 'chainsword', label: 'chainsword +0pts', link: 'Intercessor Sergeant'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Intercessor Sergeant'},
+      {value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver'},
+      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver'},
+      {value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver'},
+      {value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver Sergeant'},
+      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver Sergeant'},
+      {value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver Sergeant'},
+      {value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker patter boltgun', label: 'stalker patter boltgun +1pts', link: 'Deathwatch Veteran'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
+      {value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
+      {value: 'deathwatch frag cannon', label: 'deathwatch frag cannon +5pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'xenophase blade', label: 'xenophase blade +3pts', link: 'Watch Sergeant'},
+      {value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Grey Knight'},
+      {value: 'nemesis daemon hammer', label: 'nemesis daemon hammer +2pts', link: 'Grey Knight'},
+      {value: 'nemesis warding stave', label: 'nemesis warding stave +0pts', link: 'Grey Knight'},
+      {value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Grey Knight'},
+      {value: 'incenerator', label: 'incenerator +3pts', link: 'Grey Knight Gunner'},
+      {value: 'psilencer', label: 'psilencer +3pts', link: 'Grey Knight Gunner'},
+      {value: 'psycannon', label: 'psycannon +2pts', link: 'Grey Knight Gunner'},
+      {value: 'vox-caster', label: 'vox-caster +5pts', link: 'Guardsman'},
+      {value: 'flamer', label: 'flamer +3pts', link: 'Guardsman Gunner'},
+      {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Guardsman Gunner'},
+      {value: 'meltagun', label: 'meltagun +3pts', link: 'Guardsman Gunner'},
+      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Guardsman Gunner'},
+	  {value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
+	  
+
+
+
+      {value: 'neuro disruptor', label: 'neuro disruptor +2pts', link: 'Player'},
+      {value: 'fusion pistol', label: 'fusion pistol +3pts', link: 'Player'},
+      {value: 'tesla carbine', label: 'tesla carbine +3pts', link: 'Immortal'},
     ];
 
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
@@ -2031,6 +2346,12 @@ class Units extends Component {
                       <td>
                         PTS
                       </td>
+                      <td>
+                        &nbsp;
+                      </td>
+                      <td>
+                        Wargear
+                      </td>
                     </tr>
                   <tr>
                     <td>
@@ -2038,6 +2359,17 @@ class Units extends Component {
                       value={this.state.pts}
                       onChange={this.handleInputChange}
                       name="pts"
+                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
+                    />
+                    </td>
+					<td className="text-light" style={{ textAlign : "center", fontSize : "40px"}}>
+						+
+					</td>
+                    <td>
+                    <InputNumber
+                      value={this.state.wargearPts}
+                      onChange={this.handleInputChange}
+                      name="wargearPts"
                         style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
                     />
                     </td>

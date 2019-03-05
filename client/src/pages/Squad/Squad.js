@@ -7,6 +7,7 @@ import { List } from "../../components/List";
 import { FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import Confirm from "../../components/Confirm";
+import guns from "../../utils/guns";
 
 class Squad extends Component {
   constructor() {
@@ -51,10 +52,9 @@ class Squad extends Component {
     for (let item in this.state.items) {
       for (let squadMember in this.state.items[item].squadMembers)
       console.log(this.state.items[item].squadMembers[squadMember].name);
-      console.log(this.state.items.index)
     }
     console.log(this.state.items)
-      console.log(this.state.user);
+    console.log(this.state.user);
   }
   
   handleInputChange = event => {
@@ -175,28 +175,37 @@ class Squad extends Component {
                                             <th>Abilities</th>
                                           </tr>
                                         </thead>
-                                        <tbody>
-                                          {squadMember.equipment.split(',').map((key, index) => {return (
-                                          <tr key={index}>
-                                            <td>{key}</td>
-                                            <td>"</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>-</td>
-                                            <td></td>
-                                            <td></td>
-                                          </tr>
-                                          )})}
-                                          <tr>
-                                            <td>{squadMember.wargearOptions}</td>
-                                            <td>"</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>-</td>
-                                            <td></td>
-                                            <td></td>
-                                          </tr>
-                                        </tbody>
+
+																					{squadMember.equipment.split(',').map((item, index) => {
+																						return (
+																							<tbody key={index}>
+																								{guns.map((gun, index) => {
+																									// console.log(gun.weapon)
+																									// console.log(item)
+																									if (item === gun.weapon) {
+																										return (
+																											<tr key={index}>
+																												<td>{gun.weapon}</td>
+																												<td>{gun.range}"</td>
+																												<td>{gun.type}</td>
+																												<td>{gun.strength}&nbsp;</td>
+																												<td>-{gun.AP}</td>
+																												<td>{gun.damage}</td>
+																												<td>{gun.abilities}</td>
+																											</tr>
+																										)
+																									}
+																									//  else {
+																									// 	return (
+																									// 		<tr key={index}>
+																									// 			<td>{item}</td>
+																									// 		</tr>
+																									// 	)
+																									// }
+																								})}
+																							</tbody>
+																						)
+																					})}
                                       </table>
                                     </div>
                                   )                

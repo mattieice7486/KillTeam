@@ -1,0 +1,182 @@
+[
+	{
+		"weapon": "astartes shotgun",
+		"range": 12,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "If the target is within half range, add 1 to this weapon's Strength."
+	},
+	{
+		"weapon": "auto bolt rifle",
+		"range": 24,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "bolt carbine",
+		"range": 24,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "bolt pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 4,
+		"AP": 1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "bolt rifle",
+		"range": 30,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": 1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+	  "weapon": "boltgun",
+	  "range": 24,
+	  "type": "Rapid Fire 1",
+	  "strength": 4,
+	  "AP": 0,
+	  "damage": 1,
+	  "abilities": "-"
+	},
+	{
+		"weapon": "flamer",
+		"range": 8,
+		"type": "Assault D6",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "frag grenades",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "grav-gun",
+		"range": 18,
+		"type": "Rapid Fire 1",
+		"strength": 5,
+		"AP": 3,
+		"damage": 1,
+		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
+	},
+	{
+		"weapon": "grav-pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 5,
+		"AP": 3,
+		"damage": 1,
+		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
+	},
+	{
+		"weapon": "krak grenades",
+		"range": 6,
+		"type": "Grenade 1",
+		"strength": 6,
+		"AP": 1,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "heavy bolt pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 4,
+		"AP": 1,
+		"damage": 1,
+		"abilities": ""
+	},
+	{
+		"weapon": "heavy bolter",
+		"range": 36,
+		"type": "Heavy 3",
+		"strength": 5,
+		"AP": 1,
+		"damage": 1,
+		"abilities": ""
+	},
+	{
+	  "weapon": "meltagun",
+	  "range": 12,
+	  "type": "Assault 1",
+	  "strength": 8,
+	  "AP": 4,
+	  "damage": "D6",
+	  "abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+	},
+	{
+		"weapon": "missile launcher",
+	  "range": 48,
+	  "type": "Heavy D6 (Frag Missile) : Heavy 1 (Krak Missile)",
+	  "strength": "4 : 8",
+	  "AP": "0 : 2",
+	  "damage": "1 : D6",
+	  "abilities": "When attacking with this weapon, choose frag or krak missiles."
+	},
+	{
+		"weapon": "plasma gun",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": "7 : 8",
+		"AP": 3,
+		"damage": "1 : 2",
+		"abilities": "On an unmodified hit roll of 1, the bearer is taken out of action after all of this weapon's shots have been resolved."
+	},
+	{
+		"weapon": "plasma pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": "7 : 8",
+		"AP": 3,
+		"damage": "1 : 2",
+		"abilities": "On an unmodified hit roll of 1, the bearer is taken out of action after all of this weapon's shots have been resolved."
+	},
+	{
+		"weapon": "shock grenades",
+		"range": 6,
+		"type": "Grenade D3",
+		"strength": "*",
+		"AP": "*",
+		"damage": "*",
+		"abilities": "This weapon does not inflict any damage. If an enemy INFANTRY model is hit by any shock grenades, it is stunned; until the end of the next battle round that model cannot fire Overwatch or be Readied, and your opponent must subtract 1 from hit rolls made for the model."
+	},
+	{
+	  "weapon": "sniper rifle",
+	  "range": 24,
+	  "type": "Heavy 1",
+	  "strength": 4,
+	  "AP": 0,
+	  "damage": 1,
+	  "abilities": "A model firing a sniper rifle does not suffer the penalty to hit rolls for the target being at long range. If you roll a wound roll of 6+ for this weapon, it inflicts a mortal wound in addition to its normal damage."
+	},
+	{
+	  "weapon": "stalker bolt rifle",
+	  "range": 36,
+	  "type": "Heavy 1",
+	  "strength": 4,
+	  "AP": 2,
+	  "damage": 1,
+	  "abilities": "-"
+	}
+  ]
