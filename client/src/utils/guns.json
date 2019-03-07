@@ -200,7 +200,7 @@
 	{
 		"weapon": "missile launcher",
 		"range": 48,
-		"type": "Heavy D6 (Frag Missile) : Heavy 1 (Krak Missile)",
+		"type": "Heavy D6 (Frag Missile)",
 		"strength": 4,
 		"AP": 0,
 		"damage": 1,
@@ -222,7 +222,7 @@
 		"strength": 7,
 		"AP": -3,
 		"damage": 1,
-	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
+	  "abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "plasma pistol",
@@ -231,7 +231,7 @@
 		"strength": 7,
 		"AP": -3,
 		"damage": 1,
-	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
+	  "abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "shock grenades",

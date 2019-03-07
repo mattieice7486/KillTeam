@@ -72,8 +72,8 @@ class Squad extends Component {
   }
 
   render() {
-    return (
-      <Container fluid>
+		return (
+			<Container fluid>
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -81,7 +81,7 @@ class Squad extends Component {
             </Jumbotron>
             <FormBtn
               onClick={this.console}
-            >
+							>
             Console
             </FormBtn>
             <Confirm ref={el => this.confirm1 = el} />
@@ -90,7 +90,7 @@ class Squad extends Component {
         <Row>
           <Col size="sm-12">
             {this.state.items.length ? (
-              <div>
+							<div>
                 {this.state.items.map((item, index) => {
                     return (
                       <div key={index}>
@@ -175,41 +175,31 @@ class Squad extends Component {
                                             <th>Abilities</th>
                                           </tr>
                                         </thead>
-
-																					{squadMember.equipment.split(',').map((item, index) => {
-																						return (
-																							<tbody key={index}>
-																								{guns.map((gun, index) => {
-																									// console.log(gun.weapon)
-																									// console.log(item)
-																									if (item === gun.weapon) {
-																										return (
-																											<tr key={index}>
-																												<td>{gun.weapon}</td>
-																												<td>{gun.range}"</td>
-																												<td>{gun.type}</td>
-																												<td>{gun.strength}&nbsp;</td>
-																												<td>-{gun.AP}</td>
-																												<td>{gun.damage}</td>
-																												<td>{gun.abilities}</td>
-																											</tr>
-																										)
-																									}
-																									//  else {
-																									// 	return (
-																									// 		<tr key={index}>
-																									// 			<td>{item}</td>
-																									// 		</tr>
-																									// 	)
-																									// }
-																								})}
-																							</tbody>
-																						)
-																					})}
+																				{squadMember.equipment.split(', ').map((item, index) => {
+																					return (
+																						<tbody key={index}>
+																							{guns.map((gun, index) => {
+																								if (item === gun.weapon) {
+																									return (
+																										<tr key={index}>
+																											<td>{gun.weapon}</td>
+																											<td>{gun.range}"</td>
+																											<td>{gun.type}</td>
+																											<td>{gun.strength}&nbsp;</td>
+																											<td>{gun.AP}</td>
+																											<td>{gun.damage}</td>
+																											<td>{gun.abilities}</td>
+																										</tr>
+																									)
+																								}
+																							})}
+																						</tbody>
+																					)
+																				})}
                                       </table>
-                                    </div>
-                                  )                
-                                })}
+                                    </div>     
+																	)
+																})}
                               </List>
                             </Col>
                             </div>

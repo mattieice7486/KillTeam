@@ -2391,22 +2391,22 @@ class Units extends Component {
                     </tr>
                   <tr>
                     <td>
-                    <InputNumber
-                      value={this.state.pts}
-                      onChange={this.handleInputChange}
-                      name="pts"
-                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
-                    />
+										<InputNumber
+												value={this.state.pts}
+												onChange={this.handleInputChange}
+												name="pts"
+												style={{ paddingRight: "0", paddingLeft : "5px"  }}
+											/>
                     </td>
-					<td className="text-light" style={{ textAlign : "center", fontSize : "40px"}}>
-						+
-					</td>
+										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>
+											+
+										</td>
                     <td>
                     <InputNumber
                       value={this.state.wargearPts}
                       onChange={this.handleInputChange}
                       name="wargearPts"
-                        style={{ "paddingRight": "0", "paddingLeft" : "5px"  }}
+                      style={{ paddingRight: "0", paddingLeft : "5px"  }}
                     />
                     </td>
                   </tr>

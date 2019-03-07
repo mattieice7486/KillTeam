@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
+import guns from "../../utils/guns";
+
 
 class Detail extends Component {
   state = {
@@ -18,7 +20,7 @@ class Detail extends Component {
 
   render() {
     return (
-      <Container fluid>
+			<Container fluid>
         <Row>
           <Col size="md-12">
             <Jumbotron>
@@ -27,19 +29,13 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
+				{this.state.unit ? (
         <Row>
           <Col size="md-6 md-offset-1">
             <article>
               <h1 className="text-light">Race</h1>
               <p className="text-light">
                 {this.state.unit.race}
-              </p>
-              <h1 className="text-light">Equipment</h1>
-              <p className="text-light">
-                {this.state.unit.equipment}
-              </p>
-              <p className="text-light">
-                {this.state.unit.wargearOptions}
               </p>
               <table className="table table-bordered table-dark">
                   <thead>
@@ -87,16 +83,57 @@ class Detail extends Component {
                     </tr>
                   </tbody>
               </table>
+              <h1 className="text-light">Equipment</h1>
+              <p className="text-light">
+                {this.state.unit.equipment}
+              </p>
+							<table className="table table-bordered table-dark">
+								<thead>
+									<tr>
+										<th>Weapon</th>
+										<th>Range</th>
+										<th>Type</th>
+										<th>S&nbsp;</th>
+										<th>AP</th>
+										<th>D&nbsp;</th>
+										<th>Abilities</th>
+									</tr>
+								</thead>
+									{/* {this.state.unit.equipment.split(', ').map((item, index) => {
+										return (
+											<tbody key={index}>
+												{guns.map((gun, index) => {
+													if (item === gun.weapon) {
+														return (
+															<tr key={index}>
+																<td>{gun.weapon}</td>
+																<td>{gun.range}"</td>
+																<td>{gun.type}</td>
+																<td>{gun.strength}&nbsp;</td>
+																<td>-{gun.AP}</td>
+																<td>{gun.damage}</td>
+																<td>{gun.abilities}</td>
+															</tr>
+														)
+													}
+												})}
+											</tbody>
+										)
+									})} */}
+							</table>
             </article>
           </Col>
-        </Row>
+				</Row>
+				) : (
+					<h3>No Results to Display</h3>
+				)}
         <Row>
           <Col size="md-2">
             <Link to="/">← Back to Units</Link>
           </Col>
         </Row>
       </Container>
-    );
+		);
   }
 }
 

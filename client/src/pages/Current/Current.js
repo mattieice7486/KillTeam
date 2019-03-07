@@ -6,6 +6,8 @@ import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import Confirm from "../../components/Confirm";
+import guns from "../../utils/guns";
+
 
 
 class Squad extends Component {
@@ -16,9 +18,6 @@ class Squad extends Component {
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getUnit(this.props.match.params.id)
-      .then(res => this.setState({ unit: res.data }))
-      .catch(err => console.log(err));
     API.getUnits()
       .then(res =>
         this.setState({
@@ -41,7 +40,6 @@ class Squad extends Component {
         })
       )
       .catch(err => console.log(err));
-      console.log(this.state.items)
   }
 
   deleteUnit = id => {
@@ -108,39 +106,40 @@ class Squad extends Component {
                           </tbody>
                       </table>
                       <h2>Equipment</h2>
-                      <table className="table table-bordered table-dark">
-                          <thead>
-                            <tr>
-                              <th>Weapon</th>
-                              <th>Range</th>
-                              <th>Type</th>
-                              <th>S&nbsp;</th>
-                              <th>AP</th>
-                              <th>D&nbsp;</th>
-                              <th>Abilities</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td>{unit.equipment}</td>
-                              <td>{unit.ws}"</td>
-                              <td>{unit.equipment}</td>
-                              <td>{unit.str}</td>
-                              <td>-{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.equipment}</td>
-                            </tr>
-                            <tr>
-                              <td>{unit.wargearOptions}</td>
-                              <td>{unit.ws}"</td>
-                              <td>{unit.wargearOptions}</td>
-                              <td>{unit.str}</td>
-                              <td>-{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.wargearOptions}</td>
-                            </tr>
-                          </tbody>
-                      </table>
+											<table className="table table-bordered table-dark">
+												<thead>
+													<tr>
+														<th>Weapon</th>
+														<th>Range</th>
+														<th>Type</th>
+														<th>S&nbsp;</th>
+														<th>AP</th>
+														<th>D&nbsp;</th>
+														<th>Abilities</th>
+													</tr>
+												</thead>
+												{unit.equipment.split(', ').map((item, index) => {
+													return (
+														<tbody key={index}>
+															{guns.map((gun, index) => {
+																if (item === gun.weapon) {
+																	return (
+																		<tr key={index}>
+																			<td>{gun.weapon}</td>
+																			<td>{gun.range}"</td>
+																			<td>{gun.type}</td>
+																			<td>{gun.strength}&nbsp;</td>
+																			<td>{gun.AP}</td>
+																			<td>{gun.damage}</td>
+																			<td>{gun.abilities}</td>
+																		</tr>
+																	)
+																}
+															})}
+														</tbody>
+													)
+												})}
+										</table>
                   </ListItem>
                 ))}
               </List>

@@ -8,6 +8,13 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+3/7/2019
+Release 0.2.9
+* Squad page now correctly shows all equipment.
+* Current page updated to also show equipment stats.
+* Detail page bugged, does not show equipment stats correctly.
+* Equipment added to guns.json.
+
 3/5/2019
 Release 0.2.8
 * Squad page now shows equipment stats (bugged: only displays first item of equipment).
@@ -95,10 +102,11 @@ Release 0.1.0 is here!
 
 ## Updates Planned:
 
+* Random name generator.
 * Delete the current squad when the submit squad button is clicked.
 * Automatic squad totalling/Autofill stats (currently bugged).
 * UI graphics.
-* Correct Equipment Stats.
+* <s>Correct Equipment Stats.</s> ✔️
 * <s>Squad page only displays current user's squads.</s> ✔️
 * <s>Login Button in the Navbar.</s> ✔️
 * <s>Fix Squad page format.</s> ✔️
