@@ -1986,6 +1986,42 @@ class Units extends Component {
         equipment: "grapnel launcher, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
+    if (this.state.wargearOptions.value === "combi-melta" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-melta, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "combi-plasma, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "stalker pattern boltgun, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "power maul, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "power sword, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
+    if (this.state.wargearOptions.value === "storm shield" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "storm shield, bolt carbine, heavy bolt pistol, frag grenades, krak grenades"
+      });
+    }
     console.log(this.state.wargearOptions)
   }
 
@@ -2172,7 +2208,7 @@ class Units extends Component {
       {value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver Sergeant'},
       {value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran'},
       {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran'},
-      {value: 'stalker patter boltgun', label: 'stalker patter boltgun +1pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran'},
       {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
       {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
       {value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
@@ -2191,7 +2227,7 @@ class Units extends Component {
       {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Guardsman Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Guardsman Gunner'},
       {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Guardsman Gunner'},
-	  {value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
+	    {value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
 	  
 
 

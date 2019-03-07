@@ -31,7 +31,7 @@
 		"range": 12,
 		"type": "Pistol 1",
 		"strength": 4,
-		"AP": 1,
+		"AP": -1,
 		"damage": 1,
 		"abilities": "-"
 	},
@@ -40,18 +40,90 @@
 		"range": 30,
 		"type": "Rapid Fire 1",
 		"strength": 4,
-		"AP": 1,
+		"AP": -1,
 		"damage": 1,
 		"abilities": "-"
 	},
 	{
-	  "weapon": "boltgun",
-	  "range": 24,
-	  "type": "Rapid Fire 1",
-	  "strength": 4,
-	  "AP": 0,
-	  "damage": 1,
-	  "abilities": "-"
+		"weapon": "boltgun",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "combi-flamer",
+		"range": 24,
+		"type": "Rapid Fire 1 (Boltgun)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+	},
+	{
+		"weapon": "combi-flamer",
+		"range": 8,
+		"type": "Assault D6 (Flamer)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "combi-grav",
+		"range": 24,
+		"type": "Rapid Fire 1 (Boltgun)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+	},
+	{
+	  	"weapon": "combi-grav",
+		"range": 18,
+		"type": "Rapid Fire 1 (Grav-gun)",
+		"strength": 5,
+		"AP": -3,
+		"damage": 1,
+		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
+	},
+	{
+		"weapon": "combi-melta",
+		"range": 24,
+		"type": "Rapid Fire 1 (Boltgun)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+	},
+	{
+		"weapon": "combi-melta",
+		"range": 12,
+		"type": "Assault 1 (Melta)",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+	},
+	{
+		"weapon": "combi-plasma",
+		"range": 24,
+		"type": "Rapid Fire 1 (Boltgun)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+	},
+	{
+		"weapon": "combi-plasma",
+		"range": 24,
+		"type": "Rapid Fire 1 (Plasma)",
+		"strength": 7,
+		"AP": -3,
+		"damage": 1,
+		"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "flamer",
@@ -76,7 +148,7 @@
 		"range": 18,
 		"type": "Rapid Fire 1",
 		"strength": 5,
-		"AP": 3,
+		"AP": -3,
 		"damage": 1,
 		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
 	},
@@ -85,7 +157,7 @@
 		"range": 12,
 		"type": "Pistol 1",
 		"strength": 5,
-		"AP": 3,
+		"AP": -3,
 		"damage": 1,
 		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
 	},
@@ -94,7 +166,7 @@
 		"range": 6,
 		"type": "Grenade 1",
 		"strength": 6,
-		"AP": 1,
+		"AP": -1,
 		"damage": "D3",
 		"abilities": "-"
 	},
@@ -103,54 +175,63 @@
 		"range": 12,
 		"type": "Pistol 1",
 		"strength": 4,
-		"AP": 1,
+		"AP": -1,
 		"damage": 1,
-		"abilities": ""
+		"abilities": "-"
 	},
 	{
 		"weapon": "heavy bolter",
 		"range": 36,
 		"type": "Heavy 3",
 		"strength": 5,
-		"AP": 1,
+		"AP": -1,
 		"damage": 1,
-		"abilities": ""
+		"abilities": "-"
 	},
 	{
-	  "weapon": "meltagun",
-	  "range": 12,
-	  "type": "Assault 1",
-	  "strength": 8,
-	  "AP": 4,
-	  "damage": "D6",
-	  "abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+		"weapon": "meltagun",
+		"range": 12,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
 	},
 	{
 		"weapon": "missile launcher",
-	  "range": 48,
-	  "type": "Heavy D6 (Frag Missile) : Heavy 1 (Krak Missile)",
-	  "strength": "4 : 8",
-	  "AP": "0 : 2",
-	  "damage": "1 : D6",
-	  "abilities": "When attacking with this weapon, choose frag or krak missiles."
+		"range": 48,
+		"type": "Heavy D6 (Frag Missile) : Heavy 1 (Krak Missile)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose frag or krak missiles."
+	},
+	{
+		"weapon": "missile launcher",
+		"range": 48,
+		"type": "Heavy 1 (Krak Missile)",
+		"strength": 8,
+		"AP": -2,
+		"damage": "D6",
+		"abilities": "When attacking with this weapon, choose frag or krak missiles."
 	},
 	{
 		"weapon": "plasma gun",
 		"range": 24,
 		"type": "Rapid Fire 1",
-		"strength": "7 : 8",
-		"AP": 3,
-		"damage": "1 : 2",
-		"abilities": "On an unmodified hit roll of 1, the bearer is taken out of action after all of this weapon's shots have been resolved."
+		"strength": 7,
+		"AP": -3,
+		"damage": 1,
+	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "plasma pistol",
 		"range": 12,
 		"type": "Pistol 1",
-		"strength": "7 : 8",
-		"AP": 3,
-		"damage": "1 : 2",
-		"abilities": "On an unmodified hit roll of 1, the bearer is taken out of action after all of this weapon's shots have been resolved."
+		"strength": 7,
+		"AP": -3,
+		"damage": 1,
+	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "shock grenades",
@@ -162,21 +243,201 @@
 		"abilities": "This weapon does not inflict any damage. If an enemy INFANTRY model is hit by any shock grenades, it is stunned; until the end of the next battle round that model cannot fire Overwatch or be Readied, and your opponent must subtract 1 from hit rolls made for the model."
 	},
 	{
-	  "weapon": "sniper rifle",
-	  "range": 24,
-	  "type": "Heavy 1",
-	  "strength": 4,
-	  "AP": 0,
-	  "damage": 1,
-	  "abilities": "A model firing a sniper rifle does not suffer the penalty to hit rolls for the target being at long range. If you roll a wound roll of 6+ for this weapon, it inflicts a mortal wound in addition to its normal damage."
+		"weapon": "sniper rifle",
+		"range": 24,
+		"type": "Heavy 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "A model firing a sniper rifle does not suffer the penalty to hit rolls for the target being at long range. If you roll a wound roll of 6+ for this weapon, it inflicts a mortal wound in addition to its normal damage."
 	},
 	{
-	  "weapon": "stalker bolt rifle",
-	  "range": 36,
-	  "type": "Heavy 1",
-	  "strength": 4,
-	  "AP": 2,
-	  "damage": 1,
-	  "abilities": "-"
+		"weapon": "stalker bolt rifle",
+		"range": 36,
+		"type": "Heavy 1",
+		"strength": 4,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "chainsword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon"
+	},
+	{
+		"weapon": "combat knife",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon"
+	},
+	{
+		"weapon": "power fist",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "power sword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -3,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "deathwatch frag cannon",
+		"range": 8,
+		"type": "Assault 2D6 (Frag Round)",
+		"strength": 6,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "deathwatch frag cannon",
+		"range": 24,
+		"type": "Assault 2 (Shell)",
+		"strength": 7,
+		"AP": -2,
+		"damage": 2,
+		"abilities": "If the target is within half range of this weapon, its attacks are resolved with a Strength of 9 and an AP of -3."
+	},
+	{
+		"weapon": "deathwatch shotgun",
+		"range": 16,
+		"type": "Assault 2 (Cryptclearer round)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll failed wound rolls for this weapon."
+	},
+	{
+		"weapon": "deathwatch shotgun",
+		"range": 16,
+		"type": "Assault 2 (Xenopurge slug)",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "If the target is within half range of this weapon, its attacks are resolved with a damage of 2."
+	},
+	{
+		"weapon": "deathwatch shotgun",
+		"range": 7,
+		"type": "Assault D6 (Wyrmsbreath shell)",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "infernus heavy bolter",
+		"range": 36,
+		"type": "Assault 3 (Heavy bolter)",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+	},
+	{
+		"weapon": "infernus heavy bolter",
+		"range": 8,
+		"type": "Assault 3 (Heavy flamer)",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "stalker pattern boltgun",
+		"range": 30,
+		"type": "Heavy 2",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "heavy thunder hammer",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": "D6",
+		"abilities": "When attacking with this weapon, you must subtract 1 from the hit roll. Each time you make a wound roll of 6+ with this weapon, that hit is resolved with a Damage of 6"
+	},
+	{
+		"weapon": "power maul",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "xenophase blade",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Your opponent must re-roll successful invulnerable saves for wounds caused by this weapon"
+	},
+	{
+		"weapon": "incinerator",
+		"range": 8,
+		"type": "Assault D6",
+		"strength": 6,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "psilencer",
+		"range": 24,
+		"type": "Heavy 6",
+		"strength": 4,
+		"AP": 0,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "psycannon",
+		"range": 24,
+		"type": "Heavy 4",
+		"strength": 7,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "psyk-out grenade",
+		"range": 6,
+		"type": "Grenade D3",
+		"strength": 2,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you roll a hit roll of 6+ for this weapon when targeting a PSYKER or DAEMON, the target suffers a mortal wound instead of the normal damage."
+	},
+	{
+		"weapon": "storm bolter",
+		"range": 24,
+		"type": "Rapid Fire 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
 	}
   ]
