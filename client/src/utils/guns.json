@@ -244,7 +244,7 @@
 	},
 	{
 		"weapon": "sniper rifle",
-		"range": 24,
+		"range": 36,
 		"type": "Heavy 1",
 		"strength": 4,
 		"AP": 0,
@@ -439,5 +439,140 @@
 		"AP": 0,
 		"damage": 1,
 		"abilities": "-"
+	},
+	{
+		"weapon": "grenade launcher",
+		"range": 24,
+		"type": "Assault D6 (Frag)",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose frag or krak grenades"
+	},
+	{
+		"weapon": "grenade launcher",
+		"range": 24,
+		"type": "Assault 1 (Krak)",
+		"strength": 6,
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "When attacking with this weapon, choose frag or krak grenades"
+	},
+	{
+		"weapon": "hot-shot lasgun",
+		"range": 18,
+		"type": "Rapid Fire 1",
+		"strength": 3,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "hot-shot laspistol",
+		"range": 6,
+		"type": "Pistol 1",
+		"strength": 3,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "hot-shot volley gun",
+		"range": 24,
+		"type": "Heavy 4",
+		"strength": 4,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "lasgun",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "laspistol",
+		"range": 12,
+		"type": "Rapid Fire 1",
+		"strength": 3,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "arc pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 6,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "arc rifle",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 6,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "flechette blaster",
+		"range": 12,
+		"type": "Pistol 5",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "galvanic rifle",
+		"range": 30,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -1."
+	},
+	{
+		"weapon": "phosphor blast pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "Attacks made with this weapon do not suffer the penalty to hit rolls for the target being obscured."
+	},
+	{
+		"weapon": "plasma caliver",
+		"range": 18,
+		"type": "Assault 2",
+		"strength": 7,
+		"AP": -3,
+		"damage": 1,
+		"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
+	},
+	{
+		"weapon": "radium carbine",
+		"range": 18,
+		"type": "Assault 3",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with a Damage of 3."
+	},
+	{
+		"weapon": "radium pistol",
+		"range": 12,
+		"type": "Assault 1",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with a Damage of 2."
 	}
   ]
