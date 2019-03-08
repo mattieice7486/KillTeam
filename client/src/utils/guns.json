@@ -574,5 +574,212 @@
 		"AP": 0,
 		"damage": 1,
 		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with a Damage of 2."
+	},
+	{
+		"weapon": "stubcarbine",
+		"range": 18,
+		"type": "Pistol 3",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "transuranic arquebus",
+		"range": 60,
+		"type": "Heavy 1",
+		"strength": 7,
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "This weapon cannot be fired if the firing model moved during the Movement phase. A model firing a transuranic arquebus does not suffer the penalty to hit rolls for the target being at long range. Each time you make a wound roll of 6+ for this weapon, it inflicts a mortal wound in addition to the normal damage."
+	},
+	{
+		"weapon": "arc maul",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "chordclaw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": "D3",
+		"abilities": "A chordclaw can only be used to make one attack each time this model fights. Each time you make a wound roll of 6+ with this weapon, the target suffers D3 mortal wounds instead of the normal damage."
+	},
+	{
+		"weapon": "taser goad",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each hit roll of 6+ with this weapon causes 3 hits rather than 1."
+	},
+	{
+		"weapon": "transonic blades",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+1",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ with this weapon, the target suffers a mortal wound instead of the normal damage."
+	},
+	{
+		"weapon": "transonic razor",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ with this weapon, the target suffers a mortal wound instead of the normal damage."
+	},
+	{
+		"weapon": "autogun",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "autopistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "heavy stubber",
+		"range": 36,
+		"type": "Heavy 3",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "shotgun",
+		"range": 12,
+		"type": "Assault 2",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "If the target is within half range, add 1 to this weapon's strength."
+	},
+	{
+		"weapon": "brutal assault weapon",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
+	},
+	{
+		"weapon": "blight grenades",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon."
+	},
+	{
+		"weapon": "blight launcher",
+		"range": 24,
+		"type": "Assault 2",
+		"strength": 6,
+		"AP": -2,
+		"damage": "D3",
+		"abilities": "You can re-roll wound rolls of 1 for this weapon."
+	},
+	{
+		"weapon": "plague belcher",
+		"range": 9,
+		"type": "Assault D6",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon. This weapon automatically hits its target."
+	},
+	{
+		"weapon": "plague spewer",
+		"range": 9,
+		"type": "Heavy D6",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon. This weapon automatically hits its target."
+	},
+	{
+		"weapon": "bubotic axe",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+1",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon."
+	},
+	{
+		"weapon": "flail of corruption",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -2,
+		"damage": 2,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon. Make D3 hit rolls each time you attack with this weapon."
+	},
+	{
+		"weapon": "great plague cleaver",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": "D6",
+		"abilities": "You can re-roll wound rolls of 1 for this weapon. When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "improvised weapon",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-."
+	},
+	{
+		"weapon": "mace of contagion",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -1,
+		"damage": 3,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon. When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "plague knife",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon."
+	},
+	{
+		"weapon": "plaguesword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll failed wound rolls for this weapon."
 	}
   ]
