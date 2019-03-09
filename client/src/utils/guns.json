@@ -781,5 +781,626 @@
 		"AP": 0,
 		"damage": 1,
 		"abilities": "You can re-roll failed wound rolls for this weapon."
+	},
+	{
+		"weapon": "inferno bolt pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 4,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "inferno boltgun",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "soulreaper cannon",
+		"range": 24,
+		"type": "Heavy 4",
+		"strength": 5,
+		"AP": -3,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "warpflame pistol",
+		"range": 6,
+		"type": "Pistol D6",
+		"strength": 3,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "warpflamer",
+		"range": 8,
+		"type": "Assault D6",
+		"strength": 4,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "force stave",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "tzaangor blades",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
+	},
+	{
+		"weapon": "aeldari missile launcher",
+		"range": 48,
+		"type": "Heavy D6 (Sunburst Missile)",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose frag or krak missiles."
+	},
+	{
+		"weapon": "aeldari missile launcher",
+		"range": 48,
+		"type": "Heavy 1 (Starshot Missile)",
+		"strength": 8,
+		"AP": -2,
+		"damage": "D6",
+		"abilities": "When attacking with this weapon, choose frag or krak missiles."
+	},
+	{
+		"weapon": "avenger shuriken catapult",
+		"range": 18,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -3."
+	},
+	{
+		"weapon": "bright lance",
+		"range": 36,
+		"type": "Heavy 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "-"
+	},
+	{
+		"weapon": "fusion gun",
+		"range": 12,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+	},
+	{
+		"weapon": "plasma grenade",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "ranger long rifle",
+		"range": 36,
+		"type": "Heavy 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "A model firing a Ranger long rifle does not suffer the penalty to hit rolls for the target being at long range. Each time you roll a wound roll of 6+ for this weapon, it inflicts a mortal wound in addition to any other damage."
+	},
+	{
+		"weapon": "scatter laser",
+		"range": 36,
+		"type": "Heavy 4",
+		"strength": 6,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "shuriken cannon",
+		"range": 24,
+		"type": "Assault 3",
+		"strength": 6,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -3."
+	},
+	{
+		"weapon": "shuriken catapult",
+		"range": 12,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -3."
+	},
+	{
+		"weapon": "shuriken pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -3."
+	},
+	{
+		"weapon": "starcannon",
+		"range": 36,
+		"type": "Heavy 2",
+		"strength": 6,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "aeldari blade",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll failed hit rolls for this weapon."
+	},
+	{
+		"weapon": "diresword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, the target suffers a mortal wound in addition to any other damage."
+	},
+	{
+		"weapon": "power glaive",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+1",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "blast pistol",
+		"range": 6,
+		"type": "Pistol 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "-"
+	},
+	{
+		"weapon": "blaster",
+		"range": 18,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "-"
+	},
+	{
+		"weapon": "dark lance",
+		"range": 36,
+		"type": "Heavy 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "-"
+	},
+	{
+		"weapon": "phantasm grenade launcher",
+		"range": 18,
+		"type": "Assault D3",
+		"strength": 1,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "If a model is hit by one or more phantasm grenade launchers, subtract 1 from its Leadership characteristic until the end of the battle round."
+	},
+	{
+		"weapon": "shredder",
+		"range": 12,
+		"type": "Assault D6",
+		"strength": 6,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "When attacking an INFANTRY model, re-roll failed wound rolls for this weapon."
+	},
+	{
+		"weapon": "splinter cannon",
+		"range": 36,
+		"type": "Rapid Fire 3",
+		"strength": "*",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon wounds on a 4+."
+	},
+	{
+		"weapon": "splinter pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": "*",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon wounds on a 4+."
+	},
+	{
+		"weapon": "splinter rifle",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": "*",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon wounds on a 4+."
+	},
+	{
+		"weapon": "agonizer",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "*",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "This weapon wounds on a 4+."
+	},
+	{
+		"weapon": "hekatarii blade",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
+	},
+	{
+		"weapon": "hydra gauntlets",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon. You can re-roll failed wound rolls for this weapon."
+	},
+	{
+		"weapon": "razorflails",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -3,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon. You can re-roll failed wound rolls for this weapon."
+	},
+	{
+		"weapon": "shardnet and impaler",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 2,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
+	},
+	{
+		"weapon": "fusion pistol",
+		"range": 6,
+		"type": "Pistol 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+	},
+	{
+		"weapon": "neuro disruptor",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 3,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "harlequin's blade",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "harlequin's caress",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "harlequin's embrace",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+1",
+		"AP": -3,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "harlequin's kiss",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+1",
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "gauss blaster",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 5,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "gauss flayer",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "synaptic disintegrator",
+		"range": 24,
+		"type": "Rapid Fire 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "A model firing a synaptic disintegrator does not suffer the penalty to hit rolls for the target being at long range. Each time you roll a wound roll of 6+ for this weapon, the target suffers a mortal wound in addition to any other damage."
+	},
+	{
+		"weapon": "tesla carbine",
+		"range": 24,
+		"type": "Assault 2",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each hit roll of 6+ with this weapon causes 3 hits."
+	},
+	{
+		"weapon": "flayer claws",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Re-roll failed wounds with this weapon"
+	},
+	{
+		"weapon": "big shoota",
+		"range": 36,
+		"type": "Assault 3",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "burna",
+		"range": 8,
+		"type": "Assault D3 (Ranged)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "burna",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "This weapon can be used as a ranged weapon and a melee weapon. When making shooting attacks or firing Overwatch with this weapon, use the ranged profile; when making close combat attacks, use the melee profile."
+	},
+	{
+		"weapon": "deffgun",
+		"range": 48,
+		"type": "Heavy D3",
+		"strength": 7,
+		"AP": -1,
+		"damage": 2,
+		"abilities": "-"
+	},
+	{
+		"weapon": "grot blasta",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "kombi weapon with rokkit launcha",
+		"range": 24,
+		"type": "Assault 1 (Rokkit Launcha)",
+		"strength": 8,
+		"AP": -2,
+		"damage": 3,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
+	},
+	{
+		"weapon": "kombi weapon with rokkit launcha",
+		"range": 18,
+		"type": "Assault 2 (Shoota)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
+	},
+	{
+		"weapon": "kombi weapon with skorcha",
+		"range": 8,
+		"type": "Assault D6 (Skorcha)",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "kombi weapon with skorcha",
+		"range": 18,
+		"type": "Assault 2 (Shoota)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
+	},
+	{
+		"weapon": "kustom mega blasta",
+		"range": 24,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "On an unmodified hit roll of 1, the bearer suffers a mortal wound."
+	},
+	{
+		"weapon": "rokkit launcha",
+		"range": 24,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -2,
+		"damage": 3,
+		"abilities": "-"
+	},
+	{
+		"weapon": "shoota",
+		"range": 18,
+		"type": "Assault 2",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "slugga",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "stikkbomb",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "big choppa",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": -1,
+		"damage": 2,
+		"abilities": "-"
+	},
+	{
+		"weapon": "choppa",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon"
+	},
+	{
+		"weapon": "power klaw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "burst cannon",
+		"range": 18,
+		"type": "Assault 4",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "fusion blaster",
+		"range": 18,
+		"type": "Assault 1",
+		"strength": 8,
+		"AP": -4,
+		"damage": "D6",
+		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
+	},
+	{
+		"weapon": "ion rifle",
+		"range": 30,
+		"type": "Rapid Fire 1 (Standard)",
+		"strength": 7,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one of the profiles."
+	},
+	{
+		"weapon": "ion rifle",
+		"range": 30,
+		"type": "Heavy D3 (Overcharge)",
+		"strength": 8,
+		"AP": -1,
+		"damage": 2,
+		"abilities": "When attacking with this weapon, choose one of the profiles."
+	},
+	{
+		"weapon": "markerlight",
+		"range": 36,
+		"type": "Heavy 1",
+		"strength": "-",
+		"AP": "-",
+		"damage": "-",
+		"abilities": "Markerlights (page 169 in the Kill Team Manual)."
+	},
+	{
+		"weapon": "missile pod",
+		"range": 36,
+		"type": "Assault 2",
+		"strength": 7,
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "-"
 	}
   ]
