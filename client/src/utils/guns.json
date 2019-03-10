@@ -60,7 +60,7 @@
 		"strength": 4,
 		"AP": 0,
 		"damage": 1,
-		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon."
 	},
 	{
 		"weapon": "combi-flamer",
@@ -78,7 +78,7 @@
 		"strength": 4,
 		"AP": 0,
 		"damage": 1,
-		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon."
 	},
 	{
 	  	"weapon": "combi-grav",
@@ -96,7 +96,7 @@
 		"strength": 4,
 		"AP": 0,
 		"damage": 1,
-		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon."
 	},
 	{
 		"weapon": "combi-melta",
@@ -114,7 +114,7 @@
 		"strength": 4,
 		"AP": 0,
 		"damage": 1,
-		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon"
+		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon."
 	},
 	{
 		"weapon": "combi-plasma",
@@ -231,7 +231,7 @@
 		"strength": 7,
 		"AP": -3,
 		"damage": 1,
-	  "abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
+	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
 	},
 	{
 		"weapon": "shock grenades",
@@ -267,7 +267,7 @@
 		"strength": "User",
 		"AP": 0,
 		"damage": 1,
-		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon"
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
 	},
 	{
 		"weapon": "combat knife",
@@ -276,7 +276,7 @@
 		"strength": "User",
 		"AP": 0,
 		"damage": 1,
-		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon"
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
 	},
 	{
 		"weapon": "power fist",
@@ -381,7 +381,7 @@
 		"weapon": "power maul",
 		"range": "Melee",
 		"type": "Melee",
-		"strength": "x2",
+		"strength": "+2",
 		"AP": -1,
 		"damage": 1,
 		"abilities": "-"
@@ -1402,5 +1402,383 @@
 		"AP": -1,
 		"damage": "D3",
 		"abilities": "-"
+	},
+	{
+		"weapon": "photon grenade",
+		"range": 12,
+		"type": "Grenade D6",
+		"strength": "-",
+		"AP": "-",
+		"damage": "-",
+		"abilities": "This weapon does not inflict any damage. Your opponent must subtract 1 from hit rolls made for INFANTRY models that have suffered any hits from photon grenades until the end of the battle round."
+	},
+	{
+		"weapon": "pulse blaster",
+		"range": 5,
+		"type": "Assault 2 (Close Range)",
+		"strength": 6,
+		"AP": -2,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one of the profiles."
+	},
+	{
+		"weapon": "pulse blaster",
+		"range": 10,
+		"type": "Assault 2 (Medium Range)",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one of the profiles."
+	},
+	{
+		"weapon": "pulse blaster",
+		"range": 15,
+		"type": "Assault 2 (Long Range)",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one of the profiles."
+	},
+	{
+		"weapon": "pulse carbine",
+		"range": 18,
+		"type": "Assault 2",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "pulse pistol",
+		"range": 12,
+		"type": "Pistol 1",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "pulse rifle",
+		"range": 30,
+		"type": "Rapid Fire 1",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "rail rifle",
+		"range": 30,
+		"type": "Rapid Fire 1",
+		"strength": 6,
+		"AP": -4,
+		"damage": "D3",
+		"abilities": "For each wound roll of 6+ made for this weapon, the target model suffers a mortal wound in addition to the normal damage."
+	},
+	{
+		"weapon": "smart missile system",
+		"range": 30,
+		"type": "Heavy 4",
+		"strength": 5,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon can be fired at models that are not visible to the bearer. If the target is not visible to the bearer, a 6 is required for a successful hit roll, irrespective of the firing model's Ballistic Skill or any modifiers."
+	},
+	{
+		"weapon": "barbed strangler",
+		"range": 36,
+		"type": "Assault D6",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "deathspitter",
+		"range": 24,
+		"type": "Assault 3",
+		"strength": 5,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "devourer",
+		"range": 18,
+		"type": "Assault 3",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "flesh hooks",
+		"range": 6,
+		"type": "Assault 2",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon can be fired within 1 inch of an enemy model, and can target enemy models within 1 inch of friendly models."
+	},
+	{
+		"weapon": "fleshborer",
+		"range": 12,
+		"type": "Assault 1",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "spinefists",
+		"range": 12,
+		"type": "Pistol *",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When a model fires this weapon, it makes a number shots equal to its Attacks characteristic."
+	},
+	{
+		"weapon": "venom cannon",
+		"range": 36,
+		"type": "Assault D3",
+		"strength": 8,
+		"AP": -2,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "acid maw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -3,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "boneswords",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "A model armed with boneswords can make 1 additional attack with them in the Fight phase."
+	},
+	{
+		"weapon": "grasping talons",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 2,
+		"abilities": "-"
+	},
+	{
+		"weapon": "lash whip and bonesword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "If the bearer is taken out of action in the Fight phase before it has made its attacks in that phase, it may immediately fight before being removed from the battlefield."
+	},
+	{
+		"weapon": "rending claws",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -4."
+	},
+	{
+		"weapon": "scything talons",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll hit rolls of 1 for this weapon. If the bearer has more than one pair of scything talons, it can make 1 additional attack with this weapon each time it fights."
+	},
+	{
+		"weapon": "blasting charge",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "demolition charge",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 8,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "Each demolition charge can only be used once per battle."
+	},
+	{
+		"weapon": "hand flamer",
+		"range": 6,
+		"type": "Pistol D3",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "This weapon automatically hits its target."
+	},
+	{
+		"weapon": "heavy stubber",
+		"range": 36,
+		"type": "Heavy 3",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "mining laser",
+		"range": 24,
+		"type": "Heavy 1",
+		"strength": 9,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "seismic cannon",
+		"range": 24,
+		"type": "Heavy 4 (Long-Wave)",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When attacking with this weapon, choose one of the profiles. All wound rolls of 6+ have an AP -4."
+	},
+	{
+		"weapon": "seismic cannon",
+		"range": 12,
+		"type": "Heavy 2 (Short-Wave)",
+		"strength": 6,
+		"AP": -1,
+		"damage": 2,
+		"abilities": "When attacking with this weapon, choose one of the profiles. All wound rolls of 6+ have an AP -4."
+	},
+	{
+		"weapon": "web pistol",
+		"range": 12,
+		"type": "Pistol D3",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When making a shooting attack with a web weapon, you can use either the Strength or Toughness characteristic of the target to determine the wound roll - whichever is lowest."
+	},
+	{
+		"weapon": "webber",
+		"range": 16,
+		"type": "Assault D3",
+		"strength": 4,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "When making a shooting attack with a web weapon, you can use either the Strength or Toughness characteristic of the target to determine the wound roll - whichever is lowest."
+	},
+	{
+		"weapon": "bonesword",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "cultist knife",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
+	},
+	{
+		"weapon": "heavy rock cutter",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -4,
+		"damage": 2,
+		"abilities": "Roll a D6 each time a model suffers damage from this weapon; if you roll higher than the model's remaining number of Wounds, it is instantly taken out of action. When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "heavy rock drill",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": 1,
+		"abilities": "Roll a D6 each time a model suffers damage from this weapon; on a 2+ the model suffers a mortal wound and you can roll another D6. This time, the model suffers a mortal wound on a 3+. Keep rolling a D6, increasing the score required to cause a mortal wound by 1 each time, until the model is taken out of action or the roll is failed."
+	},
+	{
+		"weapon": "heavy rock saw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -4,
+		"damage": 2,
+		"abilities": "-"
+	},
+	{
+		"weapon": "metamorph claw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "+2",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "metamorph talon",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Add 1 to all hit rolls for this weapon."
+	},
+	{
+		"weapon": "metamorph whip",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": 0,
+		"damage": 1,
+		"abilities": "If the bearer is taken out of action in the Fight phase before it has made its attacks in that phase, it may immediately fight before being removed from the battlefield."
+	},
+	{
+		"weapon": "power hammer",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "x2",
+		"AP": -3,
+		"damage": 3,
+		"abilities": "When attacking with this weapon, you must subtract 1 from the hit roll."
+	},
+	{
+		"weapon": "power pick",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -2,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "rending claw",
+		"range": "Melee",
+		"type": "Melee",
+		"strength": "User",
+		"AP": -1,
+		"damage": 1,
+		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -4."
 	}
   ]
