@@ -8,6 +8,10 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+3/11/2019
+Release 0.3.1
+* Finished adding entries to guns.json.
+
 3/7/2019
 Release 0.2.9
 * Squad page now correctly shows all equipment.
