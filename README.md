@@ -8,6 +8,14 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+3/21/2019
+Release 0.3.2
+* Added a random name generator (Ultramarines only currently).
+* Added an "Other Options" category for additional wargear.
+* Fixed the autofill bug where user had to click twice.
+* Selectors correctly clear when a new selection is picked.
+* Wargear Options now update equipment list.
+
 3/11/2019
 Release 0.3.1
 * Finished adding entries to guns.json.

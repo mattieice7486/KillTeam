@@ -31,10 +31,12 @@ class Units extends Component {
       sv: "",
       pts: "",
       wargearPts: "",
+      wargearPts2: "",
       total: 0,
       race: {},
       unitType: {},
       wargearOptions: {},
+      wargearOptions2: {},
       items: [],
       user: null
     };
@@ -72,6 +74,17 @@ class Units extends Component {
     });
   }
 
+	randomName = (event) => {
+		event.preventDefault();
+		var first = [
+			"Marius", "Agnathio", "Ollonius", "Cato", "Titus", "Agies", "Gaius", "Andrus", "Marcus", "Cassius"
+		];
+		var last = [
+			"Chronus", "Tarentus", "Dysorius", "Cassus", "Acastian", "Varenus", "Apollon", "Aggennor", "Castus", "Poladrus"
+		];
+		this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+	}
+
   componentDidUpdate() {
     var i;
     var sum = 0;
@@ -82,7 +95,7 @@ class Units extends Component {
         total: sum
       })
       }
-    }
+		}
     // only works on second click
     // if (this.state.total > 100) {
     //   alert("squad is over 100 points!")
@@ -90,7 +103,7 @@ class Units extends Component {
   }
 
   handleDatabaseSubmit(e) {
-    const itemsRef = firebase.database().ref('Users');
+		const itemsRef = firebase.database().ref('Users');
     if (this.state.user !== null) {
       const item = {
           user: this.state.user.displayName,
@@ -99,7 +112,7 @@ class Units extends Component {
           squadName: this.state.squadName,
           total: this.state.total
       }
-      itemsRef.push(item);
+			itemsRef.push(item)
     };
   };
 
@@ -124,7 +137,8 @@ class Units extends Component {
         wargearPts: "",
         race: {},
         unitType: {},
-        wargearOptions: {}
+        wargearOptions: {},
+        wargearOptions2: {}
       })
       )
       .catch(err => console.log(err));
@@ -164,7 +178,8 @@ class Units extends Component {
         pts: this.state.pts + this.state.wargearPts,
         race: this.state.race.label,
         unitType: this.state.unitType.label,
-        wargearOptions: this.state.wargearOptions.label
+        wargearOptions: this.state.wargearOptions.label,
+        wargearOptions2: this.state.wargearOptions2.label
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
@@ -187,33 +202,54 @@ class Units extends Component {
     }
   }
   handleChange1 = (race) => {
-    this.setState({race});
-    console.log(this.state.race)
+		this.setState({
+			race,
+			name: "",
+			equipment: "",
+			move: "",
+			ws: "",
+			bs: "",
+			str: "",
+			tough: "",
+			wounds: "",
+			att: "",
+			ld: "",
+			sv: "",
+			pts: "",
+			wargearPts: "",
+			unitType: {},
+			wargearOptions: {},
+			wargearOptions2: {}
+		});
   };
 
-  handleChange2 = (race) => {
-    this.setState({unitType: race})
-    console.log(this.state.unitType)
+  handleChange2 = (unitType) => {
+		this.setState({
+			unitType: unitType,
+			wargearOptions: {},
+			wargearOptions2: {}
+		})
     if (this.state.race.value === "Adeptus Astartes") {
-      this.setState({
-        move: 6,
+			this.setState({
+				move: 6,
         ws: 3,
         bs: 3,
         str: 4,
         tough: 4
       })
-    }
-    if (this.state.unitType.value === "Scout") {
-      this.setState({
-        wounds: 1,
+		}
+    if (unitType.value === "Scout") {
+			this.setState({
+				wounds: 1,
         att: 1,
         ld: 7,
         sv: 4,
         pts: 10,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
-    }
-    if (this.state.unitType.value === "Scout Gunner") {
+		}
+
+    if (unitType.value === "Scout Gunner") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -223,7 +259,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Scout Sergeant") {
+    if (unitType.value === "Scout Sergeant") {
       this.setState({
         wounds: 1,
         att: 2,
@@ -233,7 +269,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Tactical Marine") {
+    if (unitType.value === "Tactical Marine") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -243,7 +279,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Tactical Marine Gunner") {
+    if (unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wounds: 1,
         att: 1,
@@ -253,7 +289,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wounds: 1,
         att: 2,
@@ -263,7 +299,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Reiver") {
+    if (unitType.value === "Reiver") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -273,7 +309,7 @@ class Units extends Component {
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
-    if (this.state.unitType.value === "Reiver Sergeant") {
+    if (unitType.value === "Reiver Sergeant") {
       this.setState({
         wounds: 2,
         att: 3,
@@ -283,7 +319,7 @@ class Units extends Component {
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
-    if (this.state.unitType.value === "Intercessor") {
+    if (unitType.value === "Intercessor") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -293,7 +329,7 @@ class Units extends Component {
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Intercessor Gunner") {
+    if (unitType.value === "Intercessor Gunner") {
       this.setState({
         wounds: 2,
         att: 2,
@@ -303,7 +339,7 @@ class Units extends Component {
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Intercessor Sergeant") {
+    if (unitType.value === "Intercessor Sergeant") {
       this.setState({
         wounds: 2,
         att: 3,
@@ -328,28 +364,28 @@ class Units extends Component {
         equipment: "boltgun, frag grenades, krak grenades"
       })
     }
-    if (this.state.unitType.value === "Deathwatch Veteran") {
+    if (unitType.value === "Deathwatch Veteran") {
       this.setState({
         att: 2,
         ld: 8,
         pts: 14
       });
     }
-    if (this.state.unitType.value === "Deathwatch Veteran Gunner") {
+    if (unitType.value === "Deathwatch Veteran Gunner") {
       this.setState({
         att: 2,
         ld: 8,
         pts: 16
       });
     }
-    if (this.state.unitType.value === "Black Shield") {
+    if (unitType.value === "Black Shield") {
       this.setState({
         att: 3,
         ld: 8,
         pts: 16
       });
     }
-    if (this.state.unitType.value === "Watch Sergeant") {
+    if (unitType.value === "Watch Sergeant") {
       this.setState({
         att: 3,
         ld: 9,
@@ -371,21 +407,21 @@ class Units extends Component {
         equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       })
     }
-    if (this.state.unitType.value === "Grey Knight") {
+    if (unitType.value === "Grey Knight") {
       this.setState({
         att: 1,
         ld: 7,
         pts: 18
       });
     }
-    if (this.state.unitType.value === "Grey Knight Gunner") {
+    if (unitType.value === "Grey Knight Gunner") {
       this.setState({
         att: 1,
         ld: 7,
         pts: 18
       });
     }
-    if (this.state.unitType.value === "Justicar") {
+    if (unitType.value === "Justicar") {
       this.setState({
         att: 2,
         ld: 8,
@@ -403,7 +439,7 @@ class Units extends Component {
         wounds: 1
       })
     }
-    if (this.state.unitType.value === "Guardsman") {
+    if (unitType.value === "Guardsman") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -414,7 +450,7 @@ class Units extends Component {
         equipment: "lasgun, frag grenades"
       });
     }
-    if (this.state.unitType.value === "Guardsman Gunner") {
+    if (unitType.value === "Guardsman Gunner") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -425,7 +461,7 @@ class Units extends Component {
         equipment: "lasgun, frag grenades"
       });
     }
-    if (this.state.unitType.value === "Sergeant") {
+    if (unitType.value === "Sergeant") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -436,7 +472,7 @@ class Units extends Component {
         equipment: "lasgun, frag grenades"
       });
     }
-    if (this.state.unitType.value === "Special Weapons Guardsman") {
+    if (unitType.value === "Special Weapons Guardsman") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -447,7 +483,7 @@ class Units extends Component {
         equipment: "lasgun, frag grenades"
       });
     }
-    if (this.state.unitType.value === "Special Weapons Gunner") {
+    if (unitType.value === "Special Weapons Gunner") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -458,7 +494,7 @@ class Units extends Component {
         equipment: "lasgun, frag grenades"
       });
     }
-    if (this.state.unitType.value === "Scion") {
+    if (unitType.value === "Scion") {
       this.setState({
         ws: 4,
         bs: 3,
@@ -469,7 +505,7 @@ class Units extends Component {
         equipment: "hot-shot lasgun, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Scion Gunner") {
+    if (unitType.value === "Scion Gunner") {
       this.setState({
         ws: 4,
         bs: 3,
@@ -480,7 +516,7 @@ class Units extends Component {
         equipment: "hot-shot lasgun, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Tempestor") {
+    if (unitType.value === "Tempestor") {
       this.setState({
         ws: 3,
         bs: 3,
@@ -501,7 +537,7 @@ class Units extends Component {
         sv: 4
       })
     }
-    if (this.state.unitType.value === "Skitarii Ranger") {
+    if (unitType.value === "Skitarii Ranger") {
       this.setState({
         move: 6,
         ws: 4,
@@ -513,7 +549,7 @@ class Units extends Component {
         equipment: "galvanic rifle"
       });
     }
-    if (this.state.unitType.value === "Ranger Gunner") {
+    if (unitType.value === "Ranger Gunner") {
       this.setState({
         move: 6,
         ws: 4,
@@ -525,7 +561,7 @@ class Units extends Component {
         equipment: "galvanic rifle"
       });
     }
-    if (this.state.unitType.value === "Ranger Alpha") {
+    if (unitType.value === "Ranger Alpha") {
       this.setState({
         move: 6,
         ws: 4,
@@ -537,7 +573,7 @@ class Units extends Component {
         equipment: "galvanic rifle"
       });
     }
-    if (this.state.unitType.value === "Skitarii Vanguard") {
+    if (unitType.value === "Skitarii Vanguard") {
       this.setState({
         move: 6,
         ws: 4,
@@ -549,7 +585,7 @@ class Units extends Component {
         equipment: "radium carbine"
       });
     }
-    if (this.state.unitType.value === "Vanguard Gunner") {
+    if (unitType.value === "Vanguard Gunner") {
       this.setState({
         move: 6,
         ws: 4,
@@ -561,7 +597,7 @@ class Units extends Component {
         equipment: "radium carbine"
       });
     }
-    if (this.state.unitType.value === "Vanguard Alpha") {
+    if (unitType.value === "Vanguard Alpha") {
       this.setState({
         move: 6,
         ws: 4,
@@ -573,7 +609,7 @@ class Units extends Component {
         equipment: "radium carbine"
       });
     }
-    if (this.state.unitType.value === "Sicarian Ruststalker") {
+    if (unitType.value === "Sicarian Ruststalker") {
       this.setState({
         move: 8,
         ws: 3,
@@ -585,7 +621,7 @@ class Units extends Component {
         equipment: "transonic razor, chordclaw"
       });
     }
-    if (this.state.unitType.value === "Ruststalker Princeps") {
+    if (unitType.value === "Ruststalker Princeps") {
       this.setState({
         move: 8,
         ws: 3,
@@ -597,7 +633,7 @@ class Units extends Component {
         equipment: "transonic razor, chordclaw"
       });
     }
-    if (this.state.unitType.value === "Sicarian Infiltrator") {
+    if (unitType.value === "Sicarian Infiltrator") {
       this.setState({
         move: 8,
         ws: 3,
@@ -606,10 +642,10 @@ class Units extends Component {
         att: 2,
         ld: 6,
         pts: 14,
-        equipment: "stub carbine, powersword"
+        equipment: "stub carbine, power sword"
       });
     }
-    if (this.state.unitType.value === "Infiltrator Princeps") {
+    if (unitType.value === "Infiltrator Princeps") {
       this.setState({
         move: 8,
         ws: 3,
@@ -618,7 +654,7 @@ class Units extends Component {
         att: 3,
         ld: 7,
         pts: 15,
-        equipment: "stub carbine, powersword"
+        equipment: "stub carbine, power sword"
       });
     }
     ///////////////////////////////////
@@ -630,7 +666,7 @@ class Units extends Component {
         wounds: 1
       })
     }
-    if (this.state.unitType.value === "Chaos Cultist") {
+    if (unitType.value === "Chaos Cultist") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -643,7 +679,7 @@ class Units extends Component {
         equipment: "autogun"
       });
     }
-    if (this.state.unitType.value === "Chaos Cultist Gunner") {
+    if (unitType.value === "Chaos Cultist Gunner") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -656,7 +692,7 @@ class Units extends Component {
         equipment: "autogun"
       });
     }
-    if (this.state.unitType.value === "Cultist Champion") {
+    if (unitType.value === "Cultist Champion") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -669,7 +705,7 @@ class Units extends Component {
         equipment: "autogun"
       });
     }
-    if (this.state.unitType.value === "Chaos Space Marine") {
+    if (unitType.value === "Chaos Space Marine") {
       this.setState({
         ws: 3,
         bs: 3,
@@ -682,7 +718,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Chaos Space Marine Gunner") {
+    if (unitType.value === "Chaos Space Marine Gunner") {
       this.setState({
         ws: 3,
         bs: 3,
@@ -695,7 +731,7 @@ class Units extends Component {
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Aspiring Champion") {
+    if (unitType.value === "Aspiring Champion") {
       this.setState({
         ws: 3,
         bs: 3,
@@ -716,7 +752,7 @@ class Units extends Component {
         wounds: 1
       })
     }
-    if (this.state.unitType.value === "Plague Marine") {
+    if (unitType.value === "Plague Marine") {
       this.setState({
         move: 5,
         ws: 3,
@@ -727,10 +763,10 @@ class Units extends Component {
         ld: 7,
         sv: 3,
         pts: 14,
-        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+        equipment: "boltgun, plague knife, blight grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Plague Marine Gunner") {
+    if (unitType.value === "Plague Marine Gunner") {
       this.setState({
         move: 5,
         ws: 3,
@@ -741,10 +777,10 @@ class Units extends Component {
         ld: 7,
         sv: 3,
         pts: 15,
-        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+        equipment: "boltgun, plague knife, blight grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Plague Marine Fighter") {
+    if (unitType.value === "Plague Marine Fighter") {
       this.setState({
         move: 5,
         ws: 3,
@@ -755,10 +791,10 @@ class Units extends Component {
         ld: 7,
         sv: 3,
         pts: 15,
-        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+        equipment: "boltgun, plague knife, blight grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Plague Champion") {
+    if (unitType.value === "Plague Champion") {
       this.setState({
         move: 5,
         ws: 3,
@@ -769,10 +805,10 @@ class Units extends Component {
         ld: 8,
         sv: 3,
         pts: 15,
-        equipment: "plague knife, boltgun, blight grenades, krak grenades"
+        equipment: "boltgun, plague knife, blight grenades, krak grenades"
       });
     }
-    if (this.state.unitType.value === "Pox Walker") {
+    if (unitType.value === "Pox Walker") {
       this.setState({
         move: 4,
         ws: 5,
@@ -797,7 +833,7 @@ class Units extends Component {
         wounds: 1
       })
     }
-    if (this.state.unitType.value === "Rubric Marine") {
+    if (unitType.value === "Rubric Marine") {
       this.setState({
         move: 5,
         bs: 3,
@@ -808,7 +844,7 @@ class Units extends Component {
         equipment: "inferno boltgun"
       });
     }
-    if (this.state.unitType.value === "Rubric Marine Gunner") {
+    if (unitType.value === "Rubric Marine Gunner") {
       this.setState({
         move: 5,
         bs: 3,
@@ -819,7 +855,7 @@ class Units extends Component {
         equipment: "inferno boltgun"
       });
     }
-    if (this.state.unitType.value === "Aspiring Sorcerer") {
+    if (unitType.value === "Aspiring Sorcerer") {
       this.setState({
         move: 6,
         bs: 3,
@@ -830,7 +866,7 @@ class Units extends Component {
         equipment: "force stave, inferno bolt pistol"
       });
     }
-    if (this.state.unitType.value === "Tzaangor") {
+    if (unitType.value === "Tzaangor") {
       this.setState({
         move: 6,
         bs: 4,
@@ -841,7 +877,7 @@ class Units extends Component {
         equipment: "Tzaangor blades"
       });
     }
-    if (this.state.unitType.value === "Twistbray") {
+    if (unitType.value === "Twistbray") {
       this.setState({
         move: 6,
         bs: 4,
@@ -863,7 +899,7 @@ class Units extends Component {
         tough: 3,
       })
     }
-    if (this.state.unitType.value === "Guardian Defender") {
+    if (unitType.value === "Guardian Defender") {
       this.setState({
         ws: 3,
         wounds: 1,
@@ -874,7 +910,7 @@ class Units extends Component {
         equipment: "shuriken catapult, plasma grenades"
       });
     }
-    if (this.state.unitType.value === "Heavy Weapon Platform") {
+    if (unitType.value === "Heavy Weapon Platform") {
       this.setState({
         ws: 6,
         wounds: 2,
@@ -885,7 +921,7 @@ class Units extends Component {
         equipment: "shuriken cannon"
       });
     }
-    if (this.state.unitType.value === "Storm Guardian") {
+    if (unitType.value === "Storm Guardian") {
       this.setState({
         ws: 3,
         wounds: 1,
@@ -893,10 +929,10 @@ class Units extends Component {
         ld: 7,
         sv: 5,
         pts: 6,
-        equipment: "shuriken pistol, Aeldari blade, plasma grenades"
+        equipment: "shuriken pistol, aeldari blade, plasma grenades"
       });
     }
-    if (this.state.unitType.value === "Storm Guardian Gunner") {
+    if (unitType.value === "Storm Guardian Gunner") {
       this.setState({
         ws: 3,
         wounds: 1,
@@ -904,10 +940,10 @@ class Units extends Component {
         ld: 7,
         sv: 5,
         pts: 7,
-        equipment: "shuriken pistol, Aeldari blade, plasma grenades"
+        equipment: "shuriken pistol, aeldari blade, plasma grenades"
       });
     }
-    if (this.state.unitType.value === "Ranger") {
+    if (unitType.value === "Ranger") {
       this.setState({
         ws: 3,
         wounds: 1,
@@ -918,7 +954,7 @@ class Units extends Component {
         equipment: "shuriken pistol, ranger long rifle"
       });
     }
-    if (this.state.unitType.value === "Dire Avenger") {
+    if (unitType.value === "Dire Avenger") {
       this.setState({
         ws: 3,
         wounds: 1,
@@ -929,7 +965,7 @@ class Units extends Component {
         equipment: "shuriken pistol, ranger long rifle"
       });
     }
-    if (this.state.unitType.value === "Dire Avenger Exarch") {
+    if (unitType.value === "Dire Avenger Exarch") {
       this.setState({
         ws: 3,
         wounds: 2,
@@ -952,7 +988,7 @@ class Units extends Component {
         wounds: 1
       })
     }
-    if (this.state.unitType.value === "Kabalite Warrior") {
+    if (unitType.value === "Kabalite Warrior") {
       this.setState({
         move: 7,
         att: 1,
@@ -962,7 +998,7 @@ class Units extends Component {
         equipment: "splinter rifle"
       });
     }
-    if (this.state.unitType.value === "Kabalite Gunner") {
+    if (unitType.value === "Kabalite Gunner") {
       this.setState({
         move: 7,
         att: 1,
@@ -972,7 +1008,7 @@ class Units extends Component {
         equipment: "splinter rifle"
       });
     }
-    if (this.state.unitType.value === "Sybarite") {
+    if (unitType.value === "Sybarite") {
       this.setState({
         move: 7,
         att: 2,
@@ -982,7 +1018,7 @@ class Units extends Component {
         equipment: "splinter rifle"
       });
     }
-    if (this.state.unitType.value === "Wych") {
+    if (unitType.value === "Wych") {
       this.setState({
         move: 8,
         att: 2,
@@ -992,7 +1028,7 @@ class Units extends Component {
         equipment: "splinter pistol, Hekatarii blade, plasma grenades"
       });
     }
-    if (this.state.unitType.value === "Wych Fighter") {
+    if (unitType.value === "Wych Fighter") {
       this.setState({
         move: 8,
         att: 2,
@@ -1002,7 +1038,7 @@ class Units extends Component {
         equipment: "splinter pistol, Hekatarii blade, plasma grenades"
       });
     }
-    if (this.state.unitType.value === "Hekatrix") {
+    if (unitType.value === "Hekatrix") {
       this.setState({
         move: 8,
         att: 3,
@@ -1043,7 +1079,7 @@ class Units extends Component {
         ld: 7
       })
     }
-    if (this.state.unitType.value === "Necron Warrior") {
+    if (unitType.value === "Necron Warrior") {
       this.setState({
         bs: 3,
         att: 1,
@@ -1052,7 +1088,7 @@ class Units extends Component {
         equipment: "gauss flayer"
       });
     }
-    if (this.state.unitType.value === "Immortal") {
+    if (unitType.value === "Immortal") {
       this.setState({
         bs: 3,
         att: 1,
@@ -1061,7 +1097,7 @@ class Units extends Component {
         equipment: "gauss blaster"
       });
     }
-    if (this.state.unitType.value === "Flayed One") {
+    if (unitType.value === "Flayed One") {
       this.setState({
         bs: 6,
         att: 3,
@@ -1070,7 +1106,7 @@ class Units extends Component {
         equipment: "flayer claws"
       });
     }
-    if (this.state.unitType.value === "Deathmark") {
+    if (unitType.value === "Deathmark") {
       this.setState({
         bs: 3,
         att: 1,
@@ -1082,7 +1118,7 @@ class Units extends Component {
     ///////////////////////////////////
     //Orks
     ///////////////////////////////////
-    if (this.state.unitType.value === "Ork Boy") {
+    if (unitType.value === "Ork Boy") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1097,7 +1133,7 @@ class Units extends Component {
         equipment: "slugga, choppa, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Ork Boy Gunner") {
+    if (unitType.value === "Ork Boy Gunner") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1112,7 +1148,7 @@ class Units extends Component {
         equipment: "slugga, choppa, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Boss Nob") {
+    if (unitType.value === "Boss Nob") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1127,7 +1163,7 @@ class Units extends Component {
         equipment: "slugga, choppa, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Gretchin") {
+    if (unitType.value === "Gretchin") {
       this.setState({
         move: 5,
         ws: 5,
@@ -1142,7 +1178,7 @@ class Units extends Component {
         equipment: "grot blasta"
       })
     }
-    if (this.state.unitType.value === "Kommando") {
+    if (unitType.value === "Kommando") {
       this.setState({
         move: 6,
         ws: 3,
@@ -1157,7 +1193,7 @@ class Units extends Component {
         equipment: "slugga, choppa, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Kommando Boss Nob") {
+    if (unitType.value === "Kommando Boss Nob") {
       this.setState({
         move: 6,
         ws: 3,
@@ -1172,7 +1208,7 @@ class Units extends Component {
         equipment: "slugga, choppa, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Burna Boy") {
+    if (unitType.value === "Burna Boy") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1187,7 +1223,7 @@ class Units extends Component {
         equipment: "burna, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Burna Spanner") {
+    if (unitType.value === "Burna Spanner") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1202,7 +1238,7 @@ class Units extends Component {
         equipment: "burna, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Loota") {
+    if (unitType.value === "Loota") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1217,7 +1253,7 @@ class Units extends Component {
         equipment: "deffgun, stikkbombs"
       })
     }
-    if (this.state.unitType.value === "Loota Spanner") {
+    if (unitType.value === "Loota Spanner") {
       this.setState({
         move: 5,
         ws: 3,
@@ -1235,7 +1271,7 @@ class Units extends Component {
     ///////////////////////////////////
     //Tau Empire
     ///////////////////////////////////
-    if (this.state.unitType.value === "Shasla") {
+    if (unitType.value === "Shasla") {
       this.setState({
         move: 6,
         ws: 5,
@@ -1250,7 +1286,7 @@ class Units extends Component {
         equipment: "pulse rifle, photon grenades"
       })
     }
-    if (this.state.unitType.value === "Shasui") {
+    if (unitType.value === "Shasui") {
       this.setState({
         move: 6,
         ws: 5,
@@ -1265,7 +1301,7 @@ class Units extends Component {
         equipment: "pulse rifle, photon grenades"
       })
     }
-    if (this.state.unitType.value === "DS8 Tactical Support Turret") {
+    if (unitType.value === "DS8 Tactical Support Turret") {
       this.setState({
         move: 0,
         ws: 0,
@@ -1280,7 +1316,7 @@ class Units extends Component {
         equipment: "missile pod"
       })
     }
-    if (this.state.unitType.value === "Pathfinder") {
+    if (unitType.value === "Pathfinder") {
       this.setState({
         move: 7,
         ws: 5,
@@ -1295,7 +1331,7 @@ class Units extends Component {
         equipment: "pulse carbine, markerlight, photon grenades"
       })
     }
-    if (this.state.unitType.value === "Pathfinder Gunner") {
+    if (unitType.value === "Pathfinder Gunner") {
       this.setState({
         move: 7,
         ws: 5,
@@ -1310,7 +1346,7 @@ class Units extends Component {
         equipment: "pulse carbine, markerlight, photon grenades"
       })
     }
-    if (this.state.unitType.value === "Pathfinder Shasui") {
+    if (unitType.value === "Pathfinder Shasui") {
       this.setState({
         move: 7,
         ws: 5,
@@ -1325,7 +1361,7 @@ class Units extends Component {
         equipment: "pulse carbine, markerlight, photon grenades"
       })
     }
-    if (this.state.unitType.value === "Breacher Shasla") {
+    if (unitType.value === "Breacher Shasla") {
       this.setState({
         move: 6,
         ws: 5,
@@ -1340,7 +1376,7 @@ class Units extends Component {
         equipment: "pulse blaster, photon grenades"
       })
     }
-    if (this.state.unitType.value === "Breacher Shasui") {
+    if (unitType.value === "Breacher Shasui") {
       this.setState({
         move: 6,
         ws: 5,
@@ -1355,7 +1391,7 @@ class Units extends Component {
         equipment: "pulse blaster, photon grenades"
       })
     }
-    if (this.state.unitType.value === "DS8 Tactical Support Turret") {
+    if (unitType.value === "DS8 Tactical Support Turret") {
       this.setState({
         move: 0,
         ws: 0,
@@ -1370,7 +1406,7 @@ class Units extends Component {
         equipment: "missile pod"
       })
     }
-    if (this.state.unitType.value === "Stealth Shasui") {
+    if (unitType.value === "Stealth Shasui") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1385,7 +1421,7 @@ class Units extends Component {
         equipment: "burst cannon"
       })
     }
-    if (this.state.unitType.value === "Stealth Shasvre") {
+    if (unitType.value === "Stealth Shasvre") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1400,7 +1436,7 @@ class Units extends Component {
         equipment: "burst cannon"
       })
     }
-    if (this.state.unitType.value === "MV1 Gun Drone") {
+    if (unitType.value === "MV1 Gun Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1415,7 +1451,7 @@ class Units extends Component {
         equipment: "two pulse carbines"
       })
     }
-    if (this.state.unitType.value === "MV4 Shield Drone") {
+    if (unitType.value === "MV4 Shield Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1430,7 +1466,7 @@ class Units extends Component {
         equipment: "shield generator"
       })
     }
-    if (this.state.unitType.value === "MV7 Marker Drone") {
+    if (unitType.value === "MV7 Marker Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1445,7 +1481,7 @@ class Units extends Component {
         equipment: "markerlight"
       })
     }
-    if (this.state.unitType.value === "MV36 Guardian Drone") {
+    if (unitType.value === "MV36 Guardian Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1460,7 +1496,7 @@ class Units extends Component {
         equipment: "none"
       })
     }
-    if (this.state.unitType.value === "MV33 Grav-Inhibitor Drone") {
+    if (unitType.value === "MV33 Grav-Inhibitor Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1475,7 +1511,7 @@ class Units extends Component {
         equipment: "none"
       })
     }
-    if (this.state.unitType.value ==="MV31 Pulse Accelerator Drone") {
+    if (unitType.value ==="MV31 Pulse Accelerator Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1490,7 +1526,7 @@ class Units extends Component {
         equipment: "none"
       })
     }
-    if (this.state.unitType.value === "MB3 Recon Drone") {
+    if (unitType.value === "MB3 Recon Drone") {
       this.setState({
         move: 8,
         ws: 5,
@@ -1508,7 +1544,7 @@ class Units extends Component {
     ///////////////////////////////////
     //Tyranids
     ///////////////////////////////////
-    if (this.state.unitType.value === "Termagant") {
+    if (unitType.value === "Termagant") {
       this.setState({
         move: 6,
         ws: 4,
@@ -1523,7 +1559,7 @@ class Units extends Component {
         equipment: "fleshborer"
       })
     }
-    if (this.state.unitType.value === "Hormagaunt") {
+    if (unitType.value === "Hormagaunt") {
       this.setState({
         move: 8,
         ws: 4,
@@ -1538,7 +1574,7 @@ class Units extends Component {
         equipment: "scything talons"
       })
     }
-    if (this.state.unitType.value === "Lictor") {
+    if (unitType.value === "Lictor") {
       this.setState({
         move: 9,
         ws: 2,
@@ -1553,7 +1589,7 @@ class Units extends Component {
         equipment: "flesh hooks, grasping talons, rending claws"
       })
     }
-    if (this.state.unitType.value === "Tyranid Warrior") {
+    if (unitType.value === "Tyranid Warrior") {
       this.setState({
         move: 6,
         ws: 3,
@@ -1568,7 +1604,7 @@ class Units extends Component {
         equipment: "scything talons, devourer"
       })
     }
-    if (this.state.unitType.value === "Tyranid Warrior Gunner") {
+    if (unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         move: 6,
         ws: 3,
@@ -1583,7 +1619,7 @@ class Units extends Component {
         equipment: "scything talons, devourer"
       })
     }
-    if (this.state.unitType.value === "Genestealer") {
+    if (unitType.value === "Genestealer") {
       this.setState({
         move: 8,
         ws: 3,
@@ -1607,7 +1643,7 @@ class Units extends Component {
         sv: 5
       })
     }
-    if (this.state.unitType.value === "Acolyte Hybrid") {
+    if (unitType.value === "Acolyte Hybrid") {
       this.setState({
         ws: 3,
         bs: 4,
@@ -1620,7 +1656,7 @@ class Units extends Component {
         equipment: "autopistol, cultist knife, rending claw, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Acolyte Fighter") {
+    if (unitType.value === "Acolyte Fighter") {
       this.setState({
         ws: 3,
         bs: 4,
@@ -1633,7 +1669,7 @@ class Units extends Component {
         equipment: "autopistol, cultist knife, rending claw, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Acolyte Leader") {
+    if (unitType.value === "Acolyte Leader") {
       this.setState({
         ws: 3,
         bs: 4,
@@ -1646,7 +1682,7 @@ class Units extends Component {
         equipment: "autopistol, cultist knife, rending claw, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Aberrant") {
+    if (unitType.value === "Aberrant") {
       this.setState({
         ws: 3,
         bs: 6,
@@ -1659,7 +1695,7 @@ class Units extends Component {
         equipment: "power pick, rending claw"
       });
     }
-    if (this.state.unitType.value === "Neophyte Hybrid") {
+    if (unitType.value === "Neophyte Hybrid") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -1672,7 +1708,7 @@ class Units extends Component {
         equipment: "autogun, autopistol, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Neophyte Gunner") {
+    if (unitType.value === "Neophyte Gunner") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -1685,7 +1721,7 @@ class Units extends Component {
         equipment: "autogun, autopistol, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Neophyte Leader") {
+    if (unitType.value === "Neophyte Leader") {
       this.setState({
         ws: 4,
         bs: 4,
@@ -1698,7 +1734,7 @@ class Units extends Component {
         equipment: "autogun, autopistol, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Hybrid Metamorph") {
+    if (unitType.value === "Hybrid Metamorph") {
       this.setState({
         ws: 3,
         bs: 4,
@@ -1711,7 +1747,7 @@ class Units extends Component {
         equipment: "autopistol, rending claw, metamorph talon, blasting charges"
       });
     }
-    if (this.state.unitType.value === "Hybrid Leader") {
+    if (unitType.value === "Hybrid Leader") {
       this.setState({
         ws: 3,
         bs: 4,
@@ -1726,357 +1762,343 @@ class Units extends Component {
     }
   }
 
-  handleChange3 = (unitType) => {
-    this.setState({wargearOptions: unitType})
-    if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Tactical Marine Gunner") {
+  handleChange3 = (wargearOptions) => {
+    this.setState({wargearOptions: wargearOptions})
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "flamer" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "flamer" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "flamer, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "meltagun" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "meltagun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "plasma gun" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "plasma gun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-gun" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "grav-gun" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 2,
         equipment: "grav-gun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "missile launcher" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "missile launcher" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 5,
         equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Tactical Marine Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Tactical Marine Sergeant") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "combi-flamer" && this.state.unitType.value === "Tactical Marine Sergeant") {
+		if (wargearOptions.value === "combi-flamer" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 3,
         equipment: "combi-flamer, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "combi-grav" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "combi-grav" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "combi-grav, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "combi-melta" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 3,
         equipment: "combi-melta, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 3,
         equipment: "combi-plasma, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "bolt pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "bolt pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 1,
         equipment: "auspex, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "bolt pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "bolt pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "bolt pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "bolt pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 4,
         equipment: "power fist, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "power sword, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "plasma pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "plasma pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "auspex, plasma pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "plasma pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "plasma pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 1,
         equipment: "chainsword, plasma pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "plasma pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "plasma pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 5,
         equipment: "power fist, plasma pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 3,
         equipment: "power sword, plasma pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "grav-pistol auspex" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "auspex, grav-pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "grav-pistol chainsword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 1,
         equipment: "chainsword, grav-pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "grav-pistol power fist" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 5,
         equipment: "power fist, grav-pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
+    if (wargearOptions.value === "grav-pistol power sword" && this.state.unitType.value === "Tactical Marine Sergeant") {
       this.setState({
         wargearPts: 3,
         equipment: "power sword, grav-pistol, frag grenades, krak grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Scout") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Scout") {
       this.setState({
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Scout") {
+		if (wargearOptions.value === "combat knife" && this.state.unitType.value === "Scout") {
       this.setState({
         wargearPts: 0,
         equipment: "combat knife, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout") {
+    if (wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout") {
       this.setState({
         wargearPts: 0,
         equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout") {
+    if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout") {
       this.setState({
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Scout Gunner") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Scout Gunner") {
+		if (wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "missile launcher" && this.state.unitType.value === "Scout Gunner") {
+    if (wargearOptions.value === "missile launcher" && this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wargearPts: 5,
         equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "missile launcher camo cloak" && this.state.unitType.value === "Scout Gunner") {
+    if (wargearOptions.value === "missile launcher camo cloak" && this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wargearPts: 6,
         equipment: "missile launcher, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Gunner") {
+    if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Gunner") {
       this.setState({
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Scout Sergeant") {
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Scout Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout Sergeant") {
+		if (wargearOptions.value === "astartes shotgun" && this.state.unitType.value === "Scout Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "chainsword" && this.state.unitType.value === "Scout Sergeant") {
+    if (wargearOptions.value === "chainsword" && this.state.unitType.value === "Scout Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Sergeant") {
+    if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unitType.value === "Scout Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Intercessor") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Intercessor") {
       this.setState({
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "auto bolt rifle" && this.state.unitType.value === "Intercessor") {
+		if (wargearOptions.value === "auto bolt rifle" && this.state.unitType.value === "Intercessor") {
       this.setState({
         wargearPts: 0,
         equipment: "auto bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "stalker bolt rifle" && this.state.unitType.value === "Intercessor") {
+    if (wargearOptions.value === "stalker bolt rifle" && this.state.unitType.value === "Intercessor") {
       this.setState({
         wargearPts: 0,
         equipment: "stalker bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Intercessor Gunner") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Intercessor Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
 			});
 		}
-		if (this.state.wargearOptions.value === "auxiliary grenade launcher" && this.state.unitType.value === "Intercessor Gunner") {
+		if (wargearOptions.value === "auxiliary grenade launcher" && this.state.unitType.value === "Intercessor Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "auxiliary grenade launcher, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Intercessor Sergeant") {
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Intercessor Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
 			});
 		}
-    if (this.state.wargearOptions.value === "chainsword" && this.state.unitType.value === "Intercessor Sergeant") {
+    if (wargearOptions.value === "chainsword" && this.state.unitType.value === "Intercessor Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "chainsword, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "power sword" && this.state.unitType.value === "Intercessor Sergeant") {
+    if (wargearOptions.value === "power sword" && this.state.unitType.value === "Intercessor Sergeant") {
       this.setState({
         wargearPts: 2,
         equipment: "power sword, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Reiver") {
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts: 0,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
 			});
 		}
-    if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver") {
+    if (wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts: 0,
         equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-chute" && this.state.unitType.value === "Reiver") {
-      this.setState({
-        wargearPts: 1,
-        equipment: "grav-chute, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
-      });
-    }
-    if (this.state.wargearOptions.value === "grapnel launcher" && this.state.unitType.value === "Reiver") {
-      this.setState({
-        wargearPts: 1,
-        equipment: "grapnel launcher, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
-      });
-		}
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Reiver Sergeant") {
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
 			});
 		}
-    if (this.state.wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver Sergeant") {
+    if (wargearOptions.value === "combat knife" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts: 0,
         equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
-    if (this.state.wargearOptions.value === "grav-chute" && this.state.unitType.value === "Reiver Sergeant") {
-      this.setState({
-        wargearPts: 1,
-        equipment: "grav-chute, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
-      });
-    }
-    if (this.state.wargearOptions.value === "grapnel launcher" && this.state.unitType.value === "Reiver Sergeant") {
-      this.setState({
-        wargearPts: 1,
-        equipment: "grapnel launcher, bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
-      });
-    }
-    if (this.state.wargearOptions.value === "combi-melta" && this.state.unitType.value === "Deathwatch Veteran") {
+
+    if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 3,
         equipment: "combi-melta, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Deathwatch Veteran") {
+    if (wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 4,
         equipment: "combi-plasma, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Deathwatch Veteran") {
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 4,
         equipment: "stalker pattern boltgun, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+    if (wargearOptions.value === "power maul" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 2,
         equipment: "power maul, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+    if (wargearOptions.value === "power sword" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 2,
         equipment: "power sword, frag grenades, krak grenades"
       });
     }
-    if (this.state.wargearOptions.value === "storm shield" && this.state.unitType.value === "Deathwatch Veteran") {
+    if (wargearOptions.value === "storm shield" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 2,
         equipment: "storm shield, frag grenades, krak grenades"
@@ -2086,74 +2108,913 @@ class Units extends Component {
 
 
 
-    if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Grey Knight") {
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Grey Knight") {
       this.setState({
         wargearPts: 0,
         equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-    if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Justicar") {
-      this.setState({
-        wargearPts: 0,
-        equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+    if (wargearOptions.value === "nemesis force halberd" && this.state.unitType.value === "Grey Knight") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "nemesis force halberd, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-    if (this.state.wargearOptions.value === "nemesis force halberd" && (this.state.unitType.value === "Grey Knight" || "Justicar")) {
+    if (wargearOptions.value === "nemesis daemon hammer" && this.state.unitType.value === "Grey Knight") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "nemesis daemon hammer, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+      });
+    }
+    if (wargearOptions.value === "nemesis warding stave" && this.state.unitType.value === "Grey Knight") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "nemesis warding stave, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+      });
+    }
+    if (wargearOptions.value === "two nemesis falchions" && this.state.unitType.value === "Grey Knight") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "two nemesis falchions, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+      });
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Justicar") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
+			});
+		}
+    if (wargearOptions.value === "nemesis force halberd" && this.state.unitType.value === "Justicar") {
       this.setState({
         wargearPts: 0,
         equipment: "nemesis force halberd, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-    if (this.state.wargearOptions.value === "nemesis daemon hammer" && (this.state.unitType.value === "Grey Knight" || "Justicar")) {
+    if (wargearOptions.value === "nemesis daemon hammer" && this.state.unitType.value === "Justicar") {
       this.setState({
         wargearPts: 2,
         equipment: "nemesis daemon hammer, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-    if (this.state.wargearOptions.value === "nemesis warding stave" && (this.state.unitType.value === "Grey Knight" || "Justicar")) {
+    if (wargearOptions.value === "nemesis warding stave" && this.state.unitType.value === "Justicar") {
       this.setState({
         wargearPts: 0,
         equipment: "nemesis warding stave, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-    if (this.state.wargearOptions.value === "two nemesis falchions" && (this.state.unitType.value === "Grey Knight" || "Justicar")) {
+    if (wargearOptions.value === "two nemesis falchions" && this.state.unitType.value === "Justicar") {
       this.setState({
         wargearPts: 1,
         equipment: "two nemesis falchions, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
 		}
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Grey Knight Gunner") {
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Grey Knight Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-		if (this.state.wargearOptions.value === "incinerator" && this.state.unitType.value === "Grey Knight Gunner") {
+		if (wargearOptions.value === "incinerator" && this.state.unitType.value === "Grey Knight Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "incinerator, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-		if (this.state.wargearOptions.value === "psilencer" && this.state.unitType.value === "Grey Knight Gunner") {
+		if (wargearOptions.value === "psilencer" && this.state.unitType.value === "Grey Knight Gunner") {
       this.setState({
         wargearPts: 3,
         equipment: "psilencer, frag grenades, krak grenades, psyk-out grenades"
       });
     }
-		if (this.state.wargearOptions.value === "psycannon" && this.state.unitType.value === "Grey Knight Gunner") {
+		if (wargearOptions.value === "psycannon" && this.state.unitType.value === "Grey Knight Gunner") {
       this.setState({
         wargearPts: 2,
         equipment: "psycannon, frag grenades, krak grenades, psyk-out grenades"
       });
-    }
-		if (this.state.wargearOptions.value === "none" && this.state.unitType.value === "Guardsman") {
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Guardsman Gunner") {
       this.setState({
         wargearPts: 0,
         equipment: "lasgun, frag grenades"
       });
     }
-    console.log(this.state.wargearOptions)
-  }
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "flamer, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "grenade launcher" && this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "grenade launcher, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "meltagun, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "plasma gun, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "sniper rifle" && this.state.unitType.value === "Guardsman Gunner") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "sniper rifle, frag grenades"
+      });
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "laspistol, chainsword, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "bolt pistol" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "bolt pistol, chainsword, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma pistol" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "plasma pistol, chainsword, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma pistol" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "plasma pistol, power sword, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "bolt pistol, power sword, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Sergeant") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "plasma pistol, power sword, frag grenades"
+      });
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "lasgun, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "flamer, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "grenade launcher" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 2,
+        equipment: "grenade launcher, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "meltagun, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "plasma gun, frag grenades"
+      });
+    }
+		if (wargearOptions.value === "sniper rifle" && this.state.unitType.value === "Special Weapons Gunner") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "sniper rifle, frag grenades"
+      });
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Scion Gunner") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "hot-shot lasgun, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Scion Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "flamer, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Scion Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "meltagun, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Scion Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "plasma gun, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "hot-shot volley gun" && this.state.unitType.value === "Scion Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "hot-shot volley gun, frag grenades, krak grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Tempestor") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "hot-shot laspistol, chainsword, chainsword, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "bolt pistol" && this.state.unitType.value === "Tempestor") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "bolt pistol, chainsword, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "plasma pistol" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "plasma pistol, chainsword, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "power sword" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "hot-shot laspistol, power sword, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "bolt pistol, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 2,
+				equipment: "plasma pistol, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol power fist" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma pistol, power fist, frag grenades, krak grenades"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Ranger Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "galvanic rifle"
+			});
+		}
+		if (wargearOptions.value === "arc rifle" && this.state.unitType.value === "Ranger Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc rifle"
+			});
+		}
+		if (wargearOptions.value === "plasma caliver" && this.state.unitType.value === "Ranger Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma caliver"
+			});
+		}
+		if (wargearOptions.value === "transuranic arquebus" && this.state.unitType.value === "Ranger Gunner") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "transuranic arquebus"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "galvanic rifle"
+			});
+		}
+		if (wargearOptions.value === "arc pistol arc maul" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "arc pistol power sword" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "arc pistol taser goad" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "arc pistol, taser goad"
+			});
+		}
+		if (wargearOptions.value === "radium pistol arc maul" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "radium pistol power sword" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "radium pistol taser goad" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "radium pistol, taser goad"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol arc maul" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "phosphor blast pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol power sword" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "phosphor blast pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol taser goad" && this.state.unitType.value === "Ranger Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "phosphor blast pistol, taser goad"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Vanguard Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium carbine"
+			});
+		}
+		if (wargearOptions.value === "arc rifle" && this.state.unitType.value === "Vanguard Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc rifle"
+			});
+		}
+		if (wargearOptions.value === "plasma caliver" && this.state.unitType.value === "Vanguard Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma caliver"
+			});
+		}
+		if (wargearOptions.value === "transuranic arquebus" && this.state.unitType.value === "Vanguard Gunner") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "transuranic arquebus"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium carbine"
+			});
+		}
+		if (wargearOptions.value === "arc pistol arc maul" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "arc pistol power sword" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "arc pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "arc pistol taser goad" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "arc pistol, taser goad"
+			});
+		}
+		if (wargearOptions.value === "radium pistol arc maul" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "radium pistol power sword" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "radium pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "radium pistol taser goad" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "radium pistol, taser goad"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol arc maul" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "phosphor blast pistol, arc maul"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol power sword" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "phosphor blast pistol, power sword"
+			});
+		}
+		if (wargearOptions.value === "phosphor blast pistol taser goad" && this.state.unitType.value === "Vanguard Alpha") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "phosphor blast pistol, taser goad"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Sicarian Ruststalker") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "transonic razor, chordclaw"
+			});
+		}
+		if (wargearOptions.value === "transonic blades" && this.state.unitType.value === "Sicarian Ruststalker") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "transonic blades"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Ruststalker Princeps") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "transonic razor, chordclaw"
+			});
+		}
+		if (wargearOptions.value === "transonic blades" && this.state.unitType.value === "Ruststalker Princeps") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "transonic blades, chordclaw"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Sicarian Infiltrator") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "stub carbine, power sword"
+			});
+		}
+		if (wargearOptions.value === "flechette blaster taser goad" && this.state.unitType.value === "Sicarian Infiltrator") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "flechette blaster, taser goad"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Infiltrator Princeps") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "stub carbine, power sword"
+			});
+		}
+		if (wargearOptions.value === "flechette blaster taser goad" && this.state.unitType.value === "Infiltrator Princeps") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "flechette blaster, taser goad"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Chaos Cultist") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "autogun"
+			});
+		}
+		if (wargearOptions.value === "brutal assault weapon autopistol" && this.state.unitType.value === "Chaos Cultist") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "brutal assault weapon, autopistol"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Chaos Cultist Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "autogun"
+			});
+		}
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Chaos Cultist Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "flamer"
+			});
+		}
+		if (wargearOptions.value === "heavy stubber" && this.state.unitType.value === "Chaos Cultist Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "heavy stubber"
+			});
+		}
+		
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Cultist Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "autogun"
+			});
+		}
+		if (wargearOptions.value === "shotgun" && this.state.unitType.value === "Cultist Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "shotgun"
+			});
+		}
+		if (wargearOptions.value === "brutal assault weapon autopistol" && this.state.unitType.value === "Cultist Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "brutal assault weapon, autopistol"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Chaos Space Marine") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "chainsword" && this.state.unitType.value === "Chaos Space Marine") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Chaos Space Marine Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Chaos Space Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "flamer, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Chaos Space Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "meltagun, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Chaos Space Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma gun, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "heavy bolter" && this.state.unitType.value === "Chaos Space Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
+			});
+		}		
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "bolt pistol chainsword" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "bolt pistol power fist" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "power fist, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 2,
+				equipment: "power sword, bolt pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol chainsword" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "chainsword, plasma pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol power fist" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "power fist, plasma pistol, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol power sword" && this.state.unitType.value === "Aspiring Champion") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "power sword, plasma pistol, frag grenades, krak grenades"
+			});
+		}
+				
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "blight launcher" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "blight launcher, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "meltagun" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "meltagun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma gun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plague belcher" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plague belcher, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plague spewer" && this.state.unitType.value === "Plague Marine Gunner") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "plague spewer, plague knife, blight grenades, krak grenades"
+			});
+		}		
+				
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "bubotic axe" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 2,
+				equipment: "bubotic axe, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "great plague cleaver" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "great plague cleaver, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "flail of corruption" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "flail of corruption, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "second plague knife" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "plague knife, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "mace of corruption bubotic axe" && this.state.unitType.value === "Plague Marine Fighter") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "mace of corruption, bubotic axe, plague knife, blight grenades, krak grenades"
+			});
+		}		
+				
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plaguesword" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "plaguesword, boltgun, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "bolt pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "bolt pistol, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "plasma pistol, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plasma gun" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plasma gun, plague knife, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "power fist" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "boltgun, power fist, blight grenades, krak grenades"
+			});
+		}		
+		if (wargearOptions.value === "plaguesword bolt pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "plaguesword, bolt pistol, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plaguesword plasma pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "plaguesword, plasma pistol, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "plaguesword plasma gun" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "plaguesword, plasma gun, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "power fist bolt pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "power fist, bolt pistol, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "power fist plasma pistol" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "power fist, plasma pistol, blight grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "power fist plasma gun" && this.state.unitType.value === "Plague Champion") {
+			this.setState({
+				wargearPts: 7,
+				equipment: "power fist, plasma gun, blight grenades, krak grenades"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Rubric Marine") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "inferno boltgun"
+			});
+		}
+		if (wargearOptions.value === "warpflamer" && this.state.unitType.value === "Rubric Marine") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "warpflamer"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Rubric Marine Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "inferno boltgun"
+			});
+		}
+		if (wargearOptions.value === "soulreaper cannon" && this.state.unitType.value === "Rubric Marine Gunner") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "soulreaper cannon"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Aspiring Sorcerer") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "force stave, inferno bolt pistol"
+			});
+		}
+		if (wargearOptions.value === "warpflame pistol" && this.state.unitType.value === "Aspiring Sorcerer") {
+			this.setState({
+				wargearPts: 1,
+				equipment: "force stave, warpflame pistol"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Tzaangor") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "tzaangor blades"
+			});
+		}
+		if (wargearOptions.value === "autopistol chainsword" && this.state.unitType.value === "Tzaangor") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "autopistol, chainsword"
+			});
+		}
+		
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Heavy Weapon Platform") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "shuriken cannon"
+			});
+		}
+		if (wargearOptions.value === "aeldari missile launcher" && this.state.unitType.value === "Heavy Weapon Platform") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "aeldari missile launcher"
+			});
+		}
+		if (wargearOptions.value === "bright lance" && this.state.unitType.value === "Heavy Weapon Platform") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "bright lance"
+			});
+		}
+		if (wargearOptions.value === "scatter laser" && this.state.unitType.value === "Heavy Weapon Platform") {
+			this.setState({
+				wargearPts: 2,
+				equipment: "scatter laser"
+			});
+		}
+		if (wargearOptions.value === "starcannon" && this.state.unitType.value === "Heavy Weapon Platform") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "starcannon"
+			});
+		}
+				
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Storm Guardian") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "shuriken pistol, aeldari blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "chainsword" && this.state.unitType.value === "Storm Guardian") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "shuriken pistol, chainsword, plasma grenades"
+			});
+		}
+				
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Storm Guardian Gunner") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "shuriken pistol, aeldari blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Storm Guardian Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "flamer, aeldari blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "fusion gun" && this.state.unitType.value === "Storm Guardian Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "fusion gun, aeldari blade, plasma grenades"
+			});
+		}
+	}
+	
+	handleChange4 = (wargearOptions2) => {
+    this.setState({wargearOptions2: wargearOptions2})
+    if (this.state.wargearOptions2.value === "none" && this.state.unitType.value === "Tactical Marine Gunner") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+      });
+    }
+	}
 
   render() {
     const options1 = [
@@ -2186,14 +3047,17 @@ class Units extends Component {
       {value: 'Intercessor Gunner', label: 'Intercessor Gunner', link: 'Adeptus Astartes'},
       {value: 'Intercessor Sergeant', label: 'Intercessor Sergeant', link: 'Adeptus Astartes'},
       {value: 'Reiver', label: 'Reiver', link: 'Adeptus Astartes'},
-      {value: 'Reiver Sergeant', label: 'Reiver Sergeant', link: 'Adeptus Astartes'},
+			{value: 'Reiver Sergeant', label: 'Reiver Sergeant', link: 'Adeptus Astartes'},
+			
       {value: 'Deathwatch Veteran', label: 'Deathwatch Veteran', link: 'Deathwatch'},
       {value: 'Deathwatch Veteran Gunner', label: 'Deathwatch Veteran Gunner', link: 'Deathwatch'},
       {value: 'Black Shield', label: 'Black Shield', link: 'Deathwatch'},
-      {value: 'Watch Sergeant', label: 'Watch Sergeant', link: 'Deathwatch'},
+			{value: 'Watch Sergeant', label: 'Watch Sergeant', link: 'Deathwatch'},
+			
       {value: 'Grey Knight', label: 'Grey Knight', link: 'Grey Knights'},
       {value: 'Grey Knight Gunner', label: 'Grey Knight Gunner', link: 'Grey Knights'},
-      {value: 'Justicar', label: 'Justicar', link: 'Grey Knights'},
+			{value: 'Justicar', label: 'Justicar', link: 'Grey Knights'},
+			
       {value: 'Guardsman', label: 'Guardsman', link: 'Astra Militarum'},
       {value: 'Guardsman Gunner', label: 'Guardsman Gunner', link: 'Astra Militarum'},
       {value: 'Sergeant', label: 'Sergeant', link: 'Astra Militarum'},
@@ -2201,7 +3065,8 @@ class Units extends Component {
       {value: 'Special Weapons Gunner', label: 'Special Weapons Gunner', link: 'Astra Militarum'},
       {value: 'Scion', label: 'Scion', link: 'Astra Militarum'},
       {value: 'Scion Gunner', label: 'Scion Gunner', link: 'Astra Militarum'},
-      {value: 'Tempestor', label: 'Tempestor', link: 'Astra Militarum'},
+			{value: 'Tempestor', label: 'Tempestor', link: 'Astra Militarum'},
+			
       {value: 'Skitarii Ranger', label: 'Skitarii Ranger', link: 'Adeptus Mechanicus'},
       {value: 'Ranger Gunner', label: 'Ranger Gunner', link: 'Adeptus Mechanicus'},
       {value: 'Ranger Alpha', label: 'Ranger Alpha', link: 'Adeptus Mechanicus'},
@@ -2211,41 +3076,49 @@ class Units extends Component {
       {value: 'Sicarian Ruststalker', label: 'Sicarian Ruststalker', link: 'Adeptus Mechanicus'},
       {value: 'Ruststalker Princeps', label: 'Ruststalker Princeps', link: 'Adeptus Mechanicus'},
       {value: 'Sicarian Infiltrator', label: 'Sicarian Infiltrator', link: 'Adeptus Mechanicus'},
-      {value: 'Infiltrator Princeps', label: 'Infiltrator Princeps', link: 'Adeptus Mechanicus'},
+			{value: 'Infiltrator Princeps', label: 'Infiltrator Princeps', link: 'Adeptus Mechanicus'},
+			
       {value: 'Chaos Cultist', label: 'Chaos Cultist', link: 'Heretic Astartes'},
       {value: 'Chaos Cultist Gunner', label: 'Chaos Cultist Gunner', link: 'Heretic Astartes'},
       {value: 'Cultist Champion', label: 'Cultist Champion', link: 'Heretic Astartes'},
       {value: 'Chaos Space Marine', label: 'Chaos Space Marine', link: 'Heretic Astartes'},
       {value: 'Chaos Space Marine Gunner', label: 'Chaos Space Marine Gunner', link: 'Heretic Astartes'},
-      {value: 'Aspiring Champion', label: 'Aspiring Champion', link: 'Heretic Astartes'},
+			{value: 'Aspiring Champion', label: 'Aspiring Champion', link: 'Heretic Astartes'},
+			
       {value: 'Plague Marine', label: 'Plague Marine', link: 'Death Guard'},
       {value: 'Plague Marine Gunner', label: 'Plague Marine Gunner', link: 'Death Guard'},
       {value: 'Plague Marine Fighter', label: 'Plague Marine Fighter', link: 'Death Guard'},
       {value: 'Plague Champion', label: 'Plague Champion', link: 'Death Guard'},
-      {value: 'Poxwalker', label: 'Poxwalker', link: 'Death Guard'},
+			{value: 'Poxwalker', label: 'Poxwalker', link: 'Death Guard'},
+			
       {value: 'Rubric Marine', label: 'Rubric Marine', link: 'Thousand Sons'},
       {value: 'Rubric Marine Gunner', label: 'Rubric Marine Gunner', link: 'Thousand Sons'},
       {value: 'Aspiring Sorcerer', label: 'Aspiring Sorcerer', link: 'Thousand Sons'},
       {value: 'Tzaangor', label: 'Tzaangor', link: 'Thousand Sons'},
-      {value: 'Twistbray', label: 'Twistbray', link: 'Thousand Sons'},
+			{value: 'Twistbray', label: 'Twistbray', link: 'Thousand Sons'},
+			
       {value: 'Guardian Defender', label: 'Guardian Defender', link: 'Asuryani'},
       {value: 'Heavy Weapon Platform', label: 'Heavy Weapon Platform', link: 'Asuryani'},
       {value: 'Storm Guardian', label: 'Storm Guardian', link: 'Asuryani'},
       {value: 'Storm Guardian Gunner', label: 'Storm Guardian Gunner', link: 'Asuryani'},
       {value: 'Ranger', label: 'Ranger', link: 'Asuryani'},
       {value: 'Dire Avenger', label: 'Dire Avenger', link: 'Asuryani'},
-      {value: 'Dire Avenger Exarch', label: 'Dire Avenger Exarch', link: 'Asuryani'},
+			{value: 'Dire Avenger Exarch', label: 'Dire Avenger Exarch', link: 'Asuryani'},
+			
       {value: 'Kabalite Warrior', label: 'Kabalite Warrior', link: 'Drukhari'},
       {value: 'Kabalite Gunner', label: 'Kabalite Gunner', link: 'Drukhari'},
       {value: 'Sybarite', label: 'Sybarite', link: 'Drukhari'},
       {value: 'Wych', label: 'Wych', link: 'Drukhari'},
       {value: 'Wych Fighter', label: 'Wych Fighter', link: 'Drukhari'},
-      {value: 'Hekatrix', label: 'Hekatrix', link: 'Drukhari'},
-      {value: 'Player', label: 'Player', link: 'Harlequins'},
+			{value: 'Hekatrix', label: 'Hekatrix', link: 'Drukhari'},
+			
+			{value: 'Player', label: 'Player', link: 'Harlequins'},
+			
       {value: 'Necron Warrior', label: 'Necron Warrior', link: 'Necrons'},
       {value: 'Immortal', label: 'Immortal', link: 'Necrons'},
       {value: 'Flayed One', label: 'Flayed One', link: 'Necrons'},
-      {value: 'Deathmark', label: 'Deathmark', link: 'Necrons'},
+			{value: 'Deathmark', label: 'Deathmark', link: 'Necrons'},
+			
       {value: 'Ork Boy', label: 'Ork Boy', link: 'Orks'},
       {value: 'Ork Boy Gunner', label: 'Ork Boy Gunner', link: 'Orks'},
       {value: 'Boss Nob', label: 'Boss Nob', link: 'Orks'},
@@ -2255,7 +3128,8 @@ class Units extends Component {
       {value: 'Burna Boy', label: 'Burna Boy', link: 'Orks'},
       {value: 'Burna Spanner', label: 'Burna Spanner', link: 'Orks'},
       {value: 'Loota', label: 'Loota', link: 'Orks'},
-      {value: 'Loota Spanner', label: 'Loota Spanner', link: 'Orks'},
+			{value: 'Loota Spanner', label: 'Loota Spanner', link: 'Orks'},
+			
       {value: 'Shasla', label: 'Shasla', link: 'Tau Empire'},
       {value: 'Shasui', label: 'Shasui', link: 'Tau Empire'},
       {value: 'DS8 Tactical Support Turret', label: 'DS8 Tactical Support Turret', link: 'Tau Empire'},
@@ -2273,13 +3147,15 @@ class Units extends Component {
       {value: 'MV36 Guardian Drone', label: 'MV36 Guardian Drone', link: 'Tau Empire'},
       {value: 'MV33 Grav-Inhibitor Drone', label: 'MV33 Grav-Inhibitor Drone', link: 'Tau Empire'},
       {value: 'MV31 Pulse Accelerator Drone', label: 'MV31 Pulse Accelerator Drone', link: 'Tau Empire'},
-      {value: 'MB3 Recon Drone', label: 'MB3 Recon Drone', link: 'Tau Empire'},
+			{value: 'MB3 Recon Drone', label: 'MB3 Recon Drone', link: 'Tau Empire'},
+			
       {value: 'Termagant', label: 'Termagant', link: 'Tyranids'},
       {value: 'Hormagaunt', label: 'Hormagaunt', link: 'Tyranids'},
       {value: 'Lictor', label: 'Lictor', link: 'Tyranids'},
       {value: 'Tyranid Warrior', label: 'Tyranid Warrior', link: 'Tyranids'},
       {value: 'Tyranid Warrior Gunner', label: 'Tyranid Warrior Gunner', link: 'Tyranids'},
-      {value: 'Genestealer', label: 'Genestealer', link: 'Tyranids'},
+			{value: 'Genestealer', label: 'Genestealer', link: 'Tyranids'},
+			
       {value: 'Acolyte', label: 'Acolyte', link: 'Genestealer Cults'},
       {value: 'Acolyte Fighter', label: 'Acolyte Fighter', link: 'Genestealer Cults'},
       {value: 'Acolyte Leader', label: 'Acolyte Leader', link: 'Genestealer Cults'},
@@ -2292,7 +3168,8 @@ class Units extends Component {
     ];
 
     const options3 = [
-      {value: 'none', label: 'none', link: 'Tactical Marine'},
+			{value: 'none', label: 'none', link: 'Tactical Marine'},
+			
       {value: 'none', label: 'none', link: 'Tactical Marine Gunner'},
       {value: 'flamer', label: 'flamer +3pts', link: 'Tactical Marine Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Tactical Marine Gunner'},
@@ -2300,6 +3177,7 @@ class Units extends Component {
       {value: 'grav-gun', label: 'grav-gun +2pts', link: 'Tactical Marine Gunner'},
       {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Tactical Marine Gunner'},
 			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Tactical Marine Gunner'},
+
 			{value: 'none', label: 'none', link: 'Tactical Marine Sergeant'},
       {value: 'combi-flamer', label: 'combi-flamer +3pts', link: 'Tactical Marine Sergeant'},
       {value: 'combi-grav', label: 'combi-grav +2pts', link: 'Tactical Marine Sergeant'},
@@ -2316,37 +3194,40 @@ class Units extends Component {
       {value: 'grav-pistol auspex', label: 'grav-pistol and auspex +2pts', link: 'Tactical Marine Sergeant'},
       {value: 'grav-pistol chainsword', label: 'grav-pistol and chainsword +1pts', link: 'Tactical Marine Sergeant'},
       {value: 'grav-pistol power fist', label: 'grav-pistol and power fist +5pts', link: 'Tactical Marine Sergeant'},
-      {value: 'grav-pistol power sword', label: 'grav-pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
+			{value: 'grav-pistol power sword', label: 'grav-pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
+			
 			{value: 'none', label: 'none', link: 'Scout'},
 			{value: 'combat knife', label: 'combat knife +0pts', link: 'Scout'},
       {value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout'},
-      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout'},
+			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout'},
+			
 			{value: 'none', label: 'none', link: 'Scout Gunner'},
 			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Scout Gunner'},
       {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Scout Gunner'},
       {value: 'missile launcher camo cloak', label: 'missile launcher and camo cloak +6pts', link: 'Scout Gunner'},
-      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Gunner'},
+			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Scout Sergeant'},
 			{value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout Sergeant'},
       {value: 'chainsword', label: 'chainsword +0pts', link: 'Scout Sergeant'},
-      {value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Sergeant'},
+			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Sergeant'},
+			
 			{value: 'none', label: 'none', link: 'Intercessor'},
 			{value: 'auto bolt rifle', label: 'auto bolt rifle +0pts', link: 'Intercessor'},
-      {value: 'stalker bolt rifle', label: 'stalker bolt rifle +0pts', link: 'Intercessor'},
+			{value: 'stalker bolt rifle', label: 'stalker bolt rifle +0pts', link: 'Intercessor'},
+			
 			{value: 'none', label: 'none', link: 'Intercessor Gunner'},
 			{value: 'auxiliary grenade launcher', label: 'auxiliary grenade launcher +0pts', link: 'Intercessor Gunner'},
+
 			{value: 'none', label: 'none', link: 'Intercessor Sergeant'},
 			{value: 'chainsword', label: 'chainsword +0pts', link: 'Intercessor Sergeant'},
-      {value: 'power sword', label: 'power sword +2pts', link: 'Intercessor Sergeant'},
+			{value: 'power sword', label: 'power sword +2pts', link: 'Intercessor Sergeant'},
+			
 			{value: 'none', label: 'none', link: 'Reiver'},
 			{value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver'},
-      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver'},
-      {value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver'},
+			
 			{value: 'none', label: 'none', link: 'Reiver Sergeant'},
 			{value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver Sergeant'},
-      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver Sergeant'},
-      {value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver Sergeant'},
-
 
 			{value: 'none', label: 'none', link: 'Deathwatch Veteran'},
 			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran'},
@@ -2354,54 +3235,61 @@ class Units extends Component {
       {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran'},
       {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
       {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
-      {value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
+			{value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
+			
 			{value: 'none', label: 'none', link: 'Deathwatch Veteran Gunner'},
 			{value: 'deathwatch frag cannon', label: 'deathwatch frag cannon +5pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Watch Sergeant'},
 			{value: 'xenophase blade', label: 'xenophase blade +3pts', link: 'Watch Sergeant'},
+
 			{value: 'none', label: 'none', link: 'Grey Knight'},
 			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Grey Knight'},
       {value: 'nemesis daemon hammer', label: 'nemesis daemon hammer +2pts', link: 'Grey Knight'},
       {value: 'nemesis warding stave', label: 'nemesis warding stave +0pts', link: 'Grey Knight'},
-      {value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Grey Knight'},
+			{value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Grey Knight'},
+			
 			{value: 'none', label: 'none', link: 'Grey Knight Gunner'},
 			{value: 'incenerator', label: 'incenerator +3pts', link: 'Grey Knight Gunner'},
       {value: 'psilencer', label: 'psilencer +3pts', link: 'Grey Knight Gunner'},
-      {value: 'psycannon', label: 'psycannon +2pts', link: 'Grey Knight Gunner'},
+			{value: 'psycannon', label: 'psycannon +2pts', link: 'Grey Knight Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Justicar'},
 			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Justicar'},
       {value: 'nemesis daemon hammer', label: 'nemesis daemon hammer +2pts', link: 'Justicar'},
       {value: 'nemesis warding stave', label: 'nemesis warding stave +0pts', link: 'Justicar'},
-      {value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Justicar'},
-			{value: 'none', label: 'none', link: 'Guardsman'},
-			{value: 'vox-caster', label: 'vox-caster +5pts', link: 'Guardsman'},
+			{value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Justicar'},
+
 			{value: 'none', label: 'none', link: 'Guardsman Gunner'},
       {value: 'flamer', label: 'flamer +3pts', link: 'Guardsman Gunner'},
       {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Guardsman Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Guardsman Gunner'},
       {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Guardsman Gunner'},
-	    {value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
+			{value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
+			
 	    {value: 'none', label: 'none', link: 'Sergeant'},
 	    {value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Sergeant'},
 	    {value: 'plasma pistol', label: 'plasma pistol +1pts', link: 'Sergeant'},
 	    {value: 'power sword', label: 'power sword +1pts', link: 'Sergeant'},
 	    {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +1pts', link: 'Sergeant'},
 			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +2pts', link: 'Sergeant'},
+
 			{value: 'none', label: 'none', link: 'Special Weapons Guardsman'},
+
 			{value: 'none', label: 'none', link: 'Special Weapons Gunner'},
       {value: 'flamer', label: 'flamer +3pts', link: 'Special Weapons Gunner'},
       {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Special Weapons Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Special Weapons Gunner'},
       {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Special Weapons Gunner'},
 			{value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Special Weapons Gunner'},
-			{value: 'none', label: 'none', link: 'Scion'},
-			{value: 'vox-caster', label: 'vox-caster +5pts', link: 'Scion'},
+
 			{value: 'none', label: 'none', link: 'Scion Gunner'},
 			{value: 'flamer', label: 'flamer +3pts', link: 'Scion Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Scion Gunner'},
       {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Scion Gunner'},
 			{value: 'hot-shot volley gun', label: 'hot-shot volley gun +3pts', link: 'Scion Gunner'},
+
 	    {value: 'none', label: 'none', link: 'Tempestor'},
 	    {value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Tempestor'},
 	    {value: 'plasma pistol', label: 'plasma pistol +1pts', link: 'Tempestor'},
@@ -2411,13 +3299,12 @@ class Units extends Component {
 			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +2pts', link: 'Tempestor'},
 	    {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +2pts', link: 'Tempestor'},
 			{value: 'plasma pistol power fist', label: 'plasma pistol and power fist +3pts', link: 'Tempestor'},
-			{value: 'none', label: 'none', link: 'Skitarii Ranger'},
-			{value: 'enhanced data-tether', label: 'enhanced data-tether +5pts', link: 'Skitarii Ranger'},
-			{value: 'omnispex', label: 'omnispex +1pts', link: 'Skitarii Ranger'},
+
 			{value: 'none', label: 'none', link: 'Ranger Gunner'},
 			{value: 'arc rifle', label: 'arc rifle +0pts', link: 'Ranger Gunner'},
 			{value: 'plasma caliver', label: 'plasma caliver +3pts', link: 'Ranger Gunner'},
 			{value: 'transuranic arquebus', label: 'transuranic arquebus +5pts', link: 'Ranger Gunner'},
+
 			{value: 'none', label: 'none', link: 'Ranger Alpha'},
 			{value: 'arc pistol arc maul', label: 'arc pistol and arc maul +0pts', link: 'Ranger Alpha'},
 			{value: 'arc pistol power sword', label: 'arc pistol and power sword +0pts', link: 'Ranger Alpha'},
@@ -2428,13 +3315,12 @@ class Units extends Component {
 			{value: 'phosphor blast pistol arc maul', label: 'phosphor blast pistol and arc maul +0pts', link: 'Ranger Alpha'},
 			{value: 'phosphor blast pistol power sword', label: 'phosphor blast pistol and power sword +0pts', link: 'Ranger Alpha'},
 			{value: 'phosphor blast pistol taser goad', label: 'phosphor blast pistol and taser goad +1pts', link: 'Ranger Alpha'},
-			{value: 'none', label: 'none', link: 'Skitarii Vanguard'},
-			{value: 'enhanced data-tether', label: 'enhanced data-tether +5pts', link: 'Skitarii Vanguard'},
-			{value: 'omnispex', label: 'omnispex +1pts', link: 'Skitarii Vanguard'},
+
 			{value: 'none', label: 'none', link: 'Vanguard Gunner'},
 			{value: 'arc rifle', label: 'arc rifle +0pts', link: 'Vanguard Gunner'},
 			{value: 'plasma caliver', label: 'plasma caliver +3pts', link: 'Vanguard Gunner'},
 			{value: 'transuranic arquebus', label: 'transuranic arquebus +5pts', link: 'Vanguard Gunner'},
+
 			{value: 'none', label: 'none', link: 'Vanguard Alpha'},
 			{value: 'arc pistol arc maul', label: 'arc pistol and arc maul +0pts', link: 'Vanguard Alpha'},
 			{value: 'arc pistol power sword', label: 'arc pistol and power sword +0pts', link: 'Vanguard Alpha'},
@@ -2445,22 +3331,30 @@ class Units extends Component {
 			{value: 'phosphor blast pistol arc maul', label: 'phosphor blast pistol and arc maul +0pts', link: 'Vanguard Alpha'},
 			{value: 'phosphor blast pistol power sword', label: 'phosphor blast pistol and power sword +0pts', link: 'Vanguard Alpha'},
 			{value: 'phosphor blast pistol taser goad', label: 'phosphor blast pistol and taser goad +1pts', link: 'Vanguard Alpha'},
+
 			{value: 'none', label: 'none', link: 'Sicarian Ruststalker'},
 			{value: 'transonic blades', label: 'transonic blades +0pts', link: 'Sicarian Ruststalker'},
+
 			{value: 'none', label: 'none', link: 'Ruststalker Princeps'},
 			{value: 'transonic blades', label: 'transonic blades +0pts', link: 'Ruststalker Princeps'},
+
 			{value: 'none', label: 'none', link: 'Sicarian Infiltrator'},
 			{value: 'flechette blaster taser goad', label: 'flechette blaster and taser goad +1pts', link: 'Sicarian Infiltrator'},
+
 			{value: 'none', label: 'none', link: 'Infiltrator Princeps'},
 			{value: 'flechette blaster taser goad', label: 'flechette blaster and taser goad +1pts', link: 'Infiltrator Princeps'},
+
 			{value: 'none', label: 'none', link: 'Chaos Cultist'},
 			{value: 'brutal assault weapon autopistol', label: 'brutal assault and weapon autopistol +0pts', link: 'Chaos Cultist'},
+
 			{value: 'none', label: 'none', link: 'Chaos Cultist Gunner'},
 			{value: 'flamer', label: 'flamer +3pts', link: 'Chaos Cultist Gunner'},
 			{value: 'heavy stubber', label: 'heavy stubber +0pts', link: 'Chaos Cultist Gunner'},
+
 			{value: 'none', label: 'none', link: 'Cultist Champion'},
 			{value: 'shotgun', label: 'shotgun +0pts', link: 'Cultist Champion'},
 			{value: 'brutal assault weapon autopistol', label: 'brutal assault and weapon autopistol +0pts', link: 'Cultist Champion'},
+
 			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
 			{value: 'chainsword', label: 'chainsword +0pts', link: 'Chaos Space Marine'},
 
@@ -2470,6 +3364,7 @@ class Units extends Component {
 			{value: 'meltagun', label: 'meltagun +3pts', link: 'Chaos Space Marine Gunner'},
 			{value: 'plasma gun', label: 'plasma gun +3pts', link: 'Chaos Space Marine Gunner'},
 			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Chaos Space Marine Gunner'},
+
 			{value: 'none', label: 'none', link: 'Aspiring Champion'},
       {value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Aspiring Champion'},
       {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +4pts', link: 'Aspiring Champion'},
@@ -2477,20 +3372,21 @@ class Units extends Component {
       {value: 'plasma pistol chainsword', label: 'plasma pistol and chainsword +1pts', link: 'Aspiring Champion'},
       {value: 'plasma pistol power fist', label: 'plasma pistol and power fist +5pts', link: 'Aspiring Champion'},
 			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +3pts', link: 'Aspiring Champion'},
-			{value: 'none', label: 'none', link: 'Plague Marine'},
-			{value: 'icon of despair', label: 'icon of despair +3pts', link: 'Plague Marine'},
+
 			{value: 'none', label: 'none', link: 'Plague Marine Gunner'},
 			{value: 'blight launcher', label: 'blight launcher +3pts', link: 'Plague Marine Gunner'},
 			{value: 'meltagun', label: 'meltagun +3pts', link: 'Plague Marine Gunner'},
 			{value: 'plague spewer', label: 'plague spewer +4pts', link: 'Plague Marine Gunner'},
 			{value: 'plague belcher', label: 'plague belcher +3pts', link: 'Plague Marine Gunner'},
 			{value: 'plasma gun', label: 'plasma gun +3pts', link: 'Plague Marine Gunner'},
+
 			{value: 'none', label: 'none', link: 'Plague Marine Fighter'},
 			{value: 'bubotic axe', label: 'bubotic axe +2pts', link: 'Plague Marine Fighter'},
 			{value: 'great plague cleaver', label: 'great plague cleaver +4pts', link: 'Plague Marine Fighter'},
 			{value: 'flail of corruption', label: 'flail of corruption +4pts', link: 'Plague Marine Fighter'},
 			{value: 'second plague knife', label: 'second plague knife +0pts', link: 'Plague Marine Fighter'},
 			{value: 'mace of contagion bubotic axe', label: 'mace of contagion and bubotic axe +5pts', link: 'Plague Marine Fighter'},
+
 			{value: 'none', label: 'none', link: 'Plague Champion'},
 			{value: 'plaguesword', label: 'plaguesword +0pts', link: 'Plague Champion'},
 			{value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Plague Champion'},
@@ -2503,38 +3399,46 @@ class Units extends Component {
 			{value: 'power fist bolt pistol', label: 'power fist and bolt pistol +4pts', link: 'Plague Champion'},
 			{value: 'power fist plasma pistol', label: 'power fist and plasma pistol +5pts', link: 'Plague Champion'},
 			{value: 'power fist plasma gun', label: 'power fist and plasma gun +7pts', link: 'Plague Champion'},
+
 			{value: 'none', label: 'none', link: 'Rubric Marine'},
 			{value: 'icon of flame', label: 'icon of flame +1pts', link: 'Rubric Marine'},
 			{value: 'warpflamer', label: 'warpflamer +4pts', link: 'Rubric Marine'},
-			{value: 'warpflamer icon of flame', label: 'warpflamer and icon of flame +5pts', link: 'Rubric Marine'},
+			
 			{value: 'none', label: 'none', link: 'Rubric Marine Gunner'},
 			{value: 'soulreaper cannon', label: 'soulreaper cannon +4pts', link: 'Rubric Marine Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Aspiring Sorcerer'},
 			{value: 'warpflame pistol', label: 'warpflame pistol +1pts', link: 'Aspiring Sorcerer'},
+			
 			{value: 'none', label: 'none', link: 'Tzaangor'},
 			{value: 'brayhorn', label: 'brayhorn +3pts', link: 'Tzaangor'},
 			{value: 'autopistol chainsword', label: 'autopistol and chainsword +0pts', link: 'Tzaangor'},
-			{value: 'autopistol chainsword brayhorn', label: 'autopistol, chainsword, and brayhorn +3pts', link: 'Tzaangor'},
+			
 			{value: 'none', label: 'none', link: 'Heavy Weapon Platform'},
 			{value: 'aeldari missile launcher', label: 'aeldari missile launcher +5pts', link: 'Heavy Weapon Platform'},
 			{value: 'bright lance', label: 'bright lance +4pts', link: 'Heavy Weapon Platform'},
 			{value: 'scatter laser', label: 'scatter laser +2pts', link: 'Heavy Weapon Platform'},
 			{value: 'starcannon', label: 'starcannon +3pts', link: 'Heavy Weapon Platform'},
+			
 			{value: 'none', label: 'none', link: 'Storm Guardian'},
 			{value: 'chainsword', label: 'chainsword +0pts', link: 'Storm Guardian'},
+			
 			{value: 'none', label: 'none', link: 'Storm Guardian Gunner'},
 			{value: 'flamer', label: 'flamer +3pts', link: 'Storm Guardian Gunner'},
 			{value: 'fusion gun', label: 'fusion gun +3pts', link: 'Storm Guardian Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Dire Avenger Exarch'},
 			{value: 'two avenger shuriken catapults', label: 'two avenger shuriken catapults +0pts', link: 'Dire Avenger Exarch'},
 			{value: 'shuriken pistol power glaive', label: 'shuriken pistol and power glaive +1pts', link: 'Dire Avenger Exarch'},
 			{value: 'shuriken pistol diresword', label: 'shuriken pistol and diresword +2pts', link: 'Dire Avenger Exarch'},
 			{value: 'shimmershield power glaive', label: 'shimmershield and power glaive +5pts', link: 'Dire Avenger Exarch'},
+			
       {value: 'none', label: 'none', link: 'Kabalite Gunner'},
 			{value: 'splinter cannon', label: 'splinter cannon +0pts', link: 'Kabalite Gunner'},
 			{value: 'dark lance', label: 'dark lance +4pts', link: 'Kabalite Gunner'},
 			{value: 'shredder', label: 'shredder +1pts', link: 'Kabalite Gunner'},
 			{value: 'blaster', label: 'blaster +3pts', link: 'Kabalite Gunner'},
+			
       {value: 'none', label: 'none', link: 'Sybarite'},
 			{value: 'power sword', label: 'power sword +2pts', link: 'Sybarite'},
 			{value: 'agonizer', label: 'agonizer +2pts', link: 'Sybarite'},
@@ -2551,10 +3455,12 @@ class Units extends Component {
 			{value: 'agonizer splinter pistol phantasm grenade launcher', label: 'agonizer, splinter pistol, and phantasm grenade launcher +3pts', link: 'Sybarite'},
 			{value: 'power sword blast pistol phantasm grenade launcher', label: 'power sword, blast pistol, and phantasm grenade launcher +5pts', link: 'Sybarite'},
 			{value: 'agonizer blast pistol phantasm grenade launcher', label: 'agonizer, blast pistol, and phantasm grenade launcher +5pts', link: 'Sybarite'},
+			
       {value: 'none', label: 'none', link: 'Wych Fighter'},
 			{value: 'hydra gauntlets', label: 'hydra gauntlets +2pts', link: 'Wych Fighter'},
 			{value: 'razorflails', label: 'razorflails +2pts', link: 'Wych Fighter'},
 			{value: 'shardnet and impaler', label: 'shardnet and impaler +2pts', link: 'Wych Fighter'},
+			
       {value: 'none', label: 'none', link: 'Hekatrix'},
 			{value: 'power sword', label: 'power sword +2pts', link: 'Hekatrix'},
 			{value: 'agonizer', label: 'agonizer +2pts', link: 'Hekatrix'},
@@ -2566,6 +3472,7 @@ class Units extends Component {
       {value: 'agonizer phantasm grenade launcher', label: 'agonizer phantasm grenade launcher +3pts', link: 'Hekatrix'},
 			{value: 'power sword blast pistol phantasm grenade launcher', label: 'power sword, blast pistol, and phantasm grenade launcher +5pts', link: 'Hekatrix'},
 			{value: 'agonizer blast pistol phantasm grenade launcher', label: 'agonizer, blast pistol, and phantasm grenade launcher +5pts', link: 'Hekatrix'},
+			
 			{value: 'none', label: 'none', link: 'Player'},
 			{value: 'neuro disruptor', label: 'neuro disruptor +2pts', link: 'Player'},
       {value: 'fusion pistol', label: 'fusion pistol +3pts', link: 'Player'},
@@ -2577,14 +3484,18 @@ class Units extends Component {
       {value: "neuro disruptor harlequin's kiss", label: "neuro disruptor and harlequin's kiss +6pts", link: "Player"},
       {value: "fusion pistol harlequin's caress", label: "fusion pistol and harlequin's caress +6pts", link: "Player"},
       {value: "fusion pistol harlequin's embrace", label: "fusion pistol and harlequin's embrace +5pts", link: "Player"},
-      {value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +4pts", link: "Player"},  
+			{value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +4pts", link: "Player"},
+			
 			{value: 'none', label: 'none', link: 'Immortal'},
 			{value: 'tesla carbine', label: 'tesla carbine +3pts', link: 'Immortal'},
+			
 			{value: 'none', label: 'none', link: 'Ork Boy'},
 			{value: 'shoota', label: 'shoota +0pts', link: 'Ork Boy'},
+			
 			{value: 'none', label: 'none', link: 'Ork Boy Gunner'},
 			{value: 'big shoota', label: 'big shoota +0pts', link: 'Ork Boy Gunner'},
 			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Ork Boy Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Boss Nob'},
 			{value: 'big choppa', label: 'big choppa +2pts', link: 'Boss Nob'},
 			{value: 'power klaw', label: 'power klaw +4pts', link: 'Boss Nob'},
@@ -2596,83 +3507,224 @@ class Units extends Component {
 			{value: 'power klaw kombi-weapon with rokkit launcha', label: 'power klaw and kombi-weapon with rokkit launcha +7pts', link: 'Boss Nob'},
 			{value: 'kombi-weapon with skorcha', label: 'kombi-weapon with skorcha +4pts', link: 'Boss Nob'},
 			{value: 'power klaw kombi-weapon with skorcha', label: 'power klaw and kombi-weapon with skorcha +8pts', link: 'Boss Nob'},
+			
 			{value: 'none', label: 'none', link: 'Kommando Boss Nob'},
 			{value: 'power klaw', label: 'power klaw +4pts', link: 'Kommando Boss Nob'},
+			
 			{value: 'none', label: 'none', link: 'Burna Spanner'},
 			{value: 'kustom mega-blasta', label: 'kustom mega-blasta +0pts', link: 'Burna Spanner'},
 			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Burna Spanner'},
+			
 			{value: 'none', label: 'none', link: 'Loota Spanner'},
 			{value: 'kustom mega-blasta', label: 'kustom mega-blasta +0pts', link: 'Loota Spanner'},
 			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Loota Spanner'},
+			
 			{value: 'none', label: 'none', link: 'Shasla'},
 			{value: 'pulse carbine', label: 'pulse carbine +0pts', link: 'Shasla'},
 			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Shasla'},
+			
 			{value: 'none', label: 'none', link: 'Shasui'},
 			{value: 'pulse carbine', label: 'pulse carbine +0pts', link: 'Shasui'},
 			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Shasui'},
 			{value: 'markerlight', label: 'markerlight +0pts', link: 'Shasui'},
 			{value: 'pulse carbine markerlight', label: 'pulse carbine and markerlight +0pts', link: 'Shasui'},
 			{value: 'pulse pistol markerlight', label: 'pulse pistol and markerlight +0pts', link: 'Shasui'},
+			
 			{value: 'none', label: 'none', link: 'Pathfinder Gunner'},
 			{value: 'ion rifle', label: 'ion rifle +3pts', link: 'Pathfinder Gunner'},
 			{value: 'rail rifle', label: 'rail rifle +5pts', link: 'Pathfinder Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Pathfinder Shasui'},
 			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Pathfinder Shasui'},
+			
 			{value: 'none', label: 'none', link: 'Breacher Shasla'},
 			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Breacher Shasla'},
+			
 			{value: 'none', label: 'none', link: 'Breacher Shasui'},
 			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Breacher Shasui'},
 			{value: 'markerlight', label: 'markerlight +0pts', link: 'Breacher Shasui'},
 			{value: 'pulse pistol markerlight', label: 'pulse pistol and markerlight +0pts', link: 'Breacher Shasui'},
+			
 			{value: 'none', label: 'none', link: 'Stealth Shasui'},
 			{value: 'fusion blaster', label: 'fusion blaster +4pts', link: 'Stealth Shasui'},
+			
 			{value: 'none', label: 'none', link: 'Stealth Shasvre'},
 			{value: 'fusion blaster', label: 'fusion blaster +4pts', link: 'Stealth Shasvre'},
 			{value: 'markerlight and target lock', label: 'markerlight and target lock +1pts', link: 'Stealth Shasvre'},
 			{value: 'fusion blaster markerlight and target lock', label: 'fusion blaster, markerlight, and target lock +5pts', link: 'Stealth Shasvre'},
+			
 			{value: 'none', label: 'none', link: 'Termagant'},
 			{value: 'devourer', label: 'devourer +3pts', link: 'Termagant'},
 			{value: 'spinefists', label: 'spinefists +0pts', link: 'Termagant'},
-			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Termagant'},
-			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Termagant'},
-			{value: 'devourer adrenal glands', label: 'devourer and adrenal glands +4pts', link: 'Termagant'},
-			{value: 'spinefists adrenal glands', label: 'spinefists and adrenal glands +1pts', link: 'Termagant'},
-			{value: 'devourer toxin sacs', label: 'devourer and toxin sacs +4pts', link: 'Termagant'},
-			{value: 'spinefists toxin sacs', label: 'spinefists and toxin sacs +1pts', link: 'Termagant'},
-			{value: 'devourer adrenal glands toxin sacs', label: 'devourer, adrenal glands, and toxin sacs +5pts', link: 'Termagant'},
-			{value: 'spinefists adrenal glands toxin sacs', label: 'spinefists, adrenal glands, and toxin sacs +2pts', link: 'Termagant'},
+			
 			{value: 'none', label: 'none', link: 'Hormagaunt'},
 			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Hormagaunt'},
 			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Hormagaunt'},
 			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Hormagaunt'},
+			
 			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
 			{value: 'rending claws', label: 'rending claws +1pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords', label: 'boneswords +1pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
-			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Tyranid Warrior'},
-			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Tyranid Warrior'},
 			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior'},
-			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Tyranid Warrior'},
-
-
+			{value: 'boneswords', label: 'boneswords +0pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
+			{value: 'deathspitter', label: 'deathspitter +2pts', link: 'Tyranid Warrior'},
+			{value: 'spinefists', label: 'spinefists +0pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior'},
+			{value: 'scything talons', label: 'scything talons +0pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior'},
+			{value: 'rending claws x2', label: 'rending claws x2 +0pts', link: 'Tyranid Warrior'},
+			
+			{value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
+			{value: 'barbed strangler', label: 'barbed strangler +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'venom cannon', label: 'venom cannon +1pts', link: 'Tyranid Warrior Gunner'},
+			
 			{value: 'none', label: 'none', link: 'Genestealer'},
 			{value: 'scything talons', label: 'scything talons +0pts', link: 'Genestealer'},
+			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Genestealer'},
+			{value: 'scything talons flesh hooks', label: 'scything talons and flesh hooks +0pts', link: 'Genestealer'},
+			{value: 'acid maw', label: 'acid maw +0pts', link: 'Genestealer'},
+			{value: 'scything talons acid maw', label: 'scything talons and acid maw +0pts', link: 'Genestealer'},
+			
+			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
+			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid'},
+      
+			{value: 'none', label: 'none', link: 'Acolyte Hybrid Fighter'},
+			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'heavy rock drill', label: 'heavy rock drill +5pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'heavy rock saw', label: 'heavy rock saw +4pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'heavy rock cutter', label: 'heavy rock cutter +4pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'demolition charges', label: 'demolition charges +3pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'hand flamer heavy rock drill', label: 'hand flamer and heavy rock drill +7pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'hand flamer heavy rock saw', label: 'hand flamer and heavy rock saw +6pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'hand flamer heavy rock cutter', label: 'hand flamer and heavy rock cutter +6pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'hand flamer demolition charges', label: 'hand flamer and demolition charges +5pts', link: 'Acolyte Hybrid Fighter'},
+			
+			{value: 'none', label: 'none', link: 'Acolyte Leader'},
+			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Leader'},
+			{value: 'bonesword', label: 'bonesword +1pts', link: 'Acolyte Leader'},
+			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +2pts', link: 'Acolyte Leader'},
+			
+			{value: 'none', label: 'none', link: 'Aberrant'},
+			{value: 'power hammer', label: 'power hammer +4pts', link: 'Aberrant'},
+			
+			{value: 'none', label: 'none', link: 'Neophyte Hybrid'},
+			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Hybrid'},
+			
+			{value: 'none', label: 'none', link: 'Neophyte Gunner'},
+			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Gunner'},
+			{value: 'flamer', label: 'flamer +3pts', link: 'Neophyte Gunner'},
+			{value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Neophyte Gunner'},
+			{value: 'webber', label: 'webber +1pts', link: 'Neophyte Gunner'},
+			{value: 'heavy stubber', label: 'heavy stubber +0pts', link: 'Neophyte Gunner'},
+			{value: 'mining laser', label: 'mining laser +3pts', link: 'Neophyte Gunner'},
+			{value: 'seismic cannon', label: 'seismic cannon +2pts', link: 'Neophyte Gunner'},
+			
+			{value: 'none', label: 'none', link: 'Neophyte Leader'},
+			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Leader'},
+			{value: 'autopistol chainsword', label: 'autopistol and chainsword +0pts', link: 'Neophyte Leader'},
+			{value: 'autopistol power maul', label: 'autopistol and power maul +1pts', link: 'Neophyte Leader'},
+			{value: 'autopistol power pick', label: 'autopistol and power pick +3pts', link: 'Neophyte Leader'},
+			{value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Neophyte Leader'},
+			{value: 'bolt Pistol power maul', label: 'bolt Pistol and power maul +1pts', link: 'Neophyte Leader'},
+			{value: 'bolt pistol power pick', label: 'bolt pistol and power pick +3pts', link: 'Neophyte Leader'},
+			{value: 'web pistol chainsword', label: 'web pistol and chainsword +0pts', link: 'Neophyte Leader'},
+			{value: 'web pistol power maul', label: 'web pistol and power maul +1pts', link: 'Neophyte Leader'},
+			{value: 'web pistol power pick', label: 'web pistol and power pick +3pts', link: 'Neophyte Leader'},
+			
+			{value: 'none', label: 'none', link: 'Hybrid Metamorph'},
+			{value: 'metamorph talon', label: 'metamorph talon +0pts', link: 'Hybrid Metamorph'},
+			{value: 'metamorph whip', label: 'metamorph whip +1pts', link: 'Hybrid Metamorph'},
+			{value: 'metamorph claw', label: 'metamorph claw +1pts', link: 'Hybrid Metamorph'},
+			{value: 'hand flamer metamorph talon', label: 'hand flamer and metamorph talon +2pts', link: 'Hybrid Metamorph'},
+			{value: 'hand flamer metamorph whip', label: 'hand flamer and metamorph whip +3pts', link: 'Hybrid Metamorph'},
+			{value: 'hand flamer metamorph claw', label: 'hand flamer and metamorph claw +3pts', link: 'Hybrid Metamorph'},
+			
+			{value: 'none', label: 'none', link: 'Metamorph Leader'},
+			{value: 'metamorph talon', label: 'metamorph talon +0pts', link: 'Metamorph Leader'},
+			{value: 'metamorph whip', label: 'metamorph whip +1pts', link: 'Metamorph Leader'},
+			{value: 'metamorph claw', label: 'metamorph claw +1pts', link: 'Metamorph Leader'},
+			{value: 'hand flamer metamorph talon', label: 'hand flamer and metamorph talon +2pts', link: 'Metamorph Leader'},
+			{value: 'hand flamer metamorph whip', label: 'hand flamer and metamorph whip +3pts', link: 'Metamorph Leader'},
+			{value: 'hand flamer metamorph claw', label: 'hand flamer and metamorph claw +3pts', link: 'Metamorph Leader'},
+			{value: 'bonesword metamorph talon', label: 'bonesword metamorph talon +1pts', link: 'Metamorph Leader'},
+			{value: 'bonesword metamorph whip', label: 'bonesword metamorph whip +2pts', link: 'Metamorph Leader'},
+			{value: 'bonesword metamorph claw', label: 'bonesword metamorph claw +2pts', link: 'Metamorph Leader'},
+			{value: 'bonesword hand flamer metamorph talon', label: 'bonesword hand flamer and metamorph talon +3pts', link: 'Metamorph Leader'},
+			{value: 'bonesword hand flamer metamorph whip', label: 'bonesword hand flamer and metamorph whip +4pts', link: 'Metamorph Leader'},
+			{value: 'bonesword hand flamer metamorph claw', label: 'bonesword hand flamer and metamorph claw +4pts', link: 'Metamorph Leader'},
+    ];
+		
+		const options4 = [
+			{value: 'none', label: 'none', link: 'Reiver'},
+      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver'},
+			{value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver'},
+			{value: 'grav-chute grapnel launcher', label: 'grav-chute and grapnel launcher +2pts', link: 'Reiver'},
+			
+      {value: 'none', label: 'none', link: 'Reiver Sergeant'},
+      {value: 'grav-chute', label: 'grav-chute +1pts', link: 'Reiver Sergeant'},
+			{value: 'grapnel launcher', label: 'grapnel launcher +1pts', link: 'Reiver Sergeant'},
+			{value: 'grav-chute grapnel launcher', label: 'grav-chute and grapnel launcher +2pts', link: 'Reiver Sergeant'},
+			
+			{value: 'none', label: 'none', link: 'Guardsman'},
+			{value: 'vox-caster', label: 'vox-caster +5pts', link: 'Guardsman'},
+			
+			{value: 'none', label: 'none', link: 'Scion'},
+			{value: 'vox-caster', label: 'vox-caster +5pts', link: 'Scion'},
+			
+			{value: 'none', label: 'none', link: 'Skitarii Ranger'},
+			{value: 'enhanced data-tether', label: 'enhanced data-tether +5pts', link: 'Skitarii Ranger'},
+			{value: 'omnispex', label: 'omnispex +1pts', link: 'Skitarii Ranger'},
+			
+			{value: 'none', label: 'none', link: 'Skitarii Vanguard'},
+			{value: 'enhanced data-tether', label: 'enhanced data-tether +5pts', link: 'Skitarii Vanguard'},
+			{value: 'omnispex', label: 'omnispex +1pts', link: 'Skitarii Vanguard'},
+			
+			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
+			{value: 'icon of despair', label: 'icon of despair +3pts', link: 'Chaos Space Marine'},
+			{value: 'icon of despair', label: 'icon of wrath +3pts', link: 'Chaos Space Marine'},
+			{value: 'icon of despair', label: 'icon of flame +1pts', link: 'Chaos Space Marine'},
+			{value: 'icon of despair', label: 'icon of desire +3pts', link: 'Chaos Space Marine'},
+			{value: 'icon of despair', label: 'icon of vengeance +3pts', link: 'Chaos Space Marine'},
+			
+			{value: 'none', label: 'none', link: 'Plague Marine'},
+			{value: 'icon of despair', label: 'icon of despair +3pts', link: 'Plague Marine'},
+
+			{value: 'none', label: 'none', link: 'Rubric Marine'},
+			{value: 'icon of flame', label: 'icon of flame +1pts', link: 'Rubric Marine'},
+			
+			{value: 'none', label: 'none', link: 'Tzaangor'},
+			{value: 'brayhorn', label: 'brayhorn +3pts', link: 'Tzaangor'},
+			
+			{value: 'none', label: 'none', link: 'Termagant'},
+			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Termagant'},
+			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Termagant'},
+			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Termagant'},
+			
+			{value: 'none', label: 'none', link: 'Genestealer'},
 			{value: 'extended carapace', label: 'extended carapace +0pts', link: 'Genestealer'},
 			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Genestealer'},
-			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Genestealer'},
-			{value: 'acid maw', label: 'acid maw +0pts', link: 'Genestealer'},
 			{value: 'extended carapace toxin sacs', label: 'extended carapace and toxin sacs +1pts', link: 'Genestealer'},
-			{value: 'scything talons extended carapace', label: 'scything talons and extended carapace +0pts', link: 'Genestealer'},
-			{value: 'scything talons toxin sacs', label: 'scything talons and toxin sacs +1pts', link: 'Genestealer'},
-			{value: 'scything talons flesh hooks', label: 'scything talons and flesh hooks +0pts', link: 'Genestealer'},
-			{value: 'scything talons extended carapace toxin sacs', label: 'scything talons, extended carapace, and toxin sacs +1pts', link: 'Genestealer'},
 
-      
-    ];
+			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
+			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Tyranid Warrior'},
+			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Tyranid Warrior'},
+			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Tyranid Warrior'},
+			{value: 'adrenal glands flesh hooks', label: 'adrenal glands and flesh hooks +1pts', link: 'Tyranid Warrior'},
+			{value: 'toxin sacs flesh hooks', label: 'toxin sacs and flesh hooks +1pts', link: 'Tyranid Warrior'},
+			{value: 'adrenal glands toxin sacs flesh hooks', label: 'adrenal glands, toxin sacs, and flesh hooks +2pts', link: 'Tyranid Warrior'},
 
+			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
+			{value: 'cult icon', label: 'cult icon +5pts', link: 'Acolyte Hybrid'},
+
+			{value: 'none', label: 'none', link: 'Neophyte Hybrid'},
+			{value: 'cult icon', label: 'cult icon +5pts', link: 'Neophyte Hybrid'},
+
+			{value: 'none', label: 'none', link: 'Hybrid Metamorph'},
+			{value: 'cult icon', label: 'cult icon +5pts', link: 'Hybrid Metamorph'},
+		]
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
-    
+    const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
     return (
       <Container fluid>
         <Row>
@@ -2688,6 +3740,7 @@ class Units extends Component {
                   name="form-field-name"
                   value={{label : this.state.race.value}}
                   onChange={this.handleChange1}
+                  onClick={this.handleChange2}
                   options={options1}
                 />
                 <br />
@@ -2700,12 +3753,32 @@ class Units extends Component {
                 />
                 <br />
               </div>
-              <Input
-                value={this.state.name}
-                onChange={this.handleInputChange}
-                name="name"
-                placeholder="Name (required)"
-              />
+							<table>
+								<tbody>
+								<tr>
+									<td
+										style={{ "width": "100%"}}
+									>
+								<Input
+									value={this.state.name}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="name"
+									placeholder="Name (required)"
+								/>
+								</td>
+								<td
+									style={{ "float": "left"}}
+								>
+								<FormBtn
+									onClick={this.randomName}
+								>
+									Random
+								</FormBtn>
+								</td>
+								</tr>
+								</tbody>
+							</table>
               <table>
                 <tbody>
                   <tr>
@@ -2821,6 +3894,12 @@ class Units extends Component {
                       <td>
                         Wargear
                       </td>
+                      <td>
+                        &nbsp;
+                      </td>
+                      <td>
+                        Options
+                      </td>
                     </tr>
                   <tr>
                     <td>
@@ -2842,6 +3921,17 @@ class Units extends Component {
                       style={{ paddingRight: "0", paddingLeft : "5px"  }}
                     />
                     </td>
+										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>
+											+
+										</td>
+                    <td>
+                    <InputNumber
+                      value={this.state.wargearPts2}
+                      onChange={this.handleInputChange}
+                      name="wargearPts2"
+                      style={{ paddingRight: "0", paddingLeft : "5px"  }}
+                    />
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -2857,6 +3947,14 @@ class Units extends Component {
                 value={{label : this.state.wargearOptions.value}}
                 onChange={this.handleChange3}
                 options={filteredOptions2}
+              />
+              <br />
+							<h6 className="text-light">Other Options</h6>
+              <Select
+                name="form-field-name"
+                value={{label : this.state.wargearOptions2.value}}
+                onChange={this.handleChange4}
+                options={filteredOptions3}
               />
               <br />
               <FormBtn
