@@ -962,7 +962,7 @@ class Units extends Component {
         ld: 8,
         sv: 4,
         pts: 10,
-        equipment: "shuriken pistol, ranger long rifle"
+        equipment: "avenger shuriken catapult, plasma grenades"
       });
     }
     if (unitType.value === "Dire Avenger Exarch") {
@@ -973,7 +973,7 @@ class Units extends Component {
         ld: 8,
         sv: 4,
         pts: 11,
-        equipment: "shuriken pistol, ranger long rifle"
+        equipment: "avenger shuriken catapult, plasma grenades"
       });
     }
     ///////////////////////////////////
@@ -1025,7 +1025,7 @@ class Units extends Component {
         ld: 7,
         sv: 6,
         pts: 8,
-        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+        equipment: "splinter pistol, hekatarii blade, plasma grenades"
       });
     }
     if (unitType.value === "Wych Fighter") {
@@ -1035,7 +1035,7 @@ class Units extends Component {
         ld: 7,
         sv: 6,
         pts: 9,
-        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+        equipment: "splinter pistol, hekatarii blade, plasma grenades"
       });
     }
     if (unitType.value === "Hekatrix") {
@@ -1045,7 +1045,7 @@ class Units extends Component {
         ld: 8,
         sv: 6,
         pts: 9,
-        equipment: "splinter pistol, Hekatarii blade, plasma grenades"
+        equipment: "splinter pistol, hekatarii blade, plasma grenades"
       });
     }
     ///////////////////////////////////
@@ -1063,7 +1063,7 @@ class Units extends Component {
         ld: 8,
         sv: 6,
         pts: 12,
-        equipment: "splinter pistol, Harlequin's blade, plasma grenades"
+        equipment: "splinter pistol, harlequin's blade, plasma grenades"
       })
     }
     ///////////////////////////////////
@@ -2995,17 +2995,968 @@ class Units extends Component {
 		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Storm Guardian Gunner") {
 			this.setState({
 				wargearPts: 3,
-				equipment: "flamer, aeldari blade, plasma grenades"
+				equipment: "flamer, plasma grenades"
 			});
 		}
 		if (wargearOptions.value === "fusion gun" && this.state.unitType.value === "Storm Guardian Gunner") {
 			this.setState({
 				wargearPts: 3,
-				equipment: "fusion gun, aeldari blade, plasma grenades"
+				equipment: "fusion gun, plasma grenades"
 			});
 		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Dire Avenger Exarch") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "avenger shuriken catapult, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "shuriken pistol power glaive" && this.state.unitType.value === "Dire Avenger Exarch") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "shuriken pistol, power glaive, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "shuriken pistol diresword" && this.state.unitType.value === "Dire Avenger Exarch") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "shuriken pistol, diresword, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "shimmershield power glaive" && this.state.unitType.value === "Dire Avenger Exarch") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "shimmershield, power glaive, plasma grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Kabalite Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter rifle"
+			});
+		}
+		if (wargearOptions.value === "splinter cannon" && this.state.unitType.value === "Kabalite Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter cannon"
+			});
+		}
+		if (wargearOptions.value === "dark lance" && this.state.unitType.value === "Kabalite Gunner") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "dark lance"
+			});
+		}
+		if (wargearOptions.value === "shredder" && this.state.unitType.value === "Kabalite Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "shredder"
+			});
+		}
+		if (wargearOptions.value === "blaster" && this.state.unitType.value === "Kabalite Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "blaster"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter rifle"
+			});
+		}
+		if (wargearOptions.value === "power sword" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "splinter rifle, power sword"
+			});
+		}
+		if (wargearOptions.value === "agonizer" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "splinter rifle, agonizer"
+			});
+		}
+		if (wargearOptions.value === "phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "splinter rifle, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "splinter pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter pistol"
+			});
+		}
+		if (wargearOptions.value === "blast pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "blast pistol"
+			});
+		}
+		if (wargearOptions.value === "power sword phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "power sword, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "agonizer phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "agonizer, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "power sword blast pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "power sword, blast pistol"
+			});
+		}
+		if (wargearOptions.value === "agonizer blast pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "agonizer, blast pistol"
+			});
+		}
+		if (wargearOptions.value === "power sword splinter pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "power sword, splinter pistol"
+			});
+		}
+		if (wargearOptions.value === "agonizer splinter pistol" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "agonizer, splinter pistol"
+			});
+		}
+		if (wargearOptions.value === "power sword splinter pistol phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "power sword, splinter pistol, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "agonizer splinter pistol phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "agonizer, splinter pistol, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "power sword blast pistol phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "power sword, blast pistol, phantasm grenade launcher"
+			});
+		}
+		if (wargearOptions.value === "agonizer blast pistol phantasm grenade launcher" && this.state.unitType.value === "Sybarite") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "agonizer, blast pistol, phantasm grenade launcher"
+			});
+		}
+
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Wych Fighter") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter pistol, hekatarii blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "hydra gauntlets" && this.state.unitType.value === "Wych Fighter") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "hydra gauntlets, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "razorflails" && this.state.unitType.value === "Wych Fighter") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "razorflails, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "shardnet and impaler" && this.state.unitType.value === "Wych Fighter") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "shardnet and impaler, plasma grenades"
+			});
+		}
+
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "splinter pistol, hekatarii blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "power sword" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "splinter pistol, power sword, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "agonizer" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "splinter pistol, agonizer, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "blast pistol" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "blast pistol, hekatarii blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "power sword blast pistol" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "blast pistol, power sword, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "agonizer blast pistol" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "blast pistol, agonizer, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "phantasm grenade launcher" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "phantasm grenade launcher, splinter pistol, hekatarii blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "power sword phantasm grenade launcher" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "phantasm grenade launcher, splinter pistol, power sword, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "agonizer phantasm grenade launcher" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "phantasm grenade launcher, splinter pistol, agonizer, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "power sword blast pistol phantasm grenade launcher" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "phantasm grenade launcher, splinter pistol, power sword, blast pistol, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "agonizer blast pistol phantasm grenade launcher" && this.state.unitType.value === "Hekatrix") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "phantasm grenade launcher, splinter pistol, agonizer, blast pistol, plasma grenades"
+			});
+		}
+
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "shuriken pistol, harlequin's blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "neuro disruptor" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "neuro disruptor, harlequin's blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "fusion pistol" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "fusion pistol, harlequin's blade, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "harlequin's caress" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "shuriken pistol, harlequin's caress, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "harlequin's embrace" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "shuriken pistol, harlequin's embrace, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "harlequin's kiss" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "shuriken pistol, harlequin's kiss, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "neuro disruptor harlequin's caress" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "neuro disruptor, harlequin's caress, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "neuro disruptor harlequin's embrace" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "neuro disruptor, harlequin's embrace, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "neuro disruptor harlequin's kiss" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 6,
+        equipment: "neuro disruptor, harlequin's kiss, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "fusion pistol harlequin's caress" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 6,
+        equipment: "fusion pistol, harlequin's caress, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "fusion pistol harlequin's embrace" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "fusion pistol, harlequin's embrace, plasma grenades"
+			});
+		}
+		if (wargearOptions.value === "fusion pistol harlequin's kiss" && this.state.unitType.value === "Player") {
+			this.setState({
+				wargearPts: 7,
+        equipment: "fusion pistol, harlequin's kiss, plasma grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Immortal") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "gauss blaster"
+			});
+		}
+		if (wargearOptions.value === "tesla carbine" && this.state.unitType.value === "Immortal") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "tesla carbine"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Ork Boy") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "slugga, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "shoota" && this.state.unitType.value === "Ork Boy") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "shoota, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Ork Boy Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "slugga, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "big shoota" && this.state.unitType.value === "Ork Boy Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "big shoota, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "rokkit launcha" && this.state.unitType.value === "Ork Boy Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "rokkit launcha, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "slugga, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "big choppa" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "slugga, big choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "power klaw" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "slugga, power klaw, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "kombi-weapon with rokkit launcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "kombi-weapon with rokkit launcha, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "big choppa kombi-weapon with rokkit launcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "kombi-weapon with rokkit launcha, big choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "power klaw kombi-weapon with rokkit launcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 7,
+        equipment: "kombi-weapon with rokkit launcha, power klaw, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "kombi-weapon with skorcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "kombi-weapon with skorcha, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "big choppa kombi-weapon with skorcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 6,
+        equipment: "kombi-weapon with skorcha, big choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "power klaw kombi-weapon with skorcha" && this.state.unitType.value === "Boss Nob") {
+			this.setState({
+				wargearPts: 8,
+        equipment: "kombi-weapon with skorcha, power klaw, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Kommando Nob") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "slugga, choppa, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "power klaw" && this.state.unitType.value === "Kommando Nob") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "slugga, power klaw, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Burna Spanner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "burna, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "kustom mega-blasta" && this.state.unitType.value === "Burna Spanner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "kustom mega-blasta, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "rokkit launcha" && this.state.unitType.value === "Burna Spanner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "rokkit launcha, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Loota Spanner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "deffgun, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "kustom mega-blasta" && this.state.unitType.value === "Loota Spanner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "kustom mega-blasta, stikkbombs"
+			});
+		}
+		if (wargearOptions.value === "rokkit launcha" && this.state.unitType.value === "Loota Spanner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "rokkit launcha, stikkbombs"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Shasla") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse rifle, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse carbine" && this.state.unitType.value === "Shasla") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol" && this.state.unitType.value === "Shasla") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse rifle, pulse pistol, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse rifle, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse carbine" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse rifle, pulse pistol, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "markerlight" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse rifle, markerlight, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse carbine markerlight" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, markerlight, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol markerlight" && this.state.unitType.value === "Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse pistol, markerlight, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Pathfinder Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, markerlight, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "ion rifle" && this.state.unitType.value === "Pathfinder Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "ion rifle, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "rail rifle" && this.state.unitType.value === "Pathfinder Gunner") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "rail rifle, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Pathfinder Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, markerlight, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol" && this.state.unitType.value === "Pathfinder Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse carbine, pulse pistol, markerlight, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Breacher Shasla") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol" && this.state.unitType.value === "Breacher Shasla") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, pulse pistol, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Breacher Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol" && this.state.unitType.value === "Breacher Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, pulse pistol, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "markerlight" && this.state.unitType.value === "Breacher Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, markerlight, photon grenades"
+			});
+		}
+		if (wargearOptions.value === "pulse pistol markerlight" && this.state.unitType.value === "Breacher Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "pulse blaster, pulse pistol, markerlight, photon grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Stealth Shasui") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "burst cannon"
+			});
+		}
+		if (wargearOptions.value === "fusion blaster" && this.state.unitType.value === "Stealth Shasui") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "fusion blaster"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Stealth Shasvre") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "burst cannon"
+			});
+		}
+		if (wargearOptions.value === "fusion blaster" && this.state.unitType.value === "Stealth Shasvre") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "fusion blaster"
+			});
+		}
+		if (wargearOptions.value === "markerlight and target lock" && this.state.unitType.value === "Stealth Shasvre") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "burst cannon, markerlight"
+			});
+		}
+		if (wargearOptions.value === "fusion blaster markerlight and target lock" && this.state.unitType.value === "Stealth Shasvre") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "fusion blaster, markerlight"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Termagant") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "fleshborer"
+			});
+		}
+		if (wargearOptions.value === "devourer" && this.state.unitType.value === "Termagant") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "devourer"
+			});
+		}
+		if (wargearOptions.value === "spinefists" && this.state.unitType.value === "Termagant") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "spinefists"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, devourer"
+			});
+		}
+		if (wargearOptions.value === "rending claws" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "rending claws, devourer"
+			});
+		}
+		if (wargearOptions.value === "boneswords" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, devourer"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, devourer"
+			});
+		}
+		if (wargearOptions.value === "deathspitter" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "scything talons, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "spinefists" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, spinefists"
+			});
+		}
+		if (wargearOptions.value === "boneswords x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, boneswords"
+			});
+		}
+		if (wargearOptions.value === "scything talons x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, scything talons"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "lash whip and bonesword, lash whip and bonesword"
+			});
+		}
+		if (wargearOptions.value === "rending claws x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, rending claws"
+			});
+		}
+		if (wargearOptions.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, devourer, flesh hooks"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, devourer"
+			});
+		}
+		if (wargearOptions.value === "barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "scything talons, barbed strangler"
+			});
+		}
+		if (wargearOptions.value === "venom cannon" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "scything talons, venom cannon"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws"
+			});
+		}
+		if (wargearOptions.value === "scything talons" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, scything talons"
+			});
+		}
+		if (wargearOptions.value === "flesh hooks" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, flesh hooks"
+			});
+		}
+		if (wargearOptions.value === "scything talons flesh hooks" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, flesh hooks"
+			});
+		}
+		if (wargearOptions.value === "acid maw" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, acid maw"
+			});
+		}
+		if (wargearOptions.value === "scything talons acid maw" && this.state.unitType.value === "Genestealer") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, acid maw"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Acolyte Hybrid") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer" && this.state.unitType.value === "Acolyte Hybrid") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "hand flamer, cultist knife, rending claw, blasting charges"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "hand flamer, cultist knife, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "heavy rock drill" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "autopistol, heavy rock drill, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "heavy rock saw" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "autopistol, heavy rock saw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "heavy rock cutter" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "autopistol, heavy rock cutter, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "demolition charges" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "autopistol, demolition charges, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer heavy rock drill" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "hand flamer, heavy rock drill, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer heavy rock saw" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "hand flamer, heavy rock saw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer heavy rock cutter" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "hand flamer, heavy rock cutter, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer demolition charges" && this.state.unitType.value === "Acolyte Fighter") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "hand flamer, demolition charges, blasting charges"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Acolyte Leader") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, cultist knife, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer" && this.state.unitType.value === "Acolyte Leader") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "hand flamer, cultist knife, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "bonesword" && this.state.unitType.value === "Acolyte Leader") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "autopistol, bonesword, rending claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword" && this.state.unitType.value === "Acolyte Leader") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "lash whip and bonesword, rending claw, blasting charges"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Aberrant") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "power pick, rending claw"
+			});
+		}
+		if (wargearOptions.value === "power hammer" && this.state.unitType.value === "Aberrant") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "power hammer, rending claw"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Neophyte Hybrid") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autogun, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "shotgun" && this.state.unitType.value === "Neophyte Hybrid") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "shotgun, autopistol, blasting charges"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autogun, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "shotgun" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "shotgun, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "flamer" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "flamer, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "grenade launcher" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "grenade launcher, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "webber" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "webber, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "heavy stubber" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "heavy stubber, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "mining laser" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "mining laser, autopistol, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "seismic cannon" && this.state.unitType.value === "Neophyte Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "seismic cannon, autopistol, blasting charges"
+			});
+		}
+
+
 	}
-	
+			
 	handleChange4 = (wargearOptions2) => {
     this.setState({wargearOptions2: wargearOptions2})
     if (this.state.wargearOptions2.value === "none" && this.state.unitType.value === "Tactical Marine Gunner") {
@@ -3446,7 +4397,7 @@ class Units extends Component {
 			{value: 'splinter pistol', label: 'splinter pistol +0pts', link: 'Sybarite'},
 			{value: 'blast pistol', label: 'blast pistol +2pts', link: 'Sybarite'},
 			{value: 'power sword phantasm grenade launcher', label: 'power sword and phantasm grenade launcher +3pts', link: 'Sybarite'},
-			{value: 'agonizer phantasm grenade launcher', label: 'agonizer and phantasm grenade launcher +3pts', link: 'Sybarite'},
+			{value: 'power sword blast pistol', label: 'agonizer and phantasm grenade launcher +3pts', link: 'Sybarite'},
 			{value: 'power sword blast pistol', label: 'power sword and blast pistol +4pts', link: 'Sybarite'},
 			{value: 'agonizer blast pistol', label: 'agonizer and blast pistol +4pts', link: 'Sybarite'},
 			{value: 'power sword splinter pistol', label: 'power sword and splinter pistol +2pts', link: 'Sybarite'},
@@ -3484,7 +4435,7 @@ class Units extends Component {
       {value: "neuro disruptor harlequin's kiss", label: "neuro disruptor and harlequin's kiss +6pts", link: "Player"},
       {value: "fusion pistol harlequin's caress", label: "fusion pistol and harlequin's caress +6pts", link: "Player"},
       {value: "fusion pistol harlequin's embrace", label: "fusion pistol and harlequin's embrace +5pts", link: "Player"},
-			{value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +4pts", link: "Player"},
+			{value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +7pts", link: "Player"},
 			
 			{value: 'none', label: 'none', link: 'Immortal'},
 			{value: 'tesla carbine', label: 'tesla carbine +3pts', link: 'Immortal'},
@@ -3503,9 +4454,7 @@ class Units extends Component {
 			{value: 'big choppa kombi-weapon with rokkit launcha', label: 'big choppa and kombi-weapon with rokkit launcha +5pts', link: 'Boss Nob'},
 			{value: 'kombi-weapon with skorcha', label: 'kombi-weapon with skorcha +4pts', link: 'Boss Nob'},
 			{value: 'big choppa kombi-weapon with skorcha', label: 'big choppa and kombi-weapon with skorcha +6pts', link: 'Boss Nob'},
-			{value: 'kombi-weapon with rokkit launcha', label: 'kombi-weapon with rokkit launcha +3pts', link: 'Boss Nob'},
 			{value: 'power klaw kombi-weapon with rokkit launcha', label: 'power klaw and kombi-weapon with rokkit launcha +7pts', link: 'Boss Nob'},
-			{value: 'kombi-weapon with skorcha', label: 'kombi-weapon with skorcha +4pts', link: 'Boss Nob'},
 			{value: 'power klaw kombi-weapon with skorcha', label: 'power klaw and kombi-weapon with skorcha +8pts', link: 'Boss Nob'},
 			
 			{value: 'none', label: 'none', link: 'Kommando Boss Nob'},
@@ -3556,11 +4505,6 @@ class Units extends Component {
 			{value: 'none', label: 'none', link: 'Termagant'},
 			{value: 'devourer', label: 'devourer +3pts', link: 'Termagant'},
 			{value: 'spinefists', label: 'spinefists +0pts', link: 'Termagant'},
-			
-			{value: 'none', label: 'none', link: 'Hormagaunt'},
-			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Hormagaunt'},
-			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Hormagaunt'},
-			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Hormagaunt'},
 			
 			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
 			{value: 'rending claws', label: 'rending claws +1pts', link: 'Tyranid Warrior'},
@@ -3681,10 +4625,10 @@ class Units extends Component {
 			
 			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
 			{value: 'icon of despair', label: 'icon of despair +3pts', link: 'Chaos Space Marine'},
-			{value: 'icon of despair', label: 'icon of wrath +3pts', link: 'Chaos Space Marine'},
-			{value: 'icon of despair', label: 'icon of flame +1pts', link: 'Chaos Space Marine'},
-			{value: 'icon of despair', label: 'icon of desire +3pts', link: 'Chaos Space Marine'},
-			{value: 'icon of despair', label: 'icon of vengeance +3pts', link: 'Chaos Space Marine'},
+			{value: 'icon of wrath', label: 'icon of wrath +5pts', link: 'Chaos Space Marine'},
+			{value: 'icon of flame', label: 'icon of flame +1pts', link: 'Chaos Space Marine'},
+			{value: 'icon of excess', label: 'icon of excess +5pts', link: 'Chaos Space Marine'},
+			{value: 'icon of vengeance', label: 'icon of vengeance +1pts', link: 'Chaos Space Marine'},
 			
 			{value: 'none', label: 'none', link: 'Plague Marine'},
 			{value: 'icon of despair', label: 'icon of despair +3pts', link: 'Plague Marine'},
@@ -3699,7 +4643,12 @@ class Units extends Component {
 			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Termagant'},
 			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Termagant'},
 			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Termagant'},
-			
+						
+			{value: 'none', label: 'none', link: 'Hormagaunt'},
+			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Hormagaunt'},
+			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Hormagaunt'},
+			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Hormagaunt'},
+
 			{value: 'none', label: 'none', link: 'Genestealer'},
 			{value: 'extended carapace', label: 'extended carapace +0pts', link: 'Genestealer'},
 			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Genestealer'},
