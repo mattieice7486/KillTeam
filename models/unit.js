@@ -18,6 +18,7 @@ const unitSchema = new Schema({
   race: { type: String },
   unitType: { type: String },
   wargearOptions: { type: String },
+  wargearOptions2: { type: String },
   date: { type: Date, default: Date.now }
 });
 

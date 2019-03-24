@@ -197,6 +197,8 @@ class Squad extends Component {
 																					)
 																				})}
                                       </table>
+                                    <h2 className="text-light">Special Rules</h2>
+                                    <h6 className="text-light">{squadMember.wargearOptions2}</h6>
                                     </div>     
 																	)
 																})}

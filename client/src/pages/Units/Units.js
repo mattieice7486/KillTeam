@@ -82,7 +82,120 @@ class Units extends Component {
 		var last = [
 			"Chronus", "Tarentus", "Dysorius", "Cassus", "Acastian", "Varenus", "Apollon", "Aggennor", "Castus", "Poladrus"
 		];
-		this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+		var grey1 = [
+			"Valdar", "Kaladour", "Pelenas", "Anval", "Drystan", "Garran", "Drako", "Caddon", "Arno", "Verdan"
+		];
+		var grey2 = [
+			"Mordrak", "Torvin", "Thule", "Varn", "Ordan", "Gerontas", "Solor", "Cromm", "Kai", "Trevan"
+		];
+		var astra = [
+			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+		];
+		var adeptus1 = [
+			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
+		];
+		var adeptus2 = [
+			"-511", "-1111", "-XXVII", "-802", "-323/mk12", "-089", "-744", "-VII", "-18.1", "-656", "-IV", "-110", "-0.4343", "-97/mk24", "-XIX", "-7", "-110100", "-3.16", "-961.34254", "-MXV", "-99", "-2918", "-888.88", "-404", "-1010", "-0.44//K", "-745", "-66.75/mk98", "-1/1/2", "-99941", "-83.2", "-575", "-79.09/5", "-668.2", "-1/5", "-666/2"
+		];
+		var heretic1 = [
+			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
+		];
+		var heretic2 = [
+			"Aximand", "the Vengeful", "Thrice-Cursed", "Korda", "the Black", "Daemonsblade", "Orakar", "Naxos", "the Mad", "Faithslayer"
+		];
+		var death1 = [
+			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
+		];
+		var death2 = [
+			"Urghe", "Volghor", "Grulgus", "the Pestilent", "the Reeking", "the Curdled", "Glouch", "Muttermould", "Thrax", "Trudge"
+		];
+		var thousand1 = [
+			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
+		];
+		var thousand2 = [
+			"T'Kor", "Basth", "Takar", "Kallisar", "Rhan", "P'Tra", "Manahkmor", "Shen", "Apophontar", "H'Kett"
+		];
+		var wych1 = [
+			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
+		];
+		var wych2 = [
+			"La'flenz", "Wysp", "Soriel", "Oblique", "Nervose", "HektMournor", "Vivicon", "Viserhyx", "Berrebaal", "Vulptuse", "Ehlynna", "Khaur", "Hexehss", "the Crimson", "Thrix", "Khoryssa", "Vexx", "of the Screaming Blade", "Khrygg", "Nichtren", "Veluxis", "the Huntress", "Beastbane", "the Magnificent", "Trehll", "Xyriphraxis", "Masdruvael", "Khrone", "the Untouched", "Bloodslyk", "the Cruel", "Kharavyxis", "Ynthrekh", "Dyvahur", "Krael", "the Bloodsister"
+		];
+		var harlequins1 = [
+			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
+		];
+		var harlequins2 = [
+			"King", "Queen", "Prince", "Knave", "Witch", "Judge", "Executioner", "Seer", "Ghoul", "Crone"
+		];
+		var necron1 = [
+			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
+		];
+		var necron2 = [
+			"the Unliving", "the Gilded", "the Great", "the Exalted", "the Loyal", "the Cruel", "the Storm's Eye", "the Bloodied", "the Mighty", "the Relentless", "the Unforgiving", "the Merciless", "the Glorious", "the Devoted", "the Victorious", "the Destroyer", "the Shrouded", "the Flenser", "the Unstoppable", "the Beheader", "the Impaler", "the Magnificent", "the Illuminated", "the Executioner", "the Phaeron's Hand", "the Guardian", "the Gatekeeper", "the All-seeing", "the All-knowing", "the Starkiller", "the Lifetaker", "the Godbreaker", "the Torchbearer", "the Stormbringer", "the Colossus"
+		];
+		var ork1 = [
+			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
+		];
+		var ork2 = [
+			"Drakka", "Grug", "Gitstompa", "Skullcrusha", "Facekrumpa", "the 'Ard", "Grot Kicker", "da Shiv", "(no uvver bit)", "Blaktoof", "da Hammer", "Ghazbhag", "Steelfang", "Daggafist", "Squigbiter", "da Stompy", "da Facegrinda", "Loudgob", "Facebiter", "da Maniak", "Steelbootz", "Ripblade", "'Umiechewa", "Ironboot", "Flame Spitta", "Wurldkilla", "Stompkrumpa", "Spleenrippa", "Bigfangz", "Badfang", "Snotkicka", "Brewguzzla", "Bonesplitta", "'Eadkrakka", "Madeye", "Trakeye"
+		];
+		var tau = [
+			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
+		];
+		var tyranid1 = [
+			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
+		];
+		var tyranid2 = [
+			"Infestation", "Talon", "Fang", "Claw", "Tendril", "Coil", "Eye", "Brood", "Shadow", "Dread", "Swarm", "Barb", "Jaws", "Assassins", "Slayers", "Executioners", "Ghosts", "Echo", "Terrors", "Horrors", "Lurkers", "Heralds", "Sting", "Bite", "Doom", "Buchers", "Devils", "Wraiths", "Menace", "Shroud", "Annihilators", "Scream", "Pall", "Devourers", "Stalkers", "Maw"
+		];
+		var genestealer1 = [
+			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+		];
+		var genestealer2 = [
+			"Druchmann", "Kreel", "Desh", "Cavorla", "Krauss", "Gardlinger", "Zorbech", "Stennvar", "Varnway", "Starn", "Baumgart", "Drisso", "Sammer", "Helm", "Tarnright", "Valka", "Kelbrech", "Kheiser", "Madrach", "Venner", "Novek", "Svodnor", "Black", "Barchus", "Matterzhek", "Onderghast", "Thrace", "Lhaska", "Rezzekh", "Carleon", "Drevender", "Seifer", "Vreel", "Xyben", "Gorl", "Arnalt"
+		];
+    if (this.state.race.value === "Grey Knights") {
+		  this.setState({name: grey1[Math.floor(Math.random()*9)] + " " + grey2[Math.floor(Math.random()*9)]})
+    }
+    else if (this.state.race.value === "Astra Militarum") {
+		  this.setState({name: astra[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Adeptus Mechanicus") {
+		  this.setState({name: adeptus1[Math.floor(Math.random()*35)] + adeptus2[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Heretic Astartes") {
+		  this.setState({name: heretic1[Math.floor(Math.random()*9)] + " " + heretic2[Math.floor(Math.random()*9)]})
+    }
+    else if (this.state.race.value === "Death Guard") {
+		  this.setState({name: death1[Math.floor(Math.random()*9)] + " " + death2[Math.floor(Math.random()*9)]})
+    }
+    else if (this.state.race.value === "Thousand Sons") {
+		  this.setState({name: thousand1[Math.floor(Math.random()*9)] + " " + thousand2[Math.floor(Math.random()*9)]})
+    }
+    else if (this.state.race.value === "Drukhari" && this.state.unitType.value === "Wych") {
+		  this.setState({name: wych1[Math.floor(Math.random()*35)] + " " + wych2[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Harlequins") {
+		  this.setState({name: harlequins1[Math.floor(Math.random()*9)] + " " + harlequins2[Math.floor(Math.random()*9)]})
+    }
+    else if (this.state.race.value === "Necrons") {
+		  this.setState({name: necron1[Math.floor(Math.random()*35)] + " " + necron2[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Orks") {
+		  this.setState({name: ork1[Math.floor(Math.random()*35)] + " " + ork2[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Tau Empire") {
+		  this.setState({name: tau[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Tyranids") {
+		  this.setState({name: tyranid1[Math.floor(Math.random()*35)] + " " + tyranid2[Math.floor(Math.random()*35)]})
+    }
+    else if (this.state.race.value === "Genestealer Cults") {
+		  this.setState({name: genestealer1[Math.floor(Math.random()*35)] + " " + genestealer2[Math.floor(Math.random()*35)]})
+    }
+    else {
+		  this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+    }
 	}
 
   componentDidUpdate() {
@@ -217,6 +330,7 @@ class Units extends Component {
 			sv: "",
 			pts: "",
 			wargearPts: "",
+			wargearPts2: "",
 			unitType: {},
 			wargearOptions: {},
 			wargearOptions2: {}
@@ -226,6 +340,8 @@ class Units extends Component {
   handleChange2 = (unitType) => {
 		this.setState({
 			unitType: unitType,
+      wargearPts: "",
+      wargearPts2: "",
 			wargearOptions: {},
 			wargearOptions2: {}
 		})
@@ -722,8 +838,8 @@ class Units extends Component {
       this.setState({
         ws: 3,
         bs: 3,
-        str: 3,
-        tough: 3,
+        str: 4,
+        tough: 4,
         att: 1,
         ld: 7,
         sv: 3,
@@ -735,9 +851,9 @@ class Units extends Component {
       this.setState({
         ws: 3,
         bs: 3,
-        str: 3,
-        tough: 3,
-        att: 1,
+        str: 4,
+        tough: 4,
+        att: 2,
         ld: 8,
         sv: 3,
         pts: 13,
@@ -3687,28 +3803,52 @@ class Units extends Component {
         equipment: "scything talons, deathspitter"
 			});
 		}
+		if (wargearOptions.value === "rending claws deathspitter" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "rending claws, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "boneswords deathspitter" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boneswords, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword deathspitter" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "lash whip and bonesword, deathspitter"
+			});
+		}
 		if (wargearOptions.value === "spinefists" && this.state.unitType.value === "Tyranid Warrior") {
 			this.setState({
 				wargearPts: 0,
         equipment: "scything talons, spinefists"
 			});
 		}
-		if (wargearOptions.value === "boneswords x2" && this.state.unitType.value === "Tyranid Warrior") {
+		if (wargearOptions.value === "rending claws spinefists" && this.state.unitType.value === "Tyranid Warrior") {
 			this.setState({
 				wargearPts: 0,
-        equipment: "boneswords, boneswords"
+        equipment: "rending claws, spinefists"
 			});
 		}
-		if (wargearOptions.value === "scything talons x2" && this.state.unitType.value === "Tyranid Warrior") {
+		if (wargearOptions.value === "boneswords spinefists" && this.state.unitType.value === "Tyranid Warrior") {
 			this.setState({
 				wargearPts: 0,
-        equipment: "scything talons, scything talons"
+        equipment: "boneswords, spinefists"
 			});
 		}
-		if (wargearOptions.value === "lash whip and bonesword x2" && this.state.unitType.value === "Tyranid Warrior") {
+		if (wargearOptions.value === "lash whip and bonesword spinefists" && this.state.unitType.value === "Tyranid Warrior") {
 			this.setState({
-				wargearPts: 2,
-        equipment: "lash whip and bonesword, lash whip and bonesword"
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, spinefists"
+			});
+		}
+		if (wargearOptions.value === "scything talons rending claws" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, rending claws"
 			});
 		}
 		if (wargearOptions.value === "rending claws x2" && this.state.unitType.value === "Tyranid Warrior") {
@@ -3717,10 +3857,52 @@ class Units extends Component {
         equipment: "rending claws, rending claws"
 			});
 		}
-		if (wargearOptions.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+		if (wargearOptions.value === "boneswords rending claws" && this.state.unitType.value === "Tyranid Warrior") {
 			this.setState({
 				wargearPts: 0,
-        equipment: "scything talons, devourer, flesh hooks"
+        equipment: "boneswords, rending claws"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword rending claws" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, rending claws"
+			});
+		}
+		if (wargearOptions.value === "scything talons x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, scything talons"
+			});
+		}
+		if (wargearOptions.value === "boneswords scything talons " && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, scything talons"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword scything talons" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, scything talons"
+			});
+		}
+		if (wargearOptions.value === "boneswords x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, boneswords"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword boneswords" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "lash whip and bonesword, boneswords"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword x2" && this.state.unitType.value === "Tyranid Warrior") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "lash whip and bonesword, lash whip and bonesword"
 			});
 		}
 
@@ -3730,16 +3912,178 @@ class Units extends Component {
         equipment: "scything talons, devourer"
 			});
 		}
-		if (wargearOptions.value === "barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+		if (wargearOptions.value === "rending claws" && this.state.unitType.value === "Tyranid Warrior Gunner") {
 			this.setState({
 				wargearPts: 1,
+        equipment: "rending claws, devourer"
+			});
+		}
+		if (wargearOptions.value === "boneswords" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, devourer"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, devourer"
+			});
+		}
+		if (wargearOptions.value === "deathspitter" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "scything talons, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "rending claws deathspitter" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "rending claws, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "boneswords deathspitter" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boneswords, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword deathspitter" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "lash whip and bonesword, deathspitter"
+			});
+		}
+		if (wargearOptions.value === "spinefists" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, spinefists"
+			});
+		}
+		if (wargearOptions.value === "rending claws spinefists" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, spinefists"
+			});
+		}
+		if (wargearOptions.value === "boneswords spinefists" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, spinefists"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword spinefists" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, spinefists"
+			});
+		}
+		if (wargearOptions.value === "scything talons rending claws" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, rending claws"
+			});
+		}
+		if (wargearOptions.value === "rending claws x2" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "rending claws, rending claws"
+			});
+		}
+		if (wargearOptions.value === "boneswords rending claws" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, rending claws"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword rending claws" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, rending claws"
+			});
+		}
+		if (wargearOptions.value === "scything talons x2" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "scything talons, scything talons"
+			});
+		}
+		if (wargearOptions.value === "boneswords scything talons " && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, scything talons"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword scything talons" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "lash whip and bonesword, scything talons"
+			});
+		}
+		if (wargearOptions.value === "boneswords x2" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "boneswords, boneswords"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword boneswords" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "lash whip and bonesword, boneswords"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword x2" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "lash whip and bonesword, lash whip and bonesword"
+			});
+		}
+		if (wargearOptions.value === "barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 3,
         equipment: "scything talons, barbed strangler"
+			});
+		}
+  	if (wargearOptions.value === "rending claws barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "rending claws, barbed strangler"
+			});
+		}
+		if (wargearOptions.value === "boneswords barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "boneswords, barbed strangler"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword barbed strangler" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "lash whip and bonesword, barbed strangler"
 			});
 		}
 		if (wargearOptions.value === "venom cannon" && this.state.unitType.value === "Tyranid Warrior Gunner") {
 			this.setState({
-				wargearPts: 1,
+				wargearPts: 4,
         equipment: "scything talons, venom cannon"
+			});
+		}
+  	if (wargearOptions.value === "rending claws venom cannon" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "rending claws, venom cannon"
+			});
+		}
+		if (wargearOptions.value === "boneswords venom cannon" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 4,
+        equipment: "boneswords, venom cannon"
+			});
+		}
+		if (wargearOptions.value === "lash whip and bonesword venom cannon" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "lash whip and bonesword, venom cannon"
 			});
 		}
 
@@ -3954,19 +4298,436 @@ class Units extends Component {
 			});
 		}
 
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, rending claw, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph talon" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, metamorph talon, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph whip" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "autopistol, rending claw, metamorph whip, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph claw" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "autopistol, metamorph claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph talon" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "hand flamer, metamorph talon, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph whip" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "hand flamer, rending claw, metamorph whip, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph claw" && this.state.unitType.value === "Hybrid Metamorph") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "hand flamer, metamorph claw, blasting charges"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, rending claw, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph talon" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "autopistol, metamorph talon, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph whip" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "autopistol, rending claw, metamorph whip, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "metamorph claw" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "autopistol, metamorph claw, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph talon" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 1,
+        equipment: "hand flamer, metamorph talon, metamorph talon, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph whip" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 0,
+        equipment: "hand flamer, rending claw, metamorph whip, blasting charges"
+			});
+		}
+		if (wargearOptions.value === "hand flamer metamorph claw" && this.state.unitType.value === "Metamorph Leader") {
+			this.setState({
+				wargearPts: 3,
+        equipment: "hand flamer, metamorph claw, blasting charges"
+			});
+		}
+
 
 	}
 			
 	handleChange4 = (wargearOptions2) => {
     this.setState({wargearOptions2: wargearOptions2})
-    if (this.state.wargearOptions2.value === "none" && this.state.unitType.value === "Tactical Marine Gunner") {
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver") {
       this.setState({
-        wargearPts: 0,
-        equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
+        wargearPts2: 0,
       });
     }
-	}
+    if (wargearOptions2.value === "grav-chute" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "grapnel launcher" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "grav-chute grapnel launcher" && this.state.unitType.value === "Reiver") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
 
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "grav-chute" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "grapnel launcher" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "grav-chute grapnel launcher" && this.state.unitType.value === "Reiver Sergeant") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Guardsman") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "vox-caster" && this.state.unitType.value === "Guardsman") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Scion") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "vox-caster" && this.state.unitType.value === "Scion") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Ranger") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "enhanced data-tether" && this.state.unitType.value === "Skitarii Ranger") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+    if (wargearOptions2.value === "omnispex" && this.state.unitType.value === "Skitarii Ranger") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Vangaurd") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "enhanced data-tether" && this.state.unitType.value === "Skitarii Vangaurd") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+    if (wargearOptions2.value === "omnispex" && this.state.unitType.value === "Skitarii Vangaurd") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "icon of despair" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 3,
+      });
+    }
+    if (wargearOptions2.value === "icon of wrath" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+    if (wargearOptions2.value === "icon of flame" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "icon of excess" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+    if (wargearOptions2.value === "icon of vengeance" && this.state.unitType.value === "Chaos Space Marine") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Plague Marine") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "icon of despair" && this.state.unitType.value === "Plague Marine") {
+      this.setState({
+        wargearPts2: 3,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Rubric Marine") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "icon of flame" && this.state.unitType.value === "Rubric Marine") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Tzaangor") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "brayhorn" && this.state.unitType.value === "Tzaangor") {
+      this.setState({
+        wargearPts2: 3,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Termagant") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands" && this.state.unitType.value === "Termagant") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs" && this.state.unitType.value === "Termagant") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs" && this.state.unitType.value === "Termagant") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Hormagaunt") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands" && this.state.unitType.value === "Hormagaunt") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs" && this.state.unitType.value === "Hormagaunt") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs" && this.state.unitType.value === "Hormagaunt") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Genestealer") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "extended carapace" && this.state.unitType.value === "Genestealer") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs" && this.state.unitType.value === "Genestealer") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "extended carapace toxin sacs" && this.state.unitType.value === "Genestealer") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "toxin sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 1,
+      });
+    }
+    if (wargearOptions2.value === "adrenal glands toxin sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
+      this.setState({
+        wargearPts2: 2,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Acolyte Hybrid") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "cult icon" && this.state.unitType.value === "Acolyte Hybrid") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Neophyte Hybrid") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "cult icon" && this.state.unitType.value === "Neophyte Hybrid") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Hybrid Metamorph") {
+      this.setState({
+        wargearPts2: 0,
+      });
+    }
+    if (wargearOptions2.value === "cult icon" && this.state.unitType.value === "Hybrid Metamorph") {
+      this.setState({
+        wargearPts2: 5,
+      });
+    }
+	}			
+			
   render() {
     const options1 = [
       {value: 'Adeptus Astartes', label: 'Adeptus Astartes'},
@@ -4309,7 +5070,6 @@ class Units extends Component {
 			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
 			{value: 'chainsword', label: 'chainsword +0pts', link: 'Chaos Space Marine'},
 
-
 			{value: 'none', label: 'none', link: 'Chaos Space Marine Gunner'},
 			{value: 'flamer', label: 'flamer +3pts', link: 'Chaos Space Marine Gunner'},
 			{value: 'meltagun', label: 'meltagun +3pts', link: 'Chaos Space Marine Gunner'},
@@ -4507,20 +5267,58 @@ class Units extends Component {
 			{value: 'spinefists', label: 'spinefists +0pts', link: 'Termagant'},
 			
 			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
-			{value: 'rending claws', label: 'rending claws +1pts', link: 'Tyranid Warrior'},
-			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior'},
+			{value: 'rending claws', label: 'rending claws +0pts', link: 'Tyranid Warrior'},
 			{value: 'boneswords', label: 'boneswords +0pts', link: 'Tyranid Warrior'},
 			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
 			{value: 'deathspitter', label: 'deathspitter +2pts', link: 'Tyranid Warrior'},
+			{value: 'rending claws deathspitter', label: 'rending claws and deathspitter +2pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords deathspitter', label: 'boneswords and deathspitter +2pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword deathspitter', label: 'lash whip and bonesword and deathspitter +3pts', link: 'Tyranid Warrior'},
 			{value: 'spinefists', label: 'spinefists +0pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior'},
-			{value: 'scything talons', label: 'scything talons +0pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior'},
+			{value: 'rending claws spinefists', label: 'rending claws and spinefists +1pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords spinefists', label: 'boneswords and spinefists +0pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword spinefists', label: 'lash whip and bonesword and spinefists +1pts', link: 'Tyranid Warrior'},
 			{value: 'rending claws x2', label: 'rending claws x2 +0pts', link: 'Tyranid Warrior'},
+			{value: 'scything talons rending claws', label: 'scything talons and rending claws +0pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords rending claws', label: 'boneswords and rending claws +0pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword rending claws', label: 'lash whip and bonesword and rending claws +1pts', link: 'Tyranid Warrior'},
+			{value: 'scything talons x2', label: 'scything talons x2 +0pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords scything talons', label: 'boneswords and scything talons +0pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword scything talons', label: 'lash whip and bonesword and scything talons +1pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior'},
+			{value: 'boneswords lash whip and bonesword', label: 'boneswords, lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
+			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior'},
 			
 			{value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
-			{value: 'barbed strangler', label: 'barbed strangler +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'venom cannon', label: 'venom cannon +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws', label: 'rending claws +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords', label: 'boneswords +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'deathspitter', label: 'deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws deathspitter', label: 'rending claws and deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords deathspitter', label: 'boneswords and deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword deathspitter', label: 'lash whip and bonesword and deathspitter +3pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'spinefists', label: 'spinefists +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws spinefists', label: 'rending claws and spinefists +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords spinefists', label: 'boneswords and spinefists +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword spinefists', label: 'lash whip and bonesword and spinefists +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws x2', label: 'rending claws x2 +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'scything talons rending claws', label: 'scything talons and rending claws +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords rending claws', label: 'boneswords and rending claws +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword rending claws', label: 'lash whip and bonesword and rending claws +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'scything talons x2', label: 'scything talons x2 +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords scything talons', label: 'boneswords and scything talons +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword scything talons', label: 'lash whip and bonesword and scything talons +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords lash whip and bonesword', label: 'boneswords, lash whip and bonesword +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'barbed strangler', label: 'barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws barbed strangler', label: 'rending claws and barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords barbed strangler', label: 'boneswords and barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword barbed strangler', label: 'lash whip and bonesword, barbed strangler +4pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'venom cannon', label: 'venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'rending claws venom cannon', label: 'rending claws and venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'boneswords venom cannon', label: 'boneswords and venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'lash whip and bonesword venom cannon', label: 'lash whip and bonesword, venom cannon +5pts', link: 'Tyranid Warrior Gunner'},
 			
 			{value: 'none', label: 'none', link: 'Genestealer'},
 			{value: 'scything talons', label: 'scything talons +0pts', link: 'Genestealer'},
@@ -4657,10 +5455,20 @@ class Units extends Component {
 			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
 			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Tyranid Warrior'},
 			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Tyranid Warrior'},
+			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior'},
 			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Tyranid Warrior'},
 			{value: 'adrenal glands flesh hooks', label: 'adrenal glands and flesh hooks +1pts', link: 'Tyranid Warrior'},
 			{value: 'toxin sacs flesh hooks', label: 'toxin sacs and flesh hooks +1pts', link: 'Tyranid Warrior'},
 			{value: 'adrenal glands toxin sacs flesh hooks', label: 'adrenal glands, toxin sacs, and flesh hooks +2pts', link: 'Tyranid Warrior'},
+
+			{value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
+			{value: 'toxin sacs', label: 'toxin sacs +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'adrenal glands', label: 'adrenal glands +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'adrenal glands toxin sacs', label: 'adrenal glands and toxin sacs +2pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'adrenal glands flesh hooks', label: 'adrenal glands and flesh hooks +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'toxin sacs flesh hooks', label: 'toxin sacs and flesh hooks +1pts', link: 'Tyranid Warrior Gunner'},
+			{value: 'adrenal glands toxin sacs flesh hooks', label: 'adrenal glands, toxin sacs, and flesh hooks +2pts', link: 'Tyranid Warrior Gunner'},
 
 			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
 			{value: 'cult icon', label: 'cult icon +5pts', link: 'Acolyte Hybrid'},
