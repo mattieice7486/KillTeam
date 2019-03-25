@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import { auth } from '../../utils/Firebase';
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
-import { List } from "../../components/List";
+import { List, ListItem } from "../../components/List";
 import { FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import Confirm from "../../components/Confirm";
@@ -128,28 +128,31 @@ class Squad extends Component {
                               <List>
                                 {this.state.items[index].squadMembers.map((squadMember, index) => {
                                   return (
-                                    <div key={index}>
-                                      <h2 className="text-light" style={{textAlign : "center"}}>&ldquo;{squadMember.name}&rdquo;</h2>
-                                      <h3 className="text-light" style={{textAlign : "center"}}>{squadMember.unitType}</h3>
-                                      <h4 className="text-light" style={{float : "right"}}>
-                                        {squadMember.pts} points
-                                      </h4>
-                                      <table className="table table-bordered table-dark">
+                                    <ListItem key={index}>
+																		<span style={{fontSize : "24px", fontStyle : "bold"}}>
+                    									{squadMember.unitType}
+                    								</span>
+                                      <span style={{float : "right"}}>
+                                        {squadMember.pts} POINTS
+                                      </span>
+                                      <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
                                         <thead>
-                                          <tr>
-                                            <th>M&nbsp;</th>
-                                            <th>WS</th>
-                                            <th>BS</th>
-                                            <th>S&nbsp;</th>
-                                            <th>T&nbsp;</th>
-                                            <th>W&nbsp;</th>
-                                            <th>A&nbsp;</th>
-                                            <th>LD</th>
-                                            <th>SV</th>
+																					<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>WS</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>BS</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>LD</th>
+																						<th style={{borderLeft : "none", borderRight : "none"}}>SV</th>
                                           </tr>
                                         </thead>
                                         <tbody>
                                           <tr>
+                                            <td style={{width : "30%"}}>{squadMember.name}</td>
                                             <td>{squadMember.move}"</td>
                                             <td>{squadMember.ws}+</td>
                                             <td>{squadMember.bs}+</td>
@@ -162,17 +165,16 @@ class Squad extends Component {
                                           </tr>
                                         </tbody>
                                       </table>
-                                      <h2 className="text-light">Equipment</h2>
-                                      <table className="table table-bordered table-dark">
+                                      <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
                                         <thead>
-                                          <tr>
-                                            <th>Weapon</th>
-                                            <th>Range</th>
-                                            <th>Type</th>
-                                            <th>S&nbsp;</th>
-                                            <th>AP</th>
-                                            <th>D&nbsp;</th>
-                                            <th>Abilities</th>
+																					<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "25%"}}>WEAPON</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>RANGE</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "20%"}}>TYPE</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>S</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>AP</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>D</th>
+																						<th style={{borderLeft : "none", borderRight : "none", width : "35%"}}>ABILITIES</th>
                                           </tr>
                                         </thead>
 																				{squadMember.equipment.split(', ').map((item, index) => {
@@ -197,9 +199,17 @@ class Squad extends Component {
 																					)
 																				})}
                                       </table>
-                                    <h2 className="text-light">Special Rules</h2>
-                                    <h6 className="text-light">{squadMember.wargearOptions2}</h6>
-                                    </div>     
+																			<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+																				<thead>
+																					<tr>
+																						<th>
+																							<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
+																							<span style={{float : "left", fontWeight : "300"}}>{squadMember.wargearOptions2}</span>
+																						</th>
+																					</tr>
+																				</thead>
+																			</table>
+                                    </ListItem>     
 																	)
 																})}
                               </List>

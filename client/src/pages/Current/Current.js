@@ -66,33 +66,31 @@ class Squad extends Component {
                     <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
                     <Confirm ref={el => this.confirm1 = el} /> 
                     <Link to={"/units/" + unit._id}>
-                    <h2>
-                      &ldquo;{unit.name}&rdquo;
-                    </h2>
+                    <span style={{fontSize : "24px", fontStyle : "bold"}}>
+                    	{unit.unitType}
+                    </span>
                     </Link>
-                    <h2>
-                    {unit.unitType}
-                    </h2>
-                        &nbsp;
-                      <h4 style={{textAlign : "right"}}>
-                        {unit.pts} points
-                      </h4>
-                      <table className="table table-bordered table-dark">
+                      <span style={{float : "right"}}>
+                        {unit.pts} POINTS
+                      </span>
+                      <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
                           <thead>
-                            <tr>
-                              <th>M&nbsp;</th>
-                              <th>WS</th>
-                              <th>BS</th>
-                              <th>S&nbsp;</th>
-                              <th>T&nbsp;</th>
-                              <th>W&nbsp;</th>
-                              <th>A&nbsp;</th>
-                              <th>LD</th>
-                              <th>SV</th>
+                            <tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+                              <th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>WS</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>BS</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>LD</th>
+                              <th style={{borderLeft : "none", borderRight : "none"}}>SV</th>
                             </tr>
                           </thead>
                           <tbody>
                             <tr>
+                              <td style={{width : "30%"}}>{unit.name}</td>
                               <td>{unit.move}"</td>
                               <td>{unit.ws}+</td>
                               <td>{unit.bs}+</td>
@@ -105,17 +103,16 @@ class Squad extends Component {
                             </tr>
                           </tbody>
                       </table>
-                      <h2>Equipment</h2>
-											<table className="table table-bordered table-dark">
+											<table className="table table-bordered" style={{borderLeft : "none", borderRight : "none", backgroundColor : "#cec9c7"}}>
 												<thead>
-													<tr>
-														<th>Weapon</th>
-														<th>Range</th>
-														<th>Type</th>
-														<th>S&nbsp;</th>
-														<th>AP</th>
-														<th>D&nbsp;</th>
-														<th>Abilities</th>
+													<tr style={{backgroundColor : "#c94309", borderTop : "2px solid black"}}>
+														<th style={{borderLeft : "none", borderRight : "none", width : "25%"}}>WEAPON</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>RANGE</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "20%"}}>TYPE</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>S</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>AP</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>D</th>
+														<th style={{borderLeft : "none", borderRight : "none", width : "35%"}}>ABILITIES</th>
 													</tr>
 												</thead>
 												{unit.equipment.split(', ').map((item, index) => {
@@ -125,13 +122,13 @@ class Squad extends Component {
 																if (item === gun.weapon) {
 																	return (
 																		<tr key={index}>
-																			<td>{gun.weapon}</td>
-																			<td>{gun.range}"</td>
-																			<td>{gun.type}</td>
-																			<td>{gun.strength}&nbsp;</td>
-																			<td>{gun.AP}</td>
-																			<td>{gun.damage}</td>
-																			<td>{gun.abilities}</td>
+																			<td style={{width : "25%"}}>{gun.weapon}</td>
+																			<td style={{width : "5%"}}>{gun.range}"</td>
+																			<td style={{width : "20%"}}>{gun.type}</td>
+																			<td style={{width : "5%"}}>{gun.strength}</td>
+																			<td style={{width : "5%"}}>{gun.AP}</td>
+																			<td style={{width : "5%"}}>{gun.damage}</td>
+																			<td style={{width : "35%"}}>{gun.abilities}</td>
 																		</tr>
 																	)
 																}
@@ -139,6 +136,16 @@ class Squad extends Component {
 														</tbody>
 													)
 												})}
+										</table>
+										<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+											<thead>
+												<tr>
+													<th>
+														<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
+														<span style={{float : "left", fontWeight : "300"}}>{unit.wargearOptions2}</span>
+													</th>
+												</tr>
+											</thead>
 										</table>
                   </ListItem>
                 ))}

@@ -19,6 +19,7 @@ class Detail extends Component {
   }
 
   render() {
+		console.log(this.state.unit)
     return (
 			<Container fluid>
         <Row>
@@ -83,6 +84,10 @@ class Detail extends Component {
                     </tr>
                   </tbody>
               </table>
+              <h1 className="text-light">Special Rules</h1>
+              <p className="text-light">
+                {this.state.unit.wargearOptions2}
+              </p>
               <h1 className="text-light">Equipment</h1>
               <p className="text-light">
                 {this.state.unit.equipment}

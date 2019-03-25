@@ -29,9 +29,9 @@ class Units extends Component {
       att: "",
       ld: "",
       sv: "",
-      pts: "",
-      wargearPts: "",
-      wargearPts2: "",
+      pts: 0,
+      wargearPts: 0,
+      wargearPts2: 0,
       total: 0,
       race: {},
       unitType: {},
@@ -45,6 +45,7 @@ class Units extends Component {
     this.handleChange1 = this.handleChange1.bind(this);
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
+    this.handleChange4 = this.handleChange4.bind(this);
   }
 
   componentDidMount() {
@@ -264,8 +265,9 @@ class Units extends Component {
         att: "",
         ld: "",
         sv: "",
-        pts: "",
-        wargearPts: "",
+        pts: 0,
+        wargearPts: 0,
+        wargearPts2: 0,
         race: {},
         unitType: {},
         wargearOptions: {},
@@ -306,11 +308,11 @@ class Units extends Component {
         att: this.state.att,
         ld: this.state.ld,
         sv: this.state.sv,
-        pts: this.state.pts + this.state.wargearPts,
+        pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
         race: this.state.race.label,
         unitType: this.state.unitType.label,
         wargearOptions: this.state.wargearOptions.label,
-        wargearOptions2: this.state.wargearOptions2.label
+        wargearOptions2: this.state.wargearOptions2
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
@@ -346,9 +348,9 @@ class Units extends Component {
 			att: "",
 			ld: "",
 			sv: "",
-			pts: "",
-			wargearPts: "",
-			wargearPts2: "",
+			pts: 0,
+			wargearPts: 0,
+			wargearPts2: 0,
 			unitType: {},
 			wargearOptions: {},
 			wargearOptions2: {}
@@ -358,8 +360,8 @@ class Units extends Component {
   handleChange2 = (unitType) => {
 		this.setState({
 			unitType: unitType,
-      wargearPts: "",
-      wargearPts2: "",
+      wargearPts: 0,
+      wargearPts2: 0,
 			wargearOptions: {},
 			wargearOptions2: {}
 		})

@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+3/25/2019
+Release 0.3.3
+* Added random names for all races.
+* Updated some UI elements.
+* Added Abilities to each Unit Type.
+
 3/21/2019
 Release 0.3.2
 * Added a random name generator (Ultramarines only currently).
@@ -103,7 +109,7 @@ Release 0.1.0 is here!
 
 * Confirm prompt does not render in the correct location.
 * Squad counter does not alert > 100 pts unless you hit the "total" button twice.
-* Selectors don't register default state; you must select a new option then select the default for it to register.
+* <s>Selectors don't register default state; you must select a new option then select the default for it to register.</s> ✔️
 * <s>Squad page only displays first squad member for each squad.</s> ✔️
 * <s>Navbar collapse bugged for small screens.</s> ✔️
 * <s>Delete button alert does not have a cancel option.</s> ✔️
@@ -114,10 +120,10 @@ Release 0.1.0 is here!
 
 ## Updates Planned:
 
-* Random name generator.
 * Delete the current squad when the submit squad button is clicked.
-* Automatic squad totalling/Autofill stats (currently bugged).
 * UI graphics.
+* <s>Random name generator.</s> ✔️
+* <s>Automatic squad totalling/Autofill stats.</s> ✔️
 * <s>Correct Equipment Stats.</s> ✔️
 * <s>Squad page only displays current user's squads.</s> ✔️
 * <s>Login Button in the Navbar.</s> ✔️

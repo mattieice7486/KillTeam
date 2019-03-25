@@ -1,9 +1,15 @@
 .list-overflow-container {
-  max-height: 545px;
+	max-height: 545px;
   border: 1px #DDDDDD solid;
   border-radius: 4px;
   overflow-y: scroll;
   overflow-x: hidden;
+}
+
+.list-group .list-group-item {
+	background-color: #dfdad7;
+	border-radius: 0 30px 0 0;
+	border: 2px #c94309 solid;
 }
 
 .list-overflow-container ul {
