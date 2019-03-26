@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
+import { List, ListItem } from "../../components/List";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import guns from "../../utils/guns";
@@ -32,28 +33,30 @@ class Detail extends Component {
         </Row>
 				{this.state.unit ? (
         <Row>
-          <Col size="md-6 md-offset-1">
-            <article>
-              <h1 className="text-light">Race</h1>
-              <p className="text-light">
-                {this.state.unit.race}
-              </p>
-              <table className="table table-bordered table-dark">
-                  <thead>
-                    <tr>
-                      <th>M&nbsp;</th>
-                      <th>WS</th>
-                      <th>BS</th>
-                      <th>S&nbsp;</th>
-                      <th>T&nbsp;</th>
-                      <th>W&nbsp;</th>
-                      <th>A&nbsp;</th>
-                      <th>LD</th>
-                      <th>SV</th>
-                    </tr>
-                  </thead>
+          <Col size="md-2 md-offset-1">&nbsp;</Col>
+          <Col size="md-8 md-offset-1">
+            <List>
+							<ListItem>
+              <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<thead>
+									<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+										<th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>WS</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>BS</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>LD</th>
+										<th style={{borderLeft : "none", borderRight : "none"}}>SV</th>
+									</tr>
+								</thead>
                   <tbody>
                     <tr>
+                      <td style={{width : "30%"}}>
+                        {this.state.unit.name}
+                      </td>
                       <td>
                         {this.state.unit.move}"
                       </td>
@@ -84,29 +87,21 @@ class Detail extends Component {
                     </tr>
                   </tbody>
               </table>
-              <h1 className="text-light">Special Rules</h1>
-              <p className="text-light">
-                {this.state.unit.wargearOptions2}
-              </p>
-              <h1 className="text-light">Equipment</h1>
-              <p className="text-light">
-                {this.state.unit.equipment}
-              </p>
-							<table className="table table-bordered table-dark">
+							{/* <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
 								<thead>
-									<tr>
-										<th>Weapon</th>
-										<th>Range</th>
-										<th>Type</th>
-										<th>S&nbsp;</th>
-										<th>AP</th>
-										<th>D&nbsp;</th>
-										<th>Abilities</th>
+									<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+										<th style={{borderLeft : "none", borderRight : "none", width : "25%"}}>WEAPON</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>RANGE</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "20%"}}>TYPE</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>S</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>AP</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>D</th>
+										<th style={{borderLeft : "none", borderRight : "none", width : "35%"}}>ABILITIES</th>
 									</tr>
 								</thead>
-									{/* {this.state.unit.equipment.split(', ').map((item, index) => {
-										return (
-											<tbody key={index}>
+									{this.state.equipment.split(', ').map((item, index) => {
+									return (
+											<tbody>
 												{guns.map((gun, index) => {
 													if (item === gun.weapon) {
 														return (
@@ -124,11 +119,33 @@ class Detail extends Component {
 												})}
 											</tbody>
 										)
-									})} */}
+									})}
+							</table> */}
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+								<thead>
+									<tr>
+										<th>
+											<span style={{float : "left"}}>EQUIPMENT:&nbsp;</span>
+											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.equipment}</span>
+										</th>
+									</tr>
+								</thead>
 							</table>
-            </article>
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+								<thead>
+									<tr>
+										<th>
+											<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
+											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.wargearOptions2}</span>
+										</th>
+									</tr>
+								</thead>
+							</table>
+							</ListItem>
+            </List>
           </Col>
 				</Row>
+
 				) : (
 					<h3>No Results to Display</h3>
 				)}

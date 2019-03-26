@@ -44,7 +44,6 @@ class Squad extends Component {
 
   deleteUnit = id => {
     this.confirm1.open('Are you sure?', () => {
-    // how do you change this to "confirm" not "alert"?
     API.deleteUnit(id)
     .then(res => this.loadUnits())
     .catch(err => console.log(err));
@@ -57,7 +56,7 @@ class Squad extends Component {
         <Row>
           <Col size="md-12">
             <Jumbotron>
-              <h1>&ldquo;Squad Name&rdquo;</h1>
+              <h1>Squad Summary</h1>
             </Jumbotron>
             {this.state.units.length ? (
               <List>

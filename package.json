@@ -1,6 +1,6 @@
 {
   "name": "killteam",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Squad Builder for Kill Team",
   "main": "server.js",
   "scripts": {
@@ -30,6 +30,7 @@
     "firebase": "^5.7.2",
     "if-env": "^1.0.4",
     "mongoose": "^5.0.17",
+    "react-modal": "^3.8.1",
     "react-select": "^2.2.0"
   }
 }

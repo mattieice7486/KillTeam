@@ -218,9 +218,8 @@ class Units extends Component {
 	}
 
   componentDidUpdate() {
-    var i;
     var sum = 0;
-    for (i = 0; i < this.state.units.length; i++) {
+    for (let i = 0; i < this.state.units.length; i++) {
       sum += this.state.units[i].pts;
       if (this.state.total === 0) {
       this.setState({
@@ -228,10 +227,6 @@ class Units extends Component {
       })
       }
 		}
-    // only works on second click
-    // if (this.state.total > 100) {
-    //   alert("squad is over 100 points!")
-    // }
   }
 
   handleDatabaseSubmit(e) {
@@ -274,15 +269,34 @@ class Units extends Component {
         wargearOptions2: {}
       })
       )
-      .catch(err => console.log(err));
+			.catch(err => console.log(err));
+			if (this.state.units.length > 1) {
+				console.log(this.state)
+				var sum = 0;
+				for (let i = 0; i < this.state.units.length; i++) {
+					sum += this.state.units[i].pts;
+					this.setState({
+						total: sum
+					})
+				}
+				console.log(this.state.total)
+				console.log(this.state.units)
+			}
   };
 
   deleteUnit = id => {
-    this.confirm1.open('Are you sure?', () => {
+    this.confirm1.open('Delete Unit?', () => {
     API.deleteUnit(id)
-    .then(res => this.loadUnits())
+    .then(res => this.loadUnits(), this.squadTotal())
     .catch(err => console.log(err));
-    })
+		})
+    var sum = 0;
+    for (let i = 0; i < this.state.units.length; i++) {
+      sum += this.state.units[i].pts;
+      this.setState({
+        total: sum
+      })
+		}
   };
   
   handleInputChange = event => {
@@ -314,16 +328,21 @@ class Units extends Component {
         wargearOptions: this.state.wargearOptions.label,
         wargearOptions2: this.state.wargearOptions2
       })
-      .then(res => this.loadUnits())
+      .then(res => this.loadUnits(), this.squadTotal())
       .catch(err => console.log(err));
-    }
-    console.log(this)
+		}
+    var sum = 0;
+    for (let i = 0; i < this.state.units.length; i++) {
+      sum += this.state.units[i].pts;
+      this.setState({
+        total: sum
+      })
+		}
   };
   
   squadTotal = () => {
-    var i;
     var sum = 0;
-    for (i = 0; i < this.state.units.length; i++) {
+    for (let i = 0; i < this.state.units.length; i++) {
       sum += this.state.units[i].pts;
       this.setState({
         total: sum
@@ -3596,7 +3615,7 @@ class Units extends Component {
 		}
 		if (wargearOptions.value === "big shoota" && this.state.unitType.value === "Ork Boy Gunner") {
 			this.setState({
-				wargearPts: 3,
+				wargearPts: 0,
         equipment: "big shoota, stikkbombs"
 			});
 		}
@@ -3662,13 +3681,13 @@ class Units extends Component {
 			});
 		}
 
-		if (wargearOptions.value === "none" && this.state.unitType.value === "Kommando Nob") {
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Kommando Boss Nob") {
 			this.setState({
 				wargearPts: 0,
         equipment: "slugga, choppa, stikkbombs"
 			});
 		}
-		if (wargearOptions.value === "power klaw" && this.state.unitType.value === "Kommando Nob") {
+		if (wargearOptions.value === "power klaw" && this.state.unitType.value === "Kommando Boss Nob") {
 			this.setState({
 				wargearPts: 4,
         equipment: "slugga, power klaw, stikkbombs"
@@ -4607,19 +4626,19 @@ class Units extends Component {
       });
     }
 
-    if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Vangaurd") {
+    if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 0,
         wargearOptions2: "canticles of the omnissiah, bionics, rad-saturation"
       });
     }
-    if (wargearOptions2.value === "enhanced data-tether" && this.state.unitType.value === "Skitarii Vangaurd") {
+    if (wargearOptions2.value === "enhanced data-tether" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 5,
         wargearOptions2: "canticles of the omnissiah, bionics, rad-saturation, enhanced data-tether"
       });
     }
-    if (wargearOptions2.value === "omnispex" && this.state.unitType.value === "Skitarii Vangaurd") {
+    if (wargearOptions2.value === "omnispex" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 1,
         wargearOptions2: "canticles of the omnissiah, bionics, rad-saturation, omnispex"
@@ -5684,7 +5703,6 @@ class Units extends Component {
                   name="form-field-name"
                   value={{label : this.state.race.value}}
                   onChange={this.handleChange1}
-                  onClick={this.handleChange2}
                   options={options1}
                 />
                 <br />
@@ -5885,21 +5903,24 @@ class Units extends Component {
                 name="equipment"
                 placeholder="Equipment"
               />
-              <h6 className="text-light">Wargear Options</h6>
-              <Select
-                name="form-field-name"
-                value={{label : this.state.wargearOptions.value}}
-                onChange={this.handleChange3}
-                options={filteredOptions2}
-              />
-              <br />
-							<h6 className="text-light">Other Options</h6>
-              <Select
-                name="form-field-name"
-                value={{label : this.state.wargearOptions2.value}}
-                onChange={this.handleChange4}
-                options={filteredOptions3}
-              />
+              <span className="text-light" style={{ float: "left", width : "50%" }}>Wargear Options</span>
+							<span className="text-light" style={{ float: "left", width : "50%" }}>Other Options</span>
+              <div style={{ float: "left", width : "50%" }}>
+								<Select
+									name="form-field-name"
+									value={{label : this.state.wargearOptions.value}}
+									onChange={this.handleChange3}
+									options={filteredOptions2}
+								/>
+							</div>
+							<div style={{ float: "left", width : "50%" }}>
+								<Select
+									name="form-field-name"
+									value={{label : this.state.wargearOptions2.value}}
+									onChange={this.handleChange4}
+									options={filteredOptions3}
+								/>
+							</div>
               <br />
               <FormBtn
                 disabled={!(this.state.unitType && this.state.name)}
@@ -5949,11 +5970,6 @@ class Units extends Component {
               onClick={this.handleDatabaseSubmit}
             >
               Submit Squad
-            </FormBtn>
-            <FormBtn
-              onClick={this.squadTotal}
-            >
-            Total
             </FormBtn>
           </Col>
         </Row>

@@ -9,6 +9,12 @@ Deployed at http://kill-team.herokuapp.com
 
 ## Change Log:
 3/25/2019
+Release 0.3.4
+* Fixed various incorrect stats.
+* Updated Detail View to match the new interface.
+* Tweaked the interface.
+
+3/25/2019
 Release 0.3.3
 * Added random names for all races.
 * Updated some UI elements.
@@ -107,8 +113,12 @@ Release 0.1.0 is here!
 
 ## Known Issues:
 
-* Confirm prompt does not render in the correct location.
-* Squad counter does not alert > 100 pts unless you hit the "total" button twice.
+* Detail page does not display equipment correctly.
+* User can create mixed-race squads.
+* Tyranid Warrior options do not correctly update flesh hooks into Equipment.
+* Squad total does not update correctly (It is correctly stored in state).
+* Other Options dropdown does not display selection.
+* <s>Confirm prompt does not render in the correct location.</s> ✔️
 * <s>Selectors don't register default state; you must select a new option then select the default for it to register.</s> ✔️
 * <s>Squad page only displays first squad member for each squad.</s> ✔️
 * <s>Navbar collapse bugged for small screens.</s> ✔️
@@ -120,6 +130,9 @@ Release 0.1.0 is here!
 
 ## Updates Planned:
 
+* Limits for specific unit types.
+* Random name generator allows Space Marine Chapter select.
+* More squad options (specialists, flesh wounds, experience, demeanour).
 * Delete the current squad when the submit squad button is clicked.
 * UI graphics.
 * <s>Random name generator.</s> ✔️

@@ -4,7 +4,6 @@ import { auth } from '../../utils/Firebase';
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
-import { FormBtn } from "../../components/Form";
 import Jumbotron from "../../components/Jumbotron";
 import Confirm from "../../components/Confirm";
 import guns from "../../utils/guns";
@@ -29,9 +28,9 @@ class Squad extends Component {
     itemsRef.on('value', (snapshot) => {
       let items = snapshot.val();
       let newState = [];
-      let counter = 0;
+      // let counter = 0;
       for (let item in items) {
-        if (counter > 5) break;
+        // if (counter > 5) break;
         newState.push({
           id: item,
           user: items[item].user,
@@ -40,21 +39,12 @@ class Squad extends Component {
           avatar: items[item].avatar,
           squadMembers: items[item].units
         });
-        counter += 1;
+        // counter += 1;
       }
       this.setState({
         items: newState
       });
     });
-  }
-
-  console = () => {
-    for (let item in this.state.items) {
-      for (let squadMember in this.state.items[item].squadMembers)
-      console.log(this.state.items[item].squadMembers[squadMember].name);
-    }
-    console.log(this.state.items)
-    console.log(this.state.user);
   }
   
   handleInputChange = event => {
@@ -79,11 +69,6 @@ class Squad extends Component {
             <Jumbotron>
               <h1>Your Squads</h1>
             </Jumbotron>
-            <FormBtn
-              onClick={this.console}
-							>
-            Console
-            </FormBtn>
             <Confirm ref={el => this.confirm1 = el} />
           </Col>
         </Row>
@@ -124,7 +109,7 @@ class Squad extends Component {
                                 </tr>
                               </tbody>
                             </table>
-                            <Col size="sm-10">
+                            <Col size="sm-12">
                               <List>
                                 {this.state.items[index].squadMembers.map((squadMember, index) => {
                                   return (
