@@ -75,4 +75,6 @@ class Confirm extends React.Component {
   }
 }
 
+Modal.setAppElement('body');
+
 export default Confirm;

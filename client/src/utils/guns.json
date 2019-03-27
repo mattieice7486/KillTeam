@@ -1242,7 +1242,7 @@
 		"abilities": "-"
 	},
 	{
-		"weapon": "kombi weapon with rokkit launcha",
+		"weapon": "kombi-weapon with rokkit launcha",
 		"range": 24,
 		"type": "Assault 1 (Rokkit Launcha)",
 		"strength": 8,
@@ -1251,7 +1251,7 @@
 		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
 	},
 	{
-		"weapon": "kombi weapon with rokkit launcha",
+		"weapon": "kombi-weapon with rokkit launcha",
 		"range": 18,
 		"type": "Assault 2 (Shoota)",
 		"strength": 4,
@@ -1260,7 +1260,7 @@
 		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
 	},
 	{
-		"weapon": "kombi weapon with skorcha",
+		"weapon": "kombi-weapon with skorcha",
 		"range": 8,
 		"type": "Assault D6 (Skorcha)",
 		"strength": 5,
@@ -1269,7 +1269,7 @@
 		"abilities": "This weapon automatically hits its target."
 	},
 	{
-		"weapon": "kombi weapon with skorcha",
+		"weapon": "kombi-weapon with skorcha",
 		"range": 18,
 		"type": "Assault 2 (Shoota)",
 		"strength": 4,
@@ -1314,7 +1314,7 @@
 		"abilities": "-"
 	},
 	{
-		"weapon": "stikkbomb",
+		"weapon": "stikkbombs",
 		"range": 6,
 		"type": "Grenade D6",
 		"strength": 3,

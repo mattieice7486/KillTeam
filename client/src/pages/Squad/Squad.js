@@ -184,12 +184,120 @@ class Squad extends Component {
 																					)
 																				})}
                                       </table>
-																			<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+																			<table className="table" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
 																				<thead>
-																					<tr>
+																					<tr style={{ border : "2px solid black" }}>
 																						<th>
 																							<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
 																							<span style={{float : "left", fontWeight : "300"}}>{squadMember.wargearOptions2}</span>
+																						</th>
+																						<th>&nbsp;</th>
+																						<th>&nbsp;</th>
+																						<th>&nbsp;</th>
+																					</tr>
+																			
+																					<tr style={{ border : "2px solid black" }}>
+																						<th>
+																							<span style={{float : "left"}}>SPECIALISM:&nbsp;</span>
+																							<span style={{float : "left", fontWeight : "300"}}></span>
+																						</th>
+																						<th>
+																							<span style={{float : "left"}}>DEMEANOUR:&nbsp;</span>
+																							<span style={{float : "left", fontWeight : "300"}}></span>
+																						</th>
+																						<th>&nbsp;</th>
+																						<th>&nbsp;</th>
+																					</tr>
+																					<tr style={{ border : "2px solid black" }}>
+																						<th>
+																							<span style={{float : "left"}}>EXPERIENCE&nbsp;</span>
+																						</th>
+																						<th>
+																							<span style={{float : "left"}}>FLESH WOUNDS&nbsp;</span>
+																						</th>
+																						<th>
+																							<span style={{float : "left"}}>CONVALESCENCE&nbsp;</span>
+																						</th>
+																						<th>
+																							<span style={{float : "left"}}>NEW RECRUIT&nbsp;</span>
+																						</th>
+																					</tr>
+																					<tr style={{ borderTop : "2px solid black" }}>
+																						<th>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck1"></input>
+																								<label className="custom-control-label" for="customCheck1"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck2"></input>
+																								<label className="custom-control-label" for="customCheck2"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck3"></input>
+																								<label className="custom-control-label" for="customCheck3"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck4"></input>
+																								<label className="custom-control-label" for="customCheck4"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck5"></input>
+																								<label className="custom-control-label" for="customCheck5"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck6"></input>
+																								<label className="custom-control-label" for="customCheck6"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck7"></input>
+																								<label className="custom-control-label" for="customCheck7"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck8"></input>
+																								<label className="custom-control-label" for="customCheck8"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck9"></input>
+																								<label className="custom-control-label" for="customCheck9"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck10"></input>
+																								<label className="custom-control-label" for="customCheck10"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck11"></input>
+																								<label className="custom-control-label" for="customCheck11"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck12"></input>
+																								<label className="custom-control-label" for="customCheck12"></label>
+																							</div>
+																						</th>
+																						<th>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck13"></input>
+																								<label className="custom-control-label" for="customCheck13"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck14"></input>
+																								<label className="custom-control-label" for="customCheck14"></label>
+																							</div>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck15"></input>
+																								<label className="custom-control-label" for="customCheck15"></label>
+																							</div>
+																						</th>
+																						<th>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck16"></input>
+																								<label className="custom-control-label" for="customCheck16"></label>
+																							</div>
+																						</th>
+																						<th>
+																							<div className="custom-control custom-checkbox custom-control-inline">
+																								<input type="checkbox" className="custom-control-input" id="customCheck17"></input>
+																								<label className="custom-control-label" for="customCheck17"></label>
+																							</div>
 																						</th>
 																					</tr>
 																				</thead>
