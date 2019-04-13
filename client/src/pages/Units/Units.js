@@ -10,6 +10,23 @@ import firebase from "firebase";
 import { auth } from '../../utils/Firebase';
 import Select from 'react-select';
 import Confirm from "../../components/Confirm";
+import astartes from "../../assets/astartes1.png";
+import astra from "../../assets/astra1.png";
+import asuryani from "../../assets/asuryani1.png";
+import deathguard from "../../assets/deathguard1.png";
+import deathwatch from "../../assets/deathwatch1.png";
+import drukhari from "../../assets/drukhari1.png";
+import grey from "../../assets/grey1.png";
+import genestealer from "../../assets/genestealer1.png";
+import harlequin from "../../assets/harlequin1.png";
+import heretic from "../../assets/heretic1.png";
+import mechanicus from "../../assets/mechanicus1.png";
+import necron from "../../assets/necron1.png";
+import ork from "../../assets/ork1.png";
+import tau from "../../assets/tau1.png";
+import thousand from "../../assets/thousand1.png";
+import tyranid from "../../assets/tyranid1.png";
+
 
 
 class Units extends Component {
@@ -4916,22 +4933,22 @@ class Units extends Component {
 			
   render() {
     const options1 = [
-      {value: 'Adeptus Astartes', label: 'Adeptus Astartes'},
-      {value: 'Deathwatch', label: 'Deathwatch'},
-      {value: 'Grey Knights', label: 'Grey Knights'},
-      {value: 'Astra Militarum', label: 'Astra Militarum'},
-      {value: 'Adeptus Mechanicus', label: 'Adeptus Mechanicus'},
-      {value: 'Heretic Astartes', label: 'Heretic Astartes'},
-      {value: 'Death Guard', label: 'Death Guard'},
-      {value: 'Thousand Sons', label: 'Thousand Sons'},
-      {value: 'Asuryani', label: 'Asuryani'},
-      {value: 'Drukhari', label: 'Drukhari'},
-      {value: 'Harlequins', label: 'Harlequins'},
-      {value: 'Necrons', label: 'Necrons'},
-      {value: 'Orks', label: 'Orks'},
-      {value: 'Tau Empire', label: 'Tau Empire'},
-      {value: 'Tyranids', label: 'Tyranids'},
-      {value: 'Genestealer Cults', label: 'Genestealer Cults'}
+      {value: 'Adeptus Astartes', label: <img src={astartes} alt="astartes"></img>},
+      {value: 'Deathwatch', label: <img src={deathwatch} alt="deathwatch"></img>},
+      {value: 'Grey Knights', label: <img src={grey} alt="grey"></img>},
+      {value: 'Astra Militarum', label: <img src={astra} alt="astra"></img>},
+      {value: 'Adeptus Mechanicus', label: <img src={mechanicus} alt="mechanicus"></img>},
+      {value: 'Heretic Astartes', label: <img src={heretic} alt="heretic"></img>},
+      {value: 'Death Guard', label: <img src={deathguard} alt="deathguard"></img>},
+      {value: 'Thousand Sons', label: <img src={thousand} alt="thousand"></img>},
+      {value: 'Asuryani', label: <img src={asuryani} alt="asuryani"></img>},
+      {value: 'Drukhari', label: <img src={drukhari} alt="drukhari"></img>},
+      {value: 'Harlequins', label: <img src={harlequin} alt="harlequin"></img>},
+      {value: 'Necrons', label: <img src={necron} alt="necron"></img>},
+      {value: 'Orks', label: <img src={ork} alt="ork"></img>},
+      {value: 'Tau Empire', label: <img src={tau} alt="tau"></img>},
+      {value: 'Tyranids', label: <img src={tyranid} alt="tyranid"></img>},
+      {value: 'Genestealer Cults', label: <img src={genestealer} alt="genestealer"></img>}
     ];
 
     const options2 = [
@@ -5667,13 +5684,13 @@ class Units extends Component {
 		]
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
-    const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
+		const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
     return (
       <Container fluid>
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>Add a Squad Member</h1>
+              <h2>Add a Squad Member</h2>
               <h2>{this.state.race.label}</h2>
             </Jumbotron>
             <form>
@@ -5914,8 +5931,8 @@ class Units extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h1>Units On My List</h1>
-              <h2>Squad Cost: {this.state.total}</h2>
+              <h2>Units On My List</h2>
+              <h3>Squad Cost: {this.state.total}</h3>
             </Jumbotron>
             {this.state.units.length ? (
               <div>

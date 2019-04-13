@@ -8,6 +8,10 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+4/13/2019
+Release 0.3.6
+* Added icons to all the races options. Special thanks to TheMightyGoatMan for use of his icons. reddit.com/user/TheMightyGoatMan/
+
 3/26/2019
 Release 0.3.5
 * Fixed various incorrect stats.
