@@ -136,7 +136,7 @@ class Detail extends Component {
 									<tr>
 										<th>
 											<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
-											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.wargearOptions2}</span>
+											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.abilities}</span>
 										</th>
 									</tr>
 								</thead>

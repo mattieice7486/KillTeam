@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 const unitSchema = new Schema({
   name: { type: String, required: true },
   equipment: String,
+  abilities: String,
   move: { type: Number },
   ws: { type: Number },
   bs: { type: Number },
@@ -17,8 +18,6 @@ const unitSchema = new Schema({
   wargearPts: { type: Number },
   race: { type: String },
   unitType: { type: String },
-  wargearOptions: { type: String },
-  wargearOptions2: { type: String },
   date: { type: Date, default: Date.now }
 });
 

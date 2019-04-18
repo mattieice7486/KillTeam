@@ -37,6 +37,7 @@ class Units extends Component {
       squadName: "",
       name: "",
       equipment: "",
+      abilities: "",
       move: "",
       ws: "",
       bs: "",
@@ -238,6 +239,7 @@ class Units extends Component {
         squadName: "",
         name: "",
         equipment: "",
+        abilities: "",
         move: "",
         ws: "",
         bs: "",
@@ -294,6 +296,7 @@ class Units extends Component {
       API.saveUnit({
         name: this.state.name,
         equipment: this.state.equipment,
+        abilities: this.state.abilities,
         move: this.state.move,
         ws: this.state.ws,
         bs: this.state.bs,
@@ -304,10 +307,8 @@ class Units extends Component {
         ld: this.state.ld,
         sv: this.state.sv,
         pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
-        race: this.state.race.label,
+        race: this.state.race.value,
         unitType: this.state.unitType.label,
-        wargearOptions: this.state.wargearOptions.label,
-        wargearOptions2: this.state.wargearOptions2
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
@@ -355,6 +356,7 @@ class Units extends Component {
 			race,
 			name: "",
 			equipment: "",
+			abilities: "",
 			move: "",
 			ws: "",
 			bs: "",
@@ -376,6 +378,7 @@ class Units extends Component {
   handleChange2 = (unitType) => {
 		this.setState({
 			unitType: unitType,
+			abilities: "",
       wargearPts: 0,
       wargearPts2: 0,
 			wargearOptions: {},
@@ -398,7 +401,7 @@ class Units extends Component {
         sv: 4,
         pts: 10,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
 		}
 
@@ -410,7 +413,7 @@ class Units extends Component {
         sv: 4,
         pts: 11,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Scout Sergeant") {
@@ -421,7 +424,7 @@ class Units extends Component {
         sv: 4,
         pts: 11,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Tactical Marine") {
@@ -432,7 +435,7 @@ class Units extends Component {
         sv: 3,
         pts: 12,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Tactical Marine Gunner") {
@@ -443,7 +446,7 @@ class Units extends Component {
         sv: 3,
         pts: 13,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Tactical Marine Sergeant") {
@@ -454,7 +457,7 @@ class Units extends Component {
         sv: 3,
         pts: 13,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Reiver") {
@@ -465,7 +468,7 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
       });
     }
     if (unitType.value === "Reiver Sergeant") {
@@ -476,7 +479,7 @@ class Units extends Component {
         sv: 3,
         pts: 17,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
       });
     }
     if (unitType.value === "Intercessor") {
@@ -487,7 +490,7 @@ class Units extends Component {
         sv: 3,
         pts: 15,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Intercessor Gunner") {
@@ -498,7 +501,7 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Intercessor Sergeant") {
@@ -509,7 +512,7 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     ///////////////////////////////////
@@ -532,7 +535,7 @@ class Units extends Component {
         att: 2,
         ld: 8,
         pts: 14,
-        wargearOptions2: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Deathwatch Veteran Gunner") {
@@ -540,7 +543,7 @@ class Units extends Component {
         att: 2,
         ld: 8,
         pts: 16,
-        wargearOptions2: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     if (unitType.value === "Black Shield") {
@@ -548,7 +551,7 @@ class Units extends Component {
         att: 3,
         ld: 8,
         pts: 16,
-        wargearOptions2: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology, atonement through honour"
+        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology, atonement through honour"
       });
     }
     if (unitType.value === "Watch Sergeant") {
@@ -556,7 +559,7 @@ class Units extends Component {
         att: 3,
         ld: 9,
         pts: 16,
-        wargearOptions2: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
+        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology"
       });
     }
     ///////////////////////////////////
@@ -572,7 +575,7 @@ class Units extends Component {
         wounds: 1,
         sv: 3,
         equipment: "nemesis force sword, storm bolter, frag grenades, krak grenades, psyk-out grenades",
-        wargearOptions2: "And They Shall Know No Fear, Daemon hunters, Transhuman Physiology, Rites of Banishment"
+        abilities: "And They Shall Know No Fear, Daemon hunters, Transhuman Physiology, Rites of Banishment"
       })
     }
     if (unitType.value === "Grey Knight") {
@@ -638,7 +641,7 @@ class Units extends Component {
         pts: 5,
         sv: 5,
         equipment: "lasgun, frag grenades",
-        wargearOptions2: "Voice of Command"
+        abilities: "Voice of Command"
       });
     }
     if (unitType.value === "Special Weapons Guardsman") {
@@ -650,7 +653,7 @@ class Units extends Component {
         pts: 5,
         sv: 5,
         equipment: "lasgun, frag grenades",
-        wargearOptions2: "Voice of Command"
+        abilities: "Voice of Command"
       });
     }
     if (unitType.value === "Special Weapons Gunner") {
@@ -662,7 +665,7 @@ class Units extends Component {
         pts: 5,
         sv: 5,
         equipment: "lasgun, frag grenades",
-        wargearOptions2: "Voice of Command"
+        abilities: "Voice of Command"
       });
     }
     if (unitType.value === "Scion") {
@@ -696,7 +699,7 @@ class Units extends Component {
         pts: 10,
         sv: 4,
         equipment: "hot-shot lasgun, frag grenades, krak grenades",
-        wargearOptions2: "Voice of Command"
+        abilities: "Voice of Command"
       });
     }
     ///////////////////////////////////
@@ -719,7 +722,7 @@ class Units extends Component {
         ld: 6,
         pts: 9,
         equipment: "galvanic rifle",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (unitType.value === "Ranger Gunner") {
@@ -732,7 +735,7 @@ class Units extends Component {
         ld: 6,
         pts: 10,
         equipment: "galvanic rifle",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (unitType.value === "Ranger Alpha") {
@@ -745,7 +748,7 @@ class Units extends Component {
         ld: 7,
         pts: 10,
         equipment: "galvanic rifle",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (unitType.value === "Skitarii Vanguard") {
@@ -758,7 +761,7 @@ class Units extends Component {
         ld: 6,
         pts: 9,
         equipment: "radium carbine",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
       });
     }
     if (unitType.value === "Vanguard Gunner") {
@@ -771,7 +774,7 @@ class Units extends Component {
         ld: 6,
         pts: 10,
         equipment: "radium carbine",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
       });
     }
     if (unitType.value === "Vanguard Alpha") {
@@ -784,7 +787,7 @@ class Units extends Component {
         ld: 7,
         pts: 10,
         equipment: "radium carbine",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
       });
     }
     if (unitType.value === "Sicarian Ruststalker") {
@@ -797,7 +800,7 @@ class Units extends Component {
         ld: 6,
         pts: 14,
         equipment: "transonic razor, chordclaw",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (unitType.value === "Ruststalker Princeps") {
@@ -810,7 +813,7 @@ class Units extends Component {
         ld: 7,
         pts: 15,
         equipment: "transonic razor, chordclaw",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (unitType.value === "Sicarian Infiltrator") {
@@ -823,7 +826,7 @@ class Units extends Component {
         ld: 6,
         pts: 14,
         equipment: "stub carbine, power sword",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, neurostatic aura"
+        abilities: "Canticles of the Omnissiah, Bionics, neurostatic aura"
       });
     }
     if (unitType.value === "Infiltrator Princeps") {
@@ -836,7 +839,7 @@ class Units extends Component {
         ld: 7,
         pts: 15,
         equipment: "stub carbine, power sword",
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, neurostatic aura"
+        abilities: "Canticles of the Omnissiah, Bionics, neurostatic aura"
       });
     }
     ///////////////////////////////////
@@ -859,7 +862,7 @@ class Units extends Component {
         sv: 6,
         pts: 4,
         equipment: "autogun",
-        wargearOptions2: "Mark of Chaos"
+        abilities: "Mark of Chaos"
       });
     }
     if (unitType.value === "Chaos Cultist Gunner") {
@@ -873,7 +876,7 @@ class Units extends Component {
         sv: 6,
         pts: 5,
         equipment: "autogun",
-        wargearOptions2: "Mark of Chaos"
+        abilities: "Mark of Chaos"
       });
     }
     if (unitType.value === "Cultist Champion") {
@@ -887,7 +890,7 @@ class Units extends Component {
         sv: 6,
         pts: 5,
         equipment: "autogun",
-        wargearOptions2: "Mark of Chaos"
+        abilities: "Mark of Chaos"
       });
     }
     if (unitType.value === "Chaos Space Marine") {
@@ -901,7 +904,7 @@ class Units extends Component {
         sv: 3,
         pts: 12,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
       });
     }
     if (unitType.value === "Chaos Space Marine Gunner") {
@@ -915,7 +918,7 @@ class Units extends Component {
         sv: 3,
         pts: 13,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
       });
     }
     if (unitType.value === "Aspiring Champion") {
@@ -929,7 +932,7 @@ class Units extends Component {
         sv: 3,
         pts: 13,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
       });
     }
     ///////////////////////////////////
@@ -952,7 +955,7 @@ class Units extends Component {
         sv: 3,
         pts: 14,
         equipment: "boltgun, plague knife, blight grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
       });
     }
     if (unitType.value === "Plague Marine Gunner") {
@@ -967,7 +970,7 @@ class Units extends Component {
         sv: 3,
         pts: 15,
         equipment: "boltgun, plague knife, blight grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
       });
     }
     if (unitType.value === "Plague Marine Fighter") {
@@ -982,7 +985,7 @@ class Units extends Component {
         sv: 3,
         pts: 15,
         equipment: "boltgun, plague knife, blight grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
       });
     }
     if (unitType.value === "Plague Champion") {
@@ -997,10 +1000,10 @@ class Units extends Component {
         sv: 3,
         pts: 15,
         equipment: "boltgun, plague knife, blight grenades, krak grenades",
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
       });
     }
-    if (unitType.value === "Pox Walker") {
+    if (unitType.value === "Poxwalker") {
       this.setState({
         move: 4,
         ws: 5,
@@ -1012,7 +1015,7 @@ class Units extends Component {
         sv: 7,
         pts: 3,
         equipment: "improvised weapon",
-        wargearOptions2: "Disgustingly Resilient"
+        abilities: "Disgustingly Resilient"
       });
     }
     ///////////////////////////////////
@@ -1035,7 +1038,7 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "inferno boltgun",
-        wargearOptions2: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
+        abilities: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
       });
     }
     if (unitType.value === "Rubric Marine Gunner") {
@@ -1047,7 +1050,7 @@ class Units extends Component {
         sv: 3,
         pts: 16,
         equipment: "inferno boltgun",
-        wargearOptions2: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
+        abilities: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
       });
     }
     if (unitType.value === "Aspiring Sorcerer") {
@@ -1059,7 +1062,7 @@ class Units extends Component {
         sv: 3,
         pts: 17,
         equipment: "force stave, inferno bolt pistol",
-        wargearOptions2: "Death to the False Emperor, All is Dust, Favoured of Tzeentch, Transhuman Physiology"
+        abilities: "Death to the False Emperor, All is Dust, Favoured of Tzeentch, Transhuman Physiology"
       });
     }
     if (unitType.value === "Tzaangor") {
@@ -1071,7 +1074,7 @@ class Units extends Component {
         sv: 6,
         pts: 7,
         equipment: "Tzaangor blades",
-        wargearOptions2: "Aura of Dark Glory"
+        abilities: "Aura of Dark Glory"
       });
     }
     if (unitType.value === "Twistbray") {
@@ -1083,7 +1086,7 @@ class Units extends Component {
         sv: 6,
         pts: 8,
         equipment: "Tzaangor blades",
-        wargearOptions2: "Aura of Dark Glory"
+        abilities: "Aura of Dark Glory"
       });
     }
     ///////////////////////////////////
@@ -1106,7 +1109,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "shuriken catapult, plasma grenades",
-        wargearOptions2: "Ancient Doom, Battle Focus"
+        abilities: "Ancient Doom, Battle Focus"
       });
     }
     if (unitType.value === "Heavy Weapon Platform") {
@@ -1118,7 +1121,7 @@ class Units extends Component {
         sv: 3,
         pts: 8,
         equipment: "shuriken cannon",
-        wargearOptions2: "Crewed Weapon"
+        abilities: "Crewed Weapon"
       });
     }
     if (unitType.value === "Storm Guardian") {
@@ -1130,7 +1133,7 @@ class Units extends Component {
         sv: 5,
         pts: 6,
         equipment: "shuriken pistol, aeldari blade, plasma grenades",
-        wargearOptions2: "Ancient Doom, Battle Focus"
+        abilities: "Ancient Doom, Battle Focus"
       });
     }
     if (unitType.value === "Storm Guardian Gunner") {
@@ -1142,7 +1145,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "shuriken pistol, aeldari blade, plasma grenades",
-        wargearOptions2: "Ancient Doom, Battle Focus"
+        abilities: "Ancient Doom, Battle Focus"
       });
     }
     if (unitType.value === "Ranger") {
@@ -1154,7 +1157,7 @@ class Units extends Component {
         sv: 5,
         pts: 11,
         equipment: "shuriken pistol, ranger long rifle",
-        wargearOptions2: "Ancient Doom, Battle Focus, Cameleoline Cloak"
+        abilities: "Ancient Doom, Battle Focus, Cameleoline Cloak"
       });
     }
     if (unitType.value === "Dire Avenger") {
@@ -1166,7 +1169,7 @@ class Units extends Component {
         sv: 4,
         pts: 10,
         equipment: "avenger shuriken catapult, plasma grenades",
-        wargearOptions2: "Ancient Doom, Battle Focus, Defence Tactics"
+        abilities: "Ancient Doom, Battle Focus, Defence Tactics"
       });
     }
     if (unitType.value === "Dire Avenger Exarch") {
@@ -1178,7 +1181,7 @@ class Units extends Component {
         sv: 4,
         pts: 11,
         equipment: "avenger shuriken catapult, plasma grenades",
-        wargearOptions2: "Ancient Doom, Battle Focus, Defence Tactics, Battle Fortune"
+        abilities: "Ancient Doom, Battle Focus, Defence Tactics, Battle Fortune"
       });
     }
     ///////////////////////////////////
@@ -1201,7 +1204,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "splinter rifle",
-        wargearOptions2: "Power from Pain"
+        abilities: "Power from Pain"
       });
     }
     if (unitType.value === "Kabalite Gunner") {
@@ -1212,7 +1215,7 @@ class Units extends Component {
         sv: 5,
         pts: 8,
         equipment: "splinter rifle",
-        wargearOptions2: "Power from Pain"
+        abilities: "Power from Pain"
       });
     }
     if (unitType.value === "Sybarite") {
@@ -1223,7 +1226,7 @@ class Units extends Component {
         sv: 5,
         pts: 8,
         equipment: "splinter rifle",
-        wargearOptions2: "Power from Pain"
+        abilities: "Power from Pain"
       });
     }
     if (unitType.value === "Wych") {
@@ -1234,7 +1237,7 @@ class Units extends Component {
         sv: 6,
         pts: 8,
         equipment: "splinter pistol, hekatarii blade, plasma grenades",
-        wargearOptions2: "Power from Pain, Combat Drugs, Dodge, No Escape"
+        abilities: "Power from Pain, Combat Drugs, Dodge, No Escape"
       });
     }
     if (unitType.value === "Wych Fighter") {
@@ -1245,7 +1248,7 @@ class Units extends Component {
         sv: 6,
         pts: 9,
         equipment: "splinter pistol, hekatarii blade, plasma grenades",
-        wargearOptions2: "Power from Pain, Combat Drugs, Dodge, No Escape"
+        abilities: "Power from Pain, Combat Drugs, Dodge, No Escape"
       });
     }
     if (unitType.value === "Hekatrix") {
@@ -1256,7 +1259,7 @@ class Units extends Component {
         sv: 6,
         pts: 9,
         equipment: "splinter pistol, hekatarii blade, plasma grenades",
-        wargearOptions2: "Power from Pain, Combat Drugs, Dodge, No Escape"
+        abilities: "Power from Pain, Combat Drugs, Dodge, No Escape"
       });
     }
     ///////////////////////////////////
@@ -1275,7 +1278,7 @@ class Units extends Component {
         sv: 6,
         pts: 12,
         equipment: "splinter pistol, harlequin's blade, plasma grenades",
-        wargearOptions2: "Flip belt, Holo-Suit, Rising Crescendo"
+        abilities: "Flip belt, Holo-Suit, Rising Crescendo"
       })
     }
     ///////////////////////////////////
@@ -1289,7 +1292,7 @@ class Units extends Component {
         tough: 4,
         wounds: 1,
         ld: 7,
-        wargearOptions2: "Reanimation Protocols"
+        abilities: "Reanimation Protocols"
       })
     }
     if (unitType.value === "Necron Warrior") {
@@ -1344,7 +1347,7 @@ class Units extends Component {
         sv: 6,
         pts: 6,
         equipment: "slugga, choppa, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Ork Boy Gunner") {
@@ -1360,7 +1363,7 @@ class Units extends Component {
         sv: 6,
         pts: 7,
         equipment: "slugga, choppa, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Boss Nob") {
@@ -1376,7 +1379,7 @@ class Units extends Component {
         sv: 6,
         pts: 10,
         equipment: "slugga, choppa, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Gretchin") {
@@ -1407,7 +1410,7 @@ class Units extends Component {
         sv: 6,
         pts: 8,
         equipment: "slugga, choppa, stikkbombs",
-        wargearOptions2: "'Ere We Go, Sneaky Gits"
+        abilities: "'Ere We Go, Sneaky Gits"
       })
     }
     if (unitType.value === "Kommando Boss Nob") {
@@ -1423,7 +1426,7 @@ class Units extends Component {
         sv: 6,
         pts: 12,
         equipment: "slugga, choppa, stikkbombs",
-        wargearOptions2: "'Ere We Go, Sneaky Gits"
+        abilities: "'Ere We Go, Sneaky Gits"
       })
     }
     if (unitType.value === "Burna Boy") {
@@ -1439,7 +1442,7 @@ class Units extends Component {
         sv: 6,
         pts: 12,
         equipment: "burna, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Burna Spanner") {
@@ -1455,7 +1458,7 @@ class Units extends Component {
         sv: 6,
         pts: 10,
         equipment: "burna, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Loota") {
@@ -1471,7 +1474,7 @@ class Units extends Component {
         sv: 6,
         pts: 12,
         equipment: "deffgun, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     if (unitType.value === "Loota Spanner") {
@@ -1487,7 +1490,7 @@ class Units extends Component {
         sv: 6,
         pts: 10,
         equipment: "deffgun, stikkbombs",
-        wargearOptions2: "'Ere We Go"
+        abilities: "'Ere We Go"
       })
     }
     ///////////////////////////////////
@@ -1506,7 +1509,7 @@ class Units extends Component {
         sv: 4,
         pts: 8,
         equipment: "pulse rifle, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "Shasui") {
@@ -1522,7 +1525,7 @@ class Units extends Component {
         sv: 4,
         pts: 8,
         equipment: "pulse rifle, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "DS8 Tactical Support Turret") {
@@ -1538,7 +1541,7 @@ class Units extends Component {
         sv: 4,
         pts: 0,
         equipment: "missile pod",
-        wargearOptions2: "DS8 Tactical Support Turret, For the Greater Good"
+        abilities: "DS8 Tactical Support Turret, For the Greater Good"
       })
     }
     if (unitType.value === "Pathfinder") {
@@ -1554,7 +1557,7 @@ class Units extends Component {
         sv: 5,
         pts: 6,
         equipment: "pulse carbine, markerlight, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "Pathfinder Gunner") {
@@ -1570,7 +1573,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "pulse carbine, markerlight, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "Pathfinder Shasui") {
@@ -1586,7 +1589,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "pulse carbine, markerlight, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "Breacher Shasla") {
@@ -1602,7 +1605,7 @@ class Units extends Component {
         sv: 4,
         pts: 8,
         equipment: "pulse blaster, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "Breacher Shasui") {
@@ -1618,7 +1621,7 @@ class Units extends Component {
         sv: 4,
         pts: 8,
         equipment: "pulse blaster, photon grenades",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual"
+        abilities: "For the Greater Good, Bonding Knife Ritual"
       })
     }
     if (unitType.value === "DS8 Tactical Support Turret") {
@@ -1634,7 +1637,7 @@ class Units extends Component {
         sv: 4,
         pts: 0,
         equipment: "missile pod",
-        wargearOptions2: "DS8 Tactical Support Turret, For the Greater Good"
+        abilities: "DS8 Tactical Support Turret, For the Greater Good"
       })
     }
     if (unitType.value === "Stealth Shasui") {
@@ -1650,7 +1653,7 @@ class Units extends Component {
         sv: 3,
         pts: 20,
         equipment: "burst cannon",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual, Camouflage Fields"
+        abilities: "For the Greater Good, Bonding Knife Ritual, Camouflage Fields"
       })
     }
     if (unitType.value === "Stealth Shasvre") {
@@ -1666,7 +1669,7 @@ class Units extends Component {
         sv: 3,
         pts: 20,
         equipment: "burst cannon",
-        wargearOptions2: "For the Greater Good, Bonding Knife Ritual, Camouflage Fields"
+        abilities: "For the Greater Good, Bonding Knife Ritual, Camouflage Fields"
       })
     }
     if (unitType.value === "MV1 Gun Drone") {
@@ -1682,7 +1685,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "two pulse carbines",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols"
       })
     }
     if (unitType.value === "MV4 Shield Drone") {
@@ -1698,7 +1701,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "shield generator",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols, Shield Generator"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols, Shield Generator"
       })
     }
     if (unitType.value === "MV7 Marker Drone") {
@@ -1714,7 +1717,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "markerlight",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols"
       })
     }
     if (unitType.value === "MV36 Guardian Drone") {
@@ -1730,7 +1733,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "none",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols, Guardian Fields"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols, Guardian Fields"
       })
     }
     if (unitType.value === "MV33 Grav-Inhibitor Drone") {
@@ -1746,7 +1749,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "none",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols, Gravity Wave Projector"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols, Gravity Wave Projector"
       })
     }
     if (unitType.value === "MV31 Pulse Accelerator Drone") {
@@ -1762,7 +1765,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "none",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols, Pulse Accelerator"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols, Pulse Accelerator"
       })
     }
     if (unitType.value === "MB3 Recon Drone") {
@@ -1778,7 +1781,7 @@ class Units extends Component {
         sv: 5,
         pts: 7,
         equipment: "burst cannon",
-        wargearOptions2: "Support Subroutines, For the Greater Good, Saviour Protocols, Recon Suite"
+        abilities: "Support Subroutines, For the Greater Good, Saviour Protocols, Recon Suite"
       })
     }
     ///////////////////////////////////
@@ -1797,7 +1800,7 @@ class Units extends Component {
         sv: 6,
         pts: 4,
         equipment: "fleshborer",
-        wargearOptions2: "Instinctive Behaviour"
+        abilities: "Instinctive Behaviour"
       })
     }
     if (unitType.value === "Hormagaunt") {
@@ -1813,7 +1816,7 @@ class Units extends Component {
         sv: 6,
         pts: 4,
         equipment: "scything talons",
-        wargearOptions2: "Instinctive Behaviour, Bounding Leap"
+        abilities: "Instinctive Behaviour, Bounding Leap"
       })
     }
     if (unitType.value === "Lictor") {
@@ -1829,7 +1832,7 @@ class Units extends Component {
         sv: 5,
         pts: 25,
         equipment: "flesh hooks, grasping talons, rending claws",
-        wargearOptions2: "Chameleonic Skin"
+        abilities: "Chameleonic Skin"
       })
     }
     if (unitType.value === "Tyranid Warrior") {
@@ -1845,7 +1848,7 @@ class Units extends Component {
         sv: 4,
         pts: 20,
         equipment: "scything talons, devourer",
-        wargearOptions2: "Synapse, Shadow in the Warp"
+        abilities: "Synapse, Shadow in the Warp"
       })
     }
     if (unitType.value === "Tyranid Warrior Gunner") {
@@ -1861,7 +1864,7 @@ class Units extends Component {
         sv: 4,
         pts: 20,
         equipment: "scything talons, devourer",
-        wargearOptions2: "Synapse, Shadow in the Warp"
+        abilities: "Synapse, Shadow in the Warp"
       })
     }
     if (unitType.value === "Genestealer") {
@@ -1877,7 +1880,7 @@ class Units extends Component {
         sv: 5,
         pts: 11,
         equipment: "rending claws",
-        wargearOptions2: "Lightning Reflexes, Swift and Deadly"
+        abilities: "Lightning Reflexes, Swift and Deadly"
       })
     }
     ///////////////////////////////////
@@ -1900,7 +1903,7 @@ class Units extends Component {
         ld: 7,
         pts: 7,
         equipment: "autopistol, cultist knife, rending claw, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Acolyte Fighter") {
@@ -1914,7 +1917,7 @@ class Units extends Component {
         ld: 7,
         pts: 8,
         equipment: "autopistol, cultist knife, rending claw, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Acolyte Leader") {
@@ -1928,7 +1931,7 @@ class Units extends Component {
         ld: 8,
         pts: 8,
         equipment: "autopistol, cultist knife, rending claw, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Aberrant") {
@@ -1942,7 +1945,7 @@ class Units extends Component {
         ld: 7,
         pts: 15,
         equipment: "power pick, rending claw",
-        wargearOptions2: "Cult Ambush, Bestial Vigour"
+        abilities: "Cult Ambush, Bestial Vigour"
       });
     }
     if (unitType.value === "Neophyte Hybrid") {
@@ -1956,7 +1959,7 @@ class Units extends Component {
         ld: 7,
         pts: 5,
         equipment: "autogun, autopistol, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Neophyte Gunner") {
@@ -1970,7 +1973,7 @@ class Units extends Component {
         ld: 7,
         pts: 6,
         equipment: "autogun, autopistol, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Neophyte Leader") {
@@ -1984,7 +1987,7 @@ class Units extends Component {
         ld: 8,
         pts: 6,
         equipment: "autogun, autopistol, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Hybrid Metamorph") {
@@ -1998,7 +2001,7 @@ class Units extends Component {
         ld: 7,
         pts: 8,
         equipment: "autopistol, rending claw, metamorph talon, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (unitType.value === "Hybrid Leader") {
@@ -2012,7 +2015,7 @@ class Units extends Component {
         ld: 8,
         pts: 9,
         equipment: "autopistol, rending claw, metamorph talon, blasting charges",
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
   }
@@ -3586,7 +3589,7 @@ class Units extends Component {
 		}
 		if (wargearOptions.value === "tesla carbine" && this.state.unitType.value === "Immortal") {
 			this.setState({
-				wargearPts: 3,
+				wargearPts: 0,
         equipment: "tesla carbine"
 			});
 		}
@@ -4531,402 +4534,402 @@ class Units extends Component {
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
       });
     }
     if (wargearOptions2.value === "Grav-Chute" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
       });
     }
     if (wargearOptions2.value === "Grapnel Launcher" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grapnel Launcher"
       });
     }
     if (wargearOptions2.value === "Grav-Chute Grapnel Launcher" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
       });
     }
     if (wargearOptions2.value === "Grav-Chute" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
       });
     }
     if (wargearOptions2.value === "Grapnel Launcher" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, grapnel chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, grapnel chute"
       });
     }
     if (wargearOptions2.value === "Grav-Chute Grapnel Launcher" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Guardsman") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: ""
+        abilities: ""
       });
     }
     if (wargearOptions2.value === "Vox-Caster" && this.state.unitType.value === "Guardsman") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Vox-Caster"
+        abilities: "Vox-Caster"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Scion") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: ""
+        abilities: ""
       });
     }
     if (wargearOptions2.value === "Vox-Caster" && this.state.unitType.value === "Scion") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Vox-Caster"
+        abilities: "Vox-Caster"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Ranger") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics"
+        abilities: "Canticles of the Omnissiah, Bionics"
       });
     }
     if (wargearOptions2.value === "Enhanced Data-Tether" && this.state.unitType.value === "Skitarii Ranger") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Enhanced Data-Tether"
+        abilities: "Canticles of the Omnissiah, Bionics, Enhanced Data-Tether"
       });
     }
     if (wargearOptions2.value === "Omnispex" && this.state.unitType.value === "Skitarii Ranger") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Omnispex"
+        abilities: "Canticles of the Omnissiah, Bionics, Omnispex"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation"
       });
     }
     if (wargearOptions2.value === "Enhanced Data-Tether" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation, Enhanced Data-Tether"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation, Enhanced Data-Tether"
       });
     }
     if (wargearOptions2.value === "Omnispex" && this.state.unitType.value === "Skitarii Vanguard") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Canticles of the Omnissiah, Bionics, Rad-Saturation, Omnispex"
+        abilities: "Canticles of the Omnissiah, Bionics, Rad-Saturation, Omnispex"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos"
       });
     }
     if (wargearOptions2.value === "Icon of Despair" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 3,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, mark of nurgle, Icon of Despair"
+        abilities: "Death to the False Emperor, Transhuman Physiology, mark of nurgle, Icon of Despair"
       });
     }
     if (wargearOptions2.value === "Icon of Wrath" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, mark of khorne, Icon of Wrath"
+        abilities: "Death to the False Emperor, Transhuman Physiology, mark of khorne, Icon of Wrath"
       });
     }
     if (wargearOptions2.value === "Icon of Flame" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, mark of tzeentch, Icon of Flame"
+        abilities: "Death to the False Emperor, Transhuman Physiology, mark of tzeentch, Icon of Flame"
       });
     }
     if (wargearOptions2.value === "Icon of Excess" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, mark of slaanesh, Icon of Excess"
+        abilities: "Death to the False Emperor, Transhuman Physiology, mark of slaanesh, Icon of Excess"
       });
     }
     if (wargearOptions2.value === "Icon of Vengeance" && this.state.unitType.value === "Chaos Space Marine") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos, Icon of Vengeance"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Mark of Chaos, Icon of Vengeance"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Plague Marine") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient"
       });
     }
     if (wargearOptions2.value === "Icon of Despair" && this.state.unitType.value === "Plague Marine") {
       this.setState({
         wargearPts2: 3,
-        wargearOptions2: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient, Icon of Despair"
+        abilities: "Death to the False Emperor, Transhuman Physiology, Disgustingly Resilient, Icon of Despair"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Rubric Marine") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
+        abilities: "Death to the False Emperor, All is Dust, Favoured of Tzeentch"
       });
     }
     if (wargearOptions2.value === "Icon of Flame" && this.state.unitType.value === "Rubric Marine") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Death to the False Emperor, All is Dust, Favoured of Tzeentch, Icon of Flame"
+        abilities: "Death to the False Emperor, All is Dust, Favoured of Tzeentch, Icon of Flame"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Tzaangor") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Aura of Dark Glory"
+        abilities: "Aura of Dark Glory"
       });
     }
     if (wargearOptions2.value === "Brayhorn" && this.state.unitType.value === "Tzaangor") {
       this.setState({
         wargearPts2: 3,
-        wargearOptions2: "Aura of Dark Glory, brayhord"
+        abilities: "Aura of Dark Glory, brayhord"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Termagant") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Instinctive Behaviour"
+        abilities: "Instinctive Behaviour"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands" && this.state.unitType.value === "Termagant") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Instinctive Behaviour, Adrenal Glands"
+        abilities: "Instinctive Behaviour, Adrenal Glands"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs" && this.state.unitType.value === "Termagant") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Instinctive Behaviour, Toxin Sacs"
+        abilities: "Instinctive Behaviour, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs" && this.state.unitType.value === "Termagant") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Instinctive Behaviour, Adrenal Glands, toxin glands"
+        abilities: "Instinctive Behaviour, Adrenal Glands, toxin glands"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Hormagaunt") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Instinctive Behaviour, Bounding Leap"
+        abilities: "Instinctive Behaviour, Bounding Leap"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands" && this.state.unitType.value === "Hormagaunt") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Instinctive Behaviour, Bounding Leap, Adrenal Glands"
+        abilities: "Instinctive Behaviour, Bounding Leap, Adrenal Glands"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs" && this.state.unitType.value === "Hormagaunt") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Instinctive Behaviour, Bounding Leap, Toxin Sacs"
+        abilities: "Instinctive Behaviour, Bounding Leap, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs" && this.state.unitType.value === "Hormagaunt") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Instinctive Behaviour, Bounding Leap, Adrenal Glands, Toxin Sacs"
+        abilities: "Instinctive Behaviour, Bounding Leap, Adrenal Glands, Toxin Sacs"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Genestealer") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Lightning Reflexes, Swift and Deadly"
+        abilities: "Lightning Reflexes, Swift and Deadly"
       });
     }
     if (wargearOptions2.value === "Extended Carapace" && this.state.unitType.value === "Genestealer") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Lightning Reflexes, Extended Carapace"
+        abilities: "Lightning Reflexes, Extended Carapace"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs" && this.state.unitType.value === "Genestealer") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Lightning Reflexes, Swift and Deadly, Toxin Sacs"
+        abilities: "Lightning Reflexes, Swift and Deadly, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "Extended Carapace Toxin Sacs" && this.state.unitType.value === "Genestealer") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Lightning Reflexes, Extended Carapace, Toxin Sacs"
+        abilities: "Lightning Reflexes, Extended Carapace, Toxin Sacs"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Synapse, Shadow in the Warp"
+        abilities: "Synapse, Shadow in the Warp"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Toxin Sacs"
+        abilities: "Synapse, Shadow in the Warp, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Synapse, Shadow in the Warp, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Toxin Sacs, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Toxin Sacs, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs, flesh hooks"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Synapse, Shadow in the Warp"
+        abilities: "Synapse, Shadow in the Warp"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Toxin Sacs"
+        abilities: "Synapse, Shadow in the Warp, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Synapse, Shadow in the Warp, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Toxin Sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 1,
-        wargearOptions2: "Synapse, Shadow in the Warp, Toxin Sacs, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Toxin Sacs, flesh hooks"
       });
     }
     if (wargearOptions2.value === "Adrenal Glands Toxin Sacs flesh hooks" && this.state.unitType.value === "Tyranid Warrior Gunner") {
       this.setState({
         wargearPts2: 2,
-        wargearOptions2: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs, flesh hooks"
+        abilities: "Synapse, Shadow in the Warp, Adrenal Glands, Toxin Sacs, flesh hooks"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Acolyte Hybrid") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (wargearOptions2.value === "Cult Icon" && this.state.unitType.value === "Acolyte Hybrid") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Cult Ambush, Cult Icon"
+        abilities: "Cult Ambush, Cult Icon"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Neophyte Hybrid") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (wargearOptions2.value === "Cult Icon" && this.state.unitType.value === "Neophyte Hybrid") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Cult Ambush, Cult Icon"
+        abilities: "Cult Ambush, Cult Icon"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Hybrid Metamorph") {
       this.setState({
         wargearPts2: 0,
-        wargearOptions2: "Cult Ambush"
+        abilities: "Cult Ambush"
       });
     }
     if (wargearOptions2.value === "Cult Icon" && this.state.unitType.value === "Hybrid Metamorph") {
       this.setState({
         wargearPts2: 5,
-        wargearOptions2: "Cult Ambush, Cult Icon"
+        abilities: "Cult Ambush, Cult Icon"
       });
     }
 	}			
@@ -5401,7 +5404,7 @@ class Units extends Component {
 			{value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +7pts", link: "Player"},
 			
 			{value: 'none', label: 'none', link: 'Immortal'},
-			{value: 'tesla carbine', label: 'tesla carbine +3pts', link: 'Immortal'},
+			{value: 'tesla carbine', label: 'tesla carbine +0pts', link: 'Immortal'},
 			
 			{value: 'none', label: 'none', link: 'Ork Boy'},
 			{value: 'shoota', label: 'shoota +0pts', link: 'Ork Boy'},

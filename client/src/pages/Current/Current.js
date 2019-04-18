@@ -141,7 +141,7 @@ class Squad extends Component {
 												<tr>
 													<th>
 														<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
-														<span style={{float : "left", fontWeight : "300"}}>{unit.wargearOptions2}</span>
+														<span style={{float : "left", fontWeight : "300"}}>{unit.abilities}</span>
 													</th>
 												</tr>
 											</thead>

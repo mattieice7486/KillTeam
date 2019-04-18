@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+4/18/2019
+Release 0.3.7
+* Fixed bug that prevented user from submitting units.
+* Fixed Poxwalker not updating stats correctly.
+* Fixed Other Options not displaying once an option was picked.
+
 4/13/2019
 Release 0.3.6
 * Added icons to all the races options. Special thanks to TheMightyGoatMan for use of his icons. reddit.com/user/TheMightyGoatMan/
@@ -128,7 +134,7 @@ Release 0.1.0 is here!
 * Detail page does not display equipment correctly.
 * User can create mixed-race squads.
 * Tyranid Warrior options do not correctly update flesh hooks into Equipment.
-* Other Options dropdown does not display selection.
+* <s>Other Options dropdown does not display selection.</s> ✔️
 * <s>Squad total does not update correctly.</s> ✔️
 * <s>Confirm prompt does not render in the correct location.</s> ✔️
 * <s>Selectors don't register default state; you must select a new option then select the default for it to register.</s> ✔️
