@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+4/23/2019
+Release 0.3.8
+* Updated pages to be more mobile responsive.
+* User can no longer create mixed-race squads.
+* Race no longer resets after a squad member is added.
+
 4/18/2019
 Release 0.3.7
 * Fixed bug that prevented user from submitting units.
@@ -132,8 +138,8 @@ Release 0.1.0 is here!
 
 * Unit list does not correctly update when a squad of one is submitted or deleted using delete squad.
 * Detail page does not display equipment correctly.
-* User can create mixed-race squads.
 * Tyranid Warrior options do not correctly update flesh hooks into Equipment.
+* <s>User can create mixed-race squads.</s> ✔️
 * <s>Other Options dropdown does not display selection.</s> ✔️
 * <s>Squad total does not update correctly.</s> ✔️
 * <s>Confirm prompt does not render in the correct location.</s> ✔️

@@ -252,7 +252,6 @@ class Units extends Component {
         pts: 0,
         wargearPts: 0,
         wargearPts2: 0,
-        race: {},
         unitType: {},
         wargearOptions: {},
         wargearOptions2: {}
@@ -291,10 +290,10 @@ class Units extends Component {
 
   handleFormSubmit = event => {
     event.preventDefault();
-    console.log(this)
-    if (this.state.name && this.state.unitType) {
-      API.saveUnit({
-        name: this.state.name,
+		console.log(this)
+    if (this.state.name && this.state.unitType && (this.state.units[0] === undefined) || (this.state.race.value === this.state.units[0].race)) {
+			API.saveUnit({
+				name: this.state.name,
         equipment: this.state.equipment,
         abilities: this.state.abilities,
         move: this.state.move,
@@ -312,6 +311,8 @@ class Units extends Component {
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
+		} else {
+			alert("Squad must all match race type")
 		}
   };
   

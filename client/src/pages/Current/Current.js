@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
@@ -72,80 +74,84 @@ class Squad extends Component {
                       <span style={{float : "right"}}>
                         {unit.pts} POINTS
                       </span>
-                      <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-                          <thead>
-                            <tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
-                              <th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>WS</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>BS</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>LD</th>
-                              <th style={{borderLeft : "none", borderRight : "none"}}>SV</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr>
-                              <td style={{width : "30%"}}>{unit.name}</td>
-                              <td>{unit.move}"</td>
-                              <td>{unit.ws}+</td>
-                              <td>{unit.bs}+</td>
-                              <td>{unit.str}</td>
-                              <td>{unit.tough}</td>
-                              <td>{unit.wounds}</td>
-                              <td>{unit.att}</td>
-                              <td>{unit.ld}</td>
-                              <td>{unit.sv}+</td>
-                            </tr>
-                          </tbody>
-                      </table>
-											<table className="table table-bordered" style={{borderLeft : "none", borderRight : "none", backgroundColor : "#cec9c7"}}>
-												<thead>
-													<tr style={{backgroundColor : "#c94309", borderTop : "2px solid black"}}>
-														<th style={{borderLeft : "none", borderRight : "none", width : "25%"}}>WEAPON</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>RANGE</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "20%"}}>TYPE</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>S</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>AP</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>D</th>
-														<th style={{borderLeft : "none", borderRight : "none", width : "35%"}}>ABILITIES</th>
-													</tr>
-												</thead>
+                      	<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+                          <Thead>
+                            <Tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
+                              <Th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>WS</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>BS</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>LD</Th>
+                              <Th style={{borderLeft : "none", borderRight : "none"}}>SV</Th>
+                            </Tr>
+                          </Thead>
+                          <Tbody>
+                            <Tr>
+                              <Td style={{width : "30%"}}>{unit.name}</Td>
+                              <Td>{unit.move}"</Td>
+                              <Td>{unit.ws}+</Td>
+                              <Td>{unit.bs}+</Td>
+                              <Td>{unit.str}</Td>
+                              <Td>{unit.tough}</Td>
+                              <Td>{unit.wounds}</Td>
+                              <Td>{unit.att}</Td>
+                              <Td>{unit.ld}</Td>
+                              <Td>{unit.sv}+</Td>
+                            </Tr>
+                          </Tbody>
+                      </Table>
+											<Table className="table table-bordered" style={{borderLeft : "none", borderRight : "none", backgroundColor : "#cec9c7"}}>
+												<Thead>
+													<Tr style={{backgroundColor : "#c94309", borderTop : "2px solid black"}}>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "25%"}}>WEAPON</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>RANGE</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "20%"}}>TYPE</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>S</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>AP</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "5%"}}>D</Th>
+														<Th style={{borderLeft : "none", borderRight : "none", width : "35%"}}>ABILITIES</Th>
+													</Tr>
+												</Thead>
 												{unit.equipment.split(', ').map((item, index) => {
 													return (
-														<tbody key={index}>
+														<Tbody key={index}>
 															{guns.map((gun, index) => {
 																if (item === gun.weapon) {
 																	return (
-																		<tr key={index}>
-																			<td style={{width : "25%"}}>{gun.weapon}</td>
-																			<td style={{width : "5%"}}>{gun.range}"</td>
-																			<td style={{width : "20%"}}>{gun.type}</td>
-																			<td style={{width : "5%"}}>{gun.strength}</td>
-																			<td style={{width : "5%"}}>{gun.AP}</td>
-																			<td style={{width : "5%"}}>{gun.damage}</td>
-																			<td style={{width : "35%"}}>{gun.abilities}</td>
-																		</tr>
+																		<Tr key={index}>
+																			<Td style={{width : "25%"}}>{gun.weapon}</Td>
+																			<Td style={{width : "5%"}}>{gun.range}"</Td>
+																			<Td style={{width : "20%"}}>{gun.type}</Td>
+																			<Td style={{width : "5%"}}>{gun.strength}</Td>
+																			<Td style={{width : "5%"}}>{gun.AP}</Td>
+																			<Td style={{width : "5%"}}>{gun.damage}</Td>
+																			<Td style={{width : "35%"}}>{gun.abilities}</Td>
+																		</Tr>
 																	)
 																}
 															})}
-														</tbody>
+														</Tbody>
 													)
 												})}
-										</table>
-										<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
-											<thead>
-												<tr>
-													<th>
-														<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
-														<span style={{float : "left", fontWeight : "300"}}>{unit.abilities}</span>
-													</th>
-												</tr>
-											</thead>
-										</table>
+										</Table>
+										<Table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+											<Thead>
+												<Tr>
+													<Th>
+														ABILITIES:
+													</Th>
+												</Tr>
+											</Thead>
+											<Tbody>
+												<Tr>
+													<Td>{unit.abilities}</Td>
+												</Tr>
+											</Tbody>
+										</Table>
                   </ListItem>
                 ))}
               </List>

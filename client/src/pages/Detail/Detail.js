@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
+import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
+import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
 import guns from "../../utils/guns";
@@ -37,56 +39,56 @@ class Detail extends Component {
           <Col size="md-8 md-offset-1">
             <List>
 							<ListItem>
-              <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-								<thead>
-									<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
-										<th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>WS</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>BS</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>LD</th>
-										<th style={{borderLeft : "none", borderRight : "none"}}>SV</th>
-									</tr>
-								</thead>
-                  <tbody>
-                    <tr>
-                      <td style={{width : "30%"}}>
+              <Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<Thead>
+									<Tr style={{borderLeft : "none", borderRight : "none", border : "2px solid black", backgroundColor : "#c94309"}}>
+										<Th style={{borderLeft : "none", borderRight : "none", width : "30%"}}>NAME</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>M&nbsp;</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>WS</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>BS</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>S&nbsp;</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>T&nbsp;</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>W&nbsp;</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>A&nbsp;</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>LD</Th>
+										<Th style={{borderLeft : "none", borderRight : "none"}}>SV</Th>
+									</Tr>
+								</Thead>
+                  <Tbody>
+                    <Tr>
+                      <Td style={{width : "30%"}}>
                         {this.state.unit.name}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.move}"
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.ws}+
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.bs}+
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.str}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.tough}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.wounds}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.att}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.ld}
-                      </td>
-                      <td>
+                      </Td>
+                      <Td>
                         {this.state.unit.sv}+
-                      </td>
-                    </tr>
-                  </tbody>
-              </table>
+                      </Td>
+                    </Tr>
+                  </Tbody>
+              </Table>
 							{/* <table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
 								<thead>
 									<tr style={{borderLeft : "none", borderRight : "none", borderTop : "2px solid black", backgroundColor : "#c94309"}}>
@@ -121,26 +123,38 @@ class Detail extends Component {
 										)
 									})}
 							</table> */}
-							<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
-								<thead>
-									<tr>
-										<th>
-											<span style={{float : "left"}}>EQUIPMENT:&nbsp;</span>
-											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.equipment}</span>
-										</th>
-									</tr>
-								</thead>
-							</table>
-							<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
-								<thead>
-									<tr>
-										<th>
-											<span style={{float : "left"}}>ABILITIES:&nbsp;</span>
-											<span style={{float : "left", fontWeight : "300"}}>{this.state.unit.abilities}</span>
-										</th>
-									</tr>
-								</thead>
-							</table>
+								<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+									<Thead>
+										<Tr>
+											<Th>
+												EQUIPMENT:
+											</Th>
+										</Tr>
+									</Thead>
+									<Tbody>
+										<Tr>
+											<Td>
+												{this.state.unit.equipment}
+											</Td>
+										</Tr>
+									</Tbody>
+								</Table>
+								<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+									<Thead>
+										<Tr>
+											<Th>
+												ABILITIES:
+											</Th>
+										</Tr>
+									</Thead>
+									<Tbody>
+										<Tr>
+											<Td>
+												{this.state.unit.abilities}
+											</Td>
+										</Tr>
+									</Tbody>
+								</Table>
 							</ListItem>
             </List>
           </Col>

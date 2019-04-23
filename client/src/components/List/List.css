@@ -1,5 +1,6 @@
 .list-overflow-container {
 	max-height: 545px;
+	width: auto;
   overflow-y: auto;
   overflow-x: auto;
 }
