@@ -169,54 +169,62 @@ class Units extends Component {
 		var genestealer2 = [
 			"Druchmann", "Kreel", "Desh", "Cavorla", "Krauss", "Gardlinger", "Zorbech", "Stennvar", "Varnway", "Starn", "Baumgart", "Drisso", "Sammer", "Helm", "Tarnright", "Valka", "Kelbrech", "Kheiser", "Madrach", "Venner", "Novek", "Svodnor", "Black", "Barchus", "Matterzhek", "Onderghast", "Thrace", "Lhaska", "Rezzekh", "Carleon", "Drevender", "Seifer", "Vreel", "Xyben", "Gorl", "Arnalt"
 		];
-    if (this.state.race.value === "Grey Knights") {
-		  this.setState({name: grey1[Math.floor(Math.random()*9)] + " " + grey2[Math.floor(Math.random()*9)]})
-    }
-    else if (this.state.race.value === "Astra Militarum") {
-		  this.setState({name: astra[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Adeptus Mechanicus") {
-		  this.setState({name: adeptus1[Math.floor(Math.random()*35)] + adeptus2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Heretic Astartes") {
-		  this.setState({name: heretic1[Math.floor(Math.random()*9)] + " " + heretic2[Math.floor(Math.random()*9)]})
-    }
-    else if (this.state.race.value === "Death Guard") {
-		  this.setState({name: death1[Math.floor(Math.random()*9)] + " " + death2[Math.floor(Math.random()*9)]})
-    }
-    else if (this.state.race.value === "Thousand Sons") {
-		  this.setState({name: thousand1[Math.floor(Math.random()*9)] + " " + thousand2[Math.floor(Math.random()*9)]})
-    }
-    else if (this.state.race.value === "Asuryani") {
-		  this.setState({name: asur1[Math.floor(Math.random()*71)] + " " + asur2[Math.floor(Math.random()*71)]})
-    }
-    else if (this.state.race.value === "Drukhari" && (this.state.unitType.value === "Wych" || this.state.unitType.value === "Wych Fighter" || this.state.unitType.value === "Hekatrix")) {
-		  this.setState({name: wych1[Math.floor(Math.random()*35)] + " " + wych2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Drukhari") {
-		  this.setState({name: kabal1[Math.floor(Math.random()*35)] + " " + kabal2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Harlequins") {
-		  this.setState({name: harlequins1[Math.floor(Math.random()*9)] + " " + harlequins2[Math.floor(Math.random()*9)]})
-    }
-    else if (this.state.race.value === "Necrons") {
-		  this.setState({name: necron1[Math.floor(Math.random()*35)] + " " + necron2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Orks") {
-		  this.setState({name: ork1[Math.floor(Math.random()*35)] + " " + ork2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Tau Empire") {
-		  this.setState({name: tau[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Tyranids") {
-		  this.setState({name: tyranid1[Math.floor(Math.random()*35)] + " " + tyranid2[Math.floor(Math.random()*35)]})
-    }
-    else if (this.state.race.value === "Genestealer Cults") {
-		  this.setState({name: genestealer1[Math.floor(Math.random()*35)] + " " + genestealer2[Math.floor(Math.random()*35)]})
-    }
-    else {
-		  this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
-    }
+		switch (this.state.race.value) {
+			case "Adeptus Astartes":
+				this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+				break;
+			case "Deathwatch":
+				this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+				break;
+			case "Grey Knights":
+				this.setState({name: grey1[Math.floor(Math.random()*9)] + " " + grey2[Math.floor(Math.random()*9)]})
+				break;
+			case "Astra Militarum":
+				this.setState({name: astra[Math.floor(Math.random()*35)]})
+				break;
+			case "Adeptus Mechanicus":
+				this.setState({name: adeptus1[Math.floor(Math.random()*35)] + adeptus2[Math.floor(Math.random()*35)]})
+				break;
+			case "Heretic Astartes":
+				this.setState({name: heretic1[Math.floor(Math.random()*9)] + " " + heretic2[Math.floor(Math.random()*9)]})
+				break;
+			case "Death Guard":
+				this.setState({name: death1[Math.floor(Math.random()*9)] + " " + death2[Math.floor(Math.random()*9)]})
+				break;
+			case "Thousand Sons":
+				this.setState({name: thousand1[Math.floor(Math.random()*9)] + " " + thousand2[Math.floor(Math.random()*9)]})
+				break;
+			case "Asuryani":
+				this.setState({name: asur1[Math.floor(Math.random()*71)] + " " + asur2[Math.floor(Math.random()*71)]})
+				break;
+			case "Drukhari":
+				if (this.state.unitType.value === "Wych" || this.state.unitType.value === "Wych Fighter" || this.state.unitType.value === "Hekatrix") {
+					this.setState({name: wych1[Math.floor(Math.random()*35)] + " " + wych2[Math.floor(Math.random()*35)]})
+				} else {
+					this.setState({name: kabal1[Math.floor(Math.random()*35)] + " " + kabal2[Math.floor(Math.random()*35)]})
+				}
+				break;
+			case "Harlequins":
+				this.setState({name: harlequins1[Math.floor(Math.random()*9)] + " " + harlequins2[Math.floor(Math.random()*9)]})
+				break;
+			case "Necrons":
+				this.setState({name: necron1[Math.floor(Math.random()*35)] + " " + necron2[Math.floor(Math.random()*35)]})
+				break;
+			case "Orks":
+				this.setState({name: ork1[Math.floor(Math.random()*35)] + " " + ork2[Math.floor(Math.random()*35)]})
+				break;
+			case "Tau Empire":
+				this.setState({name: tau[Math.floor(Math.random()*35)]})
+				break;
+			case "Tyranids":
+				this.setState({name: tyranid1[Math.floor(Math.random()*35)] + " " + tyranid2[Math.floor(Math.random()*35)]})
+				break;
+			case "Genestealer Cults":
+				this.setState({name: genestealer1[Math.floor(Math.random()*35)] + " " + genestealer2[Math.floor(Math.random()*35)]})
+				break;
+			default:
+				this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+		}
 	}
 
   componentDidUpdate() {
@@ -1458,7 +1466,7 @@ class Units extends Component {
         ld: 6,
         sv: 6,
         pts: 10,
-        equipment: "burna, stikkbombs",
+        equipment: "big shoota, stikkbombs",
         abilities: "'Ere We Go"
       })
     }
@@ -1490,7 +1498,7 @@ class Units extends Component {
         ld: 6,
         sv: 6,
         pts: 10,
-        equipment: "deffgun, stikkbombs",
+        equipment: "big shoota, stikkbombs",
         abilities: "'Ere We Go"
       })
     }
@@ -3698,7 +3706,7 @@ class Units extends Component {
 		if (wargearOptions.value === "none" && this.state.unitType.value === "Burna Spanner") {
 			this.setState({
 				wargearPts: 0,
-        equipment: "burna, stikkbombs"
+        equipment: "big shoota, stikkbombs"
 			});
 		}
 		if (wargearOptions.value === "kustom mega-blasta" && this.state.unitType.value === "Burna Spanner") {
@@ -3717,7 +3725,7 @@ class Units extends Component {
 		if (wargearOptions.value === "none" && this.state.unitType.value === "Loota Spanner") {
 			this.setState({
 				wargearPts: 0,
-        equipment: "deffgun, stikkbombs"
+        equipment: "big shoota, stikkbombs"
 			});
 		}
 		if (wargearOptions.value === "kustom mega-blasta" && this.state.unitType.value === "Loota Spanner") {
@@ -5087,8 +5095,6 @@ class Units extends Component {
     ];
 
     const options3 = [
-			{value: 'none', label: 'none', link: 'Tactical Marine'},
-			
       {value: 'none', label: 'none', link: 'Tactical Marine Gunner'},
       {value: 'flamer', label: 'flamer +3pts', link: 'Tactical Marine Gunner'},
       {value: 'meltagun', label: 'meltagun +3pts', link: 'Tactical Marine Gunner'},
@@ -5264,7 +5270,7 @@ class Units extends Component {
 			{value: 'flechette blaster taser goad', label: 'flechette blaster and taser goad +1pts', link: 'Infiltrator Princeps'},
 
 			{value: 'none', label: 'none', link: 'Chaos Cultist'},
-			{value: 'brutal assault weapon autopistol', label: 'brutal assault and weapon autopistol +0pts', link: 'Chaos Cultist'},
+			{value: 'brutal assault weapon autopistol', label: 'brutal assault weapon and autopistol +0pts', link: 'Chaos Cultist'},
 
 			{value: 'none', label: 'none', link: 'Chaos Cultist Gunner'},
 			{value: 'flamer', label: 'flamer +3pts', link: 'Chaos Cultist Gunner'},
@@ -5272,7 +5278,7 @@ class Units extends Component {
 
 			{value: 'none', label: 'none', link: 'Cultist Champion'},
 			{value: 'shotgun', label: 'shotgun +0pts', link: 'Cultist Champion'},
-			{value: 'brutal assault weapon autopistol', label: 'brutal assault and weapon autopistol +0pts', link: 'Cultist Champion'},
+			{value: 'brutal assault weapon autopistol', label: 'brutal assault weapon and autopistol +0pts', link: 'Cultist Champion'},
 
 			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
 			{value: 'chainsword', label: 'chainsword +0pts', link: 'Chaos Space Marine'},

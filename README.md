@@ -8,6 +8,10 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/3/2019
+Release 0.3.9
+* Fixed the random name generator to be switch case instead of if else statements.
+
 4/23/2019
 Release 0.3.8
 * Updated pages to be more mobile responsive.
