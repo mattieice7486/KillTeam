@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/4/2019
+Release 0.4.0
+* Added collapsing buttons to the squad page.
+* Added tooltip functionality (no content yet).
+* Prompts if no squad name is chosen.
+
 6/3/2019
 Release 0.3.9
 * Fixed the random name generator to be switch case instead of if else statements.

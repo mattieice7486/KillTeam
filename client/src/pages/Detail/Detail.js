@@ -5,6 +5,7 @@ import { List, ListItem } from "../../components/List";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import Jumbotron from "../../components/Jumbotron";
+import ReactTooltip from 'react-tooltip'
 import API from "../../utils/API";
 import guns from "../../utils/guns";
 
@@ -134,7 +135,10 @@ class Detail extends Component {
 									<Tbody>
 										<Tr>
 											<Td>
-												{this.state.unit.equipment}
+												<a data-tip data-for='unit-equipment'>	{this.state.unit.equipment} </a>
+												<ReactTooltip id='unit-equipment' type='error'>
+													<span>Equipment info goes here</span>
+												</ReactTooltip>
 											</Td>
 										</Tr>
 									</Tbody>
@@ -150,7 +154,10 @@ class Detail extends Component {
 									<Tbody>
 										<Tr>
 											<Td>
-												{this.state.unit.abilities}
+												<a data-tip data-for='unit-abilities'> {this.state.unit.abilities} </a>
+												<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
+													<span>Ability info goes here</span>
+												</ReactTooltip>
 											</Td>
 										</Tr>
 									</Tbody>

@@ -4,6 +4,7 @@ import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table'
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
+import ReactTooltip from 'react-tooltip'
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import API from "../../utils/API";
@@ -148,7 +149,12 @@ class Squad extends Component {
 											</Thead>
 											<Tbody>
 												<Tr>
-													<Td>{unit.abilities}</Td>
+													<Td>
+														<a data-tip data-for='unit-abilities'> {unit.abilities} </a>
+														<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
+															<span>Ability info goes here</span>
+														</ReactTooltip>
+													</Td>
 												</Tr>
 											</Tbody>
 										</Table>

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
+import ReactTooltip from 'react-tooltip'
 import API from "../../utils/API";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
@@ -326,23 +327,45 @@ class Units extends Component {
   
   handleDatabaseSubmit(e) {
 		const itemsRef = firebase.database().ref('Users');
-    if (this.state.user !== null) {
-      const item = {
-          user: this.state.user.displayName,
-          avatar: this.state.user.photoURL,
-          units: this.state.units,
-          squadName: this.state.squadName,
-          total: this.state.total
-      }
-			itemsRef.push(item)
-			API.getUnits()
-			.then(res => {for (let i = 0; i < res.data.length; i++) {
-				API.deleteUnit(res.data[i]._id);
-				this.loadUnits()
+		if (this.state.squadName == "") {
+			this.confirm1.open('Submit squad with no name?', () => {
+				if (this.state.user !== null) {
+					const item = {
+							user: this.state.user.displayName,
+							avatar: this.state.user.photoURL,
+							units: this.state.units,
+							squadName: this.state.squadName,
+							total: this.state.total
+					}
+					itemsRef.push(item)
+					API.getUnits()
+					.then(res => {for (let i = 0; i < res.data.length; i++) {
+						API.deleteUnit(res.data[i]._id);
+						this.loadUnits()
+						};
+					})
+					.catch(err => console.log(err));
 				};
 			})
-			.catch(err => console.log(err));
-		};
+		} else {
+			if (this.state.user !== null) {
+				const item = {
+						user: this.state.user.displayName,
+						avatar: this.state.user.photoURL,
+						units: this.state.units,
+						squadName: this.state.squadName,
+						total: this.state.total
+				}
+				itemsRef.push(item)
+				API.getUnits()
+				.then(res => {for (let i = 0; i < res.data.length; i++) {
+					API.deleteUnit(res.data[i]._id);
+					this.loadUnits()
+					};
+				})
+				.catch(err => console.log(err));
+			};
+		}
   };
 
   squadTotal = () => {
@@ -5960,11 +5983,10 @@ class Units extends Component {
                         <strong>
                           &quot;{unit.name}&quot; {unit.unitType}
                         </strong>
-                          &nbsp;
-                        <span className="list-points">
-                          {unit.pts} points
-                        </span>
                       </Link>
+											<span className="list-points" style={{"float":"right"}}>
+												{unit.pts} points
+											</span>
                       <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
                       <Confirm ref={el => this.confirm1 = el} /> 
                     </ListItem>
