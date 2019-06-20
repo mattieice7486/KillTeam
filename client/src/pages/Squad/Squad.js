@@ -115,7 +115,7 @@ class Squad extends Component {
 																<List>
 																	{this.state.items[index].squadMembers.map((squadMember, index) => {
 																		return (
-																			<ListItem key={index}>
+																			<ListItem key={index} style={{ marginBottom: "10px" }}>
 																			<span style={{fontSize : "24px", fontStyle : "bold"}}>
 																				{squadMember.unitType}
 																			</span>

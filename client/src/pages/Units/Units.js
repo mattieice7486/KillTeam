@@ -232,10 +232,10 @@ class Units extends Component {
     var sum = 0;
     for (let i = 0; i < this.state.units.length; i++) {
       sum += this.state.units[i].pts;
-      if (this.state.total === 0) {
-      this.setState({
-        total: sum
-      })
+      if (this.state.units.length === 0) {
+				this.setState({
+					total: sum
+				})
       }
 		}
   }
@@ -327,7 +327,7 @@ class Units extends Component {
   
   handleDatabaseSubmit(e) {
 		const itemsRef = firebase.database().ref('Users');
-		if (this.state.squadName == "") {
+		if (this.state.squadName === "") {
 			this.confirm1.open('Submit squad with no name?', () => {
 				if (this.state.user !== null) {
 					const item = {
@@ -4566,50 +4566,50 @@ class Units extends Component {
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 0,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
       });
     }
     if (wargearOptions2.value === "Grav-Chute" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 1,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, Grav-Chute"
       });
     }
     if (wargearOptions2.value === "Grapnel Launcher" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 1,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, Grapnel Launcher"
       });
     }
     if (wargearOptions2.value === "Grav-Chute Grapnel Launcher" && this.state.unitType.value === "Reiver") {
       this.setState({
         wargearPts2: 2,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, Grav-Chute, Grapnel Launcher"
       });
     }
 
     if (wargearOptions2.value === "none" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 0,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops"
       });
     }
     if (wargearOptions2.value === "Grav-Chute" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 1,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, Grav-Chute"
       });
     }
     if (wargearOptions2.value === "Grapnel Launcher" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 1,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, grapnel chute"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, grapnel chute"
       });
     }
     if (wargearOptions2.value === "Grav-Chute Grapnel Launcher" && this.state.unitType.value === "Reiver Sergeant") {
       this.setState({
         wargearPts2: 2,
-        abilities: "And They Shall Know No Fear, Transhuman Physiology, terror troops, Grav-Chute, Grapnel Launcher"
+        abilities: "And They Shall Know No Fear, Transhuman Physiology, Terror Troops, Grav-Chute, Grapnel Launcher"
       });
     }
 
@@ -4749,7 +4749,7 @@ class Units extends Component {
     if (wargearOptions2.value === "Brayhorn" && this.state.unitType.value === "Tzaangor") {
       this.setState({
         wargearPts2: 3,
-        abilities: "Aura of Dark Glory, brayhord"
+        abilities: "Aura of Dark Glory, Brayhorn"
       });
     }
 

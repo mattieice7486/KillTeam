@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/20/2019
+Release 0.4.1
+* User can now update unit name, wargear, and options in their respective "detail" page (bug: multiple equipment updates on the same unit incorrectly adds additional points).
+* fixed the equipment display in the detail page.
+
 6/4/2019
 Release 0.4.0
 * Added collapsing buttons to the squad page.
@@ -147,8 +152,8 @@ Release 0.1.0 is here!
 ## Known Issues:
 
 * Unit list does not correctly update when a squad of one is submitted or deleted using delete squad.
-* Detail page does not display equipment correctly.
 * Tyranid Warrior options do not correctly update flesh hooks into Equipment.
+* <s>Detail page does not display equipment correctly.</s> ✔️
 * <s>User can create mixed-race squads.</s> ✔️
 * <s>Other Options dropdown does not display selection.</s> ✔️
 * <s>Squad total does not update correctly.</s> ✔️

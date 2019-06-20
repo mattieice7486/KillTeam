@@ -16,5 +16,9 @@ export default {
   // Saves a unit to the database
   saveUnit: function(unitData) {
     return axios.post("/api/units", unitData);
+  },
+  // Updates a unit in the database
+  updateUnit: function(id, unitData) {
+    return axios.put("/api/units/" + id, unitData);
   }
 };
