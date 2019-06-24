@@ -396,6 +396,15 @@
 		"abilities": "Your opponent must re-roll successful invulnerable saves for wounds caused by this weapon"
 	},
 	{
+		"weapon": "storm shield",
+		"range": "-",
+		"type": "-",
+		"strength": "-",
+		"AP": "-",
+		"damage": "-",
+		"abilities": "A model with a storm shield has a 3+ invulnerable save"
+	},
+	{
 		"weapon": "incinerator",
 		"range": 8,
 		"type": "Assault D6",
@@ -753,7 +762,7 @@
 		"strength": "User",
 		"AP": 0,
 		"damage": 1,
-		"abilities": "-."
+		"abilities": "-"
 	},
 	{
 		"weapon": "mace of contagion",
@@ -852,7 +861,7 @@
 		"strength": 4,
 		"AP": -1,
 		"damage": 1,
-		"abilities": "When attacking with this weapon, choose frag or krak missiles."
+		"abilities": "When attacking with this weapon, choose sunburst or starshot missiles."
 	},
 	{
 		"weapon": "aeldari missile launcher",
@@ -861,7 +870,7 @@
 		"strength": 8,
 		"AP": -2,
 		"damage": "D6",
-		"abilities": "When attacking with this weapon, choose frag or krak missiles."
+		"abilities": "When attacking with this weapon, choose sunburst or starshot missiles."
 	},
 	{
 		"weapon": "avenger shuriken catapult",

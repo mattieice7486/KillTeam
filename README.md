@@ -8,10 +8,16 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/24/2019
+Release 0.4.2
+* Fixed wargear options for Deathwatch.
+* Fixed the update bug where points would continually add to a unit that had its wargear updated.
+* Added Squad Background, Mission, and Quirk.
+
 6/20/2019
 Release 0.4.1
 * User can now update unit name, wargear, and options in their respective "detail" page (bug: multiple equipment updates on the same unit incorrectly adds additional points).
-* fixed the equipment display in the detail page.
+* Fixed the equipment display in the detail page.
 
 6/4/2019
 Release 0.4.0

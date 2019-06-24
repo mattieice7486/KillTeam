@@ -19,6 +19,7 @@ class Detail extends Component {
 			unit: {},
       wargearOptions: {},
       wargearOptions2: {},
+			pts: 0,
 			wargearPts: 0,
 			wargearPts2: 0,
 		};
@@ -48,7 +49,7 @@ class Detail extends Component {
 			name: this.state.name,
 			equipment: this.state.equipment,
 			abilities: this.state.abilities,
-			pts: this.state.unit.pts + this.state.wargearPts + this.state.wargearPts2,
+			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
 		})
 		API.getUnit(this.props.match.params.id)
 		.then(res => this.setState({ unit: res.data }))
@@ -67,6 +68,7 @@ class Detail extends Component {
 		// }
     if (wargearOptions.value === "none" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
 			});
@@ -74,36 +76,42 @@ class Detail extends Component {
     }
     if (wargearOptions.value === "flamer" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "flamer, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "meltagun" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "meltagun, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "plasma gun" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "plasma gun, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "grav-gun" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 2,
         equipment: "grav-gun, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "missile launcher" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 5,
         equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "heavy bolter" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
       });
@@ -111,102 +119,119 @@ class Detail extends Component {
 		
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
 		if (wargearOptions.value === "combi-flamer" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "combi-flamer, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "combi-grav" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 2,
         equipment: "combi-grav, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "combi-melta" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "combi-melta, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "combi-plasma" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "combi-plasma, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "bolt pistol auspex" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 1,
         equipment: "auspex, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "bolt pistol chainsword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 0,
         equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "bolt pistol power fist" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 4,
         equipment: "power fist, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "bolt pistol power sword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 2,
         equipment: "power sword, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "plasma pistol auspex" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 2,
         equipment: "auspex, plasma pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "plasma pistol chainsword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 1,
         equipment: "chainsword, plasma pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "plasma pistol power fist" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 5,
         equipment: "power fist, plasma pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "plasma pistol power sword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "power sword, plasma pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "grav-pistol auspex" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 2,
         equipment: "auspex, grav-pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "grav-pistol chainsword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 1,
         equipment: "chainsword, grav-pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "grav-pistol power fist" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 5,
         equipment: "power fist, grav-pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "grav-pistol power sword" && this.state.unit.unitType === "Tactical Marine Sergeant") {
       this.setState({
+				pts: 13,
         wargearPts: 3,
         equipment: "power sword, grav-pistol, frag grenades, krak grenades"
       });
@@ -214,24 +239,28 @@ class Detail extends Component {
 		
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Scout") {
       this.setState({
+				pts: 10,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
 		if (wargearOptions.value === "combat knife" && this.state.unit.unitType === "Scout") {
       this.setState({
+				pts: 10,
         wargearPts: 0,
         equipment: "combat knife, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "astartes shotgun" && this.state.unit.unitType === "Scout") {
       this.setState({
+				pts: 10,
         wargearPts: 0,
         equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unit.unitType === "Scout") {
       this.setState({
+				pts: 10,
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
@@ -239,30 +268,35 @@ class Detail extends Component {
 		
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Scout Gunner") {
       this.setState({
+				pts: 11,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
 		if (wargearOptions.value === "heavy bolter" && this.state.unit.unitType === "Scout Gunner") {
       this.setState({
+				pts: 11,
         wargearPts: 3,
         equipment: "heavy bolter, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "missile launcher" && this.state.unit.unitType === "Scout Gunner") {
       this.setState({
+				pts: 11,
         wargearPts: 5,
         equipment: "missile launcher, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "missile launcher camo cloak" && this.state.unit.unitType === "Scout Gunner") {
       this.setState({
+				pts: 11,
         wargearPts: 6,
         equipment: "missile launcher, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unit.unitType === "Scout Gunner") {
       this.setState({
+				pts: 11,
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
@@ -270,24 +304,28 @@ class Detail extends Component {
 
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Scout Sergeant") {
       this.setState({
+				pts: 11,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
       });
 		}
 		if (wargearOptions.value === "astartes shotgun" && this.state.unit.unitType === "Scout Sergeant") {
       this.setState({
+				pts: 11,
         wargearPts: 0,
         equipment: "astartes shotgun, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "chainsword" && this.state.unit.unitType === "Scout Sergeant") {
       this.setState({
+				pts: 11,
         wargearPts: 0,
         equipment: "chainsword, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "sniper rifle camo cloak" && this.state.unit.unitType === "Scout Sergeant") {
       this.setState({
+				pts: 11,
         wargearPts: 2,
         equipment: "sniper rifle, camo cloak, bolt pistol, frag grenades, krak grenades"
       });
@@ -295,18 +333,21 @@ class Detail extends Component {
 		
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Intercessor") {
       this.setState({
+				pts: 15,
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
 		}
 		if (wargearOptions.value === "auto bolt rifle" && this.state.unit.unitType === "Intercessor") {
       this.setState({
+				pts: 15,
         wargearPts: 0,
         equipment: "auto bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "stalker bolt rifle" && this.state.unit.unitType === "Intercessor") {
       this.setState({
+				pts: 15,
         wargearPts: 0,
         equipment: "stalker bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
@@ -314,12 +355,14 @@ class Detail extends Component {
 		
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Intercessor Gunner") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
 			});
 		}
 		if (wargearOptions.value === "auxiliary grenade launcher" && this.state.unit.unitType === "Intercessor Gunner") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "auxiliary grenade launcher, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
@@ -327,18 +370,21 @@ class Detail extends Component {
 
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Intercessor Sergeant") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "bolt rifle, bolt pistol, frag grenades, krak grenades"
 			});
 		}
     if (wargearOptions.value === "chainsword" && this.state.unit.unitType === "Intercessor Sergeant") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "chainsword, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "power sword" && this.state.unit.unitType === "Intercessor Sergeant") {
       this.setState({
+				pts: 16,
         wargearPts: 2,
         equipment: "power sword, bolt rifle, bolt pistol, frag grenades, krak grenades"
       });
@@ -346,12 +392,14 @@ class Detail extends Component {
 
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Reiver") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
 			});
 		}
     if (wargearOptions.value === "combat knife" && this.state.unit.unitType === "Reiver") {
       this.setState({
+				pts: 16,
         wargearPts: 0,
         equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
@@ -359,56 +407,477 @@ class Detail extends Component {
 
 		if (wargearOptions.value === "none" && this.state.unit.unitType === "Reiver Sergeant") {
       this.setState({
+				pts: 17,
         wargearPts: 0,
         equipment: "bolt carbine, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
 			});
 		}
     if (wargearOptions.value === "combat knife" && this.state.unit.unitType === "Reiver Sergeant") {
       this.setState({
+				pts: 17,
         wargearPts: 0,
         equipment: "combat knife, heavy bolt pistol, frag grenades, krak grenades, shock grenades"
       });
     }
 
+		if (wargearOptions.value === "none" && this.state.unit.unitType === "Deathwatch Veteran") {
+      this.setState({
+				pts: 14,
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+    }
     if (wargearOptions.value === "combi-melta" && this.state.unit.unitType === "Deathwatch Veteran") {
       this.setState({
+				pts: 14,
         wargearPts: 3,
         equipment: "combi-melta, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "combi-plasma" && this.state.unit.unitType === "Deathwatch Veteran") {
       this.setState({
+				pts: 14,
         wargearPts: 4,
         equipment: "combi-plasma, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "stalker pattern boltgun" && this.state.unit.unitType === "Deathwatch Veteran") {
       this.setState({
-        wargearPts: 4,
+				pts: 14,
+        wargearPts: 1,
         equipment: "stalker pattern boltgun, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "power maul" && this.state.unit.unitType === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "power maul, frag grenades, krak grenades"
+			this.setState({
+				pts: 14,
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "power sword" && this.state.unit.unitType === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "power sword, frag grenades, krak grenades"
+			this.setState({
+				pts: 14,
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
       });
     }
-    if (wargearOptions.value === "storm shield" && this.state.unit.unitType === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "storm shield, frag grenades, krak grenades"
+    if (wargearOptions.value === "storm shield power maul" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
       });
 		}
-		
+    if (wargearOptions.value === "storm shield power sword" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+    if (wargearOptions.value === "deathwatch shotgun" && this.state.unit.unitType === "Deathwatch Veteran") {
+			this.setState({
+				pts: 14,
+				wargearPts: 2,
+        equipment: "deathwatch shotgun, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "heavy thunder hammer" && this.state.unit.unitType === "Deathwatch Veteran") {
+      this.setState({
+				pts: 14,
+        wargearPts: 5,
+        equipment: "heavy thunder hammer, frag grenades, krak grenades"
+      });
+		}
 
+    if (wargearOptions.value === "none" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+      this.setState({
+				pts: 16,
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+      this.setState({
+				pts: 16,
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+      this.setState({
+				pts: 16,
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+      this.setState({
+				pts: 16,
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "deathwatch frag cannon" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "deathwatch frag cannon, frag grenades, krak grenades"
+			});
+		}
+    if (wargearOptions.value === "infernus heavy bolter" && this.state.unit.unitType === "Deathwatch Veteran Gunner") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "infernus heavy bolter, frag grenades, krak grenades"
+      });
+		}
 
+    if (wargearOptions.value === "none" && this.state.unit.unitType === "Black Shield") {
+      this.setState({
+				pts: 16,
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-melta" && this.state.unit.unitType === "Black Shield") {
+      this.setState({
+				pts: 16,
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unit.unitType === "Black Shield") {
+      this.setState({
+				pts: 16,
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unit.unitType === "Black Shield") {
+      this.setState({
+				pts: 16,
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unit.unitType === "Black Shield") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 0,
+				equipment: "boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta" && this.state.unit.unitType === "Watch Sergeant") {
+      this.setState({
+				pts: 16,
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unit.unitType === "Watch Sergeant") {
+      this.setState({
+				pts: 16,
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unit.unitType === "Watch Sergeant") {
+      this.setState({
+				pts: 16,
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "xenophase blade" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 3,
+				equipment: "xenophase blade, boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "storm shield xenophase blade" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "storm shield, xenophase blade, boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta xenophase blade" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 6,
+				equipment: "combi-melta, xenophase blade, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma xenophase blade" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 7,
+				equipment: "combi-plasma, xenophase blade, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun xenophase blade" && this.state.unit.unitType === "Watch Sergeant") {
+			this.setState({
+				pts: 16,
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, xenophase blade, frag grenades, krak grenades"
+			});
+		}
 
     if (wargearOptions.value === "none" && this.state.unit.unitType === "Grey Knight") {
       this.setState({
@@ -3046,14 +3515,68 @@ class Detail extends Component {
       {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran'},
       {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
       {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
-			{value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
-			
+      {value: 'deathwatch shotgun', label: 'deathwatch shotgun +1pts', link: 'Deathwatch Veteran'},
+      {value: 'heavy thunder hammer', label: 'heavy thunder hammer +5pts', link: 'Deathwatch Veteran'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Deathwatch Veteran'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Deathwatch Veteran'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran'},
+
 			{value: 'none', label: 'none', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran Gunner'},
 			{value: 'deathwatch frag cannon', label: 'deathwatch frag cannon +5pts', link: 'Deathwatch Veteran Gunner'},
 			{value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
 			
+			{value: 'none', label: 'none', link: 'Black Shield'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Black Shield'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Black Shield'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Black Shield'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Black Shield'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Black Shield'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Black Shield'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Black Shield'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Black Shield'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Black Shield'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Black Shield'},
+			
 			{value: 'none', label: 'none', link: 'Watch Sergeant'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Watch Sergeant'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Watch Sergeant'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Watch Sergeant'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Watch Sergeant'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Watch Sergeant'},
 			{value: 'xenophase blade', label: 'xenophase blade +3pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta xenophase blade', label: 'combi-melta and xenophase blade +6pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma xenophase blade', label: 'combi-plasma and xenophase blade +7pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun xenophase blade', label: 'stalker pattern boltgun and xenophase blade +4pts', link: 'Watch Sergeant'},
+			{value: 'storm shield xenophase blade', label: 'storm shield and xenophase blade +6pts', link: 'Watch Sergeant'},
 
 			{value: 'none', label: 'none', link: 'Grey Knight'},
 			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Grey Knight'},

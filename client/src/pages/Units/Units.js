@@ -36,6 +36,9 @@ class Units extends Component {
     this.state = {
       units: [],
       squadName: "",
+      background: "",
+      mission: "",
+      squadQuirk: "",
       name: "",
       equipment: "",
       abilities: "",
@@ -228,6 +231,320 @@ class Units extends Component {
 		}
 	}
 
+	randomBackground = (event) => {
+		event.preventDefault();
+		var astartes = [
+			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
+		];
+		var deathwatch = [
+			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
+		];
+		var grey1 = [
+			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
+		];
+		var astra = [
+			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+		];
+		var adeptus1 = [
+			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
+		];
+		var heretic1 = [
+			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
+		];
+		var death1 = [
+			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
+		];
+		var thousand1 = [
+			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
+		];
+		var asur1 = [
+			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
+		];
+		var wych1 = [
+			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
+		];
+		var harlequins1 = [
+			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
+		];
+		var necron1 = [
+			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
+		];
+		var ork1 = [
+			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
+		];
+		var tau = [
+			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
+		];
+		var tyranid1 = [
+			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
+		];
+		var genestealer1 = [
+			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+		];
+		switch (this.state.race.value) {
+			case "Adeptus Astartes":
+				this.setState({background: astartes[Math.floor(Math.random()*9)]})
+				console.log(this.state.background)
+				break;
+			case "Deathwatch":
+				this.setState({background: deathwatch[Math.floor(Math.random()*9)]})
+				break;
+			case "Grey Knights":
+				this.setState({background: grey1[Math.floor(Math.random()*5)]})
+				break;
+			case "Astra Militarum":
+				this.setState({background: astra[Math.floor(Math.random()*35)]})
+				break;
+			case "Adeptus Mechanicus":
+				this.setState({background: adeptus1[Math.floor(Math.random()*35)]})
+				break;
+			case "Heretic Astartes":
+				this.setState({background: heretic1[Math.floor(Math.random()*9)]})
+				break;
+			case "Death Guard":
+				this.setState({background: death1[Math.floor(Math.random()*9)]})
+				break;
+			case "Thousand Sons":
+				this.setState({background: thousand1[Math.floor(Math.random()*9)]})
+				break;
+			case "Asuryani":
+				this.setState({background: asur1[Math.floor(Math.random()*71)]})
+				break;
+			case "Drukhari":
+				this.setState({background: wych1[Math.floor(Math.random()*35)]})
+				break;
+			case "Harlequins":
+				this.setState({background: harlequins1[Math.floor(Math.random()*9)]})
+				break;
+			case "Necrons":
+				this.setState({background: necron1[Math.floor(Math.random()*35)]})
+				break;
+			case "Orks":
+				this.setState({background: ork1[Math.floor(Math.random()*35)]})
+				break;
+			case "Tau Empire":
+				this.setState({background: tau[Math.floor(Math.random()*35)]})
+				break;
+			case "Tyranids":
+				this.setState({background: tyranid1[Math.floor(Math.random()*35)]})
+				break;
+			case "Genestealer Cults":
+				this.setState({background: genestealer1[Math.floor(Math.random()*35)]})
+				break;
+			default:
+				this.setState({background: astartes[Math.floor(Math.random()*9)]})
+		}
+	}
+
+	randomMission = (event) => {
+		event.preventDefault();
+		var astartes = [
+			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
+		];
+		var deathwatch = [
+			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
+		];
+		var grey1 = [
+			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
+		];
+		var astra = [
+			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+		];
+		var adeptus1 = [
+			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
+		];
+		var heretic1 = [
+			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
+		];
+		var death1 = [
+			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
+		];
+		var thousand1 = [
+			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
+		];
+		var asur1 = [
+			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
+		];
+		var wych1 = [
+			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
+		];
+		var harlequins1 = [
+			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
+		];
+		var necron1 = [
+			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
+		];
+		var ork1 = [
+			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
+		];
+		var tau = [
+			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
+		];
+		var tyranid1 = [
+			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
+		];
+		var genestealer1 = [
+			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+		];
+		switch (this.state.race.value) {
+			case "Adeptus Astartes":
+				this.setState({mission: astartes[Math.floor(Math.random()*9)]})
+				break;
+			case "Deathwatch":
+				this.setState({mission: deathwatch[Math.floor(Math.random()*9)]})
+				break;
+			case "Grey Knights":
+				this.setState({mission: grey1[Math.floor(Math.random()*5)]})
+				break;
+			case "Astra Militarum":
+				this.setState({mission: astra[Math.floor(Math.random()*35)]})
+				break;
+			case "Adeptus Mechanicus":
+				this.setState({mission: adeptus1[Math.floor(Math.random()*35)]})
+				break;
+			case "Heretic Astartes":
+				this.setState({mission: heretic1[Math.floor(Math.random()*9)]})
+				break;
+			case "Death Guard":
+				this.setState({mission: death1[Math.floor(Math.random()*9)]})
+				break;
+			case "Thousand Sons":
+				this.setState({mission: thousand1[Math.floor(Math.random()*9)]})
+				break;
+			case "Asuryani":
+				this.setState({mission: asur1[Math.floor(Math.random()*71)]})
+				break;
+			case "Drukhari":
+				this.setState({mission: wych1[Math.floor(Math.random()*35)]})
+				break;
+			case "Harlequins":
+				this.setState({mission: harlequins1[Math.floor(Math.random()*9)]})
+				break;
+			case "Necrons":
+				this.setState({mission: necron1[Math.floor(Math.random()*35)]})
+				break;
+			case "Orks":
+				this.setState({mission: ork1[Math.floor(Math.random()*35)]})
+				break;
+			case "Tau Empire":
+				this.setState({mission: tau[Math.floor(Math.random()*35)]})
+				break;
+			case "Tyranids":
+				this.setState({mission: tyranid1[Math.floor(Math.random()*35)]})
+				break;
+			case "Genestealer Cults":
+				this.setState({mission: genestealer1[Math.floor(Math.random()*35)]})
+				break;
+			default:
+				this.setState({mission: astartes[Math.floor(Math.random()*9)]})
+		}
+	}
+
+	randomSquadQuirk = (event) => {
+		event.preventDefault();
+		var astartes = [
+			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
+		];
+		var deathwatch = [
+			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
+		];
+		var grey1 = [
+			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
+		];
+		var astra = [
+			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+		];
+		var adeptus1 = [
+			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
+		];
+		var heretic1 = [
+			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
+		];
+		var death1 = [
+			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
+		];
+		var thousand1 = [
+			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
+		];
+		var asur1 = [
+			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
+		];
+		var wych1 = [
+			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
+		];
+		var harlequins1 = [
+			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
+		];
+		var necron1 = [
+			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
+		];
+		var ork1 = [
+			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
+		];
+		var tau = [
+			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
+		];
+		var tyranid1 = [
+			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
+		];
+		var genestealer1 = [
+			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+		];
+		switch (this.state.race.value) {
+			case "Adeptus Astartes":
+				this.setState({squadQuirk: astartes[Math.floor(Math.random()*9)]})
+				break;
+			case "Deathwatch":
+				this.setState({squadQuirk: deathwatch[Math.floor(Math.random()*9)]})
+				break;
+			case "Grey Knights":
+				this.setState({squadQuirk: grey1[Math.floor(Math.random()*5)]})
+				break;
+			case "Astra Militarum":
+				this.setState({squadQuirk: astra[Math.floor(Math.random()*35)]})
+				break;
+			case "Adeptus Mechanicus":
+				this.setState({squadQuirk: adeptus1[Math.floor(Math.random()*35)]})
+				break;
+			case "Heretic Astartes":
+				this.setState({squadQuirk: heretic1[Math.floor(Math.random()*9)]})
+				break;
+			case "Death Guard":
+				this.setState({squadQuirk: death1[Math.floor(Math.random()*9)]})
+				break;
+			case "Thousand Sons":
+				this.setState({squadQuirk: thousand1[Math.floor(Math.random()*9)]})
+				break;
+			case "Asuryani":
+				this.setState({squadQuirk: asur1[Math.floor(Math.random()*71)]})
+				break;
+			case "Drukhari":
+				this.setState({squadQuirk: wych1[Math.floor(Math.random()*35)]})
+				break;
+			case "Harlequins":
+				this.setState({squadQuirk: harlequins1[Math.floor(Math.random()*9)]})
+				break;
+			case "Necrons":
+				this.setState({squadQuirk: necron1[Math.floor(Math.random()*35)]})
+				break;
+			case "Orks":
+				this.setState({squadQuirk: ork1[Math.floor(Math.random()*35)]})
+				break;
+			case "Tau Empire":
+				this.setState({squadQuirk: tau[Math.floor(Math.random()*35)]})
+				break;
+			case "Tyranids":
+				this.setState({squadQuirk: tyranid1[Math.floor(Math.random()*35)]})
+				break;
+			case "Genestealer Cults":
+				this.setState({squadQuirk: genestealer1[Math.floor(Math.random()*35)]})
+				break;
+			default:
+				this.setState({squadQuirk: astartes[Math.floor(Math.random()*9)]})
+		}
+	}
+
+
   componentDidUpdate() {
     var sum = 0;
     for (let i = 0; i < this.state.units.length; i++) {
@@ -331,11 +648,14 @@ class Units extends Component {
 			this.confirm1.open('Submit squad with no name?', () => {
 				if (this.state.user !== null) {
 					const item = {
-							user: this.state.user.displayName,
-							avatar: this.state.user.photoURL,
-							units: this.state.units,
-							squadName: this.state.squadName,
-							total: this.state.total
+						user: this.state.user.displayName,
+						avatar: this.state.user.photoURL,
+						units: this.state.units,
+						squadName: this.state.squadName,
+						background: this.state.background,
+						mission: this.state.mission,
+						squadQuirk: this.state.squadQuirk,
+						total: this.state.total
 					}
 					itemsRef.push(item)
 					API.getUnits()
@@ -350,11 +670,14 @@ class Units extends Component {
 		} else {
 			if (this.state.user !== null) {
 				const item = {
-						user: this.state.user.displayName,
-						avatar: this.state.user.photoURL,
-						units: this.state.units,
-						squadName: this.state.squadName,
-						total: this.state.total
+					user: this.state.user.displayName,
+					avatar: this.state.user.photoURL,
+					units: this.state.units,
+					squadName: this.state.squadName,
+					background: this.state.background,
+					mission: this.state.mission,
+					squadQuirk: this.state.squadQuirk,
+					total: this.state.total
 				}
 				itemsRef.push(item)
 				API.getUnits()
@@ -583,7 +906,7 @@ class Units extends Component {
         att: 3,
         ld: 8,
         pts: 16,
-        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology, atonement through honour"
+        abilities: "Special Issue Ammunition, And They Shall Know No Fear, Transhuman Physiology, Atonement Through Honour"
       });
     }
     if (unitType.value === "Watch Sergeant") {
@@ -2358,6 +2681,12 @@ class Units extends Component {
       });
     }
 
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+    }
     if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
         wargearPts: 3,
@@ -2372,31 +2701,379 @@ class Units extends Component {
     }
     if (wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Deathwatch Veteran") {
       this.setState({
-        wargearPts: 4,
+        wargearPts: 1,
         equipment: "stalker pattern boltgun, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "power maul" && this.state.unitType.value === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "power maul, frag grenades, krak grenades"
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
       });
     }
     if (wargearOptions.value === "power sword" && this.state.unitType.value === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "power sword, frag grenades, krak grenades"
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
       });
     }
-    if (wargearOptions.value === "storm shield" && this.state.unitType.value === "Deathwatch Veteran") {
-      this.setState({
-        wargearPts: 2,
-        equipment: "storm shield, frag grenades, krak grenades"
+    if (wargearOptions.value === "storm shield power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
       });
 		}
-		
+    if (wargearOptions.value === "storm shield power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+    if (wargearOptions.value === "deathwatch shotgun" && this.state.unitType.value === "Deathwatch Veteran") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "deathwatch shotgun, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "heavy thunder hammer" && this.state.unitType.value === "Deathwatch Veteran") {
+      this.setState({
+        wargearPts: 5,
+        equipment: "heavy thunder hammer, frag grenades, krak grenades"
+      });
+		}
 
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "deathwatch frag cannon" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "deathwatch frag cannon, frag grenades, krak grenades"
+			});
+		}
+    if (wargearOptions.value === "infernus heavy bolter" && this.state.unitType.value === "Deathwatch Veteran Gunner") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "infernus heavy bolter, frag grenades, krak grenades"
+      });
+		}
 
+    if (wargearOptions.value === "none" && this.state.unitType.value === "Black Shield") {
+      this.setState({
+        wargearPts: 0,
+        equipment: "boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Black Shield") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Black Shield") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Black Shield") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unitType.value === "Black Shield") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+
+		if (wargearOptions.value === "none" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 0,
+				equipment: "boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta" && this.state.unitType.value === "Watch Sergeant") {
+      this.setState({
+        wargearPts: 3,
+        equipment: "combi-melta, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "combi-plasma" && this.state.unitType.value === "Watch Sergeant") {
+      this.setState({
+        wargearPts: 4,
+        equipment: "combi-plasma, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "stalker pattern boltgun" && this.state.unitType.value === "Watch Sergeant") {
+      this.setState({
+        wargearPts: 1,
+        equipment: "stalker pattern boltgun, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power maul" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power maul, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "power sword" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "boltgun, power sword, frag grenades, krak grenades"
+      });
+    }
+    if (wargearOptions.value === "storm shield power maul" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power maul, frag grenades, krak grenades"
+      });
+		}
+    if (wargearOptions.value === "storm shield power sword" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 5,
+        equipment: "storm shield, power sword, frag grenades, krak grenades"
+      });
+		}
+		if (wargearOptions.value === "combi-melta power sword" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power sword" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power sword" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power sword, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta power maul" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 5,
+				equipment: "combi-melta, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma power maul" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-plasma, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun power maul" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "stalker pattern boltgun, power maul, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "xenophase blade" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 3,
+				equipment: "xenophase blade, boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "storm shield xenophase blade" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "storm shield, xenophase blade, boltgun, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-melta xenophase blade" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 6,
+				equipment: "combi-melta, xenophase blade, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "combi-plasma xenophase blade" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 7,
+				equipment: "combi-plasma, xenophase blade, frag grenades, krak grenades"
+			});
+		}
+		if (wargearOptions.value === "stalker pattern boltgun xenophase blade" && this.state.unitType.value === "Watch Sergeant") {
+			this.setState({
+				wargearPts: 4,
+				equipment: "stalker pattern boltgun, xenophase blade, frag grenades, krak grenades"
+			});
+		}
 
     if (wargearOptions.value === "none" && this.state.unitType.value === "Grey Knight") {
       this.setState({
@@ -5003,6 +5680,8 @@ class Units extends Component {
       {value: 'Deathwatch Veteran Gunner', label: 'Deathwatch Veteran Gunner', link: 'Deathwatch'},
       {value: 'Black Shield', label: 'Black Shield', link: 'Deathwatch'},
 			{value: 'Watch Sergeant', label: 'Watch Sergeant', link: 'Deathwatch'},
+			{value: 'Intercessor', label: 'Intercessor', link: 'Deathwatch'},
+      {value: 'Reiver', label: 'Reiver', link: 'Deathwatch'},
 			
       {value: 'Grey Knight', label: 'Grey Knight', link: 'Grey Knights'},
       {value: 'Grey Knight Gunner', label: 'Grey Knight Gunner', link: 'Grey Knights'},
@@ -5183,14 +5862,68 @@ class Units extends Component {
       {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran'},
       {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
       {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
-			{value: 'storm shield', label: 'storm shield +3pts', link: 'Deathwatch Veteran'},
-			
+      {value: 'deathwatch shotgun', label: 'deathwatch shotgun +1pts', link: 'Deathwatch Veteran'},
+      {value: 'heavy thunder hammer', label: 'heavy thunder hammer +5pts', link: 'Deathwatch Veteran'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +6pts', link: 'Deathwatch Veteran'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +7pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +6pts', link: 'Deathwatch Veteran'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +7pts', link: 'Deathwatch Veteran'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran'},
+
 			{value: 'none', label: 'none', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +6pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +7pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran Gunner'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +6pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +7pts', link: 'Deathwatch Veteran Gunner'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran Gunner'},
 			{value: 'deathwatch frag cannon', label: 'deathwatch frag cannon +5pts', link: 'Deathwatch Veteran Gunner'},
 			{value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
 			
+			{value: 'none', label: 'none', link: 'Black Shield'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Black Shield'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Black Shield'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Black Shield'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Black Shield'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Black Shield'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Black Shield'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +6pts', link: 'Black Shield'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +7pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Black Shield'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +6pts', link: 'Black Shield'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +7pts', link: 'Black Shield'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Black Shield'},
+			
 			{value: 'none', label: 'none', link: 'Watch Sergeant'},
+			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Watch Sergeant'},
+      {value: 'power sword', label: 'power sword +2pts', link: 'Watch Sergeant'},
+      {value: 'power maul', label: 'power maul +2pts', link: 'Watch Sergeant'},
+			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Watch Sergeant'},
+			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta power sword', label: 'combi-melta and power sword +6pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +7pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta power maul', label: 'combi-melta and power maul +6pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +7pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Watch Sergeant'},
 			{value: 'xenophase blade', label: 'xenophase blade +3pts', link: 'Watch Sergeant'},
+			{value: 'combi-melta xenophase blade', label: 'combi-melta and xenophase blade +6pts', link: 'Watch Sergeant'},
+      {value: 'combi-plasma xenophase blade', label: 'combi-plasma and xenophase blade +7pts', link: 'Watch Sergeant'},
+      {value: 'stalker pattern boltgun xenophase blade', label: 'stalker pattern boltgun and xenophase blade +4pts', link: 'Watch Sergeant'},
+			{value: 'storm shield xenophase blade', label: 'storm shield and xenophase blade +6pts', link: 'Watch Sergeant'},
 
 			{value: 'none', label: 'none', link: 'Grey Knight'},
 			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Grey Knight'},
@@ -5975,6 +6708,87 @@ class Units extends Component {
                   name="squadName"
                   placeholder="Squad Name"
                 />
+							<table>
+								<tbody>
+								<tr>
+									<td
+										style={{ "width": "100%"}}
+									>
+								<Input
+									value={this.state.background}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="background"
+									placeholder="Background"
+								/>
+								</td>
+								<td
+									style={{ "float": "left"}}
+								>
+								<FormBtn
+									onClick={this.randomBackground}
+									className="btn btn-success"
+								>
+									Random
+								</FormBtn>
+								</td>
+								</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody>
+								<tr>
+									<td
+										style={{ "width": "100%"}}
+									>
+								<Input
+									value={this.state.mission}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="mission"
+									placeholder="Mission"
+								/>
+								</td>
+								<td
+									style={{ "float": "left"}}
+								>
+								<FormBtn
+									onClick={this.randomMission}
+									className="btn btn-success"
+								>
+									Random
+								</FormBtn>
+								</td>
+								</tr>
+								</tbody>
+							</table>
+							<table>
+								<tbody>
+								<tr>
+									<td
+										style={{ "width": "100%"}}
+									>
+								<Input
+									value={this.state.squadQuirk}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="squadquirk"
+									placeholder="Squad Quirk"
+								/>
+								</td>
+								<td
+									style={{ "float": "left"}}
+								>
+								<FormBtn
+									onClick={this.randomSquadQuirk}
+									className="btn btn-success"
+								>
+									Random
+								</FormBtn>
+								</td>
+								</tr>
+								</tbody>
+							</table>
                 <List>
                   {this.state.units.map(unit => (
                     <ListItem key={unit._id}>

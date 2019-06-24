@@ -38,6 +38,9 @@ class Squad extends Component {
           id: item,
           user: items[item].user,
           squadName: items[item].squadName,
+          background: items[item].background,
+          mission: items[item].mission,
+          squadQuirk: items[item].squadQuirk,
           total: items[item].total,
           avatar: items[item].avatar,
           squadMembers: items[item].units
@@ -112,6 +115,7 @@ class Squad extends Component {
 															</button>
 															</div>
 															<div className="collapse" id={"squadTitle" + index}>
+															<p className="text-light">Background: {item.background} ||||||| Mission: {item.mission} ||||||| Squad Quirk: {item.squadQuirk} </p>
 																<List>
 																	{this.state.items[index].squadMembers.map((squadMember, index) => {
 																		return (
