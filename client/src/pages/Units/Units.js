@@ -243,43 +243,43 @@ class Units extends Component {
 			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
 		];
 		var astra = [
-			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+			"Penal Troopers", "Hardened Veterans", "Light Infantry", "Sappers", "Elite Guards", "Fresh Meat", "Drop Troops", "Tank Hunters", "Shock Troops", "Grizzled Survivors"
 		];
 		var adeptus1 = [
-			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
+			"Explorator Team", "Archeotech Hunters", "Elimination Clade", "Campaign Veterans", "Titan Guards", "Rad-zone Corps", "Infiltrator Clade", "Domination Cadre", "Itratii Cadre", "Corpus-Sactarii Clade"
 		];
 		var heretic1 = [
-			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
+			"Champions All", "Lost and Damned", "Veterans of the Long War", "Predators", "Warp-infused Warriors", "Tzeentch Worshippers", "Khorne Worshippers", "Slaanesh Worshippers", "Nurgle Worshippers", "Worldslayers"
 		];
 		var death1 = [
-			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
+			"The Virulent", "Dark Alchemists", "Trench Fighters", "Mortarion's Chosen", "Reapers", "Shepherds of the Neverdead"
 		];
 		var thousand1 = [
-			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
+			"Heralds of Madness", "Seekers After Sorcery", "Arch-coven", "Relentless Destroyers", "Warriors Out of Time", "Daemonologists"
 		];
 		var asur1 = [
-			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
+			"Gwynt'ar Fue", "Pre-emptive Strike", "Keepers of the Gate", "The Shrine Ascendant", "Shadow Squad", "Echoes of Greatness", "Ily'Haeth Khai", "Cleansers", "The Bladed Mirror", "Wardens of the Pivotal Life"
 		];
 		var wych1 = [
-			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
+			"Vanguard Party", "Slave Trialists", "Ascendant Murderers", "Enemies of My Enemy", "Avatars of the Arenas", "Slithering Compulsion", "Hired Blades", "Betrayers", "One Shall Stand", "Desolators"
 		];
 		var harlequins1 = [
-			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
+			"The Swords of Khaine", "Webway Wanderers", "The Solitary", "Fate's Messengers", "Sinister Killers", "Guardians of the Black Library"
 		];
 		var necron1 = [
-			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
+			"Harbingers", "Tomb Guardians", "Invaders from Beyond", "The Phaeron's Chosen", "Scouring Party", "Code-bound", "Assassins", "Ghoulish Nightmares", "Mindless Martyrs", "Domination Force"
 		];
 		var ork1 = [
-			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
+			"Gung-ho!", "Filled with Waaagh!", "Skraphuntaz", "The Shootiest", "Sneaky Gits!", "Brutal", "Kunnin'", "Internal Rivalries", "Addicted to Destruction", "Spreaders of the Waaagh!"
 		];
 		var tau = [
-			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
+			"Survivors", "Stealth Experts", "Prototype Weapons Testers", "Edification Team", "Urban Combat Specialists", "Heroes of the Greater Good", "Bodyguard Retinue", "Elite of the Academics", "Fourth Sphere Veterans", "Sniper Team"
 		];
 		var tyranid1 = [
-			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
+			"Stealth Brood", "Devourer Brood", "Swiftkiller Brood", "Highcrawler Brood", "Bombardment Brood", "Kill-swarm", "Living Barricade", "Alpha Pack", "Ambush Brood", "Kinglsayer Brood"
 		];
 		var genestealer1 = [
-			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+			"Scavenger Cell", "The Prophet's Claw", "Tunnel Skulkers", "Killers in the Fold", "Eyes of the Patriarch", "Iconoclast Cell", "Snatcher Cell", "Shadowstalker Gene-kin", "Snare Setters", "Veterans of the First Cycle"
 		];
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
@@ -293,10 +293,10 @@ class Units extends Component {
 				this.setState({background: grey1[Math.floor(Math.random()*5)]})
 				break;
 			case "Astra Militarum":
-				this.setState({background: astra[Math.floor(Math.random()*35)]})
+				this.setState({background: astra[Math.floor(Math.random()*9)]})
 				break;
 			case "Adeptus Mechanicus":
-				this.setState({background: adeptus1[Math.floor(Math.random()*35)]})
+				this.setState({background: adeptus1[Math.floor(Math.random()*9)]})
 				break;
 			case "Heretic Astartes":
 				this.setState({background: heretic1[Math.floor(Math.random()*9)]})
@@ -308,28 +308,28 @@ class Units extends Component {
 				this.setState({background: thousand1[Math.floor(Math.random()*9)]})
 				break;
 			case "Asuryani":
-				this.setState({background: asur1[Math.floor(Math.random()*71)]})
+				this.setState({background: asur1[Math.floor(Math.random()*9)]})
 				break;
 			case "Drukhari":
-				this.setState({background: wych1[Math.floor(Math.random()*35)]})
+				this.setState({background: wych1[Math.floor(Math.random()*9)]})
 				break;
 			case "Harlequins":
 				this.setState({background: harlequins1[Math.floor(Math.random()*9)]})
 				break;
 			case "Necrons":
-				this.setState({background: necron1[Math.floor(Math.random()*35)]})
+				this.setState({background: necron1[Math.floor(Math.random()*9)]})
 				break;
 			case "Orks":
-				this.setState({background: ork1[Math.floor(Math.random()*35)]})
+				this.setState({background: ork1[Math.floor(Math.random()*9)]})
 				break;
 			case "Tau Empire":
-				this.setState({background: tau[Math.floor(Math.random()*35)]})
+				this.setState({background: tau[Math.floor(Math.random()*9)]})
 				break;
 			case "Tyranids":
-				this.setState({background: tyranid1[Math.floor(Math.random()*35)]})
+				this.setState({background: tyranid1[Math.floor(Math.random()*9)]})
 				break;
 			case "Genestealer Cults":
-				this.setState({background: genestealer1[Math.floor(Math.random()*35)]})
+				this.setState({background: genestealer1[Math.floor(Math.random()*9)]})
 				break;
 			default:
 				this.setState({background: astartes[Math.floor(Math.random()*9)]})
