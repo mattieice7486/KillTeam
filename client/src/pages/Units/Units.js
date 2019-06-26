@@ -228,322 +228,242 @@ class Units extends Component {
 				break;
 			default:
 				this.setState({name: first[Math.floor(Math.random()*9)] + " " + last[Math.floor(Math.random()*9)]})
+			}
 		}
-	}
-
+							
 	randomBackground = (event) => {
 		event.preventDefault();
-		var astartes = [
+		var astartes3 = [
 			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
 		];
-		var deathwatch = [
+		var astartes4 = [
+			"Shock and Awe", "Assassination", "Secure and Control", "Hold the Line", "Hit and Run", "Scouting Mission", "Rescue Mission", "Eliminate Target", "Line Breakers", "Speartip"
+		];
+		var astartes5 = [
+			"Stubborn", "Dynamic", "Stealthy", "Zealous", "Exemplars", "Selfless", "Merciless", "Vendetta", "Bloodthirsty", "Strategists"
+		];
+		var deathwatch3 = [
 			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
 		];
-		var grey1 = [
+		var deathwatch4 = [
+			"Secure and Control", "The Cull", "Cut Off the Head", "Disrupt the Swarm", "The Heart of the Hive", "Knowledge is Power"
+		];
+		var deathwatch5 = [
+			"Newly Forged", "Xenovendetta", "Competitive", "Pragmatic", "Bellicose", "The Bigger Picture"
+		];
+		var grey3 = [
 			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
 		];
-		var astra = [
+		var grey4 = [
+			"End the Nightmare", "Aquisitus Prohibitum", "Wield the True Name", "Reap the Tally", "Scorched Earth", "Trial by Blade"
+		];
+		var grey5 = [
+			"Unyielding", "Blessed Aura", "Exacting", "Bellicose", "Sworn to Purify", "Dark Lore"
+		];
+		var astra3 = [
 			"Penal Troopers", "Hardened Veterans", "Light Infantry", "Sappers", "Elite Guards", "Fresh Meat", "Drop Troops", "Tank Hunters", "Shock Troops", "Grizzled Survivors"
 		];
-		var adeptus1 = [
+		var astra4 = [
+			"Hold at All Costs", "Assault", "Assassinate", "Demolitions", "Die Well", "Raiders", "Capture Location", "Recon", "Messengers", "Looters"
+		];
+		var astra5 = [
+			"Faithful", "Parade Ground Drilled", "Tunnel Fighters", "City Fighters", "Death Worlders", "Xenos Hunters", "Seen Too Much", "Chem-addicts", "Gone Native", "Killer Rep"
+		];
+		var adeptus3 = [
 			"Explorator Team", "Archeotech Hunters", "Elimination Clade", "Campaign Veterans", "Titan Guards", "Rad-zone Corps", "Infiltrator Clade", "Domination Cadre", "Itratii Cadre", "Corpus-Sactarii Clade"
 		];
-		var heretic1 = [
+		var adeptus4 = [
+			"Defend the Sacred Technologies", "Recover a Holy Prize", "Biologis Sample Extraction", "Strategic Martyrdom", "Smite a Tech-heretic", "Eliminate Heretical Machineries", "Righteous Auto-castigation", "Root Out Techno-dissidents", "Eradicate False Testament", "Victory for Logic"
+		];
+		var adeptus5 = [
+			"Acquisitive", "Jealous Guardians", "Mindlessly Devout", "Requiring Re-sanctification", "Monotask", "Pursuing Auto-perfection", "Cybernetic Ascension", "Mercilessly Decisive", "Secretive", "Beyond the Crux Mechanicus"
+		];
+		var heretic3 = [
 			"Champions All", "Lost and Damned", "Veterans of the Long War", "Predators", "Warp-infused Warriors", "Tzeentch Worshippers", "Khorne Worshippers", "Slaanesh Worshippers", "Nurgle Worshippers", "Worldslayers"
 		];
-		var death1 = [
+		var heretic4 = [
+			"Terror Raid", "Seed Corruption", "Dark Ritual", "Sunder the Gates", "Arcane Prize", "Faithbreakers", "Seekers After Glory", "Hand of the Gods", "Dark Guardians", "Saboteurs"
+		];
+		var heretic5 = [
+			"Embittered", "Berserk", "Devious", "Zealous", "Cruel", "Stolid", "Iron Discipline", "Arrogant", "Insane", "Possessed"
+		];
+		var death3 = [
 			"The Virulent", "Dark Alchemists", "Trench Fighters", "Mortarion's Chosen", "Reapers", "Shepherds of the Neverdead"
 		];
-		var thousand1 = [
+		var death4 = [
+			"Defilers", "Seize and Profane", "Victory Through Endurance", "Sevenfold Slaughter", "Fatal Infection", "Warp-spores"
+		];
+		var death5 = [
+			"Morbid Mirth", "Justifiable Arrogance", "Dirgesong", "Vengeful", "Servants of Entropy", "Relentless"
+		];
+		var thousand3 = [
 			"Heralds of Madness", "Seekers After Sorcery", "Arch-coven", "Relentless Destroyers", "Warriors Out of Time", "Daemonologists"
 		];
-		var asur1 = [
+		var thousand4 = [
+			"Ritual Desecration", "Abduction", "Sowing Sorcery", "Firestorm", "Vengeance for Prospero", "Hands of Fate"
+		];
+		var thousand5 = [
+			"Aetheric Coronae", "One Will", "Single-Minded", "Ancient Dust", "Superior", "Ghosts of the Warp"
+		];
+		var asur3 = [
 			"Gwynt'ar Fue", "Pre-emptive Strike", "Keepers of the Gate", "The Shrine Ascendant", "Shadow Squad", "Echoes of Greatness", "Ily'Haeth Khai", "Cleansers", "The Bladed Mirror", "Wardens of the Pivotal Life"
 		];
-		var wych1 = [
+		var asur4 = [
+			"Enact the Bailic-fen", "Suprise Attack", "Keepers of the Gate", "Talons of Heg", "Fate's Executioners", "Forbidden Ground", "The First Wave", "Faolchú's Wings", "A greater Foe", "Mobile Defence", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
+		];
+		var asur5 = [
+			"Close Bonds", "Fickle", "Merciless Hate", "Sorrows Beyond Measure", "Psychically Attuned", "Uncanny Perfectionists", "Servants of Prophecy", "Superior", "A Shining Example", "Arrogant and Aloof"
+		];
+		var druk3 = [
 			"Vanguard Party", "Slave Trialists", "Ascendant Murderers", "Enemies of My Enemy", "Avatars of the Arenas", "Slithering Compulsion", "Hired Blades", "Betrayers", "One Shall Stand", "Desolators"
 		];
-		var harlequins1 = [
+		var druk4 = [
+			"Probe", "Harvest", "Interrogate", "Assassinate", "Deceive", "Terrorize", "Abduct", "Enslave", "Disembowel", "Revel"
+		];
+		var druk5 = [
+			"Sinful Focus", "Revel in Pain", "Swift and Deadly", "Reckless", "Territorial", "Trophy Hunters", "Eldritch Cunning", "Masochistic", "Shadow Stalkers", "Consummate Provocateurs"
+		];
+		var harlequins3 = [
 			"The Swords of Khaine", "Webway Wanderers", "The Solitary", "Fate's Messengers", "Sinister Killers", "Guardians of the Black Library"
 		];
-		var necron1 = [
+		var harlequins4 = [
+			"The Dance of the Thief's Reward", "The Dance of Kurnous' Gate", "The Dance of the Crimson Reaping", "The Dance of the Veiled Blade", "The Dance of the Starving Ygghs", "The Dance of Vaul's Tempering"
+		];
+		var harlequins5 = [
+			"Warriors of the Light", "Blades of the Twilight", "Talons of the Dark", "Swift as the Wind", "Cruelly Mocking", "Starlight Stride"
+		];
+		var necron3 = [
 			"Harbingers", "Tomb Guardians", "Invaders from Beyond", "The Phaeron's Chosen", "Scouring Party", "Code-bound", "Assassins", "Ghoulish Nightmares", "Mindless Martyrs", "Domination Force"
 		];
-		var ork1 = [
+		var necron4 = [
+			"The Cull", "Mindthieves", "Servants of the Crypteks", "Heralds of the Uprising", "Chrono-aquisitors", "Fractal Disruption", "Punishment Detail", "Relentless War", "The Phaeron's Blade", "The Phaeron's Curse"
+		];
+		var necron5 = [
+			"The Curse of Time", "Wreathed in Power", "Deadly Automata", "Dark Sentience", "Ether-flux", "Skin-takers", "Arrogant Hunters", "Deranged", "Unfeeling", "Favoured Warriors"
+		];
+		var ork3 = [
 			"Gung-ho!", "Filled with Waaagh!", "Skraphuntaz", "The Shootiest", "Sneaky Gits!", "Brutal", "Kunnin'", "Internal Rivalries", "Addicted to Destruction", "Spreaders of the Waaagh!"
 		];
-		var tau = [
+		var ork4 = [
+			"Kill Their Bosses", "Get Stuck In", "Salvage", "'Andz off", "We'll Show 'Em", "Da Ambush", "Speed Is Its Own Reward", "Sneak About", "Fist of Gork (or Mork)", "Plant da Flag"
+		];
+		var ork5 = [
+			"Loud and Tuneless", "Boastful", "Itchy", "Madboyz", "Krumpin' Krew", "Hard-bitten", "Lucky Gitz", "Pyromaniacs", "Buzzsquigs", "Praktical Jokers"
+		];
+		var tau3 = [
 			"Survivors", "Stealth Experts", "Prototype Weapons Testers", "Edification Team", "Urban Combat Specialists", "Heroes of the Greater Good", "Bodyguard Retinue", "Elite of the Academics", "Fourth Sphere Veterans", "Sniper Team"
 		];
-		var tyranid1 = [
+		var tau4 = [
+			"Bait the Trap", "Mark the Target", "Destroy the Enemy Supplies", "Assassination", "Ambush", "Extract the Target", "Weapons Test", "Seize Vital Intel", "Forward Reconnaissance", "Defend Strategic Asset"
+		];
+		var tau5 = [
+			"Honourable Warriors", "Vengeful", "Unyielding", "Students of Kauyon", "Students of Mont'ka", "Canny Tacticians", "No Heroes", "Tech-minded", "Ghosts", "No One Left Behind"
+		];
+		var tyranid3 = [
 			"Stealth Brood", "Devourer Brood", "Swiftkiller Brood", "Highcrawler Brood", "Bombardment Brood", "Kill-swarm", "Living Barricade", "Alpha Pack", "Ambush Brood", "Kinglsayer Brood"
 		];
-		var genestealer1 = [
+		var tyranid4 = [
+			"Devour", "Infiltrate", "Cull", "Swarm", "Terrify", "Rampage", "Stalk", "Spread", "Protect", "Shroud"
+		];
+		var tyranid5 = [
+			"Ravenous", "Cautious", "Slinking", "Bladed Shoal", "Inescapable Hunters", "Shrieker Blood", "Sizzling Gore", "Heightened Senses", "Shorn of Synapse", "Catalysed"
+		];
+		var genestealer3 = [
 			"Scavenger Cell", "The Prophet's Claw", "Tunnel Skulkers", "Killers in the Fold", "Eyes of the Patriarch", "Iconoclast Cell", "Snatcher Cell", "Shadowstalker Gene-kin", "Snare Setters", "Veterans of the First Cycle"
 		];
-		switch (this.state.race.value) {
-			case "Adeptus Astartes":
-				this.setState({background: astartes[Math.floor(Math.random()*9)]})
-				console.log(this.state.background)
-				break;
-			case "Deathwatch":
-				this.setState({background: deathwatch[Math.floor(Math.random()*9)]})
-				break;
-			case "Grey Knights":
-				this.setState({background: grey1[Math.floor(Math.random()*5)]})
-				break;
-			case "Astra Militarum":
-				this.setState({background: astra[Math.floor(Math.random()*9)]})
-				break;
-			case "Adeptus Mechanicus":
-				this.setState({background: adeptus1[Math.floor(Math.random()*9)]})
-				break;
-			case "Heretic Astartes":
-				this.setState({background: heretic1[Math.floor(Math.random()*9)]})
-				break;
-			case "Death Guard":
-				this.setState({background: death1[Math.floor(Math.random()*9)]})
-				break;
-			case "Thousand Sons":
-				this.setState({background: thousand1[Math.floor(Math.random()*9)]})
-				break;
-			case "Asuryani":
-				this.setState({background: asur1[Math.floor(Math.random()*9)]})
-				break;
-			case "Drukhari":
-				this.setState({background: wych1[Math.floor(Math.random()*9)]})
-				break;
-			case "Harlequins":
-				this.setState({background: harlequins1[Math.floor(Math.random()*9)]})
-				break;
-			case "Necrons":
-				this.setState({background: necron1[Math.floor(Math.random()*9)]})
-				break;
-			case "Orks":
-				this.setState({background: ork1[Math.floor(Math.random()*9)]})
-				break;
-			case "Tau Empire":
-				this.setState({background: tau[Math.floor(Math.random()*9)]})
-				break;
-			case "Tyranids":
-				this.setState({background: tyranid1[Math.floor(Math.random()*9)]})
-				break;
-			case "Genestealer Cults":
-				this.setState({background: genestealer1[Math.floor(Math.random()*9)]})
-				break;
-			default:
-				this.setState({background: astartes[Math.floor(Math.random()*9)]})
-		}
-	}
-
-	randomMission = (event) => {
-		event.preventDefault();
-		var astartes = [
-			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
+		var genestealer4 = [
+			"Open Their Eyes", "Feed the Progeny", "Raid Supply Lines", "Prepare the Killing Field", "Sabotage Vital Machinery", "Undertunnel Ambush", "They Know Too Much", "Spread the Cult", "Tear Down False Idols", "From Below"
 		];
-		var deathwatch = [
-			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
-		];
-		var grey1 = [
-			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
-		];
-		var astra = [
-			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
-		];
-		var adeptus1 = [
-			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
-		];
-		var heretic1 = [
-			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
-		];
-		var death1 = [
-			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
-		];
-		var thousand1 = [
-			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
-		];
-		var asur1 = [
-			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
-		];
-		var wych1 = [
-			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
-		];
-		var harlequins1 = [
-			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
-		];
-		var necron1 = [
-			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
-		];
-		var ork1 = [
-			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
-		];
-		var tau = [
-			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
-		];
-		var tyranid1 = [
-			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
-		];
-		var genestealer1 = [
-			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
+		var genestealer5 = [
+			"Deep-dwellers", "Gene-kin Cant", "Rabid Evangelists", "Anarchists", "Devious Scum", "Twisted Physiologies", "Fanatics", "Creeping Killers", "Inhuman Cruelty", "Murderous"
 		];
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
-				this.setState({mission: astartes[Math.floor(Math.random()*9)]})
+				this.setState({background: astartes3[Math.floor(Math.random()*9)]})
+				this.setState({mission: astartes4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: astartes5[Math.floor(Math.random()*9)]})
 				break;
 			case "Deathwatch":
-				this.setState({mission: deathwatch[Math.floor(Math.random()*9)]})
+				this.setState({background: deathwatch3[Math.floor(Math.random()*9)]})
+				this.setState({mission: deathwatch4[Math.floor(Math.random()*5)]})
+				this.setState({squadQuirk: deathwatch5[Math.floor(Math.random()*5)]})
 				break;
 			case "Grey Knights":
-				this.setState({mission: grey1[Math.floor(Math.random()*5)]})
+				this.setState({background: grey3[Math.floor(Math.random()*5)]})
+				this.setState({mission: grey4[Math.floor(Math.random()*5)]})
+				this.setState({squadQuirk: grey5[Math.floor(Math.random()*5)]})
 				break;
 			case "Astra Militarum":
-				this.setState({mission: astra[Math.floor(Math.random()*35)]})
+				this.setState({background: astra3[Math.floor(Math.random()*9)]})
+				this.setState({mission: astra4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: astra5[Math.floor(Math.random()*9)]})
 				break;
 			case "Adeptus Mechanicus":
-				this.setState({mission: adeptus1[Math.floor(Math.random()*35)]})
-				break;
+				this.setState({background: adeptus3[Math.floor(Math.random()*9)]})
+				this.setState({mission: adeptus4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: adeptus5[Math.floor(Math.random()*9)]})
+			break;
 			case "Heretic Astartes":
-				this.setState({mission: heretic1[Math.floor(Math.random()*9)]})
+				this.setState({background: heretic3[Math.floor(Math.random()*9)]})
+				this.setState({mission: heretic4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: heretic5[Math.floor(Math.random()*9)]})
 				break;
 			case "Death Guard":
-				this.setState({mission: death1[Math.floor(Math.random()*9)]})
+				this.setState({background: death3[Math.floor(Math.random()*5)]})
+				this.setState({mission: death4[Math.floor(Math.random()*5)]})
+				this.setState({squadQuirk: death5[Math.floor(Math.random()*5)]})
 				break;
 			case "Thousand Sons":
-				this.setState({mission: thousand1[Math.floor(Math.random()*9)]})
+				this.setState({background: thousand3[Math.floor(Math.random()*5)]})
+				this.setState({mission: thousand4[Math.floor(Math.random()*5)]})
+				this.setState({squadQuirk: thousand5[Math.floor(Math.random()*5)]})
 				break;
 			case "Asuryani":
-				this.setState({mission: asur1[Math.floor(Math.random()*71)]})
+				this.setState({background: asur3[Math.floor(Math.random()*9)]})
+				this.setState({mission: asur4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: asur5[Math.floor(Math.random()*9)]})
 				break;
 			case "Drukhari":
-				this.setState({mission: wych1[Math.floor(Math.random()*35)]})
+				this.setState({background: druk3[Math.floor(Math.random()*9)]})
+				this.setState({mission: druk4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: druk5[Math.floor(Math.random()*9)]})
 				break;
 			case "Harlequins":
-				this.setState({mission: harlequins1[Math.floor(Math.random()*9)]})
+				this.setState({background: harlequins3[Math.floor(Math.random()*5)]})
+				this.setState({mission: harlequins4[Math.floor(Math.random()*5)]})
+				this.setState({squadQuirk: harlequins5[Math.floor(Math.random()*5)]})
 				break;
 			case "Necrons":
-				this.setState({mission: necron1[Math.floor(Math.random()*35)]})
+				this.setState({background: necron3[Math.floor(Math.random()*9)]})
+				this.setState({mission: necron4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: necron5[Math.floor(Math.random()*9)]})
 				break;
 			case "Orks":
-				this.setState({mission: ork1[Math.floor(Math.random()*35)]})
+				this.setState({background: ork3[Math.floor(Math.random()*9)]})
+				this.setState({mission: ork4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: ork5[Math.floor(Math.random()*9)]})
 				break;
 			case "Tau Empire":
-				this.setState({mission: tau[Math.floor(Math.random()*35)]})
+				this.setState({background: tau3[Math.floor(Math.random()*9)]})
+				this.setState({mission: tau4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: tau5[Math.floor(Math.random()*9)]})
 				break;
 			case "Tyranids":
-				this.setState({mission: tyranid1[Math.floor(Math.random()*35)]})
+				this.setState({background: tyranid3[Math.floor(Math.random()*9)]})
+				this.setState({mission: tyranid4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: tyranid5[Math.floor(Math.random()*9)]})
 				break;
 			case "Genestealer Cults":
-				this.setState({mission: genestealer1[Math.floor(Math.random()*35)]})
+				this.setState({background: genestealer3[Math.floor(Math.random()*9)]})
+				this.setState({mission: genestealer4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: genestealer5[Math.floor(Math.random()*9)]})
 				break;
 			default:
-				this.setState({mission: astartes[Math.floor(Math.random()*9)]})
+				this.setState({background: astartes3[Math.floor(Math.random()*9)]})
+				this.setState({mission: astartes4[Math.floor(Math.random()*9)]})
+				this.setState({squadQuirk: astartes5[Math.floor(Math.random()*9)]})
 		}
 	}
-
-	randomSquadQuirk = (event) => {
-		event.preventDefault();
-		var astartes = [
-			"Crusaders", "Last Survivors", "Seekers After Vengeance", "Oath Sworn", "Infiltration Specialists", "Hand-picked Heroes", "Tactical Strike Force", "Fire Support", "Honour Guard", "Extermination Force"
-		];
-		var deathwatch = [
-			"Aquila Kill Team", "Furor Kill Team", "Venator Kill Team", "Dominatus Kill Team", "Malleus Kill Team", "Purgatus Kill Team", "Fortis Kill Team", "Mission Survivors", "The Long Hunt", "The Shield that Slays"
-		];
-		var grey1 = [
-			"They Hunt the Beast", "Those That Remain", "Purgation Corps", "Sworn Guardians", "Hand of the Prognosticars", "The Heroic Few"
-		];
-		var astra = [
-			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
-		];
-		var adeptus1 = [
-			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
-		];
-		var heretic1 = [
-			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
-		];
-		var death1 = [
-			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"
-		];
-		var thousand1 = [
-			"Phosis", "Amonhep", "Basteq", "Apophitar", "Thotek", "Kalophis", "Phael", "Thotmas", "Imhoden", "Ankhu"
-		];
-		var asur1 = [
-			"Tenrith", "Justune", "Aleerith", "Yrlla", "Aileer", "Caslith", "Tai'shar", "Jair", "Lurith", "Aleera", "Phyllistra", "Myrnoth", "Fyrram", "Ishylla", "Tishriel", "Aydona", "Galánta", "Ylleth", "Giladrea", "Osinell", "Glenoighi", "Ishtá", "Yvraine", "Intrisiel", "Torc", "Anesh", "Kalistri", "Alee", "Altanish", "Gwyth", "Tyrelli", "Kaithe", "Galrethi", "Noithi", "Braesil", "Meari",	"Fachean", "Tarvaril", "Fánai", "Yrmnoch", "Barahir", "Eldrion", "Dis'ar", "Eldos", "Kinshar", "Rhidhal", "Athairnos", "Eärandil,", "Siriolas", "Bahtaam", "Fian", "Eldroth", "Lorinth", "Illisar", "Ealion", "Elronhir", "Tamishar", "Arenal", "Iradil", "Maur", "Requiel", "Lann", "Yrule", "Ra'thar", "Las'hár", "Arision", "Ingfhar", "Senn", "Hal'thar", "Yrion", "Silgar", "Konrith"
-		];
-		var wych1 = [
-			"Ariex", "Melikka", "Grendett", "Vaivel", "Bithandrel", "Ingenue", "Demadyne", "Laelanyel", "Excrucia", "Nathra", "Vrexith", "Thyndrella", "Selithrian", "Xela", "Peiythia", "Uless", "Skyshrin", "Anielyn", "Vyrenik", "Khatryx", "Nyssa", "Phyrix", "Mellyx", "Kherissa", "Tryxin", "Aniellah", "Veshtari", "Morghynn", "Thrixxesh", "Thessa", "Xindrell", "Kladys", "Shemriel", "Lyxanna", "Nimhre", "Vylekh"
-		];
-		var harlequins1 = [
-			"The Sun", "The Star", "The Shadow", "The Void", "The Sky", "The Redtide", "The Moon", "The Highborn", "The Leering", "The Bladed"
-		];
-		var necron1 = [
-			"Ankhep", "Tamonhak", "Eknotath", "Khotek", "Thanatar", "Amhut", "Karok", "Zan-Tep", "Unakh", "Khophec", "Tzantath", "Tahar", "Imonekh", "Trazat", "Xeoptar", "Hamanet", "Oberek", "Banatur", "Ahmnok", "Kophesh", "Teznet", "Odakhar", "Kythok", "Eknothet", "Anubitar", "Anokh", "Thotep", "Anhutek", "Ikhatar", "Thotmek", "Ramatek", "Homanat", "Taknophet", "Makhret", "(no first appellation)", "Zanatek"
-		];
-		var ork1 = [
-			"Urzog", "Snikrat", "Krogskull", "Gorgrok", "Droknog", "Grodd", "Zogwarp", "Gitzog", "Ruggat", "Zargruk", "Stugbrog", "Snarkrat", "Zagblag", "Bokgrobber", "Zarknutz", "Dhakadak", "Nargrunt", "Farksnot", "Gharagh", "Urlakk", "Zogger", "Slazbag", "Squigface", "Ugul", "Tuska", "Nakboz", "Skarzot", "Kroggler", "Grukk", "Fragbad", "Traknug", "Grizgutz", "Shrokbog", "Kraznag", "Gragnatz", "Blokrotz"
-		];
-		var tau = [
-			"Sul'an", "Ho'sen", "Atsumo", "N'ea", "Els'im", "K'yen", "Orbs", "Pashera", "Rais", "Sel'tas", "Be'tol", "E'yaal", "Murakan", "To'jo", "Kurami", "U'so", "Lorresa", "Paluto", "Ren'as", "Lor'ma", "Tash'lor", "Watana", "Nomura", "Nishino", "D'tano", "Xo'yima", "T'suka", "Kais", "Sharmasa", "Pu'jato", "Ju'yem", "Ga'mo", "Kasashi", "Lamano", "Mi'daro", "Uvash'a"
-		];
-		var tyranid1 = [
-			"The Omega", "The Creeping", "The Crimson", "The Kraken's", "The Leviathan's", "The Behemoth's", "Jormungandr's", "The Serpent's", "The Hydra's", "The Rising", "The Devouring", "The Looming", "The Gorgon's", "The Ravening", "The Kolorian", "The Icharian", "The Writhing", "The Inescapable", "The Dark", "Kronos'", "The Nightmare", "Tiamet's", "The Ominous", "Ouroboris'", "The Ancient", "The Slithering", "The Bladed", "The Monstrous", "The Elder", "The Nameless", "The Hunter's", "The Formless", "The Sudden", "The Void", "The Lurking", "The Hungry"
-		];
-		var genestealer1 = [
-			"Gannar", "Dhraz", "Yohrick", "Kol", "Hastun", "Sayben", "Hollan", "Narek", "Rauss", "Basc", "Davon", "Zask", "Nasser", "Seimon", "Jacobiah", "Skir", "Ghaskin", "Foyle", "Kreen", "Judh", "Mordecai", "Isaak", "Michon", "Jerec", "Aldren", "Madrax", "Vyrion", "Hollun", "Steen", "Pike", "Mallick", "Groust", "Eldric", "Yorl", "Xandus", "Crasker"
-		];
-		switch (this.state.race.value) {
-			case "Adeptus Astartes":
-				this.setState({squadQuirk: astartes[Math.floor(Math.random()*9)]})
-				break;
-			case "Deathwatch":
-				this.setState({squadQuirk: deathwatch[Math.floor(Math.random()*9)]})
-				break;
-			case "Grey Knights":
-				this.setState({squadQuirk: grey1[Math.floor(Math.random()*5)]})
-				break;
-			case "Astra Militarum":
-				this.setState({squadQuirk: astra[Math.floor(Math.random()*35)]})
-				break;
-			case "Adeptus Mechanicus":
-				this.setState({squadQuirk: adeptus1[Math.floor(Math.random()*35)]})
-				break;
-			case "Heretic Astartes":
-				this.setState({squadQuirk: heretic1[Math.floor(Math.random()*9)]})
-				break;
-			case "Death Guard":
-				this.setState({squadQuirk: death1[Math.floor(Math.random()*9)]})
-				break;
-			case "Thousand Sons":
-				this.setState({squadQuirk: thousand1[Math.floor(Math.random()*9)]})
-				break;
-			case "Asuryani":
-				this.setState({squadQuirk: asur1[Math.floor(Math.random()*71)]})
-				break;
-			case "Drukhari":
-				this.setState({squadQuirk: wych1[Math.floor(Math.random()*35)]})
-				break;
-			case "Harlequins":
-				this.setState({squadQuirk: harlequins1[Math.floor(Math.random()*9)]})
-				break;
-			case "Necrons":
-				this.setState({squadQuirk: necron1[Math.floor(Math.random()*35)]})
-				break;
-			case "Orks":
-				this.setState({squadQuirk: ork1[Math.floor(Math.random()*35)]})
-				break;
-			case "Tau Empire":
-				this.setState({squadQuirk: tau[Math.floor(Math.random()*35)]})
-				break;
-			case "Tyranids":
-				this.setState({squadQuirk: tyranid1[Math.floor(Math.random()*35)]})
-				break;
-			case "Genestealer Cults":
-				this.setState({squadQuirk: genestealer1[Math.floor(Math.random()*35)]})
-				break;
-			default:
-				this.setState({squadQuirk: astartes[Math.floor(Math.random()*9)]})
-		}
-	}
-
 
   componentDidUpdate() {
     var sum = 0;
@@ -563,6 +483,9 @@ class Units extends Component {
         this.setState({
         units: res.data,
         squadName: "",
+        background: "",
+        mission: "",
+        squadQuirk: "",
         name: "",
         equipment: "",
         abilities: "",
@@ -944,7 +867,7 @@ class Units extends Component {
       this.setState({
         att: 1,
         ld: 7,
-        pts: 18
+        pts: 19
       });
     }
     if (unitType.value === "Justicar") {
@@ -3777,10 +3700,10 @@ class Units extends Component {
 				equipment: "plague knife, plague knife, blight grenades, krak grenades"
 			});
 		}
-		if (wargearOptions.value === "mace of corruption bubotic axe" && this.state.unitType.value === "Plague Marine Fighter") {
+		if (wargearOptions.value === "mace of contagion bubotic axe" && this.state.unitType.value === "Plague Marine Fighter") {
 			this.setState({
 				wargearPts: 5,
-				equipment: "mace of corruption, bubotic axe, plague knife, blight grenades, krak grenades"
+				equipment: "mace of contagion, bubotic axe, plague knife, blight grenades, krak grenades"
 			});
 		}		
 				
@@ -5785,7 +5708,7 @@ class Units extends Component {
       {value: 'Tyranid Warrior Gunner', label: 'Tyranid Warrior Gunner', link: 'Tyranids'},
 			{value: 'Genestealer', label: 'Genestealer', link: 'Tyranids'},
 			
-      {value: 'Acolyte', label: 'Acolyte', link: 'Genestealer Cults'},
+      {value: 'Acolyte Hybrid', label: 'Acolyte Hybrid', link: 'Genestealer Cults'},
       {value: 'Acolyte Fighter', label: 'Acolyte Fighter', link: 'Genestealer Cults'},
       {value: 'Acolyte Leader', label: 'Acolyte Leader', link: 'Genestealer Cults'},
       {value: 'Aberrant', label: 'Aberrant', link: 'Genestealer Cults'},
@@ -6091,7 +6014,6 @@ class Units extends Component {
 			{value: 'warpflame pistol', label: 'warpflame pistol +1pts', link: 'Aspiring Sorcerer'},
 			
 			{value: 'none', label: 'none', link: 'Tzaangor'},
-			{value: 'Brayhorn', label: 'Brayhorn +3pts', link: 'Tzaangor'},
 			{value: 'autopistol chainsword', label: 'autopistol and chainsword +0pts', link: 'Tzaangor'},
 			
 			{value: 'none', label: 'none', link: 'Heavy Weapon Platform'},
@@ -6299,16 +6221,16 @@ class Units extends Component {
 			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
 			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid'},
       
-			{value: 'none', label: 'none', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock drill', label: 'heavy rock drill +5pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock saw', label: 'heavy rock saw +4pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock cutter', label: 'heavy rock cutter +4pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'demolition charges', label: 'demolition charges +3pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock drill', label: 'hand flamer and heavy rock drill +7pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock saw', label: 'hand flamer and heavy rock saw +6pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock cutter', label: 'hand flamer and heavy rock cutter +6pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer demolition charges', label: 'hand flamer and demolition charges +5pts', link: 'Acolyte Hybrid Fighter'},
+			{value: 'none', label: 'none', link: 'Acolyte Fighter'},
+			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Fighter'},
+			{value: 'heavy rock drill', label: 'heavy rock drill +5pts', link: 'Acolyte Fighter'},
+			{value: 'heavy rock saw', label: 'heavy rock saw +4pts', link: 'Acolyte Fighter'},
+			{value: 'heavy rock cutter', label: 'heavy rock cutter +4pts', link: 'Acolyte Fighter'},
+			{value: 'demolition charges', label: 'demolition charges +3pts', link: 'Acolyte Fighter'},
+			{value: 'hand flamer heavy rock drill', label: 'hand flamer and heavy rock drill +7pts', link: 'Acolyte Fighter'},
+			{value: 'hand flamer heavy rock saw', label: 'hand flamer and heavy rock saw +6pts', link: 'Acolyte Fighter'},
+			{value: 'hand flamer heavy rock cutter', label: 'hand flamer and heavy rock cutter +6pts', link: 'Acolyte Fighter'},
+			{value: 'hand flamer demolition charges', label: 'hand flamer and demolition charges +5pts', link: 'Acolyte Fighter'},
 			
 			{value: 'none', label: 'none', link: 'Acolyte Leader'},
 			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Leader'},
@@ -6498,8 +6420,9 @@ class Units extends Component {
 								<FormBtn
 									onClick={this.randomName}
 									className="btn btn-success"
+									style={{ padding: "1px" }}
 								>
-									Random
+									Random<span role="img" aria-label="Random">🔀</span>
 								</FormBtn>
 								</td>
 								</tr>
@@ -6712,14 +6635,36 @@ class Units extends Component {
 								<tbody>
 								<tr>
 									<td
-										style={{ "width": "100%"}}
+										style={{ "width": "32%"}}
 									>
 								<Input
 									value={this.state.background}
 									onChange={this.handleInputChange}
-									style={{ "width": "100%"}}
+									style={{ "width": "100%", float: "left"}}
 									name="background"
 									placeholder="Background"
+								/>
+								</td>
+								<td
+									style={{ "width": "32%"}}
+								>
+								<Input
+									value={this.state.mission}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%", float: "left"}}
+									name="mission"
+									placeholder="Mission"
+								/>
+								</td>
+								<td
+									style={{ "width": "32%"}}
+								>
+								<Input
+									value={this.state.squadQuirk}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%", float: "left"}}
+									name="squadQuirk"
+									placeholder="Squad Quirk"
 								/>
 								</td>
 								<td
@@ -6728,62 +6673,9 @@ class Units extends Component {
 								<FormBtn
 									onClick={this.randomBackground}
 									className="btn btn-success"
+									style={{padding: "1px", margin: "auto"}}
 								>
-									Random
-								</FormBtn>
-								</td>
-								</tr>
-								</tbody>
-							</table>
-							<table>
-								<tbody>
-								<tr>
-									<td
-										style={{ "width": "100%"}}
-									>
-								<Input
-									value={this.state.mission}
-									onChange={this.handleInputChange}
-									style={{ "width": "100%"}}
-									name="mission"
-									placeholder="Mission"
-								/>
-								</td>
-								<td
-									style={{ "float": "left"}}
-								>
-								<FormBtn
-									onClick={this.randomMission}
-									className="btn btn-success"
-								>
-									Random
-								</FormBtn>
-								</td>
-								</tr>
-								</tbody>
-							</table>
-							<table>
-								<tbody>
-								<tr>
-									<td
-										style={{ "width": "100%"}}
-									>
-								<Input
-									value={this.state.squadQuirk}
-									onChange={this.handleInputChange}
-									style={{ "width": "100%"}}
-									name="squadquirk"
-									placeholder="Squad Quirk"
-								/>
-								</td>
-								<td
-									style={{ "float": "left"}}
-								>
-								<FormBtn
-									onClick={this.randomSquadQuirk}
-									className="btn btn-success"
-								>
-									Random
+									Random<span role="img" aria-label="Random">🔀</span>
 								</FormBtn>
 								</td>
 								</tr>

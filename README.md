@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/26/2019
+Release 0.4.3
+* Fixed various typos and stats.
+* Finished fixing the update bug.
+
 6/24/2019
 Release 0.4.2
 * Fixed wargear options for Deathwatch.
