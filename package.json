@@ -1,6 +1,6 @@
 {
   "name": "killteam",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "Squad Builder for Kill Team",
   "main": "server.js",
   "scripts": {

@@ -29,7 +29,6 @@ import thousand from "../../assets/thousand1.png";
 import tyranid from "../../assets/tyranid1.png";
 
 
-
 class Units extends Component {
   constructor(props) {
     super(props);
@@ -59,6 +58,8 @@ class Units extends Component {
       unitType: {},
       wargearOptions: {},
       wargearOptions2: {},
+      specialism: {},
+      demeanour: "",
       items: [],
       user: null
     };
@@ -68,6 +69,7 @@ class Units extends Component {
     this.handleChange2 = this.handleChange2.bind(this);
     this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange4 = this.handleChange4.bind(this);
+    this.handleChange5 = this.handleChange5.bind(this);
   }
 
   componentDidMount() {
@@ -465,6 +467,110 @@ class Units extends Component {
 		}
 	}
 
+	randomDemeanour = (event) => {
+		event.preventDefault();
+		var astartes6 = [
+			"Dour", "Ebullient", "Aggressive", "Castellan", "Noble", "Xenophobic", "Ferocious", "Sombre", "Mysterious", "Charismatic"
+		];
+		var deathwatch6 = [
+			"Newcomer", "Black Shield", "Xenobiologist", "Fuelled by Hate", "Tactician", "Huntsman", "Marksman", "Grim", "Contemptuous", "Murderous"
+		];
+		var grey6 = [
+			"Wrathful", "Fanatical", "Mystic", "Methodical", "Firebrand", "Vengeful", "Marksman", "Psychic Nexus", "Merciless", "Stoic"
+		];
+		var astra6 = [
+			"Dutiful", "Haunted", "Nerves of Steel", "Pious", "Eagle-eye", "Courageous", "Vengeful", "Psycho", "Expert", "Gung-ho"
+		];
+		var adeptus6 = [
+			"Meticulously Observant", "Binharic Piety", "Biologis Cognis", "Mechadominus", "Defensor Majoris", "Memeglitch", "Uncompromator Doctrines", "Ironstride", "Strategic Chorister", "Autopuritanical Ballistics"
+		];
+		var heretic6 = [
+			"Ultimate Veteran", "Cannibal", "Deranged", "Blade-master", "Visionary", "Living Canker", "Unstoppable Force", "Twisted", "True Believer", "On the Brink"
+		];
+		var death6 = [
+			"Drudge", "Morbid Fascinations", "Jocular", "Generous", "Belligerent", "Meticulous", "Deathflinger", "Reeking Horror", "Taking Samples", "Stubborn"
+		];
+		var thousand6 = [
+			"Enigmatic", "Exacting", "Ninefold Warrior", "War is an Altar", "The Madness of Tzeentch", "Unspeaking", "Plans Within Plans", "Prophesier", "Pyromaniac", "Seething with Change"
+		];
+		var asur6 = [
+			"Acrobatic", "Mentally Dextrous", "Crystalline Soul", "Damned", "Survivor's Guilt", "Absolute Focus", "Haughty", "Cold as the Void", "Passionate", "Grandiloquent"
+		];
+		var druk6 = [
+			"Predator's Eye", "Dark Flamboyance", "Ravenous", "Extravagant", "Scheming", "Mistrustful", "Darkened Soul", "Unforgiving", "Boundless Ambition", "Vindictive"
+		];
+		var harlequins6 = [
+			"Heroic Protagonist", "Malicious Antagonist", "Bladed Fool", "Sorrowful Killer", "Gleeful Maniac", "Relentless Destroyer", "Sombre Executioner", "Fate's Herald", "Eternal Wanderer", "The Harmonious Herald"
+		];
+		var necron6 = [
+			"Menacing", "Maniacal", "Strategic", "Nihilist", "Tormentor", "Glitching", "Obsessive", "Delusional", "Acquisitive", "Necrochirurgeon"
+		];
+		var ork6 = [
+			"Thick-headed", "Heavily Scarred", "Stubborn", "Light-fingered", "Violent Loon", "Resilient", "Beady-eyed", "Too Dumb to Know Fear", "Foul Gob", "Big and Brawny"
+		];
+		var tau6 = [
+			"Scholar of Puretide", "Pragmatic", "Precise", "Hot-Blooded", "Wise Veteran", "Unflappable", "Perceptice", "Dishonoured", "Farsight Sympathiser", "Monat"
+		];
+		var tyranid6 = [
+			"Hive Node", "Sentient Ammunition", "Entangling Tendrils", "Synaptophage", "Guardian Beast", "Survival Instincts", "Bloodhunger", "Unsettling Presence", "Lurker", "Mimic"
+		];
+		var genestealer6 = [
+			"Acidic Spittle", "Strange Twitching", "Enlightener", "Marker of the Dead", "Unblinking", "Proselytiser", "Tunnelspawn", "Destined Ascension", "Predatory Instincts", "Born Survivor"
+		];
+		switch (this.state.race.value) {
+			case "Adeptus Astartes":
+				this.setState({demeanour: astartes6[Math.floor(Math.random()*9)]})
+				break;
+			case "Deathwatch":
+				this.setState({demeanour: deathwatch6[Math.floor(Math.random()*9)]})
+				break;
+			case "Grey Knights":
+				this.setState({demeanour: grey6[Math.floor(Math.random()*9)]})
+				break;
+			case "Astra Militarum":
+				this.setState({demeanour: astra6[Math.floor(Math.random()*9)]})
+				break;
+			case "Adeptus Mechanicus":
+				this.setState({demeanour: adeptus6[Math.floor(Math.random()*9)]})
+				break;
+			case "Heretic Astartes":
+				this.setState({demeanour: heretic6[Math.floor(Math.random()*9)]})
+				break;
+			case "Death Guard":
+				this.setState({demeanour: death6[Math.floor(Math.random()*9)]})
+				break;
+			case "Thousand Sons":
+				this.setState({demeanour: thousand6[Math.floor(Math.random()*9)]})
+				break;
+			case "Asuryani":
+				this.setState({demeanour: asur6[Math.floor(Math.random()*9)]})
+				break;
+			case "Drukhari":
+				this.setState({demeanour: druk6[Math.floor(Math.random()*9)]})
+				break;
+			case "Harlequins":
+				this.setState({demeanour: harlequins6[Math.floor(Math.random()*9)]})
+				break;
+			case "Necrons":
+				this.setState({demeanour: necron6[Math.floor(Math.random()*9)]})
+				break;
+			case "Orks":
+				this.setState({demeanour: ork6[Math.floor(Math.random()*9)]})
+				break;
+			case "Tau Empire":
+				this.setState({demeanour: tau6[Math.floor(Math.random()*9)]})
+				break;
+			case "Tyranids":
+				this.setState({demeanour: tyranid6[Math.floor(Math.random()*9)]})
+				break;
+			case "Genestealer Cults":
+				this.setState({demeanour: genestealer6[Math.floor(Math.random()*9)]})
+				break;
+			default:
+				this.setState({demeanour: astartes6[Math.floor(Math.random()*9)]})
+			}
+		}
+
   componentDidUpdate() {
     var sum = 0;
     for (let i = 0; i < this.state.units.length; i++) {
@@ -557,6 +663,8 @@ class Units extends Component {
         pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
         race: this.state.race.value,
         unitType: this.state.unitType.label,
+        specialism: this.state.specialism.label,
+        demeanour: this.state.demeanour,
       })
       .then(res => this.loadUnits())
       .catch(err => console.log(err));
@@ -1288,7 +1396,7 @@ class Units extends Component {
         bs: 6,
         str: 3,
         tough: 3,
-        att: 1,
+        att: 2,
         ld: 4,
         sv: 7,
         pts: 3,
@@ -5564,7 +5672,32 @@ class Units extends Component {
         abilities: "Cult Ambush, Cult Icon"
       });
     }
-	}			
+	}
+
+	handleChange5 = (specialism) => {
+    this.setState({specialism: specialism})
+    if (specialism.value === "none" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        specialism: '',
+      });
+    }
+    if (specialism.value === "Leader" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        specialism: 'Leader',
+      });
+    }
+    if (specialism.value === "Comms" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        specialism: 'Comms',
+      });
+    }
+    if (specialism.value === "Demolitions" && this.state.unitType.value === "Scout Sergeant") {
+      this.setState({
+        specialism: 'Demolitions',
+      });
+    }
+	}
+
 			
   render() {
     const options1 = [
@@ -6369,10 +6502,703 @@ class Units extends Component {
 
 			{value: 'none', label: 'none', link: 'Hybrid Metamorph'},
 			{value: 'Cult Icon', label: 'Cult Icon +5pts', link: 'Hybrid Metamorph'},
-		]
+		];
+
+		const options5 = [
+      {value: 'none', label: 'none', link: 'Scout'},
+      {value: 'Comms', label: 'Comms', link: 'Scout'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Scout'},
+      {value: 'Scout', label: 'Scout', link: 'Scout'},
+      {value: 'Sniper', label: 'Sniper', link: 'Scout'},
+
+      {value: 'none', label: 'none', link: 'Scout Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Scout Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Scout Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Scout Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Scout Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Scout Gunner'},
+
+      {value: 'none', label: 'none', link: 'Scout Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Scout Sergeant'},
+      {value: 'Comms', label: 'Comms', link: 'Scout Sergeant'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Scout Sergeant'},
+      {value: 'Scout', label: 'Scout', link: 'Scout Sergeant'},
+      {value: 'Sniper', label: 'Sniper', link: 'Scout Sergeant'},
+
+      {value: 'none', label: 'none', link: 'Tactical Marine'},
+      {value: 'Comms', label: 'Comms', link: 'Tactical Marine'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Tactical Marine'},
+      {value: 'Sniper', label: 'Sniper', link: 'Tactical Marine'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tactical Marine'},
+
+      {value: 'none', label: 'none', link: 'Tactical Marine Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Tactical Marine Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Tactical Marine Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Tactical Marine Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Tactical Marine Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tactical Marine Gunner'},
+
+      {value: 'none', label: 'none', link: 'Tactical Marine Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Tactical Marine Sergeant'},
+      {value: 'Comms', label: 'Comms', link: 'Tactical Marine Sergeant'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Tactical Marine Sergeant'},
+      {value: 'Sniper', label: 'Sniper', link: 'Tactical Marine Sergeant'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tactical Marine Sergeant'},
+
+      {value: 'none', label: 'none', link: 'Reiver'},
+      {value: 'Combat', label: 'Combat', link: 'Reiver'},
+      {value: 'Comms', label: 'Comms', link: 'Reiver'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Reiver'},
+      {value: 'Scout', label: 'Scout', link: 'Reiver'},
+      {value: 'Veteran', label: 'Veteran', link: 'Reiver'},
+
+      {value: 'none', label: 'none', link: 'Reiver Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Reiver Sergeant'},
+      {value: 'Combat', label: 'Combat', link: 'Reiver Sergeant'},
+      {value: 'Comms', label: 'Comms', link: 'Reiver Sergeant'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Reiver Sergeant'},
+      {value: 'Scout', label: 'Scout', link: 'Reiver Sergeant'},
+      {value: 'Veteran', label: 'Veteran', link: 'Reiver Sergeant'},
+
+      {value: 'none', label: 'none', link: 'Intercessor'},
+      {value: 'Combat', label: 'Combat', link: 'Intercessor'},
+      {value: 'Comms', label: 'Comms', link: 'Intercessor'},
+      {value: 'Sniper', label: 'Sniper', link: 'Intercessor'},
+      {value: 'Veteran', label: 'Veteran', link: 'Intercessor'},
+			
+      {value: 'none', label: 'none', link: 'Intercessor Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Intercessor Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Intercessor Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Intercessor Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Intercessor Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Intercessor Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Intercessor Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Intercessor Sergeant'},
+      {value: 'Combat', label: 'Combat', link: 'Intercessor Sergeant'},
+      {value: 'Comms', label: 'Comms', link: 'Intercessor Sergeant'},
+      {value: 'Sniper', label: 'Sniper', link: 'Intercessor Sergeant'},
+      {value: 'Veteran', label: 'Veteran', link: 'Intercessor Sergeant'},
+			
+      {value: 'none', label: 'none', link: 'Deathwatch Veteran'},
+      {value: 'Combat', label: 'Combat', link: 'Deathwatch Veteran'},
+      {value: 'Comms', label: 'Comms', link: 'Deathwatch Veteran'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Deathwatch Veteran'},
+      {value: 'Sniper', label: 'Sniper', link: 'Deathwatch Veteran'},
+      {value: 'Veteran', label: 'Veteran', link: 'Deathwatch Veteran'},
+      {value: 'Zealot', label: 'Zealot', link: 'Deathwatch Veteran'},
+			
+      {value: 'none', label: 'none', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Deathwatch Veteran Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Deathwatch Veteran Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Black Shield'},
+      {value: 'Combat', label: 'Combat', link: 'Black Shield'},
+      {value: 'Comms', label: 'Comms', link: 'Black Shield'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Black Shield'},
+      {value: 'Sniper', label: 'Sniper', link: 'Black Shield'},
+      {value: 'Veteran', label: 'Veteran', link: 'Black Shield'},
+      {value: 'Zealot', label: 'Zealot', link: 'Black Shield'},
+			
+      {value: 'none', label: 'none', link: 'Watch Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Watch Sergeant'},
+			
+      {value: 'none', label: 'none', link: 'Grey Knight'},
+      {value: 'Combat', label: 'Combat', link: 'Grey Knight'},
+      {value: 'Comms', label: 'Comms', link: 'Grey Knight'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Grey Knight'},
+      {value: 'Veteran', label: 'Veteran', link: 'Grey Knight'},
+      {value: 'Zealot', label: 'Zealot', link: 'Grey Knight'},
+			
+      {value: 'none', label: 'none', link: 'Grey Knight Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Grey Knight Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Grey Knight Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Grey Knight Gunner'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Grey Knight Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Grey Knight Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Grey Knight Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Justicar'},
+      {value: 'Leader', label: 'Leader', link: 'Justicar'},
+			
+      {value: 'none', label: 'none', link: 'Guardsman'},
+      {value: 'Comms', label: 'Comms', link: 'Guardsman'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Guardsman'},
+      {value: 'Scout', label: 'Scout', link: 'Guardsman'},
+      {value: 'Sniper', label: 'Sniper', link: 'Guardsman'},
+      {value: 'Veteran', label: 'Veteran', link: 'Guardsman'},
+			
+      {value: 'none', label: 'none', link: 'Guardsman Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Guardsman Gunner'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Guardsman Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Guardsman Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Guardsman Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Guardsman Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Sergeant'},
+      {value: 'Leader', label: 'Leader', link: 'Sergeant'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Sergeant'},
+      {value: 'Scout', label: 'Scout', link: 'Sergeant'},
+      {value: 'Sniper', label: 'Sniper', link: 'Sergeant'},
+      {value: 'Veteran', label: 'Veteran', link: 'Sergeant'},
+			
+      {value: 'none', label: 'none', link: 'Special Weapons Guardsman'},
+      {value: 'Leader', label: 'Leader', link: 'Special Weapons Guardsman'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Special Weapons Guardsman'},
+      {value: 'Scout', label: 'Scout', link: 'Special Weapons Guardsman'},
+      {value: 'Sniper', label: 'Sniper', link: 'Special Weapons Guardsman'},
+      {value: 'Veteran', label: 'Veteran', link: 'Special Weapons Guardsman'},
+			
+      {value: 'none', label: 'none', link: 'Special Weapons Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Special Weapons Gunner'},
+      {value: 'Leader', label: 'Leader', link: 'Special Weapons Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Special Weapons Gunner'},
+      {value: 'Demoltions', label: 'Demoltions', link: 'Special Weapons Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Special Weapons Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Special Weapons Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Special Weapons Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Scion'},
+      {value: 'Comms', label: 'Comms', link: 'Scion'},
+      {value: 'Medic', label: 'Medic', link: 'Scion'},
+      {value: 'Scout', label: 'Scout', link: 'Scion'},
+      {value: 'Sniper', label: 'Sniper', link: 'Scion'},
+      {value: 'Veteran', label: 'Veteran', link: 'Scion'},
+			
+      {value: 'none', label: 'none', link: 'Scion Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Scion Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Scion Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Scion Gunner'},
+      {value: 'Medic', label: 'Medic', link: 'Scion Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Scion Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Scion Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Scion Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Tempestor'},
+      {value: 'Leader', label: 'Leader', link: 'Tempestor'},
+      {value: 'Comms', label: 'Comms', link: 'Tempestor'},
+      {value: 'Medic', label: 'Medic', link: 'Tempestor'},
+      {value: 'Scout', label: 'Scout', link: 'Tempestor'},
+      {value: 'Sniper', label: 'Sniper', link: 'Tempestor'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tempestor'},
+			
+      {value: 'none', label: 'none', link: 'Skitarii Ranger'},
+      {value: 'Comms', label: 'Comms', link: 'Skitarii Ranger'},
+      {value: 'Scout', label: 'Scout', link: 'Skitarii Ranger'},
+      {value: 'Sniper', label: 'Sniper', link: 'Skitarii Ranger'},
+      {value: 'Zealot', label: 'Zealot', link: 'Skitarii Ranger'},
+			
+      {value: 'none', label: 'none', link: 'Ranger Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Ranger Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Ranger Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Ranger Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Ranger Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Ranger Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Ranger Alpha'},
+      {value: 'Leader', label: 'Leader', link: 'Ranger Alpha'},
+      {value: 'Comms', label: 'Comms', link: 'Ranger Alpha'},
+      {value: 'Scout', label: 'Scout', link: 'Ranger Alpha'},
+      {value: 'Sniper', label: 'Sniper', link: 'Ranger Alpha'},
+      {value: 'Zealot', label: 'Zealot', link: 'Ranger Alpha'},
+			
+      {value: 'none', label: 'none', link: 'Skitarii Vanguard'},
+      {value: 'Comms', label: 'Comms', link: 'Skitarii Vanguard'},
+      {value: 'Scout', label: 'Scout', link: 'Skitarii Vanguard'},
+      {value: 'Sniper', label: 'Sniper', link: 'Skitarii Vanguard'},
+      {value: 'Zealot', label: 'Zealot', link: 'Skitarii Vanguard'},
+			
+      {value: 'none', label: 'none', link: 'Vanguard Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Vanguard Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Vanguard Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Vanguard Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Vanguard Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Vanguard Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Vanguard Alpha'},
+      {value: 'Leader', label: 'Leader', link: 'Vanguard Alpha'},
+      {value: 'Comms', label: 'Comms', link: 'Vanguard Alpha'},
+      {value: 'Scout', label: 'Scout', link: 'Vanguard Alpha'},
+      {value: 'Sniper', label: 'Sniper', link: 'Vanguard Alpha'},
+      {value: 'Zealot', label: 'Zealot', link: 'Vanguard Alpha'},
+			
+      {value: 'none', label: 'none', link: 'Sicarian Ruststalker'},
+      {value: 'Combat', label: 'Combat', link: 'Sicarian Ruststalker'},
+      {value: 'Comms', label: 'Comms', link: 'Sicarian Ruststalker'},
+      {value: 'Scout', label: 'Scout', link: 'Sicarian Ruststalker'},
+      {value: 'Veteran', label: 'Veteran', link: 'Sicarian Ruststalker'},
+      {value: 'Zealot', label: 'Zealot', link: 'Sicarian Ruststalker'},
+			
+      {value: 'none', label: 'none', link: 'Ruststalker Princeps'},
+      {value: 'Leader', label: 'Leader', link: 'Ruststalker Princeps'},
+      {value: 'Combat', label: 'Combat', link: 'Ruststalker Princeps'},
+      {value: 'Comms', label: 'Comms', link: 'Ruststalker Princeps'},
+      {value: 'Scout', label: 'Scout', link: 'Ruststalker Princeps'},
+      {value: 'Veteran', label: 'Veteran', link: 'Ruststalker Princeps'},
+      {value: 'Zealot', label: 'Zealot', link: 'Ruststalker Princeps'},
+			
+      {value: 'none', label: 'none', link: 'Sicarian Infiltrator'},
+      {value: 'Combat', label: 'Combat', link: 'Sicarian Infiltrator'},
+      {value: 'Comms', label: 'Comms', link: 'Sicarian Infiltrator'},
+      {value: 'Scout', label: 'Scout', link: 'Sicarian Infiltrator'},
+      {value: 'Veteran', label: 'Veteran', link: 'Sicarian Infiltrator'},
+      {value: 'Zealot', label: 'Zealot', link: 'Sicarian Infiltrator'},
+			
+      {value: 'none', label: 'none', link: 'Infiltrator Princeps'},
+      {value: 'Leader', label: 'Leader', link: 'Infiltrator Princeps'},
+      {value: 'Combat', label: 'Combat', link: 'Infiltrator Princeps'},
+      {value: 'Comms', label: 'Comms', link: 'Infiltrator Princeps'},
+      {value: 'Scout', label: 'Scout', link: 'Infiltrator Princeps'},
+      {value: 'Veteran', label: 'Veteran', link: 'Infiltrator Princeps'},
+      {value: 'Zealot', label: 'Zealot', link: 'Infiltrator Princeps'},
+			
+      {value: 'none', label: 'none', link: 'Chaos Cultist'},
+      {value: 'Combat', label: 'Combat', link: 'Chaos Cultist'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Chaos Cultist'},
+      {value: 'Veteran', label: 'Veteran', link: 'Chaos Cultist'},
+      {value: 'Zealot', label: 'Zealot', link: 'Chaos Cultist'},
+			
+      {value: 'none', label: 'none', link: 'Chaos Cultist Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Chaos Cultist Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Chaos Cultist Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Chaos Cultist Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Chaos Cultist Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Chaos Cultist Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Cultist Champion'},
+      {value: 'Leader', label: 'Leader', link: 'Cultist Champion'},
+      {value: 'Combat', label: 'Combat', link: 'Cultist Champion'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Cultist Champion'},
+      {value: 'Veteran', label: 'Veteran', link: 'Cultist Champion'},
+      {value: 'Zealot', label: 'Zealot', link: 'Cultist Champion'},
+			
+      {value: 'none', label: 'none', link: 'Chaos Space Marine'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Chaos Space Marine'},
+      {value: 'Sniper', label: 'Sniper', link: 'Chaos Space Marine'},
+      {value: 'Veteran', label: 'Veteran', link: 'Chaos Space Marine'},
+      {value: 'Zealot', label: 'Zealot', link: 'Chaos Space Marine'},
+			
+      {value: 'none', label: 'none', link: 'Chaos Space Marine Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Chaos Space Marine Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Chaos Space Marine Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Chaos Space Marine Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Chaos Space Marine Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Chaos Space Marine Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Aspiring Champion'},
+      {value: 'Leader', label: 'Leader', link: 'Aspiring Champion'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Aspiring Champion'},
+      {value: 'Sniper', label: 'Sniper', link: 'Aspiring Champion'},
+      {value: 'Veteran', label: 'Veteran', link: 'Aspiring Champion'},
+      {value: 'Zealot', label: 'Zealot', link: 'Aspiring Champion'},
+			
+      {value: 'none', label: 'none', link: 'Plague Marine'},
+      {value: 'Combat', label: 'Combat', link: 'Plague Marine'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Plague Marine'},
+      {value: 'Veteran', label: 'Veteran', link: 'Plague Marine'},
+			
+      {value: 'none', label: 'none', link: 'Plague Marine Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Plague Marine Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Plague Marine Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Plague Marine Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Plague Marine Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Plague Marine Fighter'},
+      {value: 'Combat', label: 'Combat', link: 'Plague Marine Fighter'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Plague Marine Fighter'},
+      {value: 'Veteran', label: 'Veteran', link: 'Plague Marine Fighter'},
+      {value: 'Zealot', label: 'Zealot', link: 'Plague Marine Fighter'},
+			
+      {value: 'none', label: 'none', link: 'Plague Champion'},
+      {value: 'Leader', label: 'Leader', link: 'Plague Champion'},
+      {value: 'Combat', label: 'Combat', link: 'Plague Champion'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Plague Champion'},
+      {value: 'Veteran', label: 'Veteran', link: 'Plague Champion'},
+			
+      {value: 'none', label: 'none', link: 'Poxwalker'},
+      {value: 'Combat', label: 'Combat', link: 'Poxwalker'},
+      {value: 'Zealot', label: 'Zealot', link: 'Poxwalker'},
+			
+      {value: 'none', label: 'none', link: 'Rubric Marine'},
+      {value: 'Combat', label: 'Combat', link: 'Rubric Marine'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Rubric Marine'},
+      {value: 'Veteran', label: 'Veteran', link: 'Rubric Marine'},
+			
+      {value: 'none', label: 'none', link: 'Rubric Marine Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Rubric Marine Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Rubric Marine Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Rubric Marine Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Rubric Marine Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Aspiring Champion'},
+      {value: 'Leader', label: 'Leader', link: 'Aspiring Champion'},
+      {value: 'Combat', label: 'Combat', link: 'Aspiring Champion'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Aspiring Champion'},
+      {value: 'Veteran', label: 'Veteran', link: 'Aspiring Champion'},
+			
+      {value: 'none', label: 'none', link: 'Tzaangor'},
+      {value: 'Comms', label: 'Comms', link: 'Tzaangor'},
+      {value: 'Combat', label: 'Combat', link: 'Tzaangor'},
+      {value: 'Medic', label: 'Medic', link: 'Tzaangor'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tzaangor'},
+      {value: 'Zealot', label: 'Zealot', link: 'Tzaangor'},
+			
+      {value: 'none', label: 'none', link: 'Twistbray'},
+      {value: 'Leader', label: 'Leader', link: 'Twistbray'},
+      {value: 'Combat', label: 'Combat', link: 'Twistbray'},
+      {value: 'Medic', label: 'Medic', link: 'Twistbray'},
+      {value: 'Veteran', label: 'Veteran', link: 'Twistbray'},
+      {value: 'Zealot', label: 'Zealot', link: 'Twistbray'},
+			
+      {value: 'none', label: 'none', link: 'Guardian Defender'},
+      {value: 'Leader', label: 'Leader', link: 'Guardian Defender'},
+      {value: 'Comms', label: 'Comms', link: 'Guardian Defender'},
+      {value: 'Medic', label: 'Medic', link: 'Guardian Defender'},
+      {value: 'Scout', label: 'Scout', link: 'Guardian Defender'},
+      {value: 'Veteran', label: 'Veteran', link: 'Guardian Defender'},
+			
+      {value: 'none', label: 'none', link: 'Storm Guardian'},
+      {value: 'Leader', label: 'Leader', link: 'Storm Guardian'},
+      {value: 'Combat', label: 'Combat', link: 'Storm Guardian'},
+      {value: 'Comms', label: 'Comms', link: 'Storm Guardian'},
+      {value: 'Medic', label: 'Medic', link: 'Storm Guardian'},
+      {value: 'Scout', label: 'Scout', link: 'Storm Guardian'},
+      {value: 'Veteran', label: 'Veteran', link: 'Storm Guardian'},
+			
+      {value: 'none', label: 'none', link: 'Storm Guardian Gunner'},
+      {value: 'Leader', label: 'Leader', link: 'Storm Guardian Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Storm Guardian Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Storm Guardian Gunner'},
+      {value: 'Medic', label: 'Medic', link: 'Storm Guardian Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Storm Guardian Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Storm Guardian Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Ranger'},
+      {value: 'Leader', label: 'Leader', link: 'Ranger'},
+      {value: 'Comms', label: 'Comms', link: 'Ranger'},
+      {value: 'Medic', label: 'Medic', link: 'Ranger'},
+      {value: 'Scout', label: 'Scout', link: 'Ranger'},
+      {value: 'Sniper', label: 'Sniper', link: 'Ranger'},
+      {value: 'Veteran', label: 'Veteran', link: 'Ranger'},
+			
+      {value: 'none', label: 'none', link: 'Dire Avenger'},
+      {value: 'Combat', label: 'Combat', link: 'Dire Avenger'},
+      {value: 'Comms', label: 'Comms', link: 'Dire Avenger'},
+      {value: 'Medic', label: 'Medic', link: 'Dire Avenger'},
+      {value: 'Scout', label: 'Scout', link: 'Dire Avenger'},
+      {value: 'Sniper', label: 'Sniper', link: 'Dire Avenger'},
+      {value: 'Veteran', label: 'Veteran', link: 'Dire Avenger'},
+			
+      {value: 'none', label: 'none', link: 'Dire Avenger Exarch'},
+      {value: 'Leader', label: 'Leader', link: 'Dire Avenger Exarch'},
+      {value: 'Combat', label: 'Combat', link: 'Dire Avenger Exarch'},
+      {value: 'Comms', label: 'Comms', link: 'Dire Avenger Exarch'},
+      {value: 'Medic', label: 'Medic', link: 'Dire Avenger Exarch'},
+      {value: 'Scout', label: 'Scout', link: 'Dire Avenger Exarch'},
+      {value: 'Veteran', label: 'Veteran', link: 'Dire Avenger Exarch'},
+			
+      {value: 'none', label: 'none', link: 'Kabalite Warrior'},
+      {value: 'Comms', label: 'Comms', link: 'Kabalite Warrior'},
+      {value: 'Scout', label: 'Scout', link: 'Kabalite Warrior'},
+      {value: 'Veteran', label: 'Veteran', link: 'Kabalite Warrior'},
+      {value: 'Zealot', label: 'Zealot', link: 'Kabalite Warrior'},
+			
+      {value: 'none', label: 'none', link: 'Kabalite Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Kabalite Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Kabalite Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Kabalite Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Kabalite Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Kabalite Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Sybarite'},
+      {value: 'Leader', label: 'Leader', link: 'Sybarite'},
+      {value: 'Comms', label: 'Comms', link: 'Sybarite'},
+      {value: 'Scout', label: 'Scout', link: 'Sybarite'},
+      {value: 'Veteran', label: 'Veteran', link: 'Sybarite'},
+      {value: 'Zealot', label: 'Zealot', link: 'Sybarite'},
+			
+      {value: 'none', label: 'none', link: 'Wych'},
+      {value: 'Combat', label: 'Combat', link: 'Wych'},
+      {value: 'Scout', label: 'Scout', link: 'Wych'},
+      {value: 'Veteran', label: 'Veteran', link: 'Wych'},
+      {value: 'Zealot', label: 'Zealot', link: 'Wych'},
+			
+      {value: 'none', label: 'none', link: 'Wych Fighter'},
+      {value: 'Leader', label: 'Leader', link: 'Wych Fighter'},
+      {value: 'Combat', label: 'Combat', link: 'Wych Fighter'},
+      {value: 'Scout', label: 'Scout', link: 'Wych Fighter'},
+      {value: 'Veteran', label: 'Veteran', link: 'Wych Fighter'},
+      {value: 'Zealot', label: 'Zealot', link: 'Wych Fighter'},
+			
+      {value: 'none', label: 'none', link: 'Hekatrix'},
+      {value: 'Leader', label: 'Leader', link: 'Hekatrix'},
+      {value: 'Combat', label: 'Combat', link: 'Hekatrix'},
+      {value: 'Scout', label: 'Scout', link: 'Hekatrix'},
+      {value: 'Veteran', label: 'Veteran', link: 'Hekatrix'},
+      {value: 'Zealot', label: 'Zealot', link: 'Hekatrix'},
+			
+      {value: 'none', label: 'none', link: 'Player'},
+      {value: 'Leader', label: 'Leader', link: 'Player'},
+      {value: 'Combat', label: 'Combat', link: 'Player'},
+      {value: 'Medic', label: 'Medic', link: 'Player'},
+      {value: 'Scout', label: 'Scout', link: 'Player'},
+      {value: 'Veteran', label: 'Veteran', link: 'Player'},
+      {value: 'Zealot', label: 'Zealot', link: 'Player'},
+			
+      {value: 'none', label: 'none', link: 'Necron Warrior'},
+      {value: 'Leader', label: 'Leader', link: 'Necron Warrior'},
+      {value: 'Comms', label: 'Comms', link: 'Necron Warrior'},
+      {value: 'Veteran', label: 'Veteran', link: 'Necron Warrior'},
+			
+      {value: 'none', label: 'none', link: 'Immortal'},
+      {value: 'Leader', label: 'Leader', link: 'Immortal'},
+      {value: 'Comms', label: 'Comms', link: 'Immortal'},
+      {value: 'Veteran', label: 'Veteran', link: 'Immortal'},
+      {value: 'Zealot', label: 'Zealot', link: 'Immortal'},
+			
+      {value: 'none', label: 'none', link: 'Flayed One'},
+      {value: 'Leader', label: 'Leader', link: 'Flayed One'},
+      {value: 'Combat', label: 'Combat', link: 'Flayed One'},
+      {value: 'Veteran', label: 'Veteran', link: 'Flayed One'},
+      {value: 'Zealot', label: 'Zealot', link: 'Flayed One'},
+			
+      {value: 'none', label: 'none', link: 'Deathmark'},
+      {value: 'Leader', label: 'Leader', link: 'Deathmark'},
+      {value: 'Comms', label: 'Comms', link: 'Deathmark'},
+      {value: 'Scout', label: 'Scout', link: 'Deathmark'},
+      {value: 'Sniper', label: 'Sniper', link: 'Deathmark'},
+      {value: 'Veteran', label: 'Veteran', link: 'Deathmark'},
+			
+      {value: 'none', label: 'none', link: 'Ork Boy'},
+      {value: 'Combat', label: 'Combat', link: 'Ork Boy'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Ork Boy'},
+      {value: 'Veteran', label: 'Veteran', link: 'Ork Boy'},
+			
+      {value: 'none', label: 'none', link: 'Ork Boy Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Ork Boy Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Ork Boy Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Ork Boy Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Ork Boy Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Boss Nob'},
+      {value: 'Leader', label: 'Leader', link: 'Boss Nob'},
+      {value: 'Combat', label: 'Combat', link: 'Boss Nob'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Boss Nob'},
+      {value: 'Veteran', label: 'Veteran', link: 'Boss Nob'},
+			
+      {value: 'none', label: 'none', link: 'Gretchin'},
+      {value: 'Leader', label: 'Leader', link: 'Gretchin'},
+      {value: 'Scout', label: 'Scout', link: 'Gretchin'},
+			
+      {value: 'none', label: 'none', link: 'Kommando'},
+      {value: 'Combat', label: 'Combat', link: 'Kommando'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Kommando'},
+      {value: 'Scout', label: 'Scout', link: 'Kommando'},
+      {value: 'Veteran', label: 'Veteran', link: 'Kommando'},
+			
+      {value: 'none', label: 'none', link: 'Kommando Boss Nob'},
+      {value: 'Leader', label: 'Leader', link: 'Kommando Boss Nob'},
+      {value: 'Combat', label: 'Combat', link: 'Kommando Boss Nob'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Kommando Boss Nob'},
+      {value: 'Scout', label: 'Scout', link: 'Kommando Boss Nob'},
+      {value: 'Veteran', label: 'Veteran', link: 'Kommando Boss Nob'},
+			
+      {value: 'none', label: 'none', link: 'Burna Boy'},
+      {value: 'Leader', label: 'Leader', link: 'Burna Boy'},
+      {value: 'Combat', label: 'Combat', link: 'Burna Boy'},
+      {value: 'Veteran', label: 'Veteran', link: 'Burna Boy'},
+      {value: 'Zealot', label: 'Zealot', link: 'Burna Boy'},
+			
+      {value: 'none', label: 'none', link: 'Burna Spanner'},
+      {value: 'Leader', label: 'Leader', link: 'Burna Spanner'},
+      {value: 'Combat', label: 'Combat', link: 'Burna Spanner'},
+      {value: 'Comms', label: 'Comms', link: 'Burna Spanner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Burna Spanner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Burna Spanner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Burna Spanner'},
+
+      {value: 'none', label: 'none', link: 'Loota'},
+      {value: 'Leader', label: 'Leader', link: 'Loota'},
+      {value: 'Combat', label: 'Combat', link: 'Loota'},
+      {value: 'Heavy', label: 'Heavy', link: 'Loota'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Loota'},
+      {value: 'Veteran', label: 'Veteran', link: 'Loota'},
+			
+      {value: 'none', label: 'none', link: 'Loota Spanner'},
+      {value: 'Leader', label: 'Leader', link: 'Loota Spanner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Loota Spanner'},
+      {value: 'Comms', label: 'Comms', link: 'Loota Spanner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Loota Spanner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Loota Spanner'},
+			
+      {value: 'none', label: 'none', link: 'Shasla'},
+      {value: 'Comms', label: 'Comms', link: 'Shasla'},
+      {value: 'Medic', label: 'Medic', link: 'Shasla'},
+      {value: 'Scout', label: 'Scout', link: 'Shasla'},
+      {value: 'Sniper', label: 'Sniper', link: 'Shasla'},
+      {value: 'Veteran', label: 'Veteran', link: 'Shasla'},
+			
+      {value: 'none', label: 'none', link: 'Shasui'},
+      {value: 'Leader', label: 'Leader', link: 'Shasui'},
+      {value: 'Comms', label: 'Comms', link: 'Shasui'},
+      {value: 'Medic', label: 'Medic', link: 'Shasui'},
+      {value: 'Scout', label: 'Scout', link: 'Shasui'},
+      {value: 'Sniper', label: 'Sniper', link: 'Shasui'},
+      {value: 'Veteran', label: 'Veteran', link: 'Shasui'},
+			
+      {value: 'none', label: 'none', link: 'Pathfinder'},
+      {value: 'Comms', label: 'Comms', link: 'Pathfinder'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Pathfinder'},
+      {value: 'Medic', label: 'Medic', link: 'Pathfinder'},
+      {value: 'Scout', label: 'Scout', link: 'Pathfinder'},
+      {value: 'Veteran', label: 'Veteran', link: 'Pathfinder'},
+			
+      {value: 'none', label: 'none', link: 'Pathfinder Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Pathfinder Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Pathfinder Gunner'},
+      {value: 'Medic', label: 'Medic', link: 'Pathfinder Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Pathfinder Gunner'},
+      {value: 'Sniper', label: 'Sniper', link: 'Pathfinder Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Pathfinder Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Pathfinder Shasui'},
+      {value: 'Leader', label: 'Leader', link: 'Pathfinder Shasui'},
+      {value: 'Comms', label: 'Comms', link: 'Pathfinder Shasui'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Pathfinder Shasui'},
+      {value: 'Medic', label: 'Medic', link: 'Pathfinder Shasui'},
+      {value: 'Scout', label: 'Scout', link: 'Pathfinder Shasui'},
+      {value: 'Veteran', label: 'Veteran', link: 'Pathfinder Shasui'},
+			
+      {value: 'none', label: 'none', link: 'Breacher Shasla'},
+      {value: 'Comms', label: 'Comms', link: 'Breacher Shasla'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Breacher Shasla'},
+      {value: 'Medic', label: 'Medic', link: 'Breacher Shasla'},
+      {value: 'Scout', label: 'Scout', link: 'Breacher Shasla'},
+      {value: 'Veteran', label: 'Veteran', link: 'Breacher Shasla'},
+			
+      {value: 'none', label: 'none', link: 'Breacher Shasui'},
+      {value: 'Leader', label: 'Leader', link: 'Breacher Shasui'},
+      {value: 'Comms', label: 'Comms', link: 'Breacher Shasui'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Breacher Shasui'},
+      {value: 'Medic', label: 'Medic', link: 'Breacher Shasui'},
+      {value: 'Scout', label: 'Scout', link: 'Breacher Shasui'},
+      {value: 'Veteran', label: 'Veteran', link: 'Breacher Shasui'},
+			
+      {value: 'none', label: 'none', link: 'Stealth Shasui'},
+      {value: 'Heavy', label: 'Heavy', link: 'Stealth Shasui'},
+      {value: 'Comms', label: 'Comms', link: 'Stealth Shasui'},
+      {value: 'Scout', label: 'Scout', link: 'Stealth Shasui'},
+      {value: 'Veteran', label: 'Veteran', link: 'Stealth Shasui'},
+			
+      {value: 'none', label: 'none', link: 'Stealth Shasvre'},
+      {value: 'Leader', label: 'Leader', link: 'Stealth Shasvre'},
+      {value: 'Heavy', label: 'Heavy', link: 'Stealth Shasvre'},
+      {value: 'Comms', label: 'Comms', link: 'Stealth Shasvre'},
+      {value: 'Scout', label: 'Scout', link: 'Stealth Shasvre'},
+      {value: 'Veteran', label: 'Veteran', link: 'Stealth Shasvre'},
+			
+      {value: 'none', label: 'none', link: 'Termagant'},
+      {value: 'Scout', label: 'Scout', link: 'Termagant'},
+      {value: 'Veteran', label: 'Veteran', link: 'Termagant'},
+			
+      {value: 'none', label: 'none', link: 'Hormagaunt'},
+      {value: 'Combat', label: 'Combat', link: 'Hormagaunt'},
+      {value: 'Scout', label: 'Scout', link: 'Hormagaunt'},
+      {value: 'Veteran', label: 'Veteran', link: 'Hormagaunt'},
+			
+      {value: 'none', label: 'none', link: 'Lictor'},
+      {value: 'Leader', label: 'Leader', link: 'Lictor'},
+      {value: 'Combat', label: 'Combat', link: 'Lictor'},
+      {value: 'Comms', label: 'Comms', link: 'Lictor'},
+      {value: 'Scout', label: 'Scout', link: 'Lictor'},
+      {value: 'Veteran', label: 'Veteran', link: 'Lictor'},
+			
+      {value: 'none', label: 'none', link: 'Tyranid Warrior'},
+      {value: 'Leader', label: 'Leader', link: 'Tyranid Warrior'},
+      {value: 'Combat', label: 'Combat', link: 'Tyranid Warrior'},
+      {value: 'Comms', label: 'Comms', link: 'Tyranid Warrior'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tyranid Warrior'},
+			
+      {value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
+      {value: 'Leader', label: 'Leader', link: 'Tyranid Warrior Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Tyranid Warrior Gunner'},
+      {value: 'Combat', label: 'Combat', link: 'Tyranid Warrior Gunner'},
+      {value: 'Comms', label: 'Comms', link: 'Tyranid Warrior Gunner'},
+      {value: 'Veteran', label: 'Veteran', link: 'Tyranid Warrior Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Genestealer'},
+      {value: 'Leader', label: 'Leader', link: 'Genestealer'},
+      {value: 'Combat', label: 'Combat', link: 'Genestealer'},
+      {value: 'Scout', label: 'Scout', link: 'Genestealer'},
+      {value: 'Veteran', label: 'Veteran', link: 'Genestealer'},
+			
+      {value: 'none', label: 'none', link: 'Acolyte Hybrid'},
+      {value: 'Combat', label: 'Combat', link: 'Acolyte Hybrid'},
+      {value: 'Comms', label: 'Comms', link: 'Acolyte Hybrid'},
+      {value: 'Zealot', label: 'Zealot', link: 'Acolyte Hybrid'},
+			
+      {value: 'none', label: 'none', link: 'Acolyte Fighter'},
+      {value: 'Combat', label: 'Combat', link: 'Acolyte Fighter'},
+      {value: 'Comms', label: 'Comms', link: 'Acolyte Fighter'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Acolyte Fighter'},
+      {value: 'Zealot', label: 'Zealot', link: 'Acolyte Fighter'},
+			
+      {value: 'none', label: 'none', link: 'Acolyte Leader'},
+      {value: 'Leader', label: 'Leader', link: 'Acolyte Leader'},
+      {value: 'Combat', label: 'Combat', link: 'Acolyte Leader'},
+      {value: 'Comms', label: 'Comms', link: 'Acolyte Leader'},
+      {value: 'Zealot', label: 'Zealot', link: 'Acolyte Leader'},
+			
+      {value: 'none', label: 'none', link: 'Aberrant'},
+      {value: 'Leader', label: 'Leader', link: 'Aberrant'},
+      {value: 'Combat', label: 'Combat', link: 'Aberrant'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Aberrant'},
+      {value: 'Zealot', label: 'Zealot', link: 'Aberrant'},
+			
+      {value: 'none', label: 'none', link: 'Neophyte Hybrid'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Neophyte Hybrid'},
+      {value: 'Medic', label: 'Medic', link: 'Neophyte Hybrid'},
+      {value: 'Scout', label: 'Scout', link: 'Neophyte Hybrid'},
+      {value: 'Zealot', label: 'Zealot', link: 'Neophyte Hybrid'},
+			
+      {value: 'none', label: 'none', link: 'Neophyte Gunner'},
+      {value: 'Heavy', label: 'Heavy', link: 'Neophyte Gunner'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Neophyte Gunner'},
+      {value: 'Medic', label: 'Medic', link: 'Neophyte Gunner'},
+      {value: 'Scout', label: 'Scout', link: 'Neophyte Gunner'},
+      {value: 'Zealot', label: 'Zealot', link: 'Neophyte Gunner'},
+			
+      {value: 'none', label: 'none', link: 'Neophyte Leader'},
+      {value: 'Leader', label: 'Leader', link: 'Neophyte Leader'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Neophyte Leader'},
+      {value: 'Medic', label: 'Medic', link: 'Neophyte Leader'},
+      {value: 'Scout', label: 'Scout', link: 'Neophyte Leader'},
+      {value: 'Zealot', label: 'Zealot', link: 'Neophyte Leader'},
+			
+      {value: 'none', label: 'none', link: 'Hybrid Metamorph'},
+      {value: 'Combat', label: 'Combat', link: 'Hybrid Metamorph'},
+      {value: 'Comms', label: 'Comms', link: 'Hybrid Metamorph'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Hybrid Metamorph'},
+      {value: 'Zealot', label: 'Zealot', link: 'Hybrid Metamorph'},
+			
+      {value: 'none', label: 'none', link: 'Hybrid Leader'},
+      {value: 'Leader', label: 'Leader', link: 'Hybrid Leader'},
+      {value: 'Combat', label: 'Combat', link: 'Hybrid Leader'},
+      {value: 'Comms', label: 'Comms', link: 'Hybrid Leader'},
+      {value: 'Demolitions', label: 'Demolitions', link: 'Hybrid Leader'},
+      {value: 'Zealot', label: 'Zealot', link: 'Hybrid Leader'},
+
+		];
+
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
+		const filteredOptions4 = options5.filter((o) => o.link === this.state.unitType.value)
     return (
       <Container fluid>
         <Row>
@@ -6609,6 +7435,43 @@ class Units extends Component {
 								/>
 							</div>
               <br />
+              <span className="text-light" style={{ float: "left", width : "50%" }}>Specialism</span>
+							<span className="text-light" style={{ float: "left", width : "50%" }}>Demeanour</span>
+              <div style={{ float: "left", width : "50%" }}>
+								<Select
+									name="specialism"
+									value={{label : this.state.specialism.value}}
+									onChange={this.handleChange5}
+									options={filteredOptions4}
+								/>
+							</div>
+								<table>
+								<tbody>
+								<tr>
+									<td
+										style={{padding: "0px", "width": "100%"}}
+									>
+								<Input
+									value={this.state.demeanour}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="demeanour"
+									placeholder="Demeanour"
+								/>
+								</td>
+								<td style={{ padding: "0px" }}>
+									<FormBtn
+										onClick={this.randomDemeanour}
+										className="btn btn-success"
+										style={{ padding: "1px" }}
+									>
+										Random<span role="img" aria-label="Random">🔀</span>
+									</FormBtn>
+									</td>
+								</tr>
+								</tbody>
+							</table>
+              <br />
               <FormBtn
                 disabled={!(this.state.unitType && this.state.name)}
 								onClick={this.handleFormSubmit}
@@ -6620,17 +7483,21 @@ class Units extends Component {
           </Col>
           <Col size="md-6 sm-12">
             <Jumbotron>
-              <h2>Units On My List</h2>
+              <h2>Units On My Squad</h2>
               <h3>Squad Cost: {this.state.total}</h3>
             </Jumbotron>
             {this.state.units.length ? (
               <div>
+							<span className="text-light" style={{ float: "left" }}>Squad Name</span>
                 <Input
                   value={this.state.squadName}
                   onChange={this.handleInputChange}
                   name="squadName"
                   placeholder="Squad Name"
                 />
+							<span className="text-light" style={{ float: "left", width : "30%" }}>Background</span>
+							<span className="text-light" style={{ float: "left", width : "30%" }}>Mission</span>
+							<span className="text-light" style={{ float: "left", width : "30%" }}>Squad Quirk</span>
 							<table>
 								<tbody>
 								<tr>

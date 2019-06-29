@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+6/29/2019
+Release 0.4.4
+* Added Specialists and Demeanour.
+* Minor interface changes.
+
 6/26/2019
 Release 0.4.3
 * Fixed various typos and stats.
@@ -182,7 +187,7 @@ Release 0.1.0 is here!
 
 * Limits for specific unit types.
 * Random name generator allows Space Marine Chapter select.
-* More squad options (specialists, flesh wounds, experience, demeanour).
+* More squad options (<s>specialists</s>, flesh wounds, experience, <s>demeanour</s>).
 * UI graphics.
 * <s>Delete the current squad when the submit squad button is clicked.</s> ✔️
 * <s>Random name generator.</s> ✔️

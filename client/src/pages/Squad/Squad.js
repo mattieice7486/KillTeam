@@ -108,14 +108,19 @@ class Squad extends Component {
 															</div>
 															<div style={{color : "#fff"}}>
 																<span className="nav-item">
-																	Squad Total: {item.total}&nbsp;
+																	SQUAD TOTAL: {item.total}&nbsp;
 																</span>
 															<button className="navbar-toggler" type="button" data-toggle="collapse" data-target={"#squadTitle" + index} aria-controls={"squadTitle" + index} aria-expanded="false" aria-label="Toggle navigation">
 																<span className="navbar-toggler-icon"></span>
 															</button>
 															</div>
 															<div className="collapse" id={"squadTitle" + index}>
-															<p className="text-light">Background: {item.background} ||||||| Mission: {item.mission} ||||||| Squad Quirk: {item.squadQuirk} </p>
+																<div style={{ padding: "10px" }}>
+																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "center" }}>BACKGROUND: {item.background}</span>
+																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "center" }}>MISSION: {item.mission}</span>
+																	<span className="text-light" style={{ float: "left", width : "34%", textAlign: "center" }}>SQUAD QUIRK: {item.squadQuirk}</span>
+																</div>
+															<br />
 																<List>
 																	{this.state.items[index].squadMembers.map((squadMember, index) => {
 																		return (

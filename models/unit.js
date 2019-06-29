@@ -18,6 +18,8 @@ const unitSchema = new Schema({
   wargearPts: { type: Number },
   race: { type: String },
   unitType: { type: String },
+  specialism: { type: String },
+  demeanour: { type: String },
   date: { type: Date, default: Date.now }
 });
 

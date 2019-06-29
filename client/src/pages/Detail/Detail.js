@@ -4661,6 +4661,22 @@ class Detail extends Component {
 									</Tr>
 								</Tbody>
 							</Table>
+							<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<Thead>
+									<Tr>
+										<Th>
+											Specialism:
+										</Th>
+									</Tr>
+								</Thead>
+								<Tbody>
+									<Tr>
+										<Td>
+											{this.state.unit.specialism}
+										</Td>
+									</Tr>
+								</Tbody>
+							</Table>
 							</ListItem>
             </List>
           </Col>
