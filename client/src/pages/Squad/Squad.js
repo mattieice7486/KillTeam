@@ -116,15 +116,23 @@ class Squad extends Component {
 															</div>
 															<div className="collapse" id={"squadTitle" + index}>
 																<div style={{ padding: "10px" }}>
-																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "center" }}>BACKGROUND: {item.background}</span>
+																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "left" }}>BACKGROUND: {item.background}</span>
 																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "center" }}>MISSION: {item.mission}</span>
-																	<span className="text-light" style={{ float: "left", width : "34%", textAlign: "center" }}>SQUAD QUIRK: {item.squadQuirk}</span>
+																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "right" }}>SQUAD QUIRK: {item.squadQuirk}</span>
 																</div>
+															{/*
+															*
+															*
+															* Temporary fix for mobile screens. caused by text wrapping from the background/mission/squad quirk items.
+															*
+															*/}
+															<br />
+															<br />
 															<br />
 																<List>
 																	{this.state.items[index].squadMembers.map((squadMember, index) => {
 																		return (
-																			<ListItem key={index} style={{ marginBottom: "10px" }}>
+																			<ListItem key={index} style={{ marginBottom: "10px", width: "100%" }}>
 																			<span style={{fontSize : "24px", fontStyle : "bold"}}>
 																				{squadMember.unitType}
 																			</span>
