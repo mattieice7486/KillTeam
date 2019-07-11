@@ -84,6 +84,8 @@ class Squad extends Component {
 									{console.log(this)}
 									</div>
 								)
+							} else {
+								return null;
 							}
 						})}
             </Jumbotron>
@@ -197,6 +199,8 @@ class Squad extends Component {
 																												<Td>{gun.abilities}</Td>
 																											</Tr>
 																										)
+																									} else {
+																										return null;
 																									}
 																								})}
 																							</Tbody>

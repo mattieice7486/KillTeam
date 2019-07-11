@@ -8,6 +8,13 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+7/11/2019
+Release 0.4.5
+* Fixed dependency vulnerabilities.
+* Various stat/typo fixes.
+* UI updated to fit correctly on 1920x1080.
+* Fixed "expected to return a value at the end of arrow function" bug. Equipment should not try to render every single object from guns.json now.
+
 6/29/2019
 Release 0.4.4
 * Added Specialists and Demeanour.

@@ -133,6 +133,8 @@ class Squad extends Component {
 																			<Td style={{width : "35%"}}>{gun.abilities}</Td>
 																		</Tr>
 																	)
+																} else {
+																	return null;
 																}
 															})}
 														</Tbody>
