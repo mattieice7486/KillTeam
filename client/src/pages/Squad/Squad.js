@@ -114,11 +114,11 @@ class Squad extends Component {
 																<span className="navbar-toggler-icon"></span>
 															</button>
 															</div>
-															<div className="collapse" id={"squadTitle" + index}>
+															<div className="collapse" style={{ width: "100%"}}id={"squadTitle" + index}>
 																<div style={{ padding: "10px" }}>
-																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "left" }}>BACKGROUND: {item.background}</span>
-																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "center" }}>MISSION: {item.mission}</span>
-																	<span className="text-light" style={{ float: "left", width : "33%", textAlign: "right" }}>SQUAD QUIRK: {item.squadQuirk}</span>
+																	<span style={{ color: "#f72", float: "left", width : "33%", textAlign: "left" }}>BACKGROUND: <span className="text-light">{item.background}</span></span>
+																	<span style={{ color: "#f72", float: "left", width : "34%", textAlign: "center" }}>MISSION: <span className="text-light">{item.mission}</span></span>
+																	<span style={{ color: "#f72", float: "left", width : "33%", textAlign: "right" }}>SQUAD QUIRK: <span className="text-light">{item.squadQuirk}</span></span>
 																</div>
 															{/*
 															*

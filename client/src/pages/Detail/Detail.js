@@ -1173,6 +1173,13 @@ class Detail extends Component {
         equipment: "hot-shot laspistol, power sword, frag grenades, krak grenades"
       });
     }
+		if (wargearOptions.value === "power fist" && this.state.unit.unitType === "Tempestor") {
+			this.setState({
+				pts: 10,
+				wargearPts: 2,
+        equipment: "hot-shot laspistol, power fist, frag grenades, krak grenades"
+      });
+    }
 		if (wargearOptions.value === "bolt pistol power sword" && this.state.unit.unitType === "Tempestor") {
 			this.setState({
 				pts: 10,

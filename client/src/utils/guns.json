@@ -1287,7 +1287,7 @@
 		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
 	},
 	{
-		"weapon": "kustom mega blasta",
+		"weapon": "kustom-mega blasta",
 		"range": 24,
 		"type": "Assault 1",
 		"strength": 8,
@@ -1636,15 +1636,6 @@
 		"AP": 0,
 		"damage": 1,
 		"abilities": "This weapon automatically hits its target."
-	},
-	{
-		"weapon": "heavy stubber",
-		"range": 36,
-		"type": "Heavy 3",
-		"strength": 4,
-		"AP": 0,
-		"damage": 1,
-		"abilities": "-"
 	},
 	{
 		"weapon": "mining laser",

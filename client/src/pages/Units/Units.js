@@ -609,7 +609,9 @@ class Units extends Component {
         wargearPts2: 0,
         unitType: {},
         wargearOptions: {},
-        wargearOptions2: {}
+        wargearOptions2: {},
+				specialism: {},
+				demeanour: "",
       }), this.squadTotal()
       )
 			.catch(err => console.log(err));
@@ -757,7 +759,9 @@ class Units extends Component {
 			wargearPts2: 0,
 			unitType: {},
 			wargearOptions: {},
-			wargearOptions2: {}
+			wargearOptions2: {},
+      specialism: {},
+      demeanour: "",
 		});
   };
 
@@ -3357,6 +3361,12 @@ class Units extends Component {
 			this.setState({
 				wargearPts: 1,
         equipment: "hot-shot laspistol, power sword, frag grenades, krak grenades"
+      });
+    }
+		if (wargearOptions.value === "power fist" && this.state.unitType.value === "Tempestor") {
+			this.setState({
+				wargearPts: 2,
+        equipment: "hot-shot laspistol, power fist, frag grenades, krak grenades"
       });
     }
 		if (wargearOptions.value === "bolt pistol power sword" && this.state.unitType.value === "Tempestor") {
@@ -7257,31 +7267,31 @@ class Units extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       M
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       WS
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       BS
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       S
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       T
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       W
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       A
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       LD
                     </td>
-                    <td className="text-light">
+                    <td className="text-light" style={{textAlign: "center"}}>
                       SV
                     </td>
                   </tr>
@@ -7385,7 +7395,7 @@ class Units extends Component {
 												style={{ paddingRight: "0", paddingLeft : "5px"  }}
 											/>
                     </td>
-										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>
+										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingTop : "-25px"}}>
 											+
 										</td>
                     <td>
@@ -7396,7 +7406,7 @@ class Units extends Component {
                       style={{ paddingRight: "0", paddingLeft : "5px"  }}
                     />
                     </td>
-										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>
+										<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingTop : "-25px"}}>
 											+
 										</td>
                     <td>
@@ -7464,6 +7474,7 @@ class Units extends Component {
 										onClick={this.randomDemeanour}
 										className="btn btn-success"
 										style={{ padding: "1px" }}
+										disabled={!(this.state.specialism.label)}
 									>
 										Random<span role="img" aria-label="Random">🔀</span>
 									</FormBtn>
