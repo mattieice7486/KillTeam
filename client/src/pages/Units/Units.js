@@ -3,6 +3,7 @@ import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import ReactTooltip from 'react-tooltip'
 import API from "../../utils/API";
+import Random from "../../utils/Random";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -34,6 +35,7 @@ class Units extends Component {
     super(props);
     this.state = {
       units: [],
+      currentList: [],
       squadName: "",
       background: "",
       mission: "",
@@ -584,6 +586,37 @@ class Units extends Component {
   }
 
   loadUnits = () => {
+
+    const tempRef = firebase.database().ref('Temp');
+    tempRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          abilities: items[item].abilities,
+          att: items[item].att,
+          bs: items[item].bs,
+          demeanour: items[item].demeanour,
+          equipment: items[item].equipment,
+          ld: items[item].ld,
+          move: items[item].move,
+          name: items[item].name,
+          pts: items[item].pts,
+          race: items[item].race,
+          specialism: items[item].specialism,
+          str: items[item].str,
+          sv: items[item].sv,
+          tough: items[item].tough,
+          unitType: items[item].unitType,
+          wounds: items[item].wounds,
+          ws: items[item].ws,
+        });
+      }
+      this.setState({
+        currentList: newState
+      });
+    });
     API.getUnits()
       .then(res =>
         this.setState({
@@ -646,9 +679,30 @@ class Units extends Component {
   };
 
   handleFormSubmit = event => {
+		const itemsRef = firebase.database().ref('Temp');
+		const item = {
+			name: this.state.name,
+			equipment: this.state.equipment,
+			abilities: this.state.abilities,
+			move: this.state.move,
+			ws: this.state.ws,
+			bs: this.state.bs,
+			str: this.state.str,
+			tough: this.state.tough,
+			wounds: this.state.wounds,
+			att: this.state.att,
+			ld: this.state.ld,
+			sv: this.state.sv,
+			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
+			race: this.state.race.value,
+			unitType: this.state.unitType.label,
+			specialism: this.state.specialism,
+			demeanour: this.state.demeanour,
+		}
     event.preventDefault();
+		itemsRef.push(item)
 		console.log(this)
-    if (this.state.name && this.state.unitType && (this.state.units[0] === undefined) || (this.state.race.value === this.state.units[0].race)) {
+    if ((this.state.units[0] === undefined) || (this.state.race.value === this.state.units[0].race)) {
 			API.saveUnit({
 				name: this.state.name,
         equipment: this.state.equipment,
@@ -674,7 +728,7 @@ class Units extends Component {
 			alert("Squad must all match race type")
 		}
   };
-  
+
   handleDatabaseSubmit(e) {
 		const itemsRef = firebase.database().ref('Users');
 		if (this.state.squadName === "") {
@@ -698,6 +752,7 @@ class Units extends Component {
 						};
 					})
 					.catch(err => console.log(err));
+					this.setState({total: 0})
 				};
 			})
 		} else {
@@ -5686,28 +5741,14 @@ class Units extends Component {
 
 	handleChange5 = (specialism) => {
     this.setState({specialism: specialism})
-    if (specialism.value === "none" && this.state.unitType.value === "Scout Sergeant") {
-      this.setState({
-        specialism: '',
-      });
-    }
-    if (specialism.value === "Leader" && this.state.unitType.value === "Scout Sergeant") {
-      this.setState({
-        specialism: 'Leader',
-      });
-    }
-    if (specialism.value === "Comms" && this.state.unitType.value === "Scout Sergeant") {
-      this.setState({
-        specialism: 'Comms',
-      });
-    }
-    if (specialism.value === "Demolitions" && this.state.unitType.value === "Scout Sergeant") {
-      this.setState({
-        specialism: 'Demolitions',
-      });
-    }
 	}
 
+  removeItem(itemId) {
+    this.confirm1.open('Are you sure?', () => {
+      const itemRef = firebase.database().ref(`/Temp/${itemId}`);
+      itemRef.remove();
+    })
+  }
 			
   render() {
     const options1 = [
@@ -7267,33 +7308,15 @@ class Units extends Component {
               <table>
                 <tbody>
                   <tr>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      M
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      WS
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      BS
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      S
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      T
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      W
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      A
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      LD
-                    </td>
-                    <td className="text-light" style={{textAlign: "center"}}>
-                      SV
-                    </td>
+                    <td className="text-light" style={{textAlign: "center"}}>M</td>
+                    <td className="text-light" style={{textAlign: "center"}}>WS</td>
+                    <td className="text-light" style={{textAlign: "center"}}>BS</td>
+                    <td className="text-light" style={{textAlign: "center"}}>S</td>
+                    <td className="text-light" style={{textAlign: "center"}}>T</td>
+                    <td className="text-light" style={{textAlign: "center"}}>W</td>
+                    <td className="text-light" style={{textAlign: "center"}}>A</td>
+                    <td className="text-light" style={{textAlign: "center"}}>LD</td>
+                    <td className="text-light" style={{textAlign: "center"}}>SV</td>
                   </tr>
                   <tr>
                     <td>
@@ -7370,21 +7393,11 @@ class Units extends Component {
                     </td>
                   </tr>
                     <tr className="text-light">
-                      <td>
-                        PTS
-                      </td>
-                      <td>
-                        &nbsp;
-                      </td>
-                      <td>
-                        Wargear
-                      </td>
-                      <td>
-                        &nbsp;
-                      </td>
-                      <td>
-                        Options
-                      </td>
+                      <td>PTS</td>
+                      <td>&nbsp;</td>
+                      <td>Wargear</td>
+                      <td>&nbsp;</td>
+                      <td>Options</td>
                     </tr>
                   <tr>
                     <td>
@@ -7576,6 +7589,23 @@ class Units extends Component {
                     </ListItem>
                   ))}
                 </List>
+                {/* <List>
+                  {this.state.currentList.map(unit => (
+                    <ListItem key={unit.id}>
+											&nbsp;
+                      <Link to={"/units/" + unit.id}>
+                        <strong>
+                          &quot;{unit.name}&quot; {unit.unitType}
+                        </strong>
+                      </Link>
+											<span className="list-points" style={{"float":"right"}}>
+												{unit.pts} points
+											</span>
+                      <DeleteBtn onClick={() => this.removeItem(unit.id)} />
+                      <Confirm ref={el => this.confirm1 = el} /> 
+                    </ListItem>
+                  ))}
+                </List> */}
               </div>
             ) : (
               <h3>No Results to Display</h3>

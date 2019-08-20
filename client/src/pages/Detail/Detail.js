@@ -5,6 +5,7 @@ import { List, ListItem } from "../../components/List";
 import { Input } from "../../components/Form";
 import Select from 'react-select';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
+import firebase from "firebase";
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import Jumbotron from "../../components/Jumbotron";
 import ReactTooltip from 'react-tooltip'
@@ -17,6 +18,7 @@ class Detail extends Component {
 		super();
 		this.state = {
 			unit: {},
+			firebaseUnit: {},
       wargearOptions: {},
       wargearOptions2: {},
 			pts: 0,
@@ -33,6 +35,37 @@ class Detail extends Component {
     API.getUnit(this.props.match.params.id)
 			.then(res => this.setState({ unit: res.data }))
       .catch(err => console.log(err));
+
+    const tempRef = firebase.database().ref('Temp');
+    tempRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          abilities: items[item].abilities,
+          att: items[item].att,
+          bs: items[item].bs,
+          demeanour: items[item].demeanour,
+          equipment: items[item].equipment,
+          ld: items[item].ld,
+          move: items[item].move,
+          name: items[item].name,
+          pts: items[item].pts,
+          race: items[item].race,
+          specialism: items[item].specialism,
+          str: items[item].str,
+          sv: items[item].sv,
+          tough: items[item].tough,
+          unitType: items[item].unitType,
+          wounds: items[item].wounds,
+          ws: items[item].ws,
+        });
+      }
+      this.setState({
+        firebaseUnit: newState
+      });
+    });
   }
 	
   handleInputChange = event => {

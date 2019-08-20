@@ -12,7 +12,7 @@ router.route("/current")
   .post(unitsController.create);
 
   // Matches with "/api/squad"
-router.route("/squad")
+router.route("/squads")
   .get(unitsController.findAll)
   .post(unitsController.create);
 

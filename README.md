@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+8/20/2019
+Release 0.4.6
+* Changed "Squad" to "Squads".
+* Started to set up session dependent squad list.
+
 7/11/2019
 Release 0.4.5
 * Fixed dependency vulnerabilities.

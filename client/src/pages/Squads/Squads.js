@@ -11,7 +11,7 @@ import ReactTooltip from 'react-tooltip'
 import Confirm from "../../components/Confirm";
 import guns from "../../utils/guns";
 
-class Squad extends Component {
+class Squads extends Component {
   constructor() {
     super();
     this.state = {
@@ -373,4 +373,4 @@ class Squad extends Component {
   }
 }
 
-export default Squad;
+export default Squads;

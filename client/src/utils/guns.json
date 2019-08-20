@@ -1287,7 +1287,7 @@
 		"abilities": "When attacking with this weapon, choose one or both of the profiles. If you choose both, subtract 1 from all hit rolls made for this weapon."
 	},
 	{
-		"weapon": "kustom-mega blasta",
+		"weapon": "kustom mega-blasta",
 		"range": 24,
 		"type": "Assault 1",
 		"strength": 8,
