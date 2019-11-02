@@ -3,7 +3,7 @@ import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
 import ReactTooltip from 'react-tooltip'
 import API from "../../utils/API";
-import Random from "../../utils/Random";
+import random from "../../utils/random";
 import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
@@ -84,6 +84,33 @@ class Units extends Component {
     });
     
   }
+
+  // handleName() {
+  //   const racerace = this.state.race;
+  //   let nameblock,
+
+  //   if (racerace === "") {
+  //     nameblock = 								
+  //       <Input
+  //         value={this.state.name}
+  //         onChange={this.handleInputChange}
+  //         style={{ "width": "100%", "display":"none"}}
+  //         name="name"
+  //         placeholder="Name (required)"
+  //       />
+  //       alert("hey these kids have no race!")
+  //   } else {
+  //     nameblock =
+  //       <Input
+  //         value={this.state.name}
+  //         onChange={this.handleInputChange}
+  //         style={{ "width": "100%"}}
+  //         name="name"
+  //         placeholder="Name (required)"
+  //       />
+  //       alert("race ok!")
+  //   }
+  // }
 
 	randomName = (event) => {
 		event.preventDefault();
@@ -817,7 +844,8 @@ class Units extends Component {
 			wargearOptions2: {},
       specialism: {},
       demeanour: "",
-		});
+		})
+    if (this.state.name === "") {alert("test")};
   };
 
   handleChange2 = (unitType) => {
@@ -5751,6 +5779,7 @@ class Units extends Component {
   }
 			
   render() {
+
     const options1 = [
       {value: 'Adeptus Astartes', label: <img src={astartes} alt="astartes"></img>},
       {value: 'Deathwatch', label: <img src={deathwatch} alt="deathwatch"></img>},
@@ -7250,6 +7279,13 @@ class Units extends Component {
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
 		const filteredOptions4 = options5.filter((o) => o.link === this.state.unitType.value)
+    const nameThing = 								<Input
+									value={this.state.name}
+									onChange={this.handleInputChange}
+									style={{ "width": "100%"}}
+									name="name"
+									placeholder="Name (required)"
+								/>
     return (
       <Container fluid>
         <Row>
@@ -7291,6 +7327,7 @@ class Units extends Component {
 									placeholder="Name (required)"
 								/>
 								</td>
+                <td>{nameThing}</td>
 								<td
 									style={{ "float": "left"}}
 								>
