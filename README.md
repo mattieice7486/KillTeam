@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+11/4/2019
+Release 0.4.7
+* Created step by step process for adding new squad member. User must select an option before the next option becomes visable
+* Exported the random name variables to a .json file to reduce size of Units.js.
+* Colored the background dark grey of input fields that can't be changed.
+
 8/20/2019
 Release 0.4.6
 * Changed "Squad" to "Squads".
