@@ -1,9 +1,57 @@
 {
-		"first" : [
+		"ultra1" : [
 			"Marius", "Agnathio", "Ollonius", "Cato", "Titus", "Agies", "Gaius", "Andrus", "Marcus", "Cassius"
 		],
-		"last" :[
+		"ultra2" :[
 			"Chronus", "Tarentus", "Dysorius", "Cassus", "Acastian", "Varenus", "Apollon", "Aggennor", "Castus", "Poladrus"
+		],
+		"if1" :[
+			"Lydus", "Darnath", "Lexandro", "Nereus", "Tylaeus", "Vorn", "Tor", "Boreas", "Jago", "Oreas"
+		],
+		"if2" :[
+			"Hagen", "Mirhen", "Garadon", "Lytanus", "Danithor", "Markov", "Mordelei", "Julan", "Darsway", "Lordann"
+		],
+		"ba1" :[
+			"Amareus", "Erasmus", "Rafael", "Morlaeo", "Leonid", "Faustian", "Donatelus", "Raelyn", "Nicodemus", "Furian"
+		],
+		"ba2" :[
+			"Belarius", "Seraphan", "Moriar", "Naneil", "Castivar", "Arteros", "Redolpho", "Lorenso", "Amuto", "Rephas"
+		],
+		"rg1" :[
+			"Aajz", "Kyrin", "Vykus", "Tryris", "Ordias", "Navaer", "Syras", "Aevar", "Reszan", "Vorkyl"
+		],
+		"rg2" :[
+			"Kaed", "Solari", "Solaq", "Qeld", "Korvaedyn", "Vaanes", "Torvaec", "Klayde", "Moradus", "Ordaris"
+		],
+		"ws1" :[
+			"Anagar", "Khajog", "Suberei", "Khoros", "Jaygor", "Seglei", "Jurgah", "Kaljyk", "Kulghu", "Saghari"
+		],
+		"ws2" :[
+			"Gatughan", "Yesuberei", "Ghol", "Jaghol", "Kandakh", "Mologhai", "Ujumm", "Bhangleo", "J'ungah", "Aghulo"
+		],
+		"ih1" :[
+			"Arreven", "Gorrloch", "Shorrgol", "Galorr", "Dorrghun", "Kaagos", "Barrgus", "Ghorrean", "Orros", "Gdolkin"
+		],
+		"ih2" :[
+			"Feirros", "Graevarr", "Bannus", "Lydriik", "Terrek", "Korvaan", "Urloch", "Rauth", "Varrox", "Xeriis"
+		],
+		"sw1" :[
+			"Gunnar", "Ulfrich", "Laars", "Sven", "Wulfgar", "Erik", "Dolf", "Leif", "Olaf", "Torrvald"
+		],
+		"sw2" :[
+			"Ironaxe", "Icefang", "Orksbane", "the Red", "Wyrmslayer", "Thunderhowl", "Stormstrider", "Stoneshield", "Trollbane", "Greymane"
+		],
+		"sal1" :[
+			"Dak'Lyr", "Sho'Tan", "Tsu'gar", "Fugean", "Xavus", "Nubari", "Vorr'n", "Sholta", "Xa'Vor", "Leotrak"
+		],
+		"sal2" :[
+			"K'Gosi", "Dallor", "Jurr", "Mir'Shan", "Shenn", "Ta'Phor", "Rhoshan", "Antanar", "Shal'Dar", "Gar'Dos"
+		],
+		"da1" :[         
+			"Azkarael", "Zakeal", "Rhellion", "Zoreal", "Azathor", "Shoriel", "Nemator", "Ezekial", "Bethor", "Zadakial"
+		],
+		"da2" :[
+			"Zaborial", "Azdallon", "Zachrus", "Astathor", "Seraphus", "Zanthor", "Kaelon", "Namaat", "Soriel", "Belian"
 		],
 		"grey1" :[
 			"Valdar", "Kaladour", "Pelenas", "Anval", "Drystan", "Garran", "Drako", "Caddon", "Arno", "Verdan"
@@ -11,8 +59,17 @@
 		"grey2" :[
 			"Mordrak", "Torvin", "Thule", "Varn", "Ordan", "Gerontas", "Solor", "Cromm", "Kai", "Trevan"
 		],
-		"astra" :[
+		"cadian" :[
 			"Jens", "Karsk", "Hekler", "Reeve", "Pavlo", "Hektor", "Nils", "Thenmann", "Kyser", "Erlen", "Raphe", "Creed", "Lasko", "Ackerman", "Mattias", "Mortens", "Dansk", "Feodor", "Tomas", "Kolson", "Vance", "Pask", "Niems", "Gryf", "Willem", "Sonnen", "Ekhter", "Farestein", "Dekker", "Graf", "Arvans", "Viers", "Kolm", "Bask", "Vesker", "Pavlo"
+		],
+		"catachan" :[
+			"Gunnarsen", "Harker", "Grytt", "'Snake' Vandien", "Greiss", "Stryker", "Storm", "Lance", "'Crazy' Winters", "Cage", "Hammer", "Cobra", "'Hardhead' Jackson", "'Stonefist' Kage", "'Boss' Stransky", "'Bomber' Johnson", "Jacksen", "Marshall", "'Fangs' Lorson", "'Cold-eye' McKay", "Wolf", "'Shiv' Frost", "Brent", "'Ironheart' McKillen", "'Killer' Crowe", "'Wildman' Weiss", "'Ice' Creek", "Dane", "Steeljaw", "Dransky", "'Slim' Hasker", "Mason", "Hawkes", "Axel", "Carver", "Payne"
+		],
+		"valhallan" :[
+			"Vensk", "Skarrsen", "Chernov", "Dushenko", "Rynsk", "Gorska", "Varence", "Nyska", "Putran", "Dorff", "Tyvosk", "Polanski", "Drekoff", "Vorn", "Hapscheldt", "Olof", "Trevinska", "Schonnen", "Kleiss", "Borys", "Ivanek", "Smirnek", "Kuzentsev", "Vasilesnev", "Petravitch", "Skolov", "Fedorev", "Morazev", "Volko", "Lebesnev", "Egoryn", "Pavlek", "Kozlev", "Stepanovicz", "Nikoli", "Orlakev"
+		],
+		"tallarn" :[
+			"Alem", "Hallain", "Laskair", "Nathal", "Altarem", "Mohal", "Dharem", "Hasman", "Sonnam", "Ushmet", "Shadnan", "Asphret", "Ushad", "Tal'hasen", "Ashmyr", "Shashlem", "Haseed", "Ushar", "Raheim", "Dassed", "Sahleim", "Alhret", "Khaleeth", "Eshmet", "Ul'shalem", "Talannar", "Al'phareim", "El'shan", "Khabir", "Khalym", "'Swiftrider'", "'Dunestrider'", "'Hawkseye'", "'Sand Devil'", "'the Mirage'", "'the hunter'"
 		],
 		"adeptus1" :[
 			"Sy-gex", "Tyr", "Dak", "Ar", "Kappic-Schoelendt", "Tyba", "Dorox", "Alb", "Zyto-Neumann", "Xixos", "Kau", "Rho", "Delpha", "Chu", "Ix", "Neng-Pho", "Bheta", "Zhu", "Lho", "Teppa-Nyxos", "Kor", "Dox", "Sek", "Gryphonne-Reductus", "Tov", "Eq", "Mu", "Rhy", "Dos", "Exitor-Dho", "Fel", "Actus", "Xor", "Decima", "Rax", "Kas"
@@ -20,11 +77,29 @@
 		"adeptus2" :[
 			"-511", "-1111", "-XXVII", "-802", "-323/mk12", "-089", "-744", "-VII", "-18.1", "-656", "-IV", "-110", "-0.4343", "-97/mk24", "-XIX", "-7", "-110100", "-3.16", "-961.34254", "-MXV", "-99", "-2918", "-888.88", "-404", "-1010", "-0.44//K", "-745", "-66.75/mk98", "-1/1/2", "-99941", "-83.2", "-575", "-79.09/5", "-668.2", "-1/5", "-666/2"
 		],
-		"heretic1" :[
+		"bl1" :[
 			"Zekyr", "Dreccor", "Sorvram", "Thallos", "Zagator", "Korthranus", "Drekva", "Thygmor", "Ashrok", "Azmodial"
 		],
-		"heretic2" :[
+		"bl2" :[
 			"Aximand", "the Vengeful", "Thrice-Cursed", "Korda", "the Black", "Daemonsblade", "Orakar", "Naxos", "the Mad", "Faithslayer"
+		],
+		"al1" :[
+			"Kyphax", "Inigo", "Thkeln", "Sylas", "Armilus", "Sheed", "Eskyrx", "Jaego", "Askelitar", "Alpharius"
+		],
+		"al2" :[
+			"Sheyr", "Dynas", "Hertzor", "Ranko", "(no cypher)", "23-7", "Phors", "the Mad", "Nul", "(no cypher)"
+		],
+		"ec1" :[
+			"Antinius", "Eidelitor", "Ilitoias", "Teloss", "Abdemis", "Fabian", "Julianis", "Abdelis", "Lycon", "Xiander"
+		],
+		"ec2" :[
+			"Sellion", "Thest", "Atonian", "Vessatar", "Bericosian", "Xandassus", "Tresell", "Vastorius", "Kanasiar", "the Perfect"
+		],
+		"we1" :[
+			"Khargos", "Drakh", "Ashkal", "Gharrax", "Khorgor", "Sorkhos", "Aggravax", "Ashkorh", "Larsakh", "Khaen"
+		],
+		"we2" :[
+			"Skullfiend", "the Reaper", "Khorr", "the Butcher", "the Furious", "Slaughterborn", "Foe Ripper", "the Destroyer", "the Hound", "Thaxxos"
 		],
 		"death1" :[
 			"Gurloch", "Suppurax", "Golchor", "Festasmus", "Rancidius", "Mulgh", "Shurgholgh", "Bubox", "Pustus", "Malignus"

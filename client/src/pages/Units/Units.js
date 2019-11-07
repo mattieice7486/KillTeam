@@ -62,7 +62,7 @@ class Units extends Component {
       wargearOptions2: {},
       specialism: {},
       demeanour: "",
-      items: [],
+      chapter: "",
       user: null
     };
     this.handleDatabaseSubmit = this.handleDatabaseSubmit.bind(this);
@@ -82,66 +82,148 @@ class Units extends Component {
         this.setState({ user });
       } 
     });
-    
+		
+    const tempRef = firebase.database().ref('Temp');
+    tempRef.on('value', (snapshot) => {
+      let items = snapshot.val();
+      let newState = [];
+      for (let item in items) {
+        newState.push({
+          id: item,
+          abilities: items[item].abilities,
+          att: items[item].att,
+          bs: items[item].bs,
+          demeanour: items[item].demeanour,
+          equipment: items[item].equipment,
+          ld: items[item].ld,
+          move: items[item].move,
+          name: items[item].name,
+          pts: items[item].pts,
+          race: items[item].race,
+          specialism: items[item].specialism,
+          str: items[item].str,
+          sv: items[item].sv,
+          tough: items[item].tough,
+          unitType: items[item].unitType,
+          wounds: items[item].wounds,
+          ws: items[item].ws,
+        });
+      }
+      this.setState({
+        currentList: newState
+      });
+    });
   }
 
 	randomName = (event) => {
 		event.preventDefault();
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
-				this.setState({name: randomName.first[Math.floor(Math.random()*9)] + " " + randomName.last[Math.floor(Math.random()*9)]})
+				if (this.state.chapter === "Imperial Fists") {
+					this.setState({name: randomName.if1[Math.floor(Math.random()*10)] + " " + randomName.if2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Blood Angels") {
+					this.setState({name: randomName.ba1[Math.floor(Math.random()*10)] + " " + randomName.ba2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Raven Guard") {
+					this.setState({name: randomName.rg1[Math.floor(Math.random()*10)] + " " + randomName.rg2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "White Scars") {
+					this.setState({name: randomName.ws1[Math.floor(Math.random()*10)] + " " + randomName.ws2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Iron Hands") {
+					this.setState({name: randomName.ih1[Math.floor(Math.random()*10)] + " " + randomName.ih2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Space Wolves") {
+					this.setState({name: randomName.sw1[Math.floor(Math.random()*10)] + " " + randomName.sw2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Salamanders") {
+					this.setState({name: randomName.sal1[Math.floor(Math.random()*10)] + " " + randomName.sal2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Dark Angels") {
+					this.setState({name: randomName.da1[Math.floor(Math.random()*10)] + " " + randomName.da2[Math.floor(Math.random()*10)]})
+				} else {
+					this.setState({name: randomName.ultra1[Math.floor(Math.random()*10)] + " " + randomName.ultra2[Math.floor(Math.random()*10)]})
+				}
 				break;
 			case "Deathwatch":
-				this.setState({name: randomName.first[Math.floor(Math.random()*9)] + " " + randomName.last[Math.floor(Math.random()*9)]})
+				if (this.state.chapter === "Imperial Fists") {
+					this.setState({name: randomName.if1[Math.floor(Math.random()*10)] + " " + randomName.if2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Blood Angels") {
+					this.setState({name: randomName.ba1[Math.floor(Math.random()*10)] + " " + randomName.ba2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Raven Guard") {
+					this.setState({name: randomName.rg1[Math.floor(Math.random()*10)] + " " + randomName.rg2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "White Scars") {
+					this.setState({name: randomName.ws1[Math.floor(Math.random()*10)] + " " + randomName.ws2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Iron Hands") {
+					this.setState({name: randomName.ih1[Math.floor(Math.random()*10)] + " " + randomName.ih2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Space Wolves") {
+					this.setState({name: randomName.sw1[Math.floor(Math.random()*10)] + " " + randomName.sw2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Salamanders") {
+					this.setState({name: randomName.sal1[Math.floor(Math.random()*10)] + " " + randomName.sal2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Dark Angels") {
+					this.setState({name: randomName.da1[Math.floor(Math.random()*10)] + " " + randomName.da2[Math.floor(Math.random()*10)]})
+				} else {
+					this.setState({name: randomName.ultra1[Math.floor(Math.random()*10)] + " " + randomName.ultra2[Math.floor(Math.random()*10)]})
+				}
 				break;
 			case "Grey Knights":
-				this.setState({name: randomName.grey1[Math.floor(Math.random()*9)] + " " + randomName.grey2[Math.floor(Math.random()*9)]})
+				this.setState({name: randomName.grey1[Math.floor(Math.random()*10)] + " " + randomName.grey2[Math.floor(Math.random()*10)]})
 				break;
 			case "Astra Militarum":
-				this.setState({name: randomName.astra[Math.floor(Math.random()*35)]})
-				break;
+				if (this.state.chapter === "Catachan") {
+						this.setState({name: randomName.catachan[Math.floor(Math.random()*36)]})
+					} else if (this.state.chapter === "Valhallan") {
+						this.setState({name: randomName.valhallan[Math.floor(Math.random()*36)]})
+					} else if (this.state.chapter === "Tallarn") {
+						this.setState({name: randomName.tallarn[Math.floor(Math.random()*36)]})
+					} else {
+						this.setState({name: randomName.cadian[Math.floor(Math.random()*36)]})
+					}
+					break;
 			case "Adeptus Mechanicus":
-				this.setState({name: randomName.adeptus1[Math.floor(Math.random()*35)] + randomName.adeptus2[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.adeptus1[Math.floor(Math.random()*36)] + randomName.adeptus2[Math.floor(Math.random()*36)]})
 				break;
 			case "Heretic Astartes":
-				this.setState({name: randomName.heretic1[Math.floor(Math.random()*9)] + " " + randomName.heretic2[Math.floor(Math.random()*9)]})
+				if (this.state.chapter === "Alpha Legion") {
+					this.setState({name: randomName.al1[Math.floor(Math.random()*10)] + " " + randomName.al2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "Emperor's Children") {
+					this.setState({name: randomName.ec1[Math.floor(Math.random()*10)] + " " + randomName.ec2[Math.floor(Math.random()*10)]})
+				} else if (this.state.chapter === "World Eaters") {
+					this.setState({name: randomName.we1[Math.floor(Math.random()*10)] + " " + randomName.we2[Math.floor(Math.random()*10)]})
+				} else {
+					this.setState({name: randomName.bl1[Math.floor(Math.random()*10)] + " " + randomName.bl2[Math.floor(Math.random()*10)]})
+				}
 				break;
 			case "Death Guard":
-				this.setState({name: randomName.death1[Math.floor(Math.random()*9)] + " " + randomName.death2[Math.floor(Math.random()*9)]})
+				this.setState({name: randomName.death1[Math.floor(Math.random()*10)] + " " + randomName.death2[Math.floor(Math.random()*10)]})
 				break;
 			case "Thousand Sons":
-				this.setState({name: randomName.thousand1[Math.floor(Math.random()*9)] + " " + randomName.thousand2[Math.floor(Math.random()*9)]})
+				this.setState({name: randomName.thousand1[Math.floor(Math.random()*10)] + " " + randomName.thousand2[Math.floor(Math.random()*10)]})
 				break;
 			case "Asuryani":
-				this.setState({name: randomName.asur1[Math.floor(Math.random()*71)] + " " + randomName.asur2[Math.floor(Math.random()*71)]})
+				this.setState({name: randomName.asur1[Math.floor(Math.random()*72)] + " " + randomName.asur2[Math.floor(Math.random()*72)]})
 				break;
 			case "Drukhari":
 				if (this.state.unitType.value === "Wych" || this.state.unitType.value === "Wych Fighter" || this.state.unitType.value === "Hekatrix") {
-					this.setState({name: randomName.wych1[Math.floor(Math.random()*35)] + " " + randomName.wych2[Math.floor(Math.random()*35)]})
+					this.setState({name: randomName.wych1[Math.floor(Math.random()*36)] + " " + randomName.wych2[Math.floor(Math.random()*36)]})
 				} else {
-					this.setState({name: randomName.kabal1[Math.floor(Math.random()*35)] + " " + randomName.kabal2[Math.floor(Math.random()*35)]})
+					this.setState({name: randomName.kabal1[Math.floor(Math.random()*36)] + " " + randomName.kabal2[Math.floor(Math.random()*36)]})
 				}
 				break;
 			case "Harlequins":
-				this.setState({name: randomName.harlequins1[Math.floor(Math.random()*9)] + " " + randomName.harlequins2[Math.floor(Math.random()*9)]})
+				this.setState({name: randomName.harlequins1[Math.floor(Math.random()*10)] + " " + randomName.harlequins2[Math.floor(Math.random()*10)]})
 				break;
 			case "Necrons":
-				this.setState({name: randomName.necron1[Math.floor(Math.random()*35)] + " " + randomName.necron2[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.necron1[Math.floor(Math.random()*36)] + " " + randomName.necron2[Math.floor(Math.random()*36)]})
 				break;
 			case "Orks":
-				this.setState({name: randomName.ork1[Math.floor(Math.random()*35)] + " " + randomName.ork2[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.ork1[Math.floor(Math.random()*36)] + " " + randomName.ork2[Math.floor(Math.random()*36)]})
 				break;
 			case "Tau Empire":
-				this.setState({name: randomName.tau[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.tau[Math.floor(Math.random()*36)]})
 				break;
 			case "Tyranids":
-				this.setState({name: randomName.tyranid1[Math.floor(Math.random()*35)] + " " + randomName.tyranid2[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.tyranid1[Math.floor(Math.random()*36)] + " " + randomName.tyranid2[Math.floor(Math.random()*36)]})
 				break;
 			case "Genestealer Cults":
-				this.setState({name: randomName.genestealer1[Math.floor(Math.random()*35)] + " " + randomName.genestealer2[Math.floor(Math.random()*35)]})
+				this.setState({name: randomName.genestealer1[Math.floor(Math.random()*36)] + " " + randomName.genestealer2[Math.floor(Math.random()*36)]})
 				break;
 			default:
-				this.setState({name: randomName.first[Math.floor(Math.random()*9)] + " " + randomName.last[Math.floor(Math.random()*9)]})
+				this.setState({name: randomName.ultra1[Math.floor(Math.random()*10)] + " " + randomName.ultra2[Math.floor(Math.random()*10)]})
 			}
 		}
 							
@@ -305,36 +387,6 @@ class Units extends Component {
 
   loadUnits = () => {
 
-    const tempRef = firebase.database().ref('Temp');
-    tempRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          id: item,
-          abilities: items[item].abilities,
-          att: items[item].att,
-          bs: items[item].bs,
-          demeanour: items[item].demeanour,
-          equipment: items[item].equipment,
-          ld: items[item].ld,
-          move: items[item].move,
-          name: items[item].name,
-          pts: items[item].pts,
-          race: items[item].race,
-          specialism: items[item].specialism,
-          str: items[item].str,
-          sv: items[item].sv,
-          tough: items[item].tough,
-          unitType: items[item].unitType,
-          wounds: items[item].wounds,
-          ws: items[item].ws,
-        });
-      }
-      this.setState({
-        currentList: newState
-      });
-    });
     API.getUnits()
       .then(res =>
         this.setState({
@@ -379,15 +431,56 @@ class Units extends Component {
 
 	deleteAll = () => {
 		this.confirm1.open('Delete All?', () => {
-		API.getUnits()
-		.then(res => {for (let i = 0; i < res.data.length; i++) {
-			API.deleteUnit(res.data[i]._id)
-			this.loadUnits()
-		};
+			API.getUnits()
+			.then(res => {for (let i = 0; i < res.data.length; i++) {
+				API.deleteUnit(res.data[i]._id)
+				this.loadUnits()
+			};
 		})
 		.catch(err => console.log(err));
 		})
 	}
+
+	removeItem(itemId) {
+    this.confirm1.open('Are you sure?', () => {
+      const itemRef = firebase.database().ref(`/Temp/${itemId}`);
+      itemRef.remove();
+    })
+  }
+
+	removeAll = () => {
+    this.confirm1.open('Are you sure?', () => {
+			const tempRef = firebase.database().ref("Temp");
+    	tempRef.on('value', (snapshot) => {
+				let items = snapshot.val();
+				console.log(items)
+			var array = [];
+			for (let item in items) {
+				array.push({
+          id: item,
+          abilities: items[item].abilities,
+          att: items[item].att,
+          bs: items[item].bs,
+          demeanour: items[item].demeanour,
+          equipment: items[item].equipment,
+          ld: items[item].ld,
+          move: items[item].move,
+          name: items[item].name,
+          pts: items[item].pts,
+          race: items[item].race,
+          specialism: items[item].specialism,
+          str: items[item].str,
+          sv: items[item].sv,
+          tough: items[item].tough,
+          unitType: items[item].unitType,
+          wounds: items[item].wounds,
+          ws: items[item].ws,
+        });
+			}
+    	})
+		.catch(err => console.log(err));
+		})
+  }
 	
   handleInputChange = event => {
     const { name, value } = event.target;
@@ -414,7 +507,7 @@ class Units extends Component {
 			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
 			race: this.state.race.value,
 			unitType: this.state.unitType.label,
-			specialism: this.state.specialism,
+			specialism: this.state.specialism.label,
 			demeanour: this.state.demeanour,
 		}
     event.preventDefault();
@@ -6964,6 +7057,37 @@ class Units extends Component {
       {value: 'Zealot', label: 'Zealot', link: 'Hybrid Leader'},
 
 		];
+    // const tempRef = firebase.database().ref('Temp/');
+    // const Post = tempRef.on("value", function(snapshot, prevChildKey) {
+		// 	var newPost = snapshot.val();
+		// 	var array = [];
+		// 	for (let item in newPost) {
+		// 		array.push({
+    //       id: item,
+    //       abilities: newPost[item].abilities,
+    //       att: newPost[item].att,
+    //       bs: newPost[item].bs,
+    //       demeanour: newPost[item].demeanour,
+    //       equipment: newPost[item].equipment,
+    //       ld: newPost[item].ld,
+    //       move: newPost[item].move,
+    //       name: newPost[item].name,
+    //       pts: newPost[item].pts,
+    //       race: newPost[item].race,
+    //       specialism: newPost[item].specialism,
+    //       str: newPost[item].str,
+    //       sv: newPost[item].sv,
+    //       tough: newPost[item].tough,
+    //       unitType: newPost[item].unitType,
+    //       wounds: newPost[item].wounds,
+    //       ws: newPost[item].ws,
+    //     });
+		// 	}
+		// 	for (let ii=0; ii<array.length; ii++) {
+		// 		var asdf = firebase.database().ref(`/Temp/${array[0].id}`)
+		// 		console.log(asdf)
+		// 	}
+		// })
 
     const filteredOptions = options2.filter((o) => o.link === this.state.race.value)
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
@@ -7011,19 +7135,30 @@ class Units extends Component {
 																name="name"
 																placeholder="Name (required)"
 															/>
-														</td>
-														<td
-															style={{ "float": "left"}}
-														>
-														<FormBtn
-															onClick={this.randomName}
-															className="btn btn-success"
-															style={{ padding: "1px" }}
-														>
-															Random<span role="img" aria-label="Random">🔀</span>
-														</FormBtn>
-														</td>
+															</td>
+															<td
+																style={{ "float": "left"}}
+															>
+															<FormBtn
+																onClick={this.randomName}
+																className="btn btn-success"
+																style={{ padding: "1px" }}
+															>
+																Random<span role="img" aria-label="Random">🔀</span>
+															</FormBtn>
+															</td>
 														</tr>
+															<tr><td
+																style={{ "width": "100%"}}
+															>
+															<Input
+																value={this.state.chapter}
+																onChange={this.handleInputChange}
+																style={{ "width": "100%"}}
+																name="chapter"
+																placeholder="chapter"
+															/>
+															</td></tr>
 														</tbody>
 													</table>
 													{this.state.name ? (
@@ -7318,7 +7453,7 @@ class Units extends Component {
                     </ListItem>
                   ))}
                 </List>
-                {/* <List>
+                <List>
                   {this.state.currentList.map(unit => (
                     <ListItem key={unit.id}>
 											&nbsp;
@@ -7334,7 +7469,7 @@ class Units extends Component {
                       <Confirm ref={el => this.confirm1 = el} /> 
                     </ListItem>
                   ))}
-                </List> */}
+                </List>
               </div>
             ) : (
               <h3>No Results to Display</h3>

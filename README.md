@@ -8,6 +8,11 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+11/7/2019
+Release 0.4.8
+* Added Chapter specific names.
+* Fixed a bug where the last name of the array was not being selected.
+
 11/4/2019
 Release 0.4.7
 * Created step by step process for adding new squad member. User must select an option before the next option becomes visable
