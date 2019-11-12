@@ -21,28 +21,13 @@ class Squad extends Component {
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getUnits()
-      .then(res =>
+			let newArray = []; 
+		for (let i = 0; i < Object.values(sessionStorage).length; i++) {
+			newArray.push(JSON.parse(Object.values(sessionStorage)[i]))
         this.setState({
-          units: res.data,
-          name: "",
-          equipment: "",
-          move: "",
-          ws: "",
-          bs: "",
-          str: "",
-          tough: "",
-          wounds: "",
-          att: "",
-          ld: "",
-          sv: "",
-          pts: "",
-          race: {},
-          unitType: {},
-          wargearOptions: {}
-        })
-      )
-      .catch(err => console.log(err));
+        units: newArray,
+      })  
+		}
   }
 
   deleteUnit = id => {
@@ -64,10 +49,10 @@ class Squad extends Component {
             {this.state.units.length ? (
               <List>
                 {this.state.units.map(unit => (
-                  <ListItem key={unit._id}>
-                    <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                  <ListItem key={unit.id}>
+                    <DeleteBtn onClick={() => this.deleteUnit(unit.id)} />
                     <Confirm ref={el => this.confirm1 = el} /> 
-                    <Link to={"/units/" + unit._id}>
+                    <Link to={"/units/" + unit.id}>
                     <span style={{fontSize : "24px", fontStyle : "bold"}}>
                     	{unit.unitType}
                     </span>

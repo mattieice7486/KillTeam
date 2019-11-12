@@ -60,10 +60,11 @@ class Units extends Component {
       unitType: {},
       wargearOptions: {},
       wargearOptions2: {},
-      specialism: {},
+      specialism: "none",
       demeanour: "",
       chapter: "",
-      user: null
+      user: null,
+			counter: (Object.values(sessionStorage).length),
     };
     this.handleDatabaseSubmit = this.handleDatabaseSubmit.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -73,6 +74,7 @@ class Units extends Component {
     this.handleChange4 = this.handleChange4.bind(this);
     this.handleChange5 = this.handleChange5.bind(this);
   }
+
 
   componentDidMount() {
     
@@ -231,89 +233,89 @@ class Units extends Component {
 		event.preventDefault();
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
-				this.setState({background: randomName.astartes3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.astartes4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.astartes5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.astartes3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.astartes4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.astartes5[Math.floor(Math.random()*10)]})
 				break;
 			case "Deathwatch":
-				this.setState({background: randomName.deathwatch3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.deathwatch4[Math.floor(Math.random()*5)]})
-				this.setState({squadQuirk: randomName.deathwatch5[Math.floor(Math.random()*5)]})
+				this.setState({background: randomName.deathwatch3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.deathwatch4[Math.floor(Math.random()*6)]})
+				this.setState({squadQuirk: randomName.deathwatch5[Math.floor(Math.random()*6)]})
 				break;
 			case "Grey Knights":
-				this.setState({background: randomName.grey3[Math.floor(Math.random()*5)]})
-				this.setState({mission: randomName.grey4[Math.floor(Math.random()*5)]})
-				this.setState({squadQuirk: randomName.grey5[Math.floor(Math.random()*5)]})
+				this.setState({background: randomName.grey3[Math.floor(Math.random()*6)]})
+				this.setState({mission: randomName.grey4[Math.floor(Math.random()*6)]})
+				this.setState({squadQuirk: randomName.grey5[Math.floor(Math.random()*6)]})
 				break;
 			case "Astra Militarum":
-				this.setState({background: randomName.astra3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.astra4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.astra5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.astra3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.astra4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.astra5[Math.floor(Math.random()*10)]})
 				break;
 			case "Adeptus Mechanicus":
-				this.setState({background: randomName.adeptus3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.adeptus4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.adeptus5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.adeptus3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.adeptus4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.adeptus5[Math.floor(Math.random()*10)]})
 			break;
 			case "Heretic Astartes":
-				this.setState({background: randomName.heretic3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.heretic4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.heretic5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.heretic3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.heretic4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.heretic5[Math.floor(Math.random()*10)]})
 				break;
 			case "Death Guard":
-				this.setState({background: randomName.death3[Math.floor(Math.random()*5)]})
-				this.setState({mission: randomName.death4[Math.floor(Math.random()*5)]})
-				this.setState({squadQuirk: randomName.death5[Math.floor(Math.random()*5)]})
+				this.setState({background: randomName.death3[Math.floor(Math.random()*6)]})
+				this.setState({mission: randomName.death4[Math.floor(Math.random()*6)]})
+				this.setState({squadQuirk: randomName.death5[Math.floor(Math.random()*6)]})
 				break;
 			case "Thousand Sons":
-				this.setState({background: randomName.thousand3[Math.floor(Math.random()*5)]})
-				this.setState({mission: randomName.thousand4[Math.floor(Math.random()*5)]})
-				this.setState({squadQuirk: randomName.thousand5[Math.floor(Math.random()*5)]})
+				this.setState({background: randomName.thousand3[Math.floor(Math.random()*6)]})
+				this.setState({mission: randomName.thousand4[Math.floor(Math.random()*6)]})
+				this.setState({squadQuirk: randomName.thousand5[Math.floor(Math.random()*6)]})
 				break;
 			case "Asuryani":
-				this.setState({background: randomName.asur3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.asur4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.asur5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.asur3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.asur4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.asur5[Math.floor(Math.random()*10)]})
 				break;
 			case "Drukhari":
-				this.setState({background: randomName.druk3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.druk4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.druk5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.druk3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.druk4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.druk5[Math.floor(Math.random()*10)]})
 				break;
 			case "Harlequins":
-				this.setState({background: randomName.harlequins3[Math.floor(Math.random()*5)]})
-				this.setState({mission: randomName.harlequins4[Math.floor(Math.random()*5)]})
-				this.setState({squadQuirk: randomName.harlequins5[Math.floor(Math.random()*5)]})
+				this.setState({background: randomName.harlequins3[Math.floor(Math.random()*6)]})
+				this.setState({mission: randomName.harlequins4[Math.floor(Math.random()*6)]})
+				this.setState({squadQuirk: randomName.harlequins5[Math.floor(Math.random()*6)]})
 				break;
 			case "Necrons":
-				this.setState({background: randomName.necron3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.necron4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.necron5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.necron3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.necron4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.necron5[Math.floor(Math.random()*10)]})
 				break;
 			case "Orks":
-				this.setState({background: randomName.ork3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.ork4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.ork5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.ork3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.ork4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.ork5[Math.floor(Math.random()*10)]})
 				break;
 			case "Tau Empire":
-				this.setState({background: randomName.tau3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.tau4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.tau5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.tau3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.tau4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.tau5[Math.floor(Math.random()*10)]})
 				break;
 			case "Tyranids":
-				this.setState({background: randomName.tyranid3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.tyranid4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.tyranid5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.tyranid3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.tyranid4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.tyranid5[Math.floor(Math.random()*10)]})
 				break;
 			case "Genestealer Cults":
-				this.setState({background: randomName.genestealer3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.genestealer4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.genestealer5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.genestealer3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.genestealer4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.genestealer5[Math.floor(Math.random()*10)]})
 				break;
 			default:
-				this.setState({background: randomName.astartes3[Math.floor(Math.random()*9)]})
-				this.setState({mission: randomName.astartes4[Math.floor(Math.random()*9)]})
-				this.setState({squadQuirk: randomName.astartes5[Math.floor(Math.random()*9)]})
+				this.setState({background: randomName.astartes3[Math.floor(Math.random()*10)]})
+				this.setState({mission: randomName.astartes4[Math.floor(Math.random()*10)]})
+				this.setState({squadQuirk: randomName.astartes5[Math.floor(Math.random()*10)]})
 		}
 	}
 
@@ -321,55 +323,55 @@ class Units extends Component {
 		event.preventDefault();
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
-				this.setState({demeanour: randomName.astartes6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.astartes6[Math.floor(Math.random()*10)]})
 				break;
 			case "Deathwatch":
-				this.setState({demeanour: randomName.deathwatch6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.deathwatch6[Math.floor(Math.random()*10)]})
 				break;
 			case "Grey Knights":
-				this.setState({demeanour: randomName.grey6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.grey6[Math.floor(Math.random()*10)]})
 				break;
 			case "Astra Militarum":
-				this.setState({demeanour: randomName.astra6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.astra6[Math.floor(Math.random()*10)]})
 				break;
 			case "Adeptus Mechanicus":
-				this.setState({demeanour: randomName.adeptus6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.adeptus6[Math.floor(Math.random()*10)]})
 				break;
 			case "Heretic Astartes":
-				this.setState({demeanour: randomName.heretic6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.heretic6[Math.floor(Math.random()*10)]})
 				break;
 			case "Death Guard":
-				this.setState({demeanour: randomName.death6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.death6[Math.floor(Math.random()*10)]})
 				break;
 			case "Thousand Sons":
-				this.setState({demeanour: randomName.thousand6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.thousand6[Math.floor(Math.random()*10)]})
 				break;
 			case "Asuryani":
-				this.setState({demeanour: randomName.asur6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.asur6[Math.floor(Math.random()*10)]})
 				break;
 			case "Drukhari":
-				this.setState({demeanour: randomName.druk6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.druk6[Math.floor(Math.random()*10)]})
 				break;
 			case "Harlequins":
-				this.setState({demeanour: randomName.harlequins6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.harlequins6[Math.floor(Math.random()*10)]})
 				break;
 			case "Necrons":
-				this.setState({demeanour: randomName.necron6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.necron6[Math.floor(Math.random()*10)]})
 				break;
 			case "Orks":
-				this.setState({demeanour: randomName.ork6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.ork6[Math.floor(Math.random()*10)]})
 				break;
 			case "Tau Empire":
-				this.setState({demeanour: randomName.tau6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.tau6[Math.floor(Math.random()*10)]})
 				break;
 			case "Tyranids":
-				this.setState({demeanour: randomName.tyranid6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.tyranid6[Math.floor(Math.random()*10)]})
 				break;
 			case "Genestealer Cults":
-				this.setState({demeanour: randomName.genestealer6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.genestealer6[Math.floor(Math.random()*10)]})
 				break;
 			default:
-				this.setState({demeanour: randomName.astartes6[Math.floor(Math.random()*9)]})
+				this.setState({demeanour: randomName.astartes6[Math.floor(Math.random()*10)]})
 			}
 		}
 
@@ -386,11 +388,15 @@ class Units extends Component {
   }
 
   loadUnits = () => {
-
+		let newArray = []; 
+		for (let i = 0; i < Object.values(sessionStorage).length; i++) {
+			console.log(JSON.parse(Object.values(sessionStorage)[i]))
+			newArray.push(JSON.parse(Object.values(sessionStorage)[i]))
+			console.log(newArray)
     API.getUnits()
       .then(res =>
         this.setState({
-        units: res.data,
+        units: newArray,
         squadName: "",
         background: "",
         mission: "",
@@ -413,31 +419,33 @@ class Units extends Component {
         unitType: {},
         wargearOptions: {},
         wargearOptions2: {},
-				specialism: {},
+				specialism: "none",
 				demeanour: "",
+				counter: (Object.values(sessionStorage).length)
       }), this.squadTotal()
       )
 			.catch(err => console.log(err));
+		}
+		this.squadTotal();
   };
 
   deleteUnit = id => {
     this.confirm1.open('Delete Unit?', () => {
-    API.deleteUnit(id)
-    .then(res => this.loadUnits())
-    .catch(err => console.log(err));
+			sessionStorage.removeItem(`sessionUnit${id}`)
+			this.loadUnits();
+			API.deleteUnit(id)
+			.then(res => this.loadUnits())
+			.catch(err => console.log(err));
 		})
 		
   };
 
 	deleteAll = () => {
 		this.confirm1.open('Delete All?', () => {
-			API.getUnits()
-			.then(res => {for (let i = 0; i < res.data.length; i++) {
-				API.deleteUnit(res.data[i]._id)
+		for (let i = 0; i < this.state.units.length; i++) {
+				sessionStorage.removeItem(`sessionUnit${i}`)
 				this.loadUnits()
 			};
-		})
-		.catch(err => console.log(err));
 		})
 	}
 
@@ -492,6 +500,7 @@ class Units extends Component {
   handleFormSubmit = event => {
 		const itemsRef = firebase.database().ref('Temp');
 		const item = {
+			id: this.state.counter,
 			name: this.state.name,
 			equipment: this.state.equipment,
 			abilities: this.state.abilities,
@@ -511,30 +520,60 @@ class Units extends Component {
 			demeanour: this.state.demeanour,
 		}
     event.preventDefault();
-		itemsRef.push(item)
-		console.log(this)
+		// itemsRef.push(item)
     if ((this.state.units[0] === undefined) || (this.state.race.value === this.state.units[0].race)) {
-			API.saveUnit({
-				name: this.state.name,
-        equipment: this.state.equipment,
-        abilities: this.state.abilities,
-        move: this.state.move,
-        ws: this.state.ws,
-        bs: this.state.bs,
-        str: this.state.str,
-        tough: this.state.tough,
-        wounds: this.state.wounds,
-        att: this.state.att,
-        ld: this.state.ld,
-        sv: this.state.sv,
-        pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
-        race: this.state.race.value,
-        unitType: this.state.unitType.label,
-        specialism: this.state.specialism.label,
-        demeanour: this.state.demeanour,
-      })
-      .then(res => this.loadUnits())
-      .catch(err => console.log(err));
+			sessionStorage.setItem(`sessionUnit${item.id}`, JSON.stringify(item));
+			// this.state.units.push(item)
+			// this.setState({
+			// 	units: this.state.units,
+			// 	squadName: "",
+      //   background: "",
+      //   mission: "",
+      //   squadQuirk: "",
+      //   name: "",
+      //   equipment: "",
+      //   abilities: "",
+      //   move: "",
+      //   ws: "",
+      //   bs: "",
+      //   str: "",
+      //   tough: "",
+      //   wounds: "",
+      //   att: "",
+      //   ld: "",
+      //   sv: "",
+      //   pts: 0,
+      //   wargearPts: 0,
+      //   wargearPts2: 0,
+      //   unitType: {},
+      //   wargearOptions: {},
+      //   wargearOptions2: {},
+			// 	specialism: "none",
+			// 	demeanour: "",
+			// 	counter: Object.values(sessionStorage).length,
+			// });
+			this.loadUnits();
+				// API.saveUnit({
+				// 	name: this.state.name,
+				//   equipment: this.state.equipment,
+				//   abilities: this.state.abilities,
+				//   move: this.state.move,
+				//   ws: this.state.ws,
+				//   bs: this.state.bs,
+				//   str: this.state.str,
+				//   tough: this.state.tough,
+				//   wounds: this.state.wounds,
+				//   att: this.state.att,
+				//   ld: this.state.ld,
+				//   sv: this.state.sv,
+				//   pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
+				//   race: this.state.race.value,
+				//   unitType: this.state.unitType.label,
+				//   specialism: this.state.specialism.label,
+				//   demeanour: this.state.demeanour,
+				// })
+				// .then(res => this.loadUnits())
+				// .catch(err => console.log(err));
 		} else {
 			alert("Squad must all match race type")
 		}
@@ -592,18 +631,17 @@ class Units extends Component {
 
   squadTotal = () => {
 		var sum = 0;
-		API.getUnits()
-		.then(res => {for (let i = 0; i < res.data.length; i++) {
-			sum += res.data[i].pts;
+		for (let i = 0; i < this.state.units.length; i++) {
+			sum += this.state.units[i].pts;
 			this.setState({
 				total: sum
 			})
 			if (this.state.total > 100) {
 				console.log("squad is over 100 points!")
 			}
-		}})
-		.catch(err => console.log(err));
+		}
 	}
+	
 
   handleChange1 = (race) => {
 		this.setState({
@@ -626,7 +664,7 @@ class Units extends Component {
 			unitType: {},
 			wargearOptions: {},
 			wargearOptions2: {},
-      specialism: {},
+      specialism: "",
       demeanour: "",
 		})
   };
@@ -5562,7 +5600,6 @@ class Units extends Component {
   }
 			
   render() {
-
     const options1 = [
       {value: 'Adeptus Astartes', label: <img src={astartes} alt="astartes"></img>},
       {value: 'Deathwatch', label: <img src={deathwatch} alt="deathwatch"></img>},
@@ -7093,6 +7130,15 @@ class Units extends Component {
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unitType.value)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unitType.value)
 		const filteredOptions4 = options5.filter((o) => o.link === this.state.unitType.value)
+		// const obj = JSON.parse(sessionStorage.sessionUnit + this.state.units.length);
+		// const parse = JSON.parse(this.state.units)
+		// console.log(JSON.parse(`${this.state.units}`))
+		// console.log(JSON.parse(this.state.units[0]))
+		// for (let i = 0; i < Object.values(sessionStorage).length; i++) {
+		// 	console.log(JSON.parse(Object.values(sessionStorage)[i]))
+		// }
+		console.log(this.state.units)
+
     return (
       <Container fluid>
         <Row>
@@ -7438,9 +7484,9 @@ class Units extends Component {
 							</table>
                 <List>
                   {this.state.units.map(unit => (
-                    <ListItem key={unit._id}>
+                    <ListItem key={unit.id}>
 											&nbsp;
-                      <Link to={"/units/" + unit._id}>
+                      <Link to={"/units/" + unit.id}>
                         <strong>
                           &quot;{unit.name}&quot; {unit.unitType}
                         </strong>
@@ -7448,12 +7494,12 @@ class Units extends Component {
 											<span className="list-points" style={{"float":"right"}}>
 												{unit.pts} points
 											</span>
-                      <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                      <DeleteBtn onClick={() => this.deleteUnit(unit.id)} />
                       <Confirm ref={el => this.confirm1 = el} /> 
                     </ListItem>
                   ))}
                 </List>
-                <List>
+                {/* <List>
                   {this.state.currentList.map(unit => (
                     <ListItem key={unit.id}>
 											&nbsp;
@@ -7469,7 +7515,7 @@ class Units extends Component {
                       <Confirm ref={el => this.confirm1 = el} /> 
                     </ListItem>
                   ))}
-                </List>
+                </List> */}
               </div>
             ) : (
               <h3>No Results to Display</h3>

@@ -32,6 +32,7 @@ class Detail extends Component {
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
+		this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
     API.getUnit(this.props.match.params.id)
 			.then(res => this.setState({ unit: res.data }))
       .catch(err => console.log(err));
