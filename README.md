@@ -8,6 +8,12 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+11/13/2019
+Release 0.5.0
+* Migrated the current list of units into session storage. Now multiple users can create a list at the same time.
+* Added radio button selector for chapter/gender specific name generator.
+* Moved dropdown option variables to their own .json files to reduce size of Units.js.
+
 11/7/2019
 Release 0.4.8
 * Added Chapter specific names.
@@ -190,12 +196,12 @@ Release 0.1.0 is here!
 
 ## Known Issues:
 
-* Unit list does not correctly update when a squad of one is submitted or deleted using delete squad.
 * Tyranid Warrior options do not correctly update flesh hooks into Equipment.
+* <s>Unit list does not correctly update when a squad of one is submitted or deleted using delete squad.</s> ✔️
 * <s>Detail page does not display equipment correctly.</s> ✔️
 * <s>User can create mixed-race squads.</s> ✔️
 * <s>Other Options dropdown does not display selection.</s> ✔️
-* <s>Squad total does not update correctly.</s> ✔️
+* Squad total does not update correctly.
 * <s>Confirm prompt does not render in the correct location.</s> ✔️
 * <s>Selectors don't register default state; you must select a new option then select the default for it to register.</s> ✔️
 * <s>Squad page only displays first squad member for each squad.</s> ✔️
@@ -209,9 +215,9 @@ Release 0.1.0 is here!
 ## Updates Planned:
 
 * Limits for specific unit types.
-* Random name generator allows Space Marine Chapter select.
 * More squad options (<s>specialists</s>, flesh wounds, experience, <s>demeanour</s>).
 * UI graphics.
+* <s>Random name generator allows Space Marine Chapter select.</s> ✔️
 * <s>Delete the current squad when the submit squad button is clicked.</s> ✔️
 * <s>Random name generator.</s> ✔️
 * <s>Automatic squad totalling/Autofill stats.</s> ✔️
