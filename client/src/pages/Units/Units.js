@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
-import ReactTooltip from 'react-tooltip'
-// import API from "../../utils/API";
+// import ReactTooltip from 'react-tooltip'
 import randomName from "../../utils/randomName";
 // import Options1 from "../../utils/options1";
 import options2 from "../../utils/options2";
@@ -342,18 +341,6 @@ class Units extends Component {
 			}
 		}
 
-  componentDidUpdate() {
-    var sum = 0;
-    for (let i = 0; i < this.state.units.length; i++) {
-      sum += this.state.units[i].pts;
-      if (this.state.units.length === 0) {
-				this.setState({
-					total: sum
-				})
-      }
-		}
-  }
-
   loadUnits = () => {
 		let newArray = []; 
 		for (let i = 0; i < Object.values(sessionStorage).length; i++) {
@@ -387,7 +374,6 @@ class Units extends Component {
 			demeanour: "",
 			counter: (Object.values(sessionStorage).length)
 		})
-		this.squadTotal();
   };
 
   deleteUnit = id => {
@@ -482,25 +468,26 @@ class Units extends Component {
 					for (let i = 0; i < this.state.units.length; i++) {
 						sessionStorage.removeItem(`sessionUnit${i}`)
 						this.loadUnits()
-						this.squadTotal()
 					};
 			};
 		}
   };
 
-  squadTotal = () => {
+	componentDidUpdate() {
+		this.squadTotal(this.state.total)
+	}
+
+  squadTotal = (stateSum) => {
 		var sum = 0;
 		for (let i = 0; i < this.state.units.length; i++) {
 			sum += this.state.units[i].pts;
+		}
+		if (stateSum !== sum) {
 			this.setState({
 				total: sum
 			})
-			if (this.state.total > 100) {
-				console.log("squad is over 100 points!")
-			}
 		}
 	}
-	
 
   handleChange1 = (race) => {
 		this.setState({
@@ -5448,16 +5435,6 @@ class Units extends Component {
 	handleChange5 = (specialism) => {
     this.setState({specialism: specialism})
 	}
-
-  removeItem(itemId) {
-    this.confirm1.open('Are you sure?', () => {
-      const itemRef = firebase.database().ref(`/Temp/${itemId}`);
-      itemRef.remove();
-    })
-  }
-
-
-	
 			
   render() {
     const options1 = [
@@ -5514,158 +5491,173 @@ class Units extends Component {
 											{this.state.unitType.label ? (
 												<div>
 													{((this.state.race.value === "Adeptus Astartes") || (this.state.race.value === "Deathwatch")) ? (
-														<div>
-															<Radio
-																value="Ultramarines"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Ultramarines"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Ultramarines">Ultramarines</label>
-															<Radio
-																value="Imperial Fists"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Imperial Fists"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Imperial Fists">Imperial Fists</label>
-															<Radio
-																value="Blood Angels"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Blood Angels"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Blood Angels">Blood Angels</label>
-															<Radio
-																value="Raven Guard"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Raven Guard"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Raven Guard">Raven Guard</label>
-															<Radio
-																value="White Scars"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="White Scars"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="White Scars">White Scars</label>
-															<Radio
-																value="Iron Hands"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Iron Hands"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Iron Hands">Iron Hands</label>
-															<Radio
-																value="Space Wolves"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Space Wolves"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Space Wolves">Space Wolves</label>
-															<Radio
-																value="Salamanders"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Salamanders"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Salamanders">Salamanders</label>
-															<Radio
-																value="Dark Angels"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Dark Angels"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Dark Angels">Dark Angels</label>
+														<div className="btn-groups">
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Ultramarines"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Ultramarines"
+																/> Ultramarines &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Imperial Fists"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Imperial Fists"
+																/> Imperial Fists &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Blood Angels"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Blood Angels"
+																/> Blood Angels &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Raven Guard"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Raven Guard"
+																/> Raven Guard &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="White Scars"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="White Scars"
+																/> White Scars &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Iron Hands"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Iron Hands"
+																/> Iron Hands &nbsp;
+																</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Space Wolves"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Space Wolves"
+																/> Space Wolves &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Salamanders"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Salamanders"
+																/> Salamanders &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Dark Angels"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Dark Angels"
+																/> Dark Angels &nbsp;
+															</label>
 														</div>
 													) : (
 														null												
 													)}
 													{(this.state.race.value === "Astra Militarum") ? (
-														<div>
-															<Radio
-																value="Cadian"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Cadian"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Cadian">Cadian</label>
+														<div className="btn-groups">
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Cadian"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Cadian"
+																/> Cadian &nbsp;
+															</label>
+															<label className="btn btn-secondary">
 															<Radio
 																value="Catachan"
 																onChange={this.handleInputChange}
 																style={{ "float" : "left" }}
 																name="chapter"
 																id="Catachan"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Catachan">Catachan</label>
+															/> Catachan &nbsp;
+															</label>
+															<label className="btn btn-secondary">
 															<Radio
 																value="Valhallan"
 																onChange={this.handleInputChange}
 																style={{ "float" : "left" }}
 																name="chapter"
 																id="Valhallan"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Valhallan">Valhallan</label>
+															/> Valhallan &nbsp;
+															</label>
+															<label className="btn btn-secondary">
 															<Radio
 																value="Tallarn"
 																onChange={this.handleInputChange}
 																style={{ "float" : "left" }}
 																name="chapter"
 																id="Tallarn"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Tallarn">Tallarn</label>
-															<br />
+															/> Tallarn &nbsp;
+															</label>
 															<br />
 														</div>
 													) : (
 														null												
 													)}
 													{(this.state.race.value === "Heretic Astartes") ? (
-														<div>
-															<Radio
-																value="Black Legion"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Black Legion"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Black Legion">Black Legion</label>
-															<Radio
-																value="Alpha Legion"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Alpha Legion"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Alpha Legion">Alpha Legion</label>
-															<Radio
-																value="World Eaters"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="World Eaters"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="World Eaters">World Eaters</label>
-															<Radio
-																value="Emperor's Children"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Emperor's Children"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Emperor's Children">Emperor's Children</label>
-															<br />
+														<div className="btn-groups">
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Black Legion"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Black Legion"
+																/> Black Legion &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Alpha Legion"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Alpha Legion"
+																/> Alpha Legion &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="World Eaters"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="World Eaters"
+																/> World Eaters &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Emperor's Children"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Emperor's Children"
+																/> Emperor's Children &nbsp;
+															</label>
 															<br />
 														</div>
 													) : (
@@ -5673,22 +5665,24 @@ class Units extends Component {
 													)}
 													{(this.state.race.value === "Asuryani") ? (
 														<div>
-															<Radio
-																value="Female"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Female"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Female">Female</label>
-															<Radio
-																value="Male"
-																onChange={this.handleInputChange}
-																style={{ "float" : "left" }}
-																name="chapter"
-																id="Male"
-															/>
-															<label className="text-light" style={{ "float" : "left" }} htmlFor="Male">Male</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Female"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Female"
+																/> Female &nbsp;
+															</label>
+															<label className="btn btn-secondary">
+																<Radio
+																	value="Male"
+																	onChange={this.handleInputChange}
+																	style={{ "float" : "left" }}
+																	name="chapter"
+																	id="Male"
+																/> Male &nbsp;
+															</label>
 															<br />
 															<br />
 														</div>

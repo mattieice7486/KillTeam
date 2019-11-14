@@ -5,11 +5,9 @@ import { List, ListItem } from "../../components/List";
 import { Input } from "../../components/Form";
 import Select from 'react-select';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import firebase from "firebase";
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import Jumbotron from "../../components/Jumbotron";
 import ReactTooltip from 'react-tooltip'
-import API from "../../utils/API";
 import guns from "../../utils/guns";
 import options3 from "../../utils/options3";
 import options4 from "../../utils/options4";
@@ -20,12 +18,15 @@ class Detail extends Component {
 		super();
 		this.state = {
 			unit: {},
-			firebaseUnit: {},
       wargearOptions: {},
       wargearOptions2: {},
 			pts: 0,
 			wargearPts: 0,
 			wargearPts2: 0,
+			name: "",
+			equipment: "",
+			abilities: "",
+			unitId: 0
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleChange3 = this.handleChange3.bind(this);
@@ -34,43 +35,23 @@ class Detail extends Component {
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-		this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
-    // API.getUnit(this.props.match.params.id)
-		// 	.then(res => this.setState({ unit: res.data }))
-    //   .catch(err => console.log(err));
-
-    // const tempRef = firebase.database().ref('Temp');
-    // tempRef.on('value', (snapshot) => {
-    //   let items = snapshot.val();
-    //   let newState = [];
-    //   for (let item in items) {
-    //     newState.push({
-    //       id: item,
-    //       abilities: items[item].abilities,
-    //       att: items[item].att,
-    //       bs: items[item].bs,
-    //       demeanour: items[item].demeanour,
-    //       equipment: items[item].equipment,
-    //       ld: items[item].ld,
-    //       move: items[item].move,
-    //       name: items[item].name,
-    //       pts: items[item].pts,
-    //       race: items[item].race,
-    //       specialism: items[item].specialism,
-    //       str: items[item].str,
-    //       sv: items[item].sv,
-    //       tough: items[item].tough,
-    //       unitType: items[item].unitType,
-    //       wounds: items[item].wounds,
-    //       ws: items[item].ws,
-    //     });
-    //   }
-    //   this.setState({
-    //     firebaseUnit: newState
-    //   });
-    // });
+		this.loadUnit()
+		console.log(this.state)
+		console.log(this.state.unitId)
+		console.log(JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name)
   }
 	
+	loadUnit = () => {
+			this.setState({
+				unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]),
+				pts: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).pts,
+				name: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name,
+				equipment: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).equipment,
+				abilities: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).abilities,
+				unitId: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).unitId,
+			})
+	}
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -80,16 +61,29 @@ class Detail extends Component {
 	
 	update = event => {
 		event.preventDefault();
-		console.log(this)
-		API.updateUnit(this.props.match.params.id, {
-			name: this.state.name,
-			equipment: this.state.equipment,
-			abilities: this.state.abilities,
-			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
-		})
-		API.getUnit(this.props.match.params.id)
-		.then(res => this.setState({ unit: res.data }))
-		.catch(err => console.log(err));
+			const item = {
+				id: this.props.match.params.id,
+				name: this.state.name,
+				equipment: this.state.equipment,
+				abilities: this.state.abilities,
+				move: this.state.unit.move,
+				ws: this.state.unit.ws,
+				bs: this.state.unit.bs,
+				str: this.state.unit.str,
+				tough: this.state.unit.tough,
+				wounds: this.state.unit.wounds,
+				att: this.state.unit.att,
+				ld: this.state.unit.ld,
+				sv: this.state.unit.sv,
+				pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
+				race: this.state.unit.race,
+				unitType: this.state.unit.unitType,
+				specialism: this.state.unit.specialism,
+				demeanour: this.state.unit.demeanour,
+			}
+		sessionStorage.setItem(`sessionUnit${this.props.match.params.id}`, JSON.stringify(item))
+		this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
+		console.log(this.state.unit)
 	};
 
 	handleChange3 = (wargearOptions) => {
@@ -3906,6 +3900,7 @@ class Detail extends Component {
   render() {
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unit.unitType)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unit.unitType)
+		console.log(this.state)
 
     return (
 			<Container fluid>

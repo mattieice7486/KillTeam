@@ -7,7 +7,6 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import ReactTooltip from 'react-tooltip'
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
 import Confirm from "../../components/Confirm";
 import guns from "../../utils/guns";
 
@@ -18,10 +17,8 @@ class Squad extends Component {
     units: [],
     items: []
   };
-  // When this component mounts, grab the unit with the _id of this.props.match.params.id
-  // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-			let newArray = []; 
+		let newArray = []; 
 		for (let i = 0; i < Object.values(sessionStorage).length; i++) {
 			newArray.push(JSON.parse(Object.values(sessionStorage)[i]))
         this.setState({
@@ -31,11 +28,9 @@ class Squad extends Component {
   }
 
   deleteUnit = id => {
-    this.confirm1.open('Are you sure?', () => {
-    API.deleteUnit(id)
-    .then(res => this.loadUnits())
-    .catch(err => console.log(err));
-    })
+    this.confirm1.open('Delete Unit?', () => {
+			sessionStorage.removeItem(`sessionUnit${id}`)
+		})
   };
 
   render() {

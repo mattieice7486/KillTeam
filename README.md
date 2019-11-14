@@ -214,6 +214,7 @@ Release 0.1.0 is here!
 
 ## Updates Planned:
 
+* Save squads to PDF.
 * Limits for specific unit types.
 * More squad options (<s>specialists</s>, flesh wounds, experience, <s>demeanour</s>).
 * UI graphics.
