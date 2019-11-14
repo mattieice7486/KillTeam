@@ -7,7 +7,6 @@ import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css'
 import ReactTooltip from 'react-tooltip'
 import DeleteBtn from "../../components/DeleteBtn";
 import Jumbotron from "../../components/Jumbotron";
-import API from "../../utils/API";
 import Confirm from "../../components/Confirm";
 import guns from "../../utils/guns";
 
@@ -18,39 +17,20 @@ class Squad extends Component {
     units: [],
     items: []
   };
-  // When this component mounts, grab the unit with the _id of this.props.match.params.id
-  // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getUnits()
-      .then(res =>
+		let newArray = []; 
+		for (let i = 0; i < Object.values(sessionStorage).length; i++) {
+			newArray.push(JSON.parse(Object.values(sessionStorage)[i]))
         this.setState({
-          units: res.data,
-          name: "",
-          equipment: "",
-          move: "",
-          ws: "",
-          bs: "",
-          str: "",
-          tough: "",
-          wounds: "",
-          att: "",
-          ld: "",
-          sv: "",
-          pts: "",
-          race: {},
-          unitType: {},
-          wargearOptions: {}
-        })
-      )
-      .catch(err => console.log(err));
+        units: newArray,
+      })  
+		}
   }
 
   deleteUnit = id => {
-    this.confirm1.open('Are you sure?', () => {
-    API.deleteUnit(id)
-    .then(res => this.loadUnits())
-    .catch(err => console.log(err));
-    })
+    this.confirm1.open('Delete Unit?', () => {
+			sessionStorage.removeItem(`sessionUnit${id}`)
+		})
   };
 
   render() {
@@ -64,10 +44,10 @@ class Squad extends Component {
             {this.state.units.length ? (
               <List>
                 {this.state.units.map(unit => (
-                  <ListItem key={unit._id}>
-                    <DeleteBtn onClick={() => this.deleteUnit(unit._id)} />
+                  <ListItem key={unit.id}>
+                    <DeleteBtn onClick={() => this.deleteUnit(unit.id)} />
                     <Confirm ref={el => this.confirm1 = el} /> 
-                    <Link to={"/units/" + unit._id}>
+                    <Link to={"/units/" + unit.id}>
                     <span style={{fontSize : "24px", fontStyle : "bold"}}>
                     	{unit.unitType}
                     </span>
@@ -141,30 +121,35 @@ class Squad extends Component {
 													)
 												})}
 										</Table>
-										<Table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
-											<Thead>
-												<Tr>
-													<Th>
-														ABILITIES:
-													</Th>
-												</Tr>
-											</Thead>
-											<Tbody>
-												<Tr>
-													<Td>
-														<a data-tip data-for='unit-abilities'> {unit.abilities} </a>
+										<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+											<tbody>
+												<tr>
+													<td>
+														<a data-tip data-for='unit-abilities'><strong>Abilities:</strong> {unit.abilities} </a>
 														<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
 															<span>Ability info goes here</span>
 														</ReactTooltip>
-													</Td>
-												</Tr>
-											</Tbody>
-										</Table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+											<tbody>
+												<tr>
+													<td>
+														<strong>Specialism:</strong> {unit.special}
+													</td>
+													<td>
+														<strong>Demeanour:</strong> {unit.demeanour}
+													</td>
+												</tr>
+											</tbody>
+										</table>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className="text-light" style={{ "textAlign" : "center" }}>No Results to Display</h3>
             )}
           </Col>
           </Row>

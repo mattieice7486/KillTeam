@@ -1,0 +1,83 @@
+[
+	{"value": "none", "label": "none", "link": "Reiver"},
+	{"value": "Grav-Chute", "label": "Grav-Chute +1pts", "link": "Reiver"},
+	{"value": "Grapnel Launcher", "label": "Grapnel Launcher +1pts", "link": "Reiver"},
+	{"value": "Grav-Chute Grapnel Launcher", "label": "Grav-Chute and Grapnel Launcher +2pts", "link": "Reiver"},
+	
+	{"value": "none", "label": "none", "link": "Reiver Sergeant"},
+	{"value": "Grav-Chute", "label": "Grav-Chute +1pts", "link": "Reiver Sergeant"},
+	{"value": "Grapnel Launcher", "label": "Grapnel Launcher +1pts", "link": "Reiver Sergeant"},
+	{"value": "Grav-Chute Grapnel Launcher", "label": "Grav-Chute and Grapnel Launcher +2pts", "link": "Reiver Sergeant"},
+	
+	{"value": "none", "label": "none", "link": "Guardsman"},
+	{"value": "Vox-Caster", "label": "Vox-Caster +5pts", "link": "Guardsman"},
+	
+	{"value": "none", "label": "none", "link": "Scion"},
+	{"value": "Vox-Caster", "label": "Vox-Caster +5pts", "link": "Scion"},
+	
+	{"value": "none", "label": "none", "link": "Skitarii Ranger"},
+	{"value": "Enhanced Data-Tether", "label": "Enhanced Data-Tether +5pts", "link": "Skitarii Ranger"},
+	{"value": "Omnispex", "label": "Omnispex +1pts", "link": "Skitarii Ranger"},
+	
+	{"value": "none", "label": "none", "link": "Skitarii Vanguard"},
+	{"value": "Enhanced Data-Tether", "label": "Enhanced Data-Tether +5pts", "link": "Skitarii Vanguard"},
+	{"value": "Omnispex", "label": "Omnispex +1pts", "link": "Skitarii Vanguard"},
+	
+	{"value": "none", "label": "none", "link": "Chaos Space Marine"},
+	{"value": "Icon of Despair", "label": "Icon of Despair +3pts", "link": "Chaos Space Marine"},
+	{"value": "Icon of Wrath", "label": "Icon of Wrath +5pts", "link": "Chaos Space Marine"},
+	{"value": "Icon of Flame", "label": "Icon of Flame +1pts", "link": "Chaos Space Marine"},
+	{"value": "Icon of Excess", "label": "Icon of Excess +5pts", "link": "Chaos Space Marine"},
+	{"value": "Icon of Vengeance", "label": "Icon of Vengeance +1pts", "link": "Chaos Space Marine"},
+	
+	{"value": "none", "label": "none", "link": "Plague Marine"},
+	{"value": "Icon of Despair", "label": "Icon of Despair +3pts", "link": "Plague Marine"},
+
+	{"value": "none", "label": "none", "link": "Rubric Marine"},
+	{"value": "Icon of Flame", "label": "Icon of Flame +1pts", "link": "Rubric Marine"},
+	
+	{"value": "none", "label": "none", "link": "Tzaangor"},
+	{"value": "Brayhorn", "label": "Brayhorn +3pts", "link": "Tzaangor"},
+	
+	{"value": "none", "label": "none", "link": "Termagant"},
+	{"value": "Adrenal Glands", "label": "Adrenal Glands +1pts", "link": "Termagant"},
+	{"value": "Toxin Sacs", "label": "Toxin Sacs +1pts", "link": "Termagant"},
+	{"value": "Adrenal Glands Toxin Sacs", "label": "Adrenal Glands and Toxin Sacs +2pts", "link": "Termagant"},
+				
+	{"value": "none", "label": "none", "link": "Hormagaunt"},
+	{"value": "Adrenal Glands", "label": "Adrenal Glands +1pts", "link": "Hormagaunt"},
+	{"value": "Toxin Sacs", "label": "Toxin Sacs +1pts", "link": "Hormagaunt"},
+	{"value": "Adrenal Glands Toxin Sacs", "label": "Adrenal Glands and Toxin Sacs +2pts", "link": "Hormagaunt"},
+
+	{"value": "none", "label": "none", "link": "Genestealer"},
+	{"value": "Extended Carapace", "label": "Extended Carapace +0pts", "link": "Genestealer"},
+	{"value": "Toxin Sacs", "label": "Toxin Sacs +1pts", "link": "Genestealer"},
+	{"value": "Extended Carapace Toxin Sacs", "label": "Extended Carapace and Toxin Sacs +1pts", "link": "Genestealer"},
+
+	{"value": "none", "label": "none", "link": "Tyranid Warrior"},
+	{"value": "Toxin Sacs", "label": "Toxin Sacs +1pts", "link": "Tyranid Warrior"},
+	{"value": "Adrenal Glands", "label": "Adrenal Glands +1pts", "link": "Tyranid Warrior"},
+	{"value": "flesh hooks", "label": "flesh hooks +0pts", "link": "Tyranid Warrior"},
+	{"value": "Adrenal Glands Toxin Sacs", "label": "Adrenal Glands and Toxin Sacs +2pts", "link": "Tyranid Warrior"},
+	{"value": "Adrenal Glands flesh hooks", "label": "Adrenal Glands and flesh hooks +1pts", "link": "Tyranid Warrior"},
+	{"value": "Toxin Sacs flesh hooks", "label": "Toxin Sacs and flesh hooks +1pts", "link": "Tyranid Warrior"},
+	{"value": "Adrenal Glands Toxin Sacs flesh hooks", "label": "Adrenal Glands, Toxin Sacs, and flesh hooks +2pts", "link": "Tyranid Warrior"},
+
+	{"value": "none", "label": "none", "link": "Tyranid Warrior Gunner"},
+	{"value": "Toxin Sacs", "label": "Toxin Sacs +1pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "Adrenal Glands", "label": "Adrenal Glands +1pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "flesh hooks", "label": "flesh hooks +0pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "Adrenal Glands Toxin Sacs", "label": "Adrenal Glands and Toxin Sacs +2pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "Adrenal Glands flesh hooks", "label": "Adrenal Glands and flesh hooks +1pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "Toxin Sacs flesh hooks", "label": "Toxin Sacs and flesh hooks +1pts", "link": "Tyranid Warrior Gunner"},
+	{"value": "Adrenal Glands Toxin Sacs flesh hooks", "label": "Adrenal Glands, Toxin Sacs, and flesh hooks +2pts", "link": "Tyranid Warrior Gunner"},
+
+	{"value": "none", "label": "none", "link": "Acolyte Hybrid"},
+	{"value": "Cult Icon", "label": "Cult Icon +5pts", "link": "Acolyte Hybrid"},
+
+	{"value": "none", "label": "none", "link": "Neophyte Hybrid"},
+	{"value": "Cult Icon", "label": "Cult Icon +5pts", "link": "Neophyte Hybrid"},
+
+	{"value": "none", "label": "none", "link": "Hybrid Metamorph"},
+	{"value": "Cult Icon", "label": "Cult Icon +5pts", "link": "Hybrid Metamorph"}
+]

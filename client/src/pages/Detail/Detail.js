@@ -5,69 +5,59 @@ import { List, ListItem } from "../../components/List";
 import { Input } from "../../components/Form";
 import Select from 'react-select';
 import { Table, Thead, Tbody, Tr, Th, Td } from 'react-super-responsive-table';
-import firebase from "firebase";
 import 'react-super-responsive-table/dist/SuperResponsiveTableStyle.css';
 import Jumbotron from "../../components/Jumbotron";
 import ReactTooltip from 'react-tooltip'
-import API from "../../utils/API";
 import guns from "../../utils/guns";
-
+import options3 from "../../utils/options3";
+import options4 from "../../utils/options4";
+import options5 from "../../utils/options5";
+// import { guns, options3, options4, options5 } from "../../utils"
 
 class Detail extends Component {
 	constructor() {
 		super();
 		this.state = {
 			unit: {},
-			firebaseUnit: {},
       wargearOptions: {},
       wargearOptions2: {},
+      specialism: {},
 			pts: 0,
 			wargearPts: 0,
 			wargearPts2: 0,
+			name: "",
+			equipment: "",
+			abilities: "",
+			special: "",
+			unitId: 0
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange4 = this.handleChange4.bind(this);
+    this.handleChange5 = this.handleChange5.bind(this);
 	}
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
-    API.getUnit(this.props.match.params.id)
-			.then(res => this.setState({ unit: res.data }))
-      .catch(err => console.log(err));
-
-    const tempRef = firebase.database().ref('Temp');
-    tempRef.on('value', (snapshot) => {
-      let items = snapshot.val();
-      let newState = [];
-      for (let item in items) {
-        newState.push({
-          id: item,
-          abilities: items[item].abilities,
-          att: items[item].att,
-          bs: items[item].bs,
-          demeanour: items[item].demeanour,
-          equipment: items[item].equipment,
-          ld: items[item].ld,
-          move: items[item].move,
-          name: items[item].name,
-          pts: items[item].pts,
-          race: items[item].race,
-          specialism: items[item].specialism,
-          str: items[item].str,
-          sv: items[item].sv,
-          tough: items[item].tough,
-          unitType: items[item].unitType,
-          wounds: items[item].wounds,
-          ws: items[item].ws,
-        });
-      }
-      this.setState({
-        firebaseUnit: newState
-      });
-    });
+		this.loadUnit()
   }
 	
+	componentDidUpdate() {
+		this.update(this.state.unit.name, this.state.unit.equipment, this.state.unit.abilities, this.state.unit.special)
+	}
+
+	loadUnit = () => {
+			this.setState({
+				unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]),
+				pts: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).pts,
+				name: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name,
+				equipment: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).equipment,
+				abilities: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).abilities,
+				special: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).special,
+				unitId: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).unitId,
+			})
+	}
+
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -75,37 +65,40 @@ class Detail extends Component {
     });
 	};
 	
-	update = event => {
-		event.preventDefault();
-		console.log(this)
-		API.updateUnit(this.props.match.params.id, {
-			name: this.state.name,
-			equipment: this.state.equipment,
-			abilities: this.state.abilities,
-			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
-		})
-		API.getUnit(this.props.match.params.id)
-		.then(res => this.setState({ unit: res.data }))
-		.catch(err => console.log(err));
+	update = (stateName, stateEquipment, stateAbilities, stateSpecial) => {
+			const item = {
+				id: this.props.match.params.id,
+				name: this.state.name,
+				equipment: this.state.equipment,
+				abilities: this.state.abilities,
+				move: this.state.unit.move,
+				ws: this.state.unit.ws,
+				bs: this.state.unit.bs,
+				str: this.state.unit.str,
+				tough: this.state.unit.tough,
+				wounds: this.state.unit.wounds,
+				att: this.state.unit.att,
+				ld: this.state.unit.ld,
+				sv: this.state.unit.sv,
+				pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
+				race: this.state.unit.race,
+				unitType: this.state.unit.unitType,
+				special: this.state.special,
+				demeanour: this.state.unit.demeanour,
+			}
+			if ((stateName !== item.name) || (stateEquipment !== item.equipment) || (stateAbilities !== item.abilities) || (stateSpecial !== item.special)) {
+				sessionStorage.setItem(`sessionUnit${this.props.match.params.id}`, JSON.stringify(item))
+				this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
+			}
 	};
 
 	handleChange3 = (wargearOptions) => {
-		// switch (wargearOptions) {
-		// 	case "none":
-		// 		this.setState({equipment: "chainsword", wargearPts: 0})
-		// 		console.log(this.state.equipment)
-		// 		break;
-		// 	default:
-		// 		this.setState({equipment: "big shoota", wargearPts: 0})
-		// 		console.log(this.state.equipment)
-		// }
     if (wargearOptions.value === "none" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
 				pts: 13,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
 			});
-			console.log(this)
     }
     if (wargearOptions.value === "flamer" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
@@ -3427,8 +3420,6 @@ class Detail extends Component {
         equipment: "hand flamer, metamorph claw, blasting charges"
 			});
 		}
-
-
 	}
 			
 	handleChange4 = (wargearOptions2) => {
@@ -3898,662 +3889,18 @@ class Detail extends Component {
       });
     }
 	}			
-			
+	
+	handleChange5 = (specialism) => {
+    this.setState({
+			special: specialism.label,
+			specialism: specialism
+		})
+	}
 
   render() {
-		const options3 = [
-      {value: 'none', label: 'none', link: 'Tactical Marine Gunner'},
-      {value: 'flamer', label: 'flamer +3pts', link: 'Tactical Marine Gunner'},
-      {value: 'meltagun', label: 'meltagun +3pts', link: 'Tactical Marine Gunner'},
-      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Tactical Marine Gunner'},
-      {value: 'grav-gun', label: 'grav-gun +2pts', link: 'Tactical Marine Gunner'},
-      {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Tactical Marine Gunner'},
-			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Tactical Marine Gunner'},
-
-			{value: 'none', label: 'none', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-flamer', label: 'combi-flamer +3pts', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-grav', label: 'combi-grav +2pts', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-melta', label: 'combi-melta +3pts', link: 'Tactical Marine Sergeant'},
-      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Tactical Marine Sergeant'},
-      {value: 'bolt pistol auspex', label: 'bolt pistol and auspex +1pts', link: 'Tactical Marine Sergeant'},
-      {value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Tactical Marine Sergeant'},
-      {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +4pts', link: 'Tactical Marine Sergeant'},
-      {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +2pts', link: 'Tactical Marine Sergeant'},
-      {value: 'plasma pistol auspex', label: 'plasma pistol and auspex +2pts', link: 'Tactical Marine Sergeant'},
-      {value: 'plasma pistol chainsword', label: 'plasma pistol and chainsword +1pts', link: 'Tactical Marine Sergeant'},
-      {value: 'plasma pistol power fist', label: 'plasma pistol and power fist +5pts', link: 'Tactical Marine Sergeant'},
-      {value: 'plasma pistol power sword', label: 'plasma pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
-      {value: 'grav-pistol auspex', label: 'grav-pistol and auspex +2pts', link: 'Tactical Marine Sergeant'},
-      {value: 'grav-pistol chainsword', label: 'grav-pistol and chainsword +1pts', link: 'Tactical Marine Sergeant'},
-      {value: 'grav-pistol power fist', label: 'grav-pistol and power fist +5pts', link: 'Tactical Marine Sergeant'},
-			{value: 'grav-pistol power sword', label: 'grav-pistol and power sword +3pts', link: 'Tactical Marine Sergeant'},
-			
-			{value: 'none', label: 'none', link: 'Scout'},
-			{value: 'combat knife', label: 'combat knife +0pts', link: 'Scout'},
-      {value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout'},
-			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout'},
-			
-			{value: 'none', label: 'none', link: 'Scout Gunner'},
-			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Scout Gunner'},
-      {value: 'missile launcher', label: 'missile launcher +5pts', link: 'Scout Gunner'},
-      {value: 'missile launcher camo cloak', label: 'missile launcher and camo cloak +6pts', link: 'Scout Gunner'},
-			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Scout Sergeant'},
-			{value: 'astartes shotgun', label: 'astartes shotgun +0pts', link: 'Scout Sergeant'},
-      {value: 'chainsword', label: 'chainsword +0pts', link: 'Scout Sergeant'},
-			{value: 'sniper rifle camo cloak', label: 'sniper rifle and camo cloak +2pts', link: 'Scout Sergeant'},
-			
-			{value: 'none', label: 'none', link: 'Intercessor'},
-			{value: 'auto bolt rifle', label: 'auto bolt rifle +0pts', link: 'Intercessor'},
-			{value: 'stalker bolt rifle', label: 'stalker bolt rifle +0pts', link: 'Intercessor'},
-			
-			{value: 'none', label: 'none', link: 'Intercessor Gunner'},
-			{value: 'auxiliary grenade launcher', label: 'auxiliary grenade launcher +0pts', link: 'Intercessor Gunner'},
-
-			{value: 'none', label: 'none', link: 'Intercessor Sergeant'},
-			{value: 'chainsword', label: 'chainsword +0pts', link: 'Intercessor Sergeant'},
-			{value: 'power sword', label: 'power sword +2pts', link: 'Intercessor Sergeant'},
-			
-			{value: 'none', label: 'none', link: 'Reiver'},
-			{value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver'},
-			
-			{value: 'none', label: 'none', link: 'Reiver Sergeant'},
-			{value: 'combat knife', label: 'combat knife +0pts', link: 'Reiver Sergeant'},
-
-			{value: 'none', label: 'none', link: 'Deathwatch Veteran'},
-			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran'},
-      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran'},
-      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran'},
-      {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran'},
-      {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran'},
-      {value: 'deathwatch shotgun', label: 'deathwatch shotgun +1pts', link: 'Deathwatch Veteran'},
-      {value: 'heavy thunder hammer', label: 'heavy thunder hammer +5pts', link: 'Deathwatch Veteran'},
-			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran'},
-			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran'},
-			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Deathwatch Veteran'},
-      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Deathwatch Veteran'},
-      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran'},
-			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Deathwatch Veteran'},
-      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Deathwatch Veteran'},
-      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran'},
-
-			{value: 'none', label: 'none', link: 'Deathwatch Veteran Gunner'},
-			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'power sword', label: 'power sword +2pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'power maul', label: 'power maul +2pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Deathwatch Veteran Gunner'},
-      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'deathwatch frag cannon', label: 'deathwatch frag cannon +5pts', link: 'Deathwatch Veteran Gunner'},
-			{value: 'infernus heavy bolter', label: 'infernus heavy bolter +2pts', link: 'Deathwatch Veteran Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Black Shield'},
-			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Black Shield'},
-      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Black Shield'},
-      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Black Shield'},
-      {value: 'power sword', label: 'power sword +2pts', link: 'Black Shield'},
-      {value: 'power maul', label: 'power maul +2pts', link: 'Black Shield'},
-			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Black Shield'},
-			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Black Shield'},
-			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Black Shield'},
-      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Black Shield'},
-      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Black Shield'},
-			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Black Shield'},
-      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Black Shield'},
-      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Black Shield'},
-			
-			{value: 'none', label: 'none', link: 'Watch Sergeant'},
-			{value: 'combi-melta', label: 'combi-melta +3pts', link: 'Watch Sergeant'},
-      {value: 'combi-plasma', label: 'combi-plasma +4pts', link: 'Watch Sergeant'},
-      {value: 'stalker pattern boltgun', label: 'stalker pattern boltgun +1pts', link: 'Watch Sergeant'},
-      {value: 'power sword', label: 'power sword +2pts', link: 'Watch Sergeant'},
-      {value: 'power maul', label: 'power maul +2pts', link: 'Watch Sergeant'},
-			{value: 'storm shield power sword', label: 'storm shield and power sword +5pts', link: 'Watch Sergeant'},
-			{value: 'storm shield power maul', label: 'storm shield and power maul +5pts', link: 'Watch Sergeant'},
-			{value: 'combi-melta power sword', label: 'combi-melta and power sword +5pts', link: 'Watch Sergeant'},
-      {value: 'combi-plasma power sword', label: 'combi-plasma and power sword +6pts', link: 'Watch Sergeant'},
-      {value: 'stalker pattern boltgun power sword', label: 'stalker pattern boltgun and power sword +3pts', link: 'Watch Sergeant'},
-			{value: 'combi-melta power maul', label: 'combi-melta and power maul +5pts', link: 'Watch Sergeant'},
-      {value: 'combi-plasma power maul', label: 'combi-plasma and power maul +6pts', link: 'Watch Sergeant'},
-      {value: 'stalker pattern boltgun power maul', label: 'stalker pattern boltgun and power maul +3pts', link: 'Watch Sergeant'},
-			{value: 'xenophase blade', label: 'xenophase blade +3pts', link: 'Watch Sergeant'},
-			{value: 'combi-melta xenophase blade', label: 'combi-melta and xenophase blade +6pts', link: 'Watch Sergeant'},
-      {value: 'combi-plasma xenophase blade', label: 'combi-plasma and xenophase blade +7pts', link: 'Watch Sergeant'},
-      {value: 'stalker pattern boltgun xenophase blade', label: 'stalker pattern boltgun and xenophase blade +4pts', link: 'Watch Sergeant'},
-			{value: 'storm shield xenophase blade', label: 'storm shield and xenophase blade +6pts', link: 'Watch Sergeant'},
-
-			{value: 'none', label: 'none', link: 'Grey Knight'},
-			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Grey Knight'},
-      {value: 'nemesis daemon hammer', label: 'nemesis daemon hammer +2pts', link: 'Grey Knight'},
-      {value: 'nemesis warding stave', label: 'nemesis warding stave +0pts', link: 'Grey Knight'},
-			{value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Grey Knight'},
-			
-			{value: 'none', label: 'none', link: 'Grey Knight Gunner'},
-			{value: 'incenerator', label: 'incenerator +3pts', link: 'Grey Knight Gunner'},
-      {value: 'psilencer', label: 'psilencer +3pts', link: 'Grey Knight Gunner'},
-			{value: 'psycannon', label: 'psycannon +2pts', link: 'Grey Knight Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Justicar'},
-			{value: 'nemesis force halberd', label: 'nemesis force halberd +0pts', link: 'Justicar'},
-      {value: 'nemesis daemon hammer', label: 'nemesis daemon hammer +2pts', link: 'Justicar'},
-      {value: 'nemesis warding stave', label: 'nemesis warding stave +0pts', link: 'Justicar'},
-			{value: 'two nemesis falchions', label: 'two nemesis falchions +1pts', link: 'Justicar'},
-
-			{value: 'none', label: 'none', link: 'Guardsman Gunner'},
-      {value: 'flamer', label: 'flamer +3pts', link: 'Guardsman Gunner'},
-      {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Guardsman Gunner'},
-      {value: 'meltagun', label: 'meltagun +3pts', link: 'Guardsman Gunner'},
-      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Guardsman Gunner'},
-			{value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Guardsman Gunner'},
-			
-	    {value: 'none', label: 'none', link: 'Sergeant'},
-	    {value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Sergeant'},
-	    {value: 'plasma pistol', label: 'plasma pistol +1pts', link: 'Sergeant'},
-	    {value: 'power sword', label: 'power sword +1pts', link: 'Sergeant'},
-	    {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +1pts', link: 'Sergeant'},
-			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +2pts', link: 'Sergeant'},
-
-			{value: 'none', label: 'none', link: 'Special Weapons Guardsman'},
-
-			{value: 'none', label: 'none', link: 'Special Weapons Gunner'},
-      {value: 'flamer', label: 'flamer +3pts', link: 'Special Weapons Gunner'},
-      {value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Special Weapons Gunner'},
-      {value: 'meltagun', label: 'meltagun +3pts', link: 'Special Weapons Gunner'},
-      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Special Weapons Gunner'},
-			{value: 'sniper rifle', label: 'sniper rifle +1pts', link: 'Special Weapons Gunner'},
-
-			{value: 'none', label: 'none', link: 'Scion Gunner'},
-			{value: 'flamer', label: 'flamer +3pts', link: 'Scion Gunner'},
-      {value: 'meltagun', label: 'meltagun +3pts', link: 'Scion Gunner'},
-      {value: 'plasma gun', label: 'plasma gun +3pts', link: 'Scion Gunner'},
-			{value: 'hot-shot volley gun', label: 'hot-shot volley gun +3pts', link: 'Scion Gunner'},
-
-	    {value: 'none', label: 'none', link: 'Tempestor'},
-	    {value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Tempestor'},
-	    {value: 'plasma pistol', label: 'plasma pistol +1pts', link: 'Tempestor'},
-	    {value: 'power sword', label: 'power sword +1pts', link: 'Tempestor'},
-	    {value: 'power fist', label: 'power fist +2pts', link: 'Tempestor'},
-	    {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +1pts', link: 'Tempestor'},
-			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +2pts', link: 'Tempestor'},
-	    {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +2pts', link: 'Tempestor'},
-			{value: 'plasma pistol power fist', label: 'plasma pistol and power fist +3pts', link: 'Tempestor'},
-
-			{value: 'none', label: 'none', link: 'Ranger Gunner'},
-			{value: 'arc rifle', label: 'arc rifle +0pts', link: 'Ranger Gunner'},
-			{value: 'plasma caliver', label: 'plasma caliver +3pts', link: 'Ranger Gunner'},
-			{value: 'transuranic arquebus', label: 'transuranic arquebus +5pts', link: 'Ranger Gunner'},
-
-			{value: 'none', label: 'none', link: 'Ranger Alpha'},
-			{value: 'arc pistol arc maul', label: 'arc pistol and arc maul +0pts', link: 'Ranger Alpha'},
-			{value: 'arc pistol power sword', label: 'arc pistol and power sword +0pts', link: 'Ranger Alpha'},
-			{value: 'arc pistol taser goad', label: 'arc pistol and taser goad +1pts', link: 'Ranger Alpha'},
-			{value: 'radium pistol arc maul', label: 'radium pistol and arc maul +0pts', link: 'Ranger Alpha'},
-			{value: 'radium pistol power sword', label: 'radium pistol and power sword +0pts', link: 'Ranger Alpha'},
-			{value: 'radium pistol taser goad', label: 'radium pistol and taser goad +1pts', link: 'Ranger Alpha'},
-			{value: 'phosphor blast pistol arc maul', label: 'phosphor blast pistol and arc maul +0pts', link: 'Ranger Alpha'},
-			{value: 'phosphor blast pistol power sword', label: 'phosphor blast pistol and power sword +0pts', link: 'Ranger Alpha'},
-			{value: 'phosphor blast pistol taser goad', label: 'phosphor blast pistol and taser goad +1pts', link: 'Ranger Alpha'},
-
-			{value: 'none', label: 'none', link: 'Vanguard Gunner'},
-			{value: 'arc rifle', label: 'arc rifle +0pts', link: 'Vanguard Gunner'},
-			{value: 'plasma caliver', label: 'plasma caliver +3pts', link: 'Vanguard Gunner'},
-			{value: 'transuranic arquebus', label: 'transuranic arquebus +5pts', link: 'Vanguard Gunner'},
-
-			{value: 'none', label: 'none', link: 'Vanguard Alpha'},
-			{value: 'arc pistol arc maul', label: 'arc pistol and arc maul +0pts', link: 'Vanguard Alpha'},
-			{value: 'arc pistol power sword', label: 'arc pistol and power sword +0pts', link: 'Vanguard Alpha'},
-			{value: 'arc pistol taser goad', label: 'arc pistol and taser goad +1pts', link: 'Vanguard Alpha'},
-			{value: 'radium pistol arc maul', label: 'radium pistol and arc maul +0pts', link: 'Vanguard Alpha'},
-			{value: 'radium pistol power sword', label: 'radium pistol and power sword +0pts', link: 'Vanguard Alpha'},
-			{value: 'radium pistol taser goad', label: 'radium pistol and taser goad +1pts', link: 'Vanguard Alpha'},
-			{value: 'phosphor blast pistol arc maul', label: 'phosphor blast pistol and arc maul +0pts', link: 'Vanguard Alpha'},
-			{value: 'phosphor blast pistol power sword', label: 'phosphor blast pistol and power sword +0pts', link: 'Vanguard Alpha'},
-			{value: 'phosphor blast pistol taser goad', label: 'phosphor blast pistol and taser goad +1pts', link: 'Vanguard Alpha'},
-
-			{value: 'none', label: 'none', link: 'Sicarian Ruststalker'},
-			{value: 'transonic blades', label: 'transonic blades +0pts', link: 'Sicarian Ruststalker'},
-
-			{value: 'none', label: 'none', link: 'Ruststalker Princeps'},
-			{value: 'transonic blades', label: 'transonic blades +0pts', link: 'Ruststalker Princeps'},
-
-			{value: 'none', label: 'none', link: 'Sicarian Infiltrator'},
-			{value: 'flechette blaster taser goad', label: 'flechette blaster and taser goad +1pts', link: 'Sicarian Infiltrator'},
-
-			{value: 'none', label: 'none', link: 'Infiltrator Princeps'},
-			{value: 'flechette blaster taser goad', label: 'flechette blaster and taser goad +1pts', link: 'Infiltrator Princeps'},
-
-			{value: 'none', label: 'none', link: 'Chaos Cultist'},
-			{value: 'brutal assault weapon autopistol', label: 'brutal assault weapon and autopistol +0pts', link: 'Chaos Cultist'},
-
-			{value: 'none', label: 'none', link: 'Chaos Cultist Gunner'},
-			{value: 'flamer', label: 'flamer +3pts', link: 'Chaos Cultist Gunner'},
-			{value: 'heavy stubber', label: 'heavy stubber +0pts', link: 'Chaos Cultist Gunner'},
-
-			{value: 'none', label: 'none', link: 'Cultist Champion'},
-			{value: 'shotgun', label: 'shotgun +0pts', link: 'Cultist Champion'},
-			{value: 'brutal assault weapon autopistol', label: 'brutal assault weapon and autopistol +0pts', link: 'Cultist Champion'},
-
-			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
-			{value: 'chainsword', label: 'chainsword +0pts', link: 'Chaos Space Marine'},
-
-			{value: 'none', label: 'none', link: 'Chaos Space Marine Gunner'},
-			{value: 'flamer', label: 'flamer +3pts', link: 'Chaos Space Marine Gunner'},
-			{value: 'meltagun', label: 'meltagun +3pts', link: 'Chaos Space Marine Gunner'},
-			{value: 'plasma gun', label: 'plasma gun +3pts', link: 'Chaos Space Marine Gunner'},
-			{value: 'heavy bolter', label: 'heavy bolter +3pts', link: 'Chaos Space Marine Gunner'},
-
-			{value: 'none', label: 'none', link: 'Aspiring Champion'},
-      {value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Aspiring Champion'},
-      {value: 'bolt pistol power fist', label: 'bolt pistol and power fist +4pts', link: 'Aspiring Champion'},
-      {value: 'bolt pistol power sword', label: 'bolt pistol and power sword +2pts', link: 'Aspiring Champion'},
-      {value: 'plasma pistol chainsword', label: 'plasma pistol and chainsword +1pts', link: 'Aspiring Champion'},
-      {value: 'plasma pistol power fist', label: 'plasma pistol and power fist +5pts', link: 'Aspiring Champion'},
-			{value: 'plasma pistol power sword', label: 'plasma pistol and power sword +3pts', link: 'Aspiring Champion'},
-
-			{value: 'none', label: 'none', link: 'Plague Marine Gunner'},
-			{value: 'blight launcher', label: 'blight launcher +3pts', link: 'Plague Marine Gunner'},
-			{value: 'meltagun', label: 'meltagun +3pts', link: 'Plague Marine Gunner'},
-			{value: 'plague spewer', label: 'plague spewer +4pts', link: 'Plague Marine Gunner'},
-			{value: 'plague belcher', label: 'plague belcher +3pts', link: 'Plague Marine Gunner'},
-			{value: 'plasma gun', label: 'plasma gun +3pts', link: 'Plague Marine Gunner'},
-
-			{value: 'none', label: 'none', link: 'Plague Marine Fighter'},
-			{value: 'bubotic axe', label: 'bubotic axe +2pts', link: 'Plague Marine Fighter'},
-			{value: 'great plague cleaver', label: 'great plague cleaver +4pts', link: 'Plague Marine Fighter'},
-			{value: 'flail of corruption', label: 'flail of corruption +4pts', link: 'Plague Marine Fighter'},
-			{value: 'second plague knife', label: 'second plague knife +0pts', link: 'Plague Marine Fighter'},
-			{value: 'mace of contagion bubotic axe', label: 'mace of contagion and bubotic axe +5pts', link: 'Plague Marine Fighter'},
-
-			{value: 'none', label: 'none', link: 'Plague Champion'},
-			{value: 'plaguesword', label: 'plaguesword +0pts', link: 'Plague Champion'},
-			{value: 'bolt pistol', label: 'bolt pistol +0pts', link: 'Plague Champion'},
-			{value: 'plasma pistol', label: 'plasma pistol +1pts', link: 'Plague Champion'},
-			{value: 'plasma gun', label: 'plasma gun +3pts', link: 'Plague Champion'},
-			{value: 'power fist', label: 'power fist +4pts', link: 'Plague Champion'},
-			{value: 'plaguesword bolt pistol', label: 'plaguesword and bolt pistol +0pts', link: 'Plague Champion'},
-			{value: 'plaguesword plasma pistol', label: 'plaguesword and plasma pistol +1pts', link: 'Plague Champion'},
-			{value: 'plaguesword plasma gun', label: 'plaguesword and plasma gun +3pts', link: 'Plague Champion'},
-			{value: 'power fist bolt pistol', label: 'power fist and bolt pistol +4pts', link: 'Plague Champion'},
-			{value: 'power fist plasma pistol', label: 'power fist and plasma pistol +5pts', link: 'Plague Champion'},
-			{value: 'power fist plasma gun', label: 'power fist and plasma gun +7pts', link: 'Plague Champion'},
-
-			{value: 'none', label: 'none', link: 'Rubric Marine'},
-			{value: 'Icon of Flame', label: 'Icon of Flame +1pts', link: 'Rubric Marine'},
-			{value: 'warpflamer', label: 'warpflamer +4pts', link: 'Rubric Marine'},
-			
-			{value: 'none', label: 'none', link: 'Rubric Marine Gunner'},
-			{value: 'soulreaper cannon', label: 'soulreaper cannon +4pts', link: 'Rubric Marine Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Aspiring Sorcerer'},
-			{value: 'warpflame pistol', label: 'warpflame pistol +1pts', link: 'Aspiring Sorcerer'},
-			
-			{value: 'none', label: 'none', link: 'Tzaangor'},
-			{value: 'autopistol chainsword', label: 'autopistol and chainsword +0pts', link: 'Tzaangor'},
-			
-			{value: 'none', label: 'none', link: 'Heavy Weapon Platform'},
-			{value: 'aeldari missile launcher', label: 'aeldari missile launcher +5pts', link: 'Heavy Weapon Platform'},
-			{value: 'bright lance', label: 'bright lance +4pts', link: 'Heavy Weapon Platform'},
-			{value: 'scatter laser', label: 'scatter laser +2pts', link: 'Heavy Weapon Platform'},
-			{value: 'starcannon', label: 'starcannon +3pts', link: 'Heavy Weapon Platform'},
-			
-			{value: 'none', label: 'none', link: 'Storm Guardian'},
-			{value: 'chainsword', label: 'chainsword +0pts', link: 'Storm Guardian'},
-			
-			{value: 'none', label: 'none', link: 'Storm Guardian Gunner'},
-			{value: 'flamer', label: 'flamer +3pts', link: 'Storm Guardian Gunner'},
-			{value: 'fusion gun', label: 'fusion gun +3pts', link: 'Storm Guardian Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Dire Avenger Exarch'},
-			{value: 'two avenger shuriken catapults', label: 'two avenger shuriken catapults +0pts', link: 'Dire Avenger Exarch'},
-			{value: 'shuriken pistol power glaive', label: 'shuriken pistol and power glaive +1pts', link: 'Dire Avenger Exarch'},
-			{value: 'shuriken pistol diresword', label: 'shuriken pistol and diresword +2pts', link: 'Dire Avenger Exarch'},
-			{value: 'shimmershield power glaive', label: 'shimmershield and power glaive +5pts', link: 'Dire Avenger Exarch'},
-			
-      {value: 'none', label: 'none', link: 'Kabalite Gunner'},
-			{value: 'splinter cannon', label: 'splinter cannon +0pts', link: 'Kabalite Gunner'},
-			{value: 'dark lance', label: 'dark lance +4pts', link: 'Kabalite Gunner'},
-			{value: 'shredder', label: 'shredder +1pts', link: 'Kabalite Gunner'},
-			{value: 'blaster', label: 'blaster +3pts', link: 'Kabalite Gunner'},
-			
-      {value: 'none', label: 'none', link: 'Sybarite'},
-			{value: 'power sword', label: 'power sword +2pts', link: 'Sybarite'},
-			{value: 'agonizer', label: 'agonizer +2pts', link: 'Sybarite'},
-			{value: 'phantasm grenade launcher', label: 'phantasm grenade launcher +1pts', link: 'Sybarite'},
-			{value: 'splinter pistol', label: 'splinter pistol +0pts', link: 'Sybarite'},
-			{value: 'blast pistol', label: 'blast pistol +2pts', link: 'Sybarite'},
-			{value: 'power sword phantasm grenade launcher', label: 'power sword and phantasm grenade launcher +3pts', link: 'Sybarite'},
-			{value: 'power sword blast pistol', label: 'agonizer and phantasm grenade launcher +3pts', link: 'Sybarite'},
-			{value: 'power sword blast pistol', label: 'power sword and blast pistol +4pts', link: 'Sybarite'},
-			{value: 'agonizer blast pistol', label: 'agonizer and blast pistol +4pts', link: 'Sybarite'},
-			{value: 'power sword splinter pistol', label: 'power sword and splinter pistol +2pts', link: 'Sybarite'},
-			{value: 'agonizer splinter pistol', label: 'agonizer and splinter pistol +2pts', link: 'Sybarite'},
-			{value: 'power sword splinter pistol phantasm grenade launcher', label: 'power sword, splinter pistol, and phantasm grenade launcher +3pts', link: 'Sybarite'},
-			{value: 'agonizer splinter pistol phantasm grenade launcher', label: 'agonizer, splinter pistol, and phantasm grenade launcher +3pts', link: 'Sybarite'},
-			{value: 'power sword blast pistol phantasm grenade launcher', label: 'power sword, blast pistol, and phantasm grenade launcher +5pts', link: 'Sybarite'},
-			{value: 'agonizer blast pistol phantasm grenade launcher', label: 'agonizer, blast pistol, and phantasm grenade launcher +5pts', link: 'Sybarite'},
-			
-      {value: 'none', label: 'none', link: 'Wych Fighter'},
-			{value: 'hydra gauntlets', label: 'hydra gauntlets +2pts', link: 'Wych Fighter'},
-			{value: 'razorflails', label: 'razorflails +2pts', link: 'Wych Fighter'},
-			{value: 'shardnet and impaler', label: 'shardnet and impaler +2pts', link: 'Wych Fighter'},
-			
-      {value: 'none', label: 'none', link: 'Hekatrix'},
-			{value: 'power sword', label: 'power sword +2pts', link: 'Hekatrix'},
-			{value: 'agonizer', label: 'agonizer +2pts', link: 'Hekatrix'},
-			{value: 'blast pistol', label: 'blast pistol +2pts', link: 'Hekatrix'},
-			{value: 'power sword blast pistol', label: 'power sword and blast pistol +4pts', link: 'Hekatrix'},
-			{value: 'agonizer blast pistol', label: 'agonizer and blast pistol +4pts', link: 'Hekatrix'},
-      {value: 'phantasm grenade launcher', label: 'phantasm grenade launcher +1pts', link: 'Hekatrix'},
-      {value: 'power sword phantasm grenade launcher', label: 'power sword phantasm grenade launcher +3pts', link: 'Hekatrix'},
-      {value: 'agonizer phantasm grenade launcher', label: 'agonizer phantasm grenade launcher +3pts', link: 'Hekatrix'},
-			{value: 'power sword blast pistol phantasm grenade launcher', label: 'power sword, blast pistol, and phantasm grenade launcher +5pts', link: 'Hekatrix'},
-			{value: 'agonizer blast pistol phantasm grenade launcher', label: 'agonizer, blast pistol, and phantasm grenade launcher +5pts', link: 'Hekatrix'},
-			
-			{value: 'none', label: 'none', link: 'Player'},
-			{value: 'neuro disruptor', label: 'neuro disruptor +2pts', link: 'Player'},
-      {value: 'fusion pistol', label: 'fusion pistol +3pts', link: 'Player'},
-      {value: "harlequin's caress", label: "harlequin's caress +3pts", link: "Player"},
-      {value: "harlequin's embrace", label: "harlequin's embrace +2pts", link: "Player"},
-      {value: "harlequin's kiss", label: "harlequin's kiss +4pts", link: "Player"},
-      {value: "neuro disruptor harlequin's caress", label: "neuro disruptor and harlequin's caress +5pts", link: "Player"},
-      {value: "neuro disruptor harlequin's embrace", label: "neuro disruptor and harlequin's embrace +4pts", link: "Player"},
-      {value: "neuro disruptor harlequin's kiss", label: "neuro disruptor and harlequin's kiss +6pts", link: "Player"},
-      {value: "fusion pistol harlequin's caress", label: "fusion pistol and harlequin's caress +6pts", link: "Player"},
-      {value: "fusion pistol harlequin's embrace", label: "fusion pistol and harlequin's embrace +5pts", link: "Player"},
-			{value: "fusion pistol harlequin's kiss", label: "fusion pistol and harlequin's kiss +7pts", link: "Player"},
-			
-			{value: 'none', label: 'none', link: 'Immortal'},
-			{value: 'tesla carbine', label: 'tesla carbine +0pts', link: 'Immortal'},
-			
-			{value: 'none', label: 'none', link: 'Ork Boy'},
-			{value: 'shoota', label: 'shoota +0pts', link: 'Ork Boy'},
-			
-			{value: 'none', label: 'none', link: 'Ork Boy Gunner'},
-			{value: 'big shoota', label: 'big shoota +0pts', link: 'Ork Boy Gunner'},
-			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Ork Boy Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Boss Nob'},
-			{value: 'big choppa', label: 'big choppa +2pts', link: 'Boss Nob'},
-			{value: 'power klaw', label: 'power klaw +4pts', link: 'Boss Nob'},
-			{value: 'kombi-weapon with rokkit launcha', label: 'kombi-weapon with rokkit launcha +3pts', link: 'Boss Nob'},
-			{value: 'big choppa kombi-weapon with rokkit launcha', label: 'big choppa and kombi-weapon with rokkit launcha +5pts', link: 'Boss Nob'},
-			{value: 'kombi-weapon with skorcha', label: 'kombi-weapon with skorcha +4pts', link: 'Boss Nob'},
-			{value: 'big choppa kombi-weapon with skorcha', label: 'big choppa and kombi-weapon with skorcha +6pts', link: 'Boss Nob'},
-			{value: 'power klaw kombi-weapon with rokkit launcha', label: 'power klaw and kombi-weapon with rokkit launcha +7pts', link: 'Boss Nob'},
-			{value: 'power klaw kombi-weapon with skorcha', label: 'power klaw and kombi-weapon with skorcha +8pts', link: 'Boss Nob'},
-			
-			{value: 'none', label: 'none', link: 'Kommando Boss Nob'},
-			{value: 'power klaw', label: 'power klaw +4pts', link: 'Kommando Boss Nob'},
-			
-			{value: 'none', label: 'none', link: 'Burna Spanner'},
-			{value: 'kustom mega-blasta', label: 'kustom mega-blasta +0pts', link: 'Burna Spanner'},
-			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Burna Spanner'},
-			
-			{value: 'none', label: 'none', link: 'Loota Spanner'},
-			{value: 'kustom mega-blasta', label: 'kustom mega-blasta +0pts', link: 'Loota Spanner'},
-			{value: 'rokkit launcha', label: 'rokkit launcha +3pts', link: 'Loota Spanner'},
-			
-			{value: 'none', label: 'none', link: 'Shasla'},
-			{value: 'pulse carbine', label: 'pulse carbine +0pts', link: 'Shasla'},
-			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Shasla'},
-			
-			{value: 'none', label: 'none', link: 'Shasui'},
-			{value: 'pulse carbine', label: 'pulse carbine +0pts', link: 'Shasui'},
-			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Shasui'},
-			{value: 'markerlight', label: 'markerlight +0pts', link: 'Shasui'},
-			{value: 'pulse carbine markerlight', label: 'pulse carbine and markerlight +0pts', link: 'Shasui'},
-			{value: 'pulse pistol markerlight', label: 'pulse pistol and markerlight +0pts', link: 'Shasui'},
-			
-			{value: 'none', label: 'none', link: 'Pathfinder Gunner'},
-			{value: 'ion rifle', label: 'ion rifle +3pts', link: 'Pathfinder Gunner'},
-			{value: 'rail rifle', label: 'rail rifle +5pts', link: 'Pathfinder Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Pathfinder Shasui'},
-			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Pathfinder Shasui'},
-			
-			{value: 'none', label: 'none', link: 'Breacher Shasla'},
-			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Breacher Shasla'},
-			
-			{value: 'none', label: 'none', link: 'Breacher Shasui'},
-			{value: 'pulse pistol', label: 'pulse pistol +0pts', link: 'Breacher Shasui'},
-			{value: 'markerlight', label: 'markerlight +0pts', link: 'Breacher Shasui'},
-			{value: 'pulse pistol markerlight', label: 'pulse pistol and markerlight +0pts', link: 'Breacher Shasui'},
-			
-			{value: 'none', label: 'none', link: 'Stealth Shasui'},
-			{value: 'fusion blaster', label: 'fusion blaster +4pts', link: 'Stealth Shasui'},
-			
-			{value: 'none', label: 'none', link: 'Stealth Shasvre'},
-			{value: 'fusion blaster', label: 'fusion blaster +4pts', link: 'Stealth Shasvre'},
-			{value: 'markerlight and target lock', label: 'markerlight and target lock +1pts', link: 'Stealth Shasvre'},
-			{value: 'fusion blaster markerlight and target lock', label: 'fusion blaster, markerlight, and target lock +5pts', link: 'Stealth Shasvre'},
-			
-			{value: 'none', label: 'none', link: 'Termagant'},
-			{value: 'devourer', label: 'devourer +3pts', link: 'Termagant'},
-			{value: 'spinefists', label: 'spinefists +0pts', link: 'Termagant'},
-			
-			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
-			{value: 'rending claws', label: 'rending claws +0pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords', label: 'boneswords +0pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
-			{value: 'deathspitter', label: 'deathspitter +2pts', link: 'Tyranid Warrior'},
-			{value: 'rending claws deathspitter', label: 'rending claws and deathspitter +2pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords deathspitter', label: 'boneswords and deathspitter +2pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword deathspitter', label: 'lash whip and bonesword and deathspitter +3pts', link: 'Tyranid Warrior'},
-			{value: 'spinefists', label: 'spinefists +0pts', link: 'Tyranid Warrior'},
-			{value: 'rending claws spinefists', label: 'rending claws and spinefists +1pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords spinefists', label: 'boneswords and spinefists +0pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword spinefists', label: 'lash whip and bonesword and spinefists +1pts', link: 'Tyranid Warrior'},
-			{value: 'rending claws x2', label: 'rending claws x2 +0pts', link: 'Tyranid Warrior'},
-			{value: 'scything talons rending claws', label: 'scything talons and rending claws +0pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords rending claws', label: 'boneswords and rending claws +0pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword rending claws', label: 'lash whip and bonesword and rending claws +1pts', link: 'Tyranid Warrior'},
-			{value: 'scything talons x2', label: 'scything talons x2 +0pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords scything talons', label: 'boneswords and scything talons +0pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword scything talons', label: 'lash whip and bonesword and scything talons +1pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior'},
-			{value: 'boneswords lash whip and bonesword', label: 'boneswords, lash whip and bonesword +1pts', link: 'Tyranid Warrior'},
-			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior'},
-			
-			{value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws', label: 'rending claws +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords', label: 'boneswords +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'deathspitter', label: 'deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws deathspitter', label: 'rending claws and deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords deathspitter', label: 'boneswords and deathspitter +2pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword deathspitter', label: 'lash whip and bonesword and deathspitter +3pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'spinefists', label: 'spinefists +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws spinefists', label: 'rending claws and spinefists +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords spinefists', label: 'boneswords and spinefists +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword spinefists', label: 'lash whip and bonesword and spinefists +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws x2', label: 'rending claws x2 +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'scything talons rending claws', label: 'scything talons and rending claws +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords rending claws', label: 'boneswords and rending claws +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword rending claws', label: 'lash whip and bonesword and rending claws +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'scything talons x2', label: 'scything talons x2 +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords scything talons', label: 'boneswords and scything talons +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword scything talons', label: 'lash whip and bonesword and scything talons +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords x2', label: 'boneswords x2 +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords lash whip and bonesword', label: 'boneswords, lash whip and bonesword +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword x2', label: 'lash whip and bonesword x2 +2pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'barbed strangler', label: 'barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws barbed strangler', label: 'rending claws and barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords barbed strangler', label: 'boneswords and barbed strangler +3pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword barbed strangler', label: 'lash whip and bonesword, barbed strangler +4pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'venom cannon', label: 'venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'rending claws venom cannon', label: 'rending claws and venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'boneswords venom cannon', label: 'boneswords and venom cannon +4pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'lash whip and bonesword venom cannon', label: 'lash whip and bonesword, venom cannon +5pts', link: 'Tyranid Warrior Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Genestealer'},
-			{value: 'scything talons', label: 'scything talons +0pts', link: 'Genestealer'},
-			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Genestealer'},
-			{value: 'scything talons flesh hooks', label: 'scything talons and flesh hooks +0pts', link: 'Genestealer'},
-			{value: 'acid maw', label: 'acid maw +0pts', link: 'Genestealer'},
-			{value: 'scything talons acid maw', label: 'scything talons and acid maw +0pts', link: 'Genestealer'},
-			
-			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
-			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid'},
-      
-			{value: 'none', label: 'none', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock drill', label: 'heavy rock drill +5pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock saw', label: 'heavy rock saw +4pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'heavy rock cutter', label: 'heavy rock cutter +4pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'demolition charges', label: 'demolition charges +3pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock drill', label: 'hand flamer and heavy rock drill +7pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock saw', label: 'hand flamer and heavy rock saw +6pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer heavy rock cutter', label: 'hand flamer and heavy rock cutter +6pts', link: 'Acolyte Hybrid Fighter'},
-			{value: 'hand flamer demolition charges', label: 'hand flamer and demolition charges +5pts', link: 'Acolyte Hybrid Fighter'},
-			
-			{value: 'none', label: 'none', link: 'Acolyte Leader'},
-			{value: 'hand flamer', label: 'hand flamer +2pts', link: 'Acolyte Leader'},
-			{value: 'bonesword', label: 'bonesword +1pts', link: 'Acolyte Leader'},
-			{value: 'lash whip and bonesword', label: 'lash whip and bonesword +2pts', link: 'Acolyte Leader'},
-			
-			{value: 'none', label: 'none', link: 'Aberrant'},
-			{value: 'power hammer', label: 'power hammer +4pts', link: 'Aberrant'},
-			
-			{value: 'none', label: 'none', link: 'Neophyte Hybrid'},
-			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Hybrid'},
-			
-			{value: 'none', label: 'none', link: 'Neophyte Gunner'},
-			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Gunner'},
-			{value: 'flamer', label: 'flamer +3pts', link: 'Neophyte Gunner'},
-			{value: 'grenade launcher', label: 'grenade launcher +2pts', link: 'Neophyte Gunner'},
-			{value: 'webber', label: 'webber +1pts', link: 'Neophyte Gunner'},
-			{value: 'heavy stubber', label: 'heavy stubber +0pts', link: 'Neophyte Gunner'},
-			{value: 'mining laser', label: 'mining laser +3pts', link: 'Neophyte Gunner'},
-			{value: 'seismic cannon', label: 'seismic cannon +2pts', link: 'Neophyte Gunner'},
-			
-			{value: 'none', label: 'none', link: 'Neophyte Leader'},
-			{value: 'shotgun', label: 'shotgun +0pts', link: 'Neophyte Leader'},
-			{value: 'autopistol chainsword', label: 'autopistol and chainsword +0pts', link: 'Neophyte Leader'},
-			{value: 'autopistol power maul', label: 'autopistol and power maul +1pts', link: 'Neophyte Leader'},
-			{value: 'autopistol power pick', label: 'autopistol and power pick +3pts', link: 'Neophyte Leader'},
-			{value: 'bolt pistol chainsword', label: 'bolt pistol and chainsword +0pts', link: 'Neophyte Leader'},
-			{value: 'bolt Pistol power maul', label: 'bolt Pistol and power maul +1pts', link: 'Neophyte Leader'},
-			{value: 'bolt pistol power pick', label: 'bolt pistol and power pick +3pts', link: 'Neophyte Leader'},
-			{value: 'web pistol chainsword', label: 'web pistol and chainsword +0pts', link: 'Neophyte Leader'},
-			{value: 'web pistol power maul', label: 'web pistol and power maul +1pts', link: 'Neophyte Leader'},
-			{value: 'web pistol power pick', label: 'web pistol and power pick +3pts', link: 'Neophyte Leader'},
-			
-			{value: 'none', label: 'none', link: 'Hybrid Metamorph'},
-			{value: 'metamorph talon', label: 'metamorph talon +0pts', link: 'Hybrid Metamorph'},
-			{value: 'metamorph whip', label: 'metamorph whip +1pts', link: 'Hybrid Metamorph'},
-			{value: 'metamorph claw', label: 'metamorph claw +1pts', link: 'Hybrid Metamorph'},
-			{value: 'hand flamer metamorph talon', label: 'hand flamer and metamorph talon +2pts', link: 'Hybrid Metamorph'},
-			{value: 'hand flamer metamorph whip', label: 'hand flamer and metamorph whip +3pts', link: 'Hybrid Metamorph'},
-			{value: 'hand flamer metamorph claw', label: 'hand flamer and metamorph claw +3pts', link: 'Hybrid Metamorph'},
-			
-			{value: 'none', label: 'none', link: 'Metamorph Leader'},
-			{value: 'metamorph talon', label: 'metamorph talon +0pts', link: 'Metamorph Leader'},
-			{value: 'metamorph whip', label: 'metamorph whip +1pts', link: 'Metamorph Leader'},
-			{value: 'metamorph claw', label: 'metamorph claw +1pts', link: 'Metamorph Leader'},
-			{value: 'hand flamer metamorph talon', label: 'hand flamer and metamorph talon +2pts', link: 'Metamorph Leader'},
-			{value: 'hand flamer metamorph whip', label: 'hand flamer and metamorph whip +3pts', link: 'Metamorph Leader'},
-			{value: 'hand flamer metamorph claw', label: 'hand flamer and metamorph claw +3pts', link: 'Metamorph Leader'},
-			{value: 'bonesword metamorph talon', label: 'bonesword metamorph talon +1pts', link: 'Metamorph Leader'},
-			{value: 'bonesword metamorph whip', label: 'bonesword metamorph whip +2pts', link: 'Metamorph Leader'},
-			{value: 'bonesword metamorph claw', label: 'bonesword metamorph claw +2pts', link: 'Metamorph Leader'},
-			{value: 'bonesword hand flamer metamorph talon', label: 'bonesword hand flamer and metamorph talon +3pts', link: 'Metamorph Leader'},
-			{value: 'bonesword hand flamer metamorph whip', label: 'bonesword hand flamer and metamorph whip +4pts', link: 'Metamorph Leader'},
-			{value: 'bonesword hand flamer metamorph claw', label: 'bonesword hand flamer and metamorph claw +4pts', link: 'Metamorph Leader'},
-    ];
-		
-		const options4 = [
-			{value: 'none', label: 'none', link: 'Reiver'},
-      {value: 'Grav-Chute', label: 'Grav-Chute +1pts', link: 'Reiver'},
-			{value: 'Grapnel Launcher', label: 'Grapnel Launcher +1pts', link: 'Reiver'},
-			{value: 'Grav-Chute Grapnel Launcher', label: 'Grav-Chute and Grapnel Launcher +2pts', link: 'Reiver'},
-			
-      {value: 'none', label: 'none', link: 'Reiver Sergeant'},
-      {value: 'Grav-Chute', label: 'Grav-Chute +1pts', link: 'Reiver Sergeant'},
-			{value: 'Grapnel Launcher', label: 'Grapnel Launcher +1pts', link: 'Reiver Sergeant'},
-			{value: 'Grav-Chute Grapnel Launcher', label: 'Grav-Chute and Grapnel Launcher +2pts', link: 'Reiver Sergeant'},
-			
-			{value: 'none', label: 'none', link: 'Guardsman'},
-			{value: 'Vox-Caster', label: 'Vox-Caster +5pts', link: 'Guardsman'},
-			
-			{value: 'none', label: 'none', link: 'Scion'},
-			{value: 'Vox-Caster', label: 'Vox-Caster +5pts', link: 'Scion'},
-			
-			{value: 'none', label: 'none', link: 'Skitarii Ranger'},
-			{value: 'Enhanced Data-Tether', label: 'Enhanced Data-Tether +5pts', link: 'Skitarii Ranger'},
-			{value: 'Omnispex', label: 'Omnispex +1pts', link: 'Skitarii Ranger'},
-			
-			{value: 'none', label: 'none', link: 'Skitarii Vanguard'},
-			{value: 'Enhanced Data-Tether', label: 'Enhanced Data-Tether +5pts', link: 'Skitarii Vanguard'},
-			{value: 'Omnispex', label: 'Omnispex +1pts', link: 'Skitarii Vanguard'},
-			
-			{value: 'none', label: 'none', link: 'Chaos Space Marine'},
-			{value: 'Icon of Despair', label: 'Icon of Despair +3pts', link: 'Chaos Space Marine'},
-			{value: 'Icon of Wrath', label: 'Icon of Wrath +5pts', link: 'Chaos Space Marine'},
-			{value: 'Icon of Flame', label: 'Icon of Flame +1pts', link: 'Chaos Space Marine'},
-			{value: 'Icon of Excess', label: 'Icon of Excess +5pts', link: 'Chaos Space Marine'},
-			{value: 'Icon of Vengeance', label: 'Icon of Vengeance +1pts', link: 'Chaos Space Marine'},
-			
-			{value: 'none', label: 'none', link: 'Plague Marine'},
-			{value: 'Icon of Despair', label: 'Icon of Despair +3pts', link: 'Plague Marine'},
-
-			{value: 'none', label: 'none', link: 'Rubric Marine'},
-			{value: 'Icon of Flame', label: 'Icon of Flame +1pts', link: 'Rubric Marine'},
-			
-			{value: 'none', label: 'none', link: 'Tzaangor'},
-			{value: 'Brayhorn', label: 'Brayhorn +3pts', link: 'Tzaangor'},
-			
-			{value: 'none', label: 'none', link: 'Termagant'},
-			{value: 'Adrenal Glands', label: 'Adrenal Glands +1pts', link: 'Termagant'},
-			{value: 'Toxin Sacs', label: 'Toxin Sacs +1pts', link: 'Termagant'},
-			{value: 'Adrenal Glands Toxin Sacs', label: 'Adrenal Glands and Toxin Sacs +2pts', link: 'Termagant'},
-						
-			{value: 'none', label: 'none', link: 'Hormagaunt'},
-			{value: 'Adrenal Glands', label: 'Adrenal Glands +1pts', link: 'Hormagaunt'},
-			{value: 'Toxin Sacs', label: 'Toxin Sacs +1pts', link: 'Hormagaunt'},
-			{value: 'Adrenal Glands Toxin Sacs', label: 'Adrenal Glands and Toxin Sacs +2pts', link: 'Hormagaunt'},
-
-			{value: 'none', label: 'none', link: 'Genestealer'},
-			{value: 'Extended Carapace', label: 'Extended Carapace +0pts', link: 'Genestealer'},
-			{value: 'Toxin Sacs', label: 'Toxin Sacs +1pts', link: 'Genestealer'},
-			{value: 'Extended Carapace Toxin Sacs', label: 'Extended Carapace and Toxin Sacs +1pts', link: 'Genestealer'},
-
-			{value: 'none', label: 'none', link: 'Tyranid Warrior'},
-			{value: 'Toxin Sacs', label: 'Toxin Sacs +1pts', link: 'Tyranid Warrior'},
-			{value: 'Adrenal Glands', label: 'Adrenal Glands +1pts', link: 'Tyranid Warrior'},
-			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior'},
-			{value: 'Adrenal Glands Toxin Sacs', label: 'Adrenal Glands and Toxin Sacs +2pts', link: 'Tyranid Warrior'},
-			{value: 'Adrenal Glands flesh hooks', label: 'Adrenal Glands and flesh hooks +1pts', link: 'Tyranid Warrior'},
-			{value: 'Toxin Sacs flesh hooks', label: 'Toxin Sacs and flesh hooks +1pts', link: 'Tyranid Warrior'},
-			{value: 'Adrenal Glands Toxin Sacs flesh hooks', label: 'Adrenal Glands, Toxin Sacs, and flesh hooks +2pts', link: 'Tyranid Warrior'},
-
-			{value: 'none', label: 'none', link: 'Tyranid Warrior Gunner'},
-			{value: 'Toxin Sacs', label: 'Toxin Sacs +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'Adrenal Glands', label: 'Adrenal Glands +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'flesh hooks', label: 'flesh hooks +0pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'Adrenal Glands Toxin Sacs', label: 'Adrenal Glands and Toxin Sacs +2pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'Adrenal Glands flesh hooks', label: 'Adrenal Glands and flesh hooks +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'Toxin Sacs flesh hooks', label: 'Toxin Sacs and flesh hooks +1pts', link: 'Tyranid Warrior Gunner'},
-			{value: 'Adrenal Glands Toxin Sacs flesh hooks', label: 'Adrenal Glands, Toxin Sacs, and flesh hooks +2pts', link: 'Tyranid Warrior Gunner'},
-
-			{value: 'none', label: 'none', link: 'Acolyte Hybrid'},
-			{value: 'Cult Icon', label: 'Cult Icon +5pts', link: 'Acolyte Hybrid'},
-
-			{value: 'none', label: 'none', link: 'Neophyte Hybrid'},
-			{value: 'Cult Icon', label: 'Cult Icon +5pts', link: 'Neophyte Hybrid'},
-
-			{value: 'none', label: 'none', link: 'Hybrid Metamorph'},
-			{value: 'Cult Icon', label: 'Cult Icon +5pts', link: 'Hybrid Metamorph'},
-		]
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unit.unitType)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unit.unitType)
+		const filteredOptions4 = options5.filter((o) => o.link === this.state.unit.unitType)
 
     return (
 			<Container fluid>
@@ -4565,7 +3912,6 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
-				<Row><button style={{ display: "block", margin: "auto" }}className="btn btn-primary" onClick={this.update}>Update</button></Row>
 				{this.state.unit ? (
         <Row>
           <Col size="md-2 md-offset-1">&nbsp;</Col>
@@ -4686,48 +4032,45 @@ class Detail extends Component {
 									options={filteredOptions3}
 								/>
 							</div>
-							<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-								<Thead>
-									<Tr>
-										<Th>
-											ABILITIES:
-										</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									<Tr>
-										<Td>
-											<a data-tip data-for='unit-abilities'> {this.state.unit.abilities} </a>
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<tbody>
+									<tr>
+										<td>
+											<a data-tip data-for='unit-abilities'> <strong>ABILITIES: </strong>{this.state.unit.abilities} </a>
 											<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
 												<span>Ability info goes here</span>
 											</ReactTooltip>
-										</Td>
-									</Tr>
-								</Tbody>
-							</Table>
-							<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-								<Thead>
-									<Tr>
-										<Th>
-											Specialism:
-										</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									<Tr>
-										<Td>
-											{this.state.unit.specialism}
-										</Td>
-									</Tr>
-								</Tbody>
-							</Table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<span style={{ float: "left", width : "50%" }}>Specialism</span>
+							<div style={{ float: "left", width : "50%" }}>
+								<Select
+									name="specialism"
+									value={{label : this.state.specialism.value}}
+									onChange={this.handleChange5}
+									options={filteredOptions4}
+								/>
+							</div>
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<tbody>
+									<tr>
+										<td>
+											<strong>SPECIALISM:</strong> {this.state.unit.special}
+										</td>
+										<td>
+											<strong>DEMEANOUR:</strong> {this.state.unit.demeanour}
+										</td>
+									</tr>
+								</tbody>
+							</table>
 							</ListItem>
             </List>
           </Col>
 				</Row>
-
 				) : (
-					<h3>No Results to Display</h3>
+					<h3 className="text-light" style={{ "textAlign" : "center" }}>No Results to Display</h3>
 				)}
         <Row>
           <Col size="md-2">
