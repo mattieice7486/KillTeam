@@ -207,47 +207,30 @@ class Squads extends Component {
 																						)
 																					})}
 																				</Table>
-																				<Table className="table" style={{backgroundColor : "#cec9c7", marginBottom : "none" }}>
-																					<Thead>
-																						<Tr style={{ border : "2px solid black" }}>
-																							<Th>
-																								ABILITIES:
-																							</Th>
-																						</Tr>
-																					</Thead>
-																					<Tbody>
-																						<Tr style={{ border : "2px solid black" }}>
-																							<Td>
-																								<a data-tip data-for='unit-abilities'> {squadMember.abilities} </a>
+																				<table className="table" style={{backgroundColor : "#cec9c7", marginBottom : "none" }}>
+																					<tbody>
+																						<tr style={{ border : "2px solid black" }}>
+																							<td>
+																								<a data-tip data-for='unit-abilities'><strong>ABILITIES: </strong> {squadMember.abilities} </a>
 																								<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
 																									<span>Ability info goes here</span>
 																								</ReactTooltip>
-																							</Td>
-																						</Tr>
-																					</Tbody>
-																				</Table>
-																				<Table className="table" style={{backgroundColor : "#cec9c7", marginBottom : "none" }}>
-																					<Thead>
-																						<Tr style={{ border : "2px solid black" }}>
-																							<Th>
-																							SPECIALISM:
-																							</Th>
-																							<Th>
-																							DEMEANOUR:
-																							</Th>
-																						</Tr>
-																					</Thead>
-																					<Tbody>
-																						<Tr style={{ border : "2px solid black" }}>
-																							<Td>
-																								{squadMember.specialism}
-																							</Td>
-																							<Td>
-																								{squadMember.demeanour}
-																							</Td>
-																						</Tr>
-																					</Tbody>
-																				</Table>
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
+																				<table className="table" style={{backgroundColor : "#cec9c7", marginBottom : "none" }}>
+																					<tbody>
+																						<tr style={{ border : "2px solid black" }}>
+																							<td>
+																								<strong>SPECIALISM: </strong>{squadMember.special}
+																							</td>
+																							<td>
+																								<strong>DEMEANOUR: </strong>{squadMember.demeanour}
+																							</td>
+																						</tr>
+																					</tbody>
+																				</table>
 																				<Table className="table" style={{backgroundColor : "#cec9c7", marginBottom : "none" }}>
 																					<Thead>
 																						<Tr style={{ border : "2px solid black" }}>
@@ -359,7 +342,7 @@ class Squads extends Component {
                 })}
               </div>
             ) : (
-              <h3 className="text-light">You must log in to see your squads</h3>
+              <h3 className="text-light" style={{ "textAlign" : "center" }}>You must log in to see your squads</h3>
             )}
           </Col>
         </Row>

@@ -8,6 +8,13 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+11/14/2019
+Release 0.5.1
+* Detail page now updates in real time.
+* Added ability to change Specialism in Detail page.
+* Cleaned legacy code and console.logs.
+* Various UI updates.
+
 11/13/2019
 Release 0.5.0
 * Migrated the current list of units into session storage. Now multiple users can create a list at the same time.
@@ -201,7 +208,7 @@ Release 0.1.0 is here!
 * <s>Detail page does not display equipment correctly.</s> ✔️
 * <s>User can create mixed-race squads.</s> ✔️
 * <s>Other Options dropdown does not display selection.</s> ✔️
-* Squad total does not update correctly.
+* <s>Squad total does not update correctly.</s> ✔️
 * <s>Confirm prompt does not render in the correct location.</s> ✔️
 * <s>Selectors don't register default state; you must select a new option then select the default for it to register.</s> ✔️
 * <s>Squad page only displays first squad member for each squad.</s> ✔️
@@ -215,6 +222,7 @@ Release 0.1.0 is here!
 ## Updates Planned:
 
 * Save squads to PDF.
+* Animations.
 * Limits for specific unit types.
 * More squad options (<s>specialists</s>, flesh wounds, experience, <s>demeanour</s>).
 * UI graphics.

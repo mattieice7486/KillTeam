@@ -121,30 +121,35 @@ class Squad extends Component {
 													)
 												})}
 										</Table>
-										<Table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
-											<Thead>
-												<Tr>
-													<Th>
-														ABILITIES:
-													</Th>
-												</Tr>
-											</Thead>
-											<Tbody>
-												<Tr>
-													<Td>
-														<a data-tip data-for='unit-abilities'> {unit.abilities} </a>
+										<table className="table table-bordered" style={{backgroundColor : "#cec9c7",  borderTop : "2px solid black"}}>
+											<tbody>
+												<tr>
+													<td>
+														<a data-tip data-for='unit-abilities'><strong>Abilities:</strong> {unit.abilities} </a>
 														<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
 															<span>Ability info goes here</span>
 														</ReactTooltip>
-													</Td>
-												</Tr>
-											</Tbody>
-										</Table>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+										<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+											<tbody>
+												<tr>
+													<td>
+														<strong>Specialism:</strong> {unit.special}
+													</td>
+													<td>
+														<strong>Demeanour:</strong> {unit.demeanour}
+													</td>
+												</tr>
+											</tbody>
+										</table>
                   </ListItem>
                 ))}
               </List>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className="text-light" style={{ "textAlign" : "center" }}>No Results to Display</h3>
             )}
           </Col>
           </Row>

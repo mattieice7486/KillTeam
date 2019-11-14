@@ -12,7 +12,7 @@ import { Link } from "react-router-dom";
 import { Col, Row, Container } from "../../components/Grid";
 import { List, ListItem } from "../../components/List";
 import { Input, InputNumber, TextArea, FormBtn, Radio } from "../../components/Form";
-import firebase from "firebase";
+import firebase from "firebase/app";
 import { auth } from '../../utils/Firebase';
 import Select from 'react-select';
 import Confirm from "../../components/Confirm";
@@ -63,7 +63,8 @@ class Units extends Component {
       unitType: {},
       wargearOptions: {},
       wargearOptions2: {},
-      specialism: "none",
+      specialism: {},
+      special: "none",
       demeanour: "",
       chapter: "",
       user: null,
@@ -91,26 +92,6 @@ class Units extends Component {
 		event.preventDefault();
 		switch (this.state.race.value) {
 			case "Adeptus Astartes":
-				if (this.state.chapter === "Imperial Fists") {
-					this.setState({name: randomName.if1[Math.floor(Math.random()*10)] + " " + randomName.if2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Blood Angels") {
-					this.setState({name: randomName.ba1[Math.floor(Math.random()*10)] + " " + randomName.ba2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Raven Guard") {
-					this.setState({name: randomName.rg1[Math.floor(Math.random()*10)] + " " + randomName.rg2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "White Scars") {
-					this.setState({name: randomName.ws1[Math.floor(Math.random()*10)] + " " + randomName.ws2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Iron Hands") {
-					this.setState({name: randomName.ih1[Math.floor(Math.random()*10)] + " " + randomName.ih2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Space Wolves") {
-					this.setState({name: randomName.sw1[Math.floor(Math.random()*10)] + " " + randomName.sw2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Salamanders") {
-					this.setState({name: randomName.sal1[Math.floor(Math.random()*10)] + " " + randomName.sal2[Math.floor(Math.random()*10)]})
-				} else if (this.state.chapter === "Dark Angels") {
-					this.setState({name: randomName.da1[Math.floor(Math.random()*10)] + " " + randomName.da2[Math.floor(Math.random()*10)]})
-				} else {
-					this.setState({name: randomName.ultra1[Math.floor(Math.random()*10)] + " " + randomName.ultra2[Math.floor(Math.random()*10)]})
-				}
-				break;
 			case "Deathwatch":
 				if (this.state.chapter === "Imperial Fists") {
 					this.setState({name: randomName.if1[Math.floor(Math.random()*10)] + " " + randomName.if2[Math.floor(Math.random()*10)]})
@@ -370,7 +351,8 @@ class Units extends Component {
 			unitType: {},
 			wargearOptions: {},
 			wargearOptions2: {},
-			specialism: "none",
+			specialism: {},
+			special: "none",
 			demeanour: "",
 			counter: (Object.values(sessionStorage).length)
 		})
@@ -417,7 +399,7 @@ class Units extends Component {
 			pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
 			race: this.state.race.value,
 			unitType: this.state.unitType.label,
-			specialism: this.state.specialism.label,
+			special: this.state.special,
 			demeanour: this.state.demeanour,
 		}
     event.preventDefault();
@@ -510,7 +492,7 @@ class Units extends Component {
 			unitType: {},
 			wargearOptions: {},
 			wargearOptions2: {},
-      specialism: "",
+      specialism: "none",
       demeanour: "",
 		})
   };
@@ -5433,7 +5415,10 @@ class Units extends Component {
 	}
 
 	handleChange5 = (specialism) => {
-    this.setState({specialism: specialism})
+    this.setState({
+			special: specialism.label,
+			specialism: specialism
+			})
 	}
 			
   render() {
@@ -6009,30 +5994,30 @@ class Units extends Component {
                     </ListItem>
                   ))}
                 </List>
+								<br />
+								<FormBtn
+									disabled={(this.state.units.length === 0) || (this.state.user == null)}
+									onClick={this.handleDatabaseSubmit}
+									className="btn btn-success"
+								>
+									Submit Squad
+								</FormBtn>
+								<FormBtn
+									disabled={(this.state.units.length === 0)}
+									onClick={this.deleteAll}
+									className="btn btn-danger"
+								>
+									Delete Squad
+								</FormBtn>
               </div>
             ) : (
-              <h3>No Results to Display</h3>
+              <h3 className="text-light" style={{ "textAlign" : "center" }}>No Results to Display</h3>
             )}
-            <br />
-            <FormBtn
-              disabled={(this.state.units.length === 0) || (this.state.user == null)}
-							onClick={this.handleDatabaseSubmit}
-							className="btn btn-success"
-            >
-              Submit Squad
-            </FormBtn>
-            <FormBtn
-              disabled={(this.state.units.length === 0)}
-							onClick={this.deleteAll}
-							className="btn btn-danger"
-            >
-              Delete Squad
-            </FormBtn>
           </Col>
         </Row>
+				<br />
       </Container>
     );
   }
 }
-
 export default Units;

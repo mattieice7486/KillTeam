@@ -11,7 +11,8 @@ import ReactTooltip from 'react-tooltip'
 import guns from "../../utils/guns";
 import options3 from "../../utils/options3";
 import options4 from "../../utils/options4";
-
+import options5 from "../../utils/options5";
+// import { guns, options3, options4, options5 } from "../../utils"
 
 class Detail extends Component {
 	constructor() {
@@ -20,27 +21,31 @@ class Detail extends Component {
 			unit: {},
       wargearOptions: {},
       wargearOptions2: {},
+      specialism: {},
 			pts: 0,
 			wargearPts: 0,
 			wargearPts2: 0,
 			name: "",
 			equipment: "",
 			abilities: "",
+			special: "",
 			unitId: 0
 		};
 		this.handleInputChange = this.handleInputChange.bind(this);
 		this.handleChange3 = this.handleChange3.bind(this);
     this.handleChange4 = this.handleChange4.bind(this);
+    this.handleChange5 = this.handleChange5.bind(this);
 	}
   // When this component mounts, grab the unit with the _id of this.props.match.params.id
   // e.g. localhost:3000/units/599dcb67f0f16317844583fc
   componentDidMount() {
 		this.loadUnit()
-		console.log(this.state)
-		console.log(this.state.unitId)
-		console.log(JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name)
   }
 	
+	componentDidUpdate() {
+		this.update(this.state.unit.name, this.state.unit.equipment, this.state.unit.abilities, this.state.unit.special)
+	}
+
 	loadUnit = () => {
 			this.setState({
 				unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]),
@@ -48,6 +53,7 @@ class Detail extends Component {
 				name: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name,
 				equipment: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).equipment,
 				abilities: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).abilities,
+				special: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).special,
 				unitId: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).unitId,
 			})
 	}
@@ -59,8 +65,7 @@ class Detail extends Component {
     });
 	};
 	
-	update = event => {
-		event.preventDefault();
+	update = (stateName, stateEquipment, stateAbilities, stateSpecial) => {
 			const item = {
 				id: this.props.match.params.id,
 				name: this.state.name,
@@ -78,31 +83,22 @@ class Detail extends Component {
 				pts: this.state.pts + this.state.wargearPts + this.state.wargearPts2,
 				race: this.state.unit.race,
 				unitType: this.state.unit.unitType,
-				specialism: this.state.unit.specialism,
+				special: this.state.special,
 				demeanour: this.state.unit.demeanour,
 			}
-		sessionStorage.setItem(`sessionUnit${this.props.match.params.id}`, JSON.stringify(item))
-		this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
-		console.log(this.state.unit)
+			if ((stateName !== item.name) || (stateEquipment !== item.equipment) || (stateAbilities !== item.abilities) || (stateSpecial !== item.special)) {
+				sessionStorage.setItem(`sessionUnit${this.props.match.params.id}`, JSON.stringify(item))
+				this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
+			}
 	};
 
 	handleChange3 = (wargearOptions) => {
-		// switch (wargearOptions) {
-		// 	case "none":
-		// 		this.setState({equipment: "chainsword", wargearPts: 0})
-		// 		console.log(this.state.equipment)
-		// 		break;
-		// 	default:
-		// 		this.setState({equipment: "big shoota", wargearPts: 0})
-		// 		console.log(this.state.equipment)
-		// }
     if (wargearOptions.value === "none" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
 				pts: 13,
         wargearPts: 0,
         equipment: "boltgun, bolt pistol, frag grenades, krak grenades"
 			});
-			console.log(this)
     }
     if (wargearOptions.value === "flamer" && this.state.unit.unitType === "Tactical Marine Gunner") {
       this.setState({
@@ -3424,8 +3420,6 @@ class Detail extends Component {
         equipment: "hand flamer, metamorph claw, blasting charges"
 			});
 		}
-
-
 	}
 			
 	handleChange4 = (wargearOptions2) => {
@@ -3895,12 +3889,18 @@ class Detail extends Component {
       });
     }
 	}			
-			
+	
+	handleChange5 = (specialism) => {
+    this.setState({
+			special: specialism.label,
+			specialism: specialism
+		})
+	}
 
   render() {
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unit.unitType)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unit.unitType)
-		console.log(this.state)
+		const filteredOptions4 = options5.filter((o) => o.link === this.state.unit.unitType)
 
     return (
 			<Container fluid>
@@ -3912,7 +3912,6 @@ class Detail extends Component {
             </Jumbotron>
           </Col>
         </Row>
-				<Row><button style={{ display: "block", margin: "auto" }}className="btn btn-primary" onClick={this.update}>Update</button></Row>
 				{this.state.unit ? (
         <Row>
           <Col size="md-2 md-offset-1">&nbsp;</Col>
@@ -4033,48 +4032,45 @@ class Detail extends Component {
 									options={filteredOptions3}
 								/>
 							</div>
-							<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-								<Thead>
-									<Tr>
-										<Th>
-											ABILITIES:
-										</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									<Tr>
-										<Td>
-											<a data-tip data-for='unit-abilities'> {this.state.unit.abilities} </a>
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<tbody>
+									<tr>
+										<td>
+											<a data-tip data-for='unit-abilities'> <strong>ABILITIES: </strong>{this.state.unit.abilities} </a>
 											<ReactTooltip id='unit-abilities' type='warning' effect='solid'>
 												<span>Ability info goes here</span>
 											</ReactTooltip>
-										</Td>
-									</Tr>
-								</Tbody>
-							</Table>
-							<Table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
-								<Thead>
-									<Tr>
-										<Th>
-											Specialism:
-										</Th>
-									</Tr>
-								</Thead>
-								<Tbody>
-									<Tr>
-										<Td>
-											{this.state.unit.specialism}
-										</Td>
-									</Tr>
-								</Tbody>
-							</Table>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							<span style={{ float: "left", width : "50%" }}>Specialism</span>
+							<div style={{ float: "left", width : "50%" }}>
+								<Select
+									name="specialism"
+									value={{label : this.state.specialism.value}}
+									onChange={this.handleChange5}
+									options={filteredOptions4}
+								/>
+							</div>
+							<table className="table table-bordered" style={{backgroundColor : "#cec9c7"}}>
+								<tbody>
+									<tr>
+										<td>
+											<strong>SPECIALISM:</strong> {this.state.unit.special}
+										</td>
+										<td>
+											<strong>DEMEANOUR:</strong> {this.state.unit.demeanour}
+										</td>
+									</tr>
+								</tbody>
+							</table>
 							</ListItem>
             </List>
           </Col>
 				</Row>
-
 				) : (
-					<h3>No Results to Display</h3>
+					<h3 className="text-light" style={{ "textAlign" : "center" }}>No Results to Display</h3>
 				)}
         <Row>
           <Col size="md-2">
