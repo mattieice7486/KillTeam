@@ -81,7 +81,7 @@
 		"abilities": "When attacking with this weapon, choose one or both of the profiles below. If you choose both subtract 1 from all hit rolls made for this weapon."
 	},
 	{
-	  	"weapon": "combi-grav",
+	  "weapon": "combi-grav",
 		"range": 18,
 		"type": "Rapid Fire 1 (Grav-gun)",
 		"strength": 5,
@@ -135,15 +135,6 @@
 		"abilities": "This weapon automatically hits its target."
 	},
 	{
-		"weapon": "frag grenades",
-		"range": 6,
-		"type": "Grenade D6",
-		"strength": 3,
-		"AP": 0,
-		"damage": 1,
-		"abilities": "-"
-	},
-	{
 		"weapon": "grav-gun",
 		"range": 18,
 		"type": "Rapid Fire 1",
@@ -160,15 +151,6 @@
 		"AP": -3,
 		"damage": 1,
 		"abilities": "If the target has a Save characteristic of 3+ or better, this weapon has a Damage of D3."
-	},
-	{
-		"weapon": "krak grenades",
-		"range": 6,
-		"type": "Grenade 1",
-		"strength": 6,
-		"AP": -1,
-		"damage": "D3",
-		"abilities": "-"
 	},
 	{
 		"weapon": "heavy bolt pistol",
@@ -232,15 +214,6 @@
 		"AP": -3,
 		"damage": 1,
 	  	"abilities": "This weapon can be supercharged by the bearer before firing. If they do so, increase the Strength and Damage of the weapon by 1 this turn. On any unmodified hit rolls of 1 when firing supercharge, the bearer is taken out of action after all of the weapon's shots have been resolved."
-	},
-	{
-		"weapon": "shock grenades",
-		"range": 6,
-		"type": "Grenade D3",
-		"strength": "*",
-		"AP": "*",
-		"damage": "*",
-		"abilities": "This weapon does not inflict any damage. If an enemy INFANTRY model is hit by any shock grenades, it is stunned; until the end of the next battle round that model cannot fire Overwatch or be Readied, and your opponent must subtract 1 from hit rolls made for the model."
 	},
 	{
 		"weapon": "sniper rifle",
@@ -430,15 +403,6 @@
 		"AP": -1,
 		"damage": 1,
 		"abilities": "-"
-	},
-	{
-		"weapon": "psyk-out grenade",
-		"range": 6,
-		"type": "Grenade D3",
-		"strength": 2,
-		"AP": 0,
-		"damage": 1,
-		"abilities": "Each time you roll a hit roll of 6+ for this weapon when targeting a PSYKER or DAEMON, the target suffers a mortal wound instead of the normal damage."
 	},
 	{
 		"weapon": "storm bolter",
@@ -693,15 +657,6 @@
 		"abilities": "Each time the bearer fights, it can make 1 additional attack with this weapon."
 	},
 	{
-		"weapon": "blight grenades",
-		"range": 6,
-		"type": "Grenade D6",
-		"strength": 3,
-		"AP": 0,
-		"damage": 1,
-		"abilities": "You can re-roll wound rolls of 1 for this weapon."
-	},
-	{
 		"weapon": "blight launcher",
 		"range": 24,
 		"type": "Assault 2",
@@ -898,15 +853,6 @@
 		"AP": -4,
 		"damage": "D6",
 		"abilities": "If the target is within half range of this weapon, roll two dice when inflicting damage with it and discard the lowest result."
-	},
-	{
-		"weapon": "plasma grenade",
-		"range": 6,
-		"type": "Grenade D6",
-		"strength": 4,
-		"AP": -1,
-		"damage": 1,
-		"abilities": "-"
 	},
 	{
 		"weapon": "ranger long rifle",
@@ -1323,15 +1269,6 @@
 		"abilities": "-"
 	},
 	{
-		"weapon": "stikkbombs",
-		"range": 6,
-		"type": "Grenade D6",
-		"strength": 3,
-		"AP": 0,
-		"damage": 1,
-		"abilities": "-"
-	},
-	{
 		"weapon": "big choppa",
 		"range": "Melee",
 		"type": "Melee",
@@ -1411,15 +1348,6 @@
 		"AP": -1,
 		"damage": "D3",
 		"abilities": "-"
-	},
-	{
-		"weapon": "photon grenade",
-		"range": 12,
-		"type": "Grenade D6",
-		"strength": "-",
-		"AP": "-",
-		"damage": "-",
-		"abilities": "This weapon does not inflict any damage. Your opponent must subtract 1 from hit rolls made for INFANTRY models that have suffered any hits from photon grenades until the end of the battle round."
 	},
 	{
 		"weapon": "pulse blaster",
@@ -1620,15 +1548,6 @@
 		"abilities": "-"
 	},
 	{
-		"weapon": "demolition charge",
-		"range": 6,
-		"type": "Grenade D6",
-		"strength": 8,
-		"AP": -3,
-		"damage": "D3",
-		"abilities": "Each demolition charge can only be used once per battle."
-	},
-	{
 		"weapon": "hand flamer",
 		"range": 6,
 		"type": "Pistol D3",
@@ -1780,5 +1699,86 @@
 		"AP": -1,
 		"damage": 1,
 		"abilities": "Each time you make a wound roll of 6+ for this weapon, that hit is resolved with an AP of -4."
+	},
+	{
+		"weapon": "frag grenades",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "krak grenades",
+		"range": 6,
+		"type": "Grenade 1",
+		"strength": 6,
+		"AP": -1,
+		"damage": "D3",
+		"abilities": "-"
+	},
+	{
+		"weapon": "shock grenades",
+		"range": 6,
+		"type": "Grenade D3",
+		"strength": "*",
+		"AP": "*",
+		"damage": "*",
+		"abilities": "This weapon does not inflict any damage. If an enemy INFANTRY model is hit by any shock grenades, it is stunned; until the end of the next battle round that model cannot fire Overwatch or be Readied, and your opponent must subtract 1 from hit rolls made for the model."
+	},
+	{
+		"weapon": "psyk-out grenades",
+		"range": 6,
+		"type": "Grenade D3",
+		"strength": 2,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "Each time you roll a hit roll of 6+ for this weapon when targeting a PSYKER or DAEMON, the target suffers a mortal wound instead of the normal damage."
+	},
+	{
+		"weapon": "blight grenades",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "You can re-roll wound rolls of 1 for this weapon."
+	},
+	{
+		"weapon": "plasma grenades",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 4,
+		"AP": -1,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "photon grenades",
+		"range": 12,
+		"type": "Grenade D6",
+		"strength": "-",
+		"AP": "-",
+		"damage": "-",
+		"abilities": "This weapon does not inflict any damage. Your opponent must subtract 1 from hit rolls made for INFANTRY models that have suffered any hits from photon grenades until the end of the battle round."
+	},
+	{
+		"weapon": "stikkbombs",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 3,
+		"AP": 0,
+		"damage": 1,
+		"abilities": "-"
+	},
+	{
+		"weapon": "demolition charges",
+		"range": 6,
+		"type": "Grenade D6",
+		"strength": 8,
+		"AP": -3,
+		"damage": "D3",
+		"abilities": "Each demolition charge can only be used once per battle."
 	}
 ]

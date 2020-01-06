@@ -380,10 +380,10 @@ class Units extends Component {
       [name]: value
     });
   };
-
+	
   handleFormSubmit = event => {
 		const item = {
-			id: this.state.counter,
+			id: Math.random(),
 			name: this.state.name,
 			equipment: this.state.equipment,
 			abilities: this.state.abilities,
@@ -406,6 +406,7 @@ class Units extends Component {
     if ((this.state.units[0] === undefined) || (this.state.race.value === this.state.units[0].race)) {
 			sessionStorage.setItem(`sessionUnit${item.id}`, JSON.stringify(item));
 			this.loadUnits();
+			console.log(this)
 		} else {
 			alert("Squad must all match race type")
 		}
@@ -5782,40 +5783,40 @@ class Units extends Component {
 																			/>
 																		</td>
 																	</tr>
-																		<tr className="text-light">
-																			<td>PTS</td>
-																			<td>&nbsp;</td>
-																			<td>Wargear</td>
-																			<td>&nbsp;</td>
-																			<td>Options</td>
-																		</tr>
+																</tbody>
+															</table>
+															<table style={{ width : "50%" }}>
+																<tbody>
+																	<tr className="text-light">
+																		<td style={{ width: "20%", textAlign: "center" }}>Points</td>
+																		<td>&nbsp;</td>
+																		<td style={{ width: "20%", textAlign: "center" }}>Wargear</td>
+																		<td>&nbsp;</td>
+																		<td style={{ width: "20%", textAlign: "center" }}>Options</td>
+																	</tr>
 																	<tr>
-																		<td>
-																		<InputNumber
-																				value={this.state.pts}
+																		<td style={{"width":"20%"}}>
+																			<InputNumber
+																					value={this.state.pts}
+																					onChange={this.handleInputChange}
+																					name="pts"
+																				/>
+																		</td>
+																		<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>+</td>
+																		<td style={{"width":"20%"}}>
+																			<InputNumber
+																				value={this.state.wargearPts}
 																				onChange={this.handleInputChange}
-																				name="pts"
+																				name="wargearPts"
 																			/>
 																		</td>
-																		<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingTop : "-25px"}}>
-																			+
-																		</td>
-																		<td>
-																		<InputNumber
-																			value={this.state.wargearPts}
-																			onChange={this.handleInputChange}
-																			name="wargearPts"
-																		/>
-																		</td>
-																		<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingTop : "-25px"}}>
-																			+
-																		</td>
-																		<td>
-																		<InputNumber
-																			value={this.state.wargearPts2}
-																			onChange={this.handleInputChange}
-																			name="wargearPts2"
-																		/>
+																		<td className="text-light" style={{ textAlign : "center", fontSize : "40px", paddingBottom : "25px"}}>+</td>
+																		<td style={{"width":"20%"}}>
+																			<InputNumber
+																				value={this.state.wargearPts2}
+																				onChange={this.handleInputChange}
+																				name="wargearPts2"
+																			/>
 																		</td>
 																	</tr>
 																</tbody>
@@ -5907,7 +5908,7 @@ class Units extends Component {
 													</div>
 												</div>) : (null)}
 											</div>) : (null)}
-									</div>) : (null)}
+									</div>) : (<br />)}
             </form>
           </Col>
           <Col size="md-6 sm-12">
@@ -5978,10 +5979,10 @@ class Units extends Component {
 								</tbody>
 							</table>
                 <List>
-                  {this.state.units.map(unit => (
-                    <ListItem key={unit.id}>
+                  {this.state.units.map((unit, index) => (
+                    <ListItem key={index}>
 											&nbsp;
-                      <Link to={"/units/" + unit.id}>
+                      <Link to={"/units/" + index}>
                         <strong>
                           &quot;{unit.name}&quot; {unit.unitType}
                         </strong>

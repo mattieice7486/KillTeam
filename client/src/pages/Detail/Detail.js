@@ -47,15 +47,15 @@ class Detail extends Component {
 	}
 
 	loadUnit = () => {
-			this.setState({
-				unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]),
-				pts: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).pts,
-				name: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name,
-				equipment: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).equipment,
-				abilities: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).abilities,
-				special: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).special,
-				unitId: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).unitId,
-			})
+		this.setState({
+			unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]),
+			pts: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).pts,
+			name: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).name,
+			equipment: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).equipment,
+			abilities: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).abilities,
+			special: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).special,
+			unitId: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).id,
+		})
 	}
 
   handleInputChange = event => {
@@ -67,7 +67,7 @@ class Detail extends Component {
 	
 	update = (stateName, stateEquipment, stateAbilities, stateSpecial) => {
 			const item = {
-				id: this.props.match.params.id,
+				id: this.state.unitId,
 				name: this.state.name,
 				equipment: this.state.equipment,
 				abilities: this.state.abilities,
@@ -87,8 +87,8 @@ class Detail extends Component {
 				demeanour: this.state.unit.demeanour,
 			}
 			if ((stateName !== item.name) || (stateEquipment !== item.equipment) || (stateAbilities !== item.abilities) || (stateSpecial !== item.special)) {
-				sessionStorage.setItem(`sessionUnit${this.props.match.params.id}`, JSON.stringify(item))
-				this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.props.match.params.id])})
+				sessionStorage.setItem(`sessionUnit${this.state.unitId}`, JSON.stringify(item))
+				this.setState({ unit: JSON.parse(Object.values(sessionStorage)[this.state.unitId])})
 			}
 	};
 
@@ -3901,7 +3901,9 @@ class Detail extends Component {
     const filteredOptions2 = options3.filter((o) => o.link === this.state.unit.unitType)
 		const filteredOptions3 = options4.filter((o) => o.link === this.state.unit.unitType)
 		const filteredOptions4 = options5.filter((o) => o.link === this.state.unit.unitType)
-
+		console.log(JSON.parse(Object.values(sessionStorage)[this.props.match.params.id]).id)
+		console.log(this.state.unitId)
+		console.log(this.state.unit)
     return (
 			<Container fluid>
         <Row>
@@ -3935,11 +3937,11 @@ class Detail extends Component {
 								</Thead>
                   <Tbody>
                     <Tr>
-                      <Td style={{width : "30%"}}>
+                      <Td style={{ width : "30%"}}>
 											<Input
 												value={this.state.name}
 												onChange={this.handleInputChange}
-												style={{ "width": "100%"}}
+												style={{ width : "100%"}}
 												name="name"
 												placeholder={this.state.unit.name}
 											/>

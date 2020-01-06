@@ -8,6 +8,13 @@ Deployed at http://kill-team.herokuapp.com
 ![Squad View](./client/public/killteam3.png)
 
 ## Change Log:
+01/06/2020
+Release 0.5.2
+* Reorganized guns.json to place grenades at bottom of equipment list.
+* Fixed a bug where updating a unit would change the unit's id and cause errors.
+* [Known issue] Delete All button is bugged.
+* [Known issue] Updating a unit in the detail page will blank the screen. Unit does update correctly however.
+
 11/14/2019
 Release 0.5.1
 * Detail page now updates in real time.
